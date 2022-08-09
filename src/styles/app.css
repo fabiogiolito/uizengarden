@@ -1,0 +1,114 @@
+/* ======================================== */
+/* Theme - colors */
+
+:root {
+  --tint: 255 100 50;
+  --tint-contrast: 255 255 255;
+  --foreground: 0 0 0;
+  --background: 255 255 255;
+}
+
+html,
+body {
+  background: rgb(var(--background));
+  color: rgb(var(--foreground));
+  height: 100%;
+  font-family: sans-serif;
+  scrollbar-color: rgb(var(--tint)) Canvas;
+  scrollbar-gutter: stable;
+}
+
+:root {
+  accent-color: rgb(var(--tint));
+}
+:focus-visible:focus-visible {
+  outline: 2px solid rgb(var(--tint));
+  outline: none;
+  box-shadow: 0 0 0 2px rgb(var(--background)), 0 0 0 4px rgb(var(--tint));
+}
+::selection {
+  background-color: rgb(var(--tint) / 0.5);
+}
+::marker {
+  color: rgb(var(--tint));
+  /* color: rgb(var(--foreground) / 0.25); */
+}
+:is(::-webkit-calendar-picker-indicator, ::-webkit-clear-button, ::-webkit-inner-spin-button, ::-webkit-outer-spin-button) {
+  color: rgb(var(--tint));
+}
+
+/* ======================================== */
+/* Buttons */
+
+.btn {
+  background: rgb(var(--foreground) / 0.15);
+  color: rgb(var(--foreground));
+  padding: 0.3em 0.75em;
+  border-radius: 0.3em;
+  transition: all ease-in-out 150ms;
+}
+
+.btn:hover {
+  /* transform: scale(1.05); */
+  opacity: 0.9;
+}
+
+.btn:active {
+  transform: scale(1);
+}
+
+.btn:focus {
+  /* outline: 2px solid red; */
+  outline-color: rgb(var(--tint));
+}
+
+.btn:disabled {
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+.btn--primary {
+  background: rgb(var(--tint));
+  color: rgb(var(--tint-contrast));
+}
+
+.btn--primary-translucent {
+  background: rgb(var(--tint) / 0.25);
+  color: rgb(var(--tint));
+}
+
+.btn--secondary {
+  background: rgb(var(--background));
+  color: rgb(var(--foreground));
+  box-shadow: 0 0 0 1px rgb(var(--foreground) / 0.2) inset;
+}
+
+.btn--shadow {
+  background: rgb(var(--background));
+  color: rgb(var(--foreground));
+  box-shadow: 0 0 0 1px rgb(var(--foreground) / 0.2) inset, 0 1px 2px rgb(var(--foreground) / 0.1);
+}
+
+.btn--xs {
+  font-size: 0.75rem;
+}
+.btn--sm {
+  font-size: 0.9rem;
+}
+.btn--lg {
+  font-size: 1.1rem;
+}
+.btn--xl {
+  font-size: 1.25rem;
+}
+
+/* ======================================== */
+/* Dropdown */
+
+.dropdown__menu {
+  background: rgb(var(--background));
+  color: rgb(var(--foreground));
+  padding: 0.3em 0.75em;
+  border-radius: 0.3em;
+  box-shadow: 0 0 0 1px rgb(var(--foreground) / 0.2) inset, 0 1px 2px rgb(var(--foreground) / 0.1);
+}
