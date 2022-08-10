@@ -669,7 +669,7 @@
     <div class="uizg-previewArea">
       <div class="uizg-previewElement">
         <Checkbox label="Custom checkbox icon slot" let:checked>
-          <svelte:component slot="checkbox" class="icon checkbox__icon" this={checked ? IconPenTool : null} />
+          <svelte:component slot="checkbox" class="icon checkbox__icon" size="sm" this={checked ? IconPenTool : null} />
         </Checkbox>
       </div>
       <div class="uizg-previewCode">
