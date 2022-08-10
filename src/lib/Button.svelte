@@ -1,7 +1,8 @@
 <script>
   import { createEventDispatcher } from "svelte";
   import { fade } from "svelte/transition";
-  // import IconLoading from "Icons/IconLoading.svelte";
+
+  import LoadingIndicator from "$lib/LoadingIndicator.svelte";
 
   const dispatch = createEventDispatcher();
 
@@ -69,29 +70,6 @@
 
 </script>
 
-<style>
-  /* Mandatory styles for functionality */
-
-  .btn {
-    position: relative;
-    display: inline-block;
-  }
-
-  .btn__loading {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    display: grid;
-    place-items: center;
-  }
-
-  .btn--loading .btn__content {
-    opacity: 0;
-  }
-</style>
-
 <svelte:element this={element ? element : href ? "a" : "button"}
   class="
     {className}
@@ -126,7 +104,7 @@
   <!-- Loading spinner -->
   {#if loading}
     <span class={classLoading}>
-      …
+      <LoadingIndicator />
     </span>
   {/if}
 

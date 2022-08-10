@@ -1,6 +1,6 @@
 <script>
   import { fade, fly } from "svelte/transition"
-  import { teleport } from "$lib/teleport";
+  import { teleport } from "$lib/helpers/teleport";
 
   export let open = false;
 

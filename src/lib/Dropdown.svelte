@@ -1,6 +1,6 @@
 <script>
   import { fly } from "svelte/transition";
-  import { teleport } from "$lib/teleport";
+  import { teleport } from "$lib/helpers/teleport";
 
   // State
   export let open = false;

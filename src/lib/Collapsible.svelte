@@ -1,6 +1,9 @@
 <script>
   import { slide } from "svelte/transition";
 
+  import IconChevronDown from "$lib/icons/IconChevronDown.svelte";
+  import IconChevronRight from "$lib/icons/IconChevronRight.svelte";
+
   export let title = "Title";
   export let collapsed = false;
 
@@ -26,6 +29,7 @@
     <slot name="title" {collapsed}>
       <span class={classTitle}>
         {title}
+        <svelte:component this={collapsed ?  IconChevronRight : IconChevronDown} class="icon icon--sm" />
       </span>
     </slot>
   </button>

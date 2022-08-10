@@ -4,7 +4,14 @@
   import Collapsible from "$lib/Collapsible.svelte";
   import Modal from "$lib/Modal.svelte";
   import Text from "$lib/Text.svelte";
+  import LoadingIndicator from "$lib/LoadingIndicator.svelte";
 
+  import IconCamera from "$lib/icons/IconCamera.svelte";
+  import IconCopy from "$lib/icons/IconCopy.svelte";
+  import IconDownloadCloud from "$lib/icons/IconDownloadCloud.svelte";
+  import IconCircle from "$lib/icons/IconCircle.svelte";
+  import IconChevronDown from "$lib/icons/IconChevronDown.svelte";
+  import IconChevronUp from "$lib/icons/IconChevronUp.svelte";
 
   let modalOpen = false;
   let modalRef;
@@ -47,7 +54,6 @@
   }
 
 </style>
-
 
 <div class="uizg-layout">
 
@@ -93,6 +99,25 @@
 
     <div class="uizg-previewArea">
       <div class="uizg-previewElement">
+        <Button icon={IconCircle} iconRight={IconCircle} size="xs">Extra Small</Button>
+        <Button icon={IconCircle} iconRight={IconCircle} size="sm">Small</Button>
+        <Button icon={IconCircle} iconRight={IconCircle}>Medium</Button>
+        <Button icon={IconCircle} iconRight={IconCircle} size="lg">Large</Button>
+        <Button icon={IconCircle} iconRight={IconCircle} size="xl">Extra Large</Button>
+      </div>
+      <div class="uizg-previewCode">
+        {`
+          <Button icon={IconCircle} iconRight={IconCircle} size="xs">Extra Small</Button>
+          <Button icon={IconCircle} iconRight={IconCircle} size="sm">Small</Button>
+          <Button icon={IconCircle} iconRight={IconCircle}>Medium</Button>
+          <Button icon={IconCircle} iconRight={IconCircle} size="lg">Large</Button>
+          <Button icon={IconCircle} iconRight={IconCircle} size="xl">Extra Large</Button>
+        `}
+      </div>
+    </div>
+
+    <div class="uizg-previewArea">
+      <div class="uizg-previewElement">
         <Button>Regular</Button>
         <Button type="primary">Primary</Button>
         <Button type="secondary">Secondary</Button>
@@ -123,24 +148,32 @@
 
     <div class="uizg-previewArea">
       <div class="uizg-previewElement">
-        <Button copy="Hello">Copy Hello</Button>
+        <Button copy="Hello" icon={IconCopy}>Copy Hello</Button>
       </div>
       <div class="uizg-previewCode">
         {`
-          <Button copy="Hello">Copy Hello</Button>
+          <Button copy="Hello" icon={IconCopy}>Copy Hello</Button>
         `}
       </div>
     </div>
 
     <div class="uizg-previewArea">
       <div class="uizg-previewElement">
-        <Button copyFunc={() => 'Hello with Function'} copiedLabel="Success!">
+        <Button
+          copyFunc={() => 'Hello with Function'}
+          copiedLabel="Success!"
+          iconRight={IconCopy}
+        >
           Copy Hello with Function
         </Button>
       </div>
       <div class="uizg-previewCode">
         {`
-          <Button copyFunc={() => 'Hello with Function'} copiedLabel="Success!">
+          <Button
+            copyFunc={() => 'Hello with Function'}
+            copiedLabel="Success!"
+            iconRight={IconCopy}
+          >
             Copy Hello with Function
           </Button>
         `}
@@ -159,7 +192,7 @@
     <div class="uizg-previewArea">
       <div class="uizg-previewElement">
         <Dropdown>
-          <Button slot="trigger">Dropdown</Button>
+          <Button slot="trigger" iconRight={IconChevronDown}>Dropdown</Button>
           <p>Dropdown content</p>
         </Dropdown>
       </div>
@@ -176,7 +209,7 @@
     <div class="uizg-previewArea">
       <div class="uizg-previewElement">
         <Dropdown let:open>
-          <Button slot="trigger" type={open ? 'primary' : null}>Dropdown</Button>
+          <Button slot="trigger" iconRight={IconChevronDown} type={open ? 'primary' : null}>Dropdown</Button>
           <p>Dropdown content</p>
         </Dropdown>
       </div>
@@ -298,17 +331,17 @@
     <div class="uizg-previewArea">
       <div class="uizg-previewElement">
         <Collapsible let:collapsed>
-          <span slot="title">Hello ({collapsed ? 'collapsed' : 'visible'})</span>
+          <span slot="title">Click me to {collapsed ? "open" : "close"}</span>
           <Button size="xs" slot="header">Action</Button>
-          <p>World</p>
+          <p>Hello</p>
         </Collapsible>
       </div>
       <div class="uizg-previewCode">
         {`
           <Collapsible let:collapsed>
-            <span slot="title">Hello ({collapsed ? 'collapsed' : 'visible'})</span>
+            <span slot="title">Click me to {collapsed ? "open" : "close"}</span>
             <Button size="xs" slot="header">Action</Button>
-            <p>World</p>
+            <p>Hello</p>
           </Collapsible>
         `}
       </div>
@@ -381,6 +414,44 @@
       <div class="uizg-previewCode">
         {`
           <Text prepend="https://twitter.com/" placeholder="username" />
+        `}
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ============================== -->
+  <!-- Text -->
+  <div class="uizg-component">
+
+    <h2>Feather Icons</h2>
+
+    <div class="uizg-previewArea">
+      <div class="uizg-previewElement">
+        <IconCamera />
+        <IconCopy />
+        <IconDownloadCloud />
+      </div>
+      <div class="uizg-previewCode">
+        {`
+          <IconCamera />
+          <IconCopy />
+          <IconDownloadCloud />
+        `}
+      </div>
+    </div>
+
+    <div class="uizg-previewArea">
+      <div class="uizg-previewElement">
+        <IconCopy size="sm" />
+        <IconCopy />
+        <IconCopy size="lg" />
+      </div>
+      <div class="uizg-previewCode">
+        {`
+          <IconDownloadCloud size="sm" />
+          <IconDownloadCloud />
+          <IconDownloadCloud size="lg" />
         `}
       </div>
     </div>
