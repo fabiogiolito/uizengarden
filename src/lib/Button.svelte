@@ -12,6 +12,9 @@
   export let title = null;
   export let disabled = false;
 
+  export let toggle = false; // Enable toggle behavior
+  export let selected = false; // Toggle state
+
   // Accessibility
   export let role = null;
   export let ariaLabel = null;
@@ -27,7 +30,7 @@
   // Element classes
   export let classCopyStatus = "btn__copyStatus";
   export let classContent = "btn__content";
-  export let classLoading = "btn__loading";
+  export let classLoadingIndicator = "btn__loading";
   export let classIcon = `icon ${size ? `icon--${size}` : ''} btn__icon`;
 
   // Icons
@@ -53,9 +56,14 @@
   // Functions
 
   function handleClick(e) {
+    if (toggle) toggleSelected(); // Select / unselect
     if (copy || copyFunc) handlecopy(); // Copy text
     if (async) loading = true; // Enter loading state
     dispatch('click', e); // Pass click event to parent
+  }
+
+  function toggleSelected() {
+    selected = !selected;
   }
 
   function handlecopy() {
@@ -76,6 +84,7 @@
     {type ? `btn--${type}` : ''}
     {size ? `btn--${size}` : ''}
     {loading ? 'btn--loading' : ''}
+    {selected ? 'btn--selected' : ''}
   "
   {href}
   {title}
@@ -97,13 +106,13 @@
   <!-- Content -->
   {:else if $$slots.default}
     <span in:fade class={classContent}>
-      <slot />
+      <slot {selected} />
     </span>
   {/if}
 
   <!-- Loading spinner -->
   {#if loading}
-    <span class={classLoading}>
+    <span class={classLoadingIndicator}>
       <LoadingIndicator />
     </span>
   {/if}

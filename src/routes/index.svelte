@@ -3,15 +3,19 @@
   import Dropdown from "$lib/Dropdown.svelte";
   import Collapsible from "$lib/Collapsible.svelte";
   import Modal from "$lib/Modal.svelte";
-  import Text from "$lib/Text.svelte";
+  import Input from "$lib/Input.svelte";
   import LoadingIndicator from "$lib/LoadingIndicator.svelte";
+  import Select from "$lib/Select.svelte";
+  import Checkbox from "$lib/Checkbox.svelte";
 
   import IconCamera from "$lib/icons/IconCamera.svelte";
   import IconCopy from "$lib/icons/IconCopy.svelte";
   import IconDownloadCloud from "$lib/icons/IconDownloadCloud.svelte";
   import IconCircle from "$lib/icons/IconCircle.svelte";
   import IconChevronDown from "$lib/icons/IconChevronDown.svelte";
-  import IconChevronUp from "$lib/icons/IconChevronUp.svelte";
+  import IconAtSign from "$lib/icons/IconAtSign.svelte";
+  import IconUser from "$lib/icons/IconUser.svelte";
+  import IconPenTool from "$lib/icons/IconPenTool.svelte";
 
   let modalOpen = false;
   let modalRef;
@@ -179,6 +183,23 @@
         `}
       </div>
     </div>
+
+    <div class="uizg-previewArea">
+      <div class="uizg-previewElement">
+        <Button toggle>Toggle</Button>
+        <Button toggle let:selected>
+          {selected ? 'Following' : 'Follow'}
+        </Button>
+      </div>
+      <div class="uizg-previewCode">
+        {`
+          <Button toggle>Toggle</Button>
+          <Button toggle let:selected>
+            {selected ? 'Following' : 'Follow'}
+          </Button>
+        `}
+      </div>
+    </div>
     
   </div>
 
@@ -209,7 +230,7 @@
     <div class="uizg-previewArea">
       <div class="uizg-previewElement">
         <Dropdown let:open>
-          <Button slot="trigger" iconRight={IconChevronDown} type={open ? 'primary' : null}>Dropdown</Button>
+          <Button slot="trigger" iconRight={IconChevronDown} type={open ? 'primary' : 'secondary'}>Dropdown</Button>
           <p>Dropdown content</p>
         </Dropdown>
       </div>
@@ -391,29 +412,46 @@
 
 
   <!-- ============================== -->
-  <!-- Text -->
+  <!-- Input -->
   <div class="uizg-component">
 
-    <h2>Text</h2>
+    <h2>Input</h2>
 
     <div class="uizg-previewArea">
       <div class="uizg-previewElement">
-        <Text value="Hello world" />
+        <Input value="Hello world" />
       </div>
       <div class="uizg-previewCode">
         {`
-          <Text value="Hello world" />
+          <Input value="Hello world" />
         `}
       </div>
     </div>
 
     <div class="uizg-previewArea">
       <div class="uizg-previewElement">
-        <Text prepend="https://twitter.com/" placeholder="username" />
+        <Input prepend="$" append=".00" placeholder="value" />
       </div>
       <div class="uizg-previewCode">
         {`
-          <Text prepend="https://twitter.com/" placeholder="username" />
+          <Input prepend="$" append=".00" placeholder="value" />
+        `}
+      </div>
+    </div>
+
+    <div class="uizg-previewArea">
+      <div class="uizg-previewElement">
+        <Input placeholder="username">
+          <IconAtSign slot="prepend" />
+          <Button slot="append">Create account</Button>
+        </Input>
+      </div>
+      <div class="uizg-previewCode">
+        {`
+          <Input placeholder="username">
+            <IconAtSign slot="prepend" />
+            <Button slot="append">Create account</Button>
+          </Input>
         `}
       </div>
     </div>
@@ -421,7 +459,7 @@
   </div>
 
   <!-- ============================== -->
-  <!-- Text -->
+  <!-- Icons -->
   <div class="uizg-component">
 
     <h2>Feather Icons</h2>
@@ -458,5 +496,198 @@
 
   </div>
 
+  <!-- ============================== -->
+  <!-- Loading Indicator -->
+  <div class="uizg-component">
+
+    <h2>Loading Indicator</h2>
+
+    <div class="uizg-previewArea">
+      <div class="uizg-previewElement">
+        <LoadingIndicator />
+      </div>
+      <div class="uizg-previewCode">
+        {`
+          <LoadingIndicator />
+        `}
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ============================== -->
+  <!-- Select -->
+  <div class="uizg-component">
+
+    <h2>Select</h2>
+
+    <div class="uizg-previewArea">
+      <div class="uizg-previewElement">
+        <Select options={['one', 'two', 'three']} placeholder="Select one" />
+        <Select options={['one', 'two', 'three']} placeholder="Select multiple" multiselect />
+        <Select options={['one', 'two', 'three']} />
+      </div>
+      <div class="uizg-previewCode">
+        {`
+          <Select options={['one', 'two', 'three']} placeholder="Select one" />
+          <Select options={['one', 'two', 'three']} placeholder="Select multiple" multiselect />
+          <Select options={['one', 'two', 'three']} />
+        `}
+      </div>
+    </div>
+
+    <div class="uizg-previewArea">
+      <div class="uizg-previewElement">
+        <!-- Custom option object -->
+        <Select
+          options={[{name: 'Fabio', emoji: '🦊'},{name: 'James', emoji: '🦁'},{name: 'Jessica', emoji: '🐯'}]}
+          labelKey="name"
+        />
+        <!-- Custom options -->
+        <Select
+          options={[{name: 'Fabio', emoji: '🦊'},{name: 'James', emoji: '🦁'},{name: 'Jessica', emoji: '🐯'}]}
+          labelKey="name"
+        >
+          <p slot="option" let:option let:isSelected let:isFocused>
+            {isFocused ? '› ' : ''}
+            {option.emoji} {option.name}
+            {isSelected ? '✓ ' : ''}
+          </p>
+        </Select>
+        <!-- Custom dropdown label -->
+        <Select
+          options={[{name: 'Fabio', emoji: '🦊'},{name: 'James', emoji: '🦁'},{name: 'Jessica', emoji: '🐯'}]}
+          labelKey="name"
+        >
+          <span slot="label" let:selected>{selected[0].emoji} {selected[0].name}</span>
+        </Select>
+        <!-- Custom dropdown trigger -->
+        <Select options={['one', 'two', 'three']}>
+          <Button slot="trigger" type="primary" icon={IconUser} let:selected>{selected[0]}</Button>
+        </Select>
+      </div>
+      <div class="uizg-previewCode">
+        {`
+          <!-- Custom option object -->
+          <Select
+            options={[{name: 'Fabio', emoji: '🦊'},{name: 'James', emoji: '🦁'},{name: 'Jessica', emoji: '🐯'}]}
+            labelKey="name"
+          />
+
+          <!-- Custom options -->
+          <Select
+            options={[{name: 'Fabio', emoji: '🦊'},{name: 'James', emoji: '🦁'},{name: 'Jessica', emoji: '🐯'}]}
+            labelKey="name"
+          >
+            <p slot="option" let:option let:isSelected let:isFocused>
+              {isFocused ? '› ' : ''}
+              {option.emoji} {option.name}
+              {isSelected ? '✓ ' : ''}
+            </p>
+          </Select>
+
+          <!-- Custom dropdown label -->
+          <Select
+            options={[{name: 'Fabio', emoji: '🦊'},{name: 'James', emoji: '🦁'},{name: 'Jessica', emoji: '🐯'}]}
+            labelKey="name"
+          >
+            <span slot="label" let:selected>{selected[0].emoji} {selected[0].name}</span>
+          </Select>
+
+          <!-- Custom dropdown trigger -->
+          <Select options={['one', 'two', 'three']}>
+            <Button slot="trigger" type="primary" icon={IconUser} let:selected>{selected[0]}</Button>
+          </Select>
+        `}
+      </div>
+    </div>
+
+  </div>
+
+
+  <!-- ============================== -->
+  <!-- Checkbox -->
+  <div class="uizg-component">
+
+    <h2>Checkbox</h2>
+
+    <div class="uizg-previewArea">
+      <div class="uizg-previewElement">
+        <Checkbox />
+      </div>
+      <div class="uizg-previewCode">
+        {`
+          <Checkbox />
+        `}
+      </div>
+    </div>
+
+    <div class="uizg-previewArea">
+      <div class="uizg-previewElement">
+        <Checkbox label="Checkbox label" />
+      </div>
+      <div class="uizg-previewCode">
+        {`
+          <Checkbox label="Checkbox label" />
+        `}
+      </div>
+    </div>
+
+    <div class="uizg-previewArea">
+      <div class="uizg-previewElement">
+        <Checkbox>
+          <p>Custom label</p>
+          <small>With slot</small>
+        </Checkbox>
+      </div>
+      <div class="uizg-previewCode">
+        {`
+          <Checkbox>
+            <p>Custom label</p>
+            <small>With slot</small>
+          </Checkbox>
+        `}
+      </div>
+    </div>
+
+    <div class="uizg-previewArea">
+      <div class="uizg-previewElement">
+        <Checkbox label="Custom checkbox icon" icon={IconPenTool} />
+      </div>
+      <div class="uizg-previewCode">
+        {`
+          <Checkbox label="Custom checkbox icon" let:checked>
+            <svelte:component slot="checkbox"
+              class="icon checkbox__icon"
+              this={checked ? IconPenTool : null}
+            />
+          </Checkbox>
+        `}
+      </div>
+    </div>
+
+    <div class="uizg-previewArea">
+      <div class="uizg-previewElement">
+        <Checkbox label="Custom checkbox icon slot" let:checked>
+          <svelte:component slot="checkbox" class="icon checkbox__icon" this={checked ? IconPenTool : null} />
+        </Checkbox>
+      </div>
+      <div class="uizg-previewCode">
+        {`
+          <Checkbox label="Custom checkbox icon" let:checked>
+            <svelte:component slot="checkbox"
+              class="icon checkbox__icon"
+              this={checked ? IconPenTool : null}
+            />
+          </Checkbox>
+        `}
+      </div>
+    </div>
+
+  </div>
+
 
 </div>
+
+
+<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
