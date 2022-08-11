@@ -22,7 +22,7 @@
   let filterString = "";
 
   $: label = getLabel(selected);
-  $: focused = selected.slice(-1)[0];
+  $: focused = selected.slice(-1)[0]; // Focus on last selected
 
   // -----------------------
 
@@ -159,6 +159,7 @@
     <div>
       <button
         on:click={() => selectOption(option)}
+        on:mouseenter={() => focused = option}
         class="
           {classOption}
           {selected.includes(option) ? classOptionSelected : ''}
