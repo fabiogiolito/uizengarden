@@ -45,14 +45,14 @@
   function openDropdown() {
     calculatePosition();
     open = true;
-    updateScrollableParent();
-    // Set focus
+    updateScrollableParent(triggerContainer);
+    // TODO: Set and trap focus
   }
 
   function closeDropdown() {
     if (!open) return;
     open = false; // Close menu
-    updateScrollableParent(); // Reset scrollableParent
+    updateScrollableParent(triggerContainer); // Reset scrollableParent
   }
 
   function handleBodyClick(e) {
@@ -96,19 +96,9 @@
     style += position.bottom  ? `bottom:  ${position.bottom}px; ` : '';
     style += position.left    ? `left:    ${position.left}px; `   : '';
     
-    console.log(container, position);
-    
-    // style = ""; // Start over
-    // if (up) style += `bottom: ${window.innerHeight - container.top + (over ? container.height * -1 : distance)}px;`;
-    // if (down) style += `top: ${container.bottom + (over ? container.height * -1 : distance)}px;`;
-    // if (right) style += `left: ${container.left}px;`;
-    // if (left) style += `right: ${document.body.clientWidth - container.right}px;`;
-
     // Transition options
     if (down) transitionOptions = { duration: duration, y: distance * -1 };
     if (up) transitionOptions = { duration: duration, y: distance };
-
-    console.log(style);
   }
 
   function updateScrollableParent(node) {
