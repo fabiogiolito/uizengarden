@@ -29,6 +29,8 @@
 
 <svelte:body on:keydown={handleKeydown} />
 
+<slot name="trigger" {openModal} />
+
 {#if open}
 
   <div use:teleport class={className}>
@@ -45,7 +47,7 @@
       transition:fly={{ y: 40, duration: 200 }}
       class={classWindow}
     >
-      <slot />
+      <slot {closeModal} />
     </div>
 
   </div>
