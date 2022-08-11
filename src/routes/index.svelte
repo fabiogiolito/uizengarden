@@ -7,6 +7,7 @@
   import LoadingIndicator from "$lib/LoadingIndicator.svelte";
   import Select from "$lib/Select.svelte";
   import Checkbox from "$lib/Checkbox.svelte";
+  import Tooltip from "$lib/Tooltip.svelte";
 
   import IconCamera from "$lib/icons/IconCamera.svelte";
   import IconCopy from "$lib/icons/IconCopy.svelte";
@@ -16,6 +17,7 @@
   import IconAtSign from "$lib/icons/IconAtSign.svelte";
   import IconUser from "$lib/icons/IconUser.svelte";
   import IconPenTool from "$lib/icons/IconPenTool.svelte";
+  import IconHeart from "$lib/icons/IconHeart.svelte";
 
   let modalOpen = false;
   let modalRef;
@@ -55,6 +57,14 @@
     color: rgb(var(--background));
     font-family: monospace;
     white-space: pre-wrap;
+    font-size: 0.75em;
+  }
+
+  .uizg-scrollArea {
+    border: 1px solid rgb(var(--foreground));
+    height: 100px;
+    padding: 50px 0;
+    overflow: auto;
   }
 
 </style>
@@ -220,7 +230,7 @@
       <div class="uizg-previewCode">
         {`
           <Dropdown>
-            <Button slot="trigger">Dropdown</Button>
+            <Button slot="trigger" iconRight={IconChevronDown}>Dropdown</Button>
             <p>Dropdown menu</p>
           </Dropdown>
         `}
@@ -230,14 +240,14 @@
     <div class="uizg-previewArea">
       <div class="uizg-previewElement">
         <Dropdown let:open>
-          <Button slot="trigger" iconRight={IconChevronDown} type={open ? 'primary' : 'secondary'}>Dropdown</Button>
+          <Button slot="trigger" type={open ? 'primary' : 'secondary'}>Dropdown</Button>
           <p>Dropdown content</p>
         </Dropdown>
       </div>
       <div class="uizg-previewCode">
         {`
           <Dropdown let:open>
-            <Button slot="trigger" type={open ? 'primary' : null}>Dropdown</Button>
+            <Button slot="trigger" type={open ? 'primary' : 'secondary'}>Dropdown</Button>
             <p>Dropdown menu</p>
           </Dropdown>
         `}
@@ -692,14 +702,14 @@
 
     <div class="uizg-previewArea">
       <div class="uizg-previewElement">
-        <Select options={['one', 'two', 'three']} placeholder="Select one" />
-        <Select options={['one', 'two', 'three']} placeholder="Select multiple" multiselect />
+        <Select options={['one', 'two', 'three']} placeholder="Pick one" />
+        <Select options={['one', 'two', 'three']} placeholder="Pick multiple" multiselect />
         <Select options={['one', 'two', 'three']} />
       </div>
       <div class="uizg-previewCode">
         {`
-          <Select options={['one', 'two', 'three']} placeholder="Select one" />
-          <Select options={['one', 'two', 'three']} placeholder="Select multiple" multiselect />
+          <Select options={['one', 'two', 'three']} placeholder="Pick one" />
+          <Select options={['one', 'two', 'three']} placeholder="Pick multiple" multiselect />
           <Select options={['one', 'two', 'three']} />
         `}
       </div>
@@ -849,6 +859,194 @@
               this={checked ? IconPenTool : null}
             />
           </Checkbox>
+        `}
+      </div>
+    </div>
+
+  </div>
+
+
+  <!-- ============================== -->
+  <!-- Tooltip -->
+  <div class="uizg-component">
+
+    <h2>Tooltip</h2>
+
+    <div class="uizg-previewArea">
+      <div class="uizg-previewElement">
+        <Tooltip text="Hello!">
+          Hover me
+        </Tooltip>
+      </div>
+      <div class="uizg-previewCode">
+        {`
+          <Tooltip text="Hello!">
+            Hover me
+          </Tooltip>
+        `}
+      </div>
+    </div>
+
+    <div class="uizg-previewArea">
+      <div class="uizg-previewElement">
+        <Tooltip>
+          <IconHeart slot="content" />
+          Hover me
+        </Tooltip>
+      </div>
+      <div class="uizg-previewCode">
+        {`
+          <Tooltip>
+            <IconHeart slot="content" />
+            Hover me
+          </Tooltip>
+        `}
+      </div>
+    </div>
+
+    <div class="uizg-previewArea">
+      <div class="uizg-previewElement">
+        <Tooltip direction="up">
+          <Button>Tooltip up</Button>
+          <div slot="content">
+            <p>some tooltip content</p>
+            <p>some tooltip content</p>
+            <p>some tooltip content</p>
+          </div>
+        </Tooltip>
+        <Tooltip direction="right">
+          <Button>Tooltip right</Button>
+          <div slot="content">
+            <p>some tooltip content</p>
+            <p>some tooltip content</p>
+            <p>some tooltip content</p>
+          </div>
+        </Tooltip>
+        <Tooltip direction="down">
+          <Button>Tooltip down</Button>
+          <div slot="content">
+            <p>some tooltip content</p>
+            <p>some tooltip content</p>
+            <p>some tooltip content</p>
+          </div>
+        </Tooltip>
+        <Tooltip direction="left">
+          <Button>Tooltip left</Button>
+          <div slot="content">
+            <p>some tooltip content</p>
+            <p>some tooltip content</p>
+            <p>some tooltip content</p>
+          </div>
+        </Tooltip>
+      </div>
+      <div class="uizg-previewCode">
+        {`
+          <Tooltip direction="up">
+            <Button>Tooltip up</Button>
+            <div slot="content">...</div>
+          </Tooltip>
+          <Tooltip direction="right">
+            <Button>Tooltip right</Button>
+            <div slot="content">...</div>
+          </Tooltip>
+          <Tooltip direction="down">
+            <Button>Tooltip down</Button>
+            <div slot="content">...</div>
+          </Tooltip>
+          <Tooltip direction="left">
+            <Button>Tooltip left</Button>
+            <div slot="content">...</div>
+          </Tooltip>
+        `}
+      </div>
+    </div>
+
+    <div class="uizg-previewArea">
+      <div class="uizg-previewElement">
+        <Tooltip direction="right" align="center">
+          <Button>Vertical Align center</Button>
+          <div slot="content">
+            <p>some tooltip content</p>
+            <p>some tooltip content</p>
+            <p>some tooltip content</p>
+          </div>
+        </Tooltip>
+        <Tooltip direction="right" align="top">
+          <Button>Vertical Align top</Button>
+          <div slot="content">
+            <p>some tooltip content</p>
+            <p>some tooltip content</p>
+            <p>some tooltip content</p>
+          </div>
+        </Tooltip>
+        <Tooltip direction="right" align="bottom">
+          <Button>Vertical Align bottom</Button>
+          <div slot="content">
+            <p>some tooltip content</p>
+            <p>some tooltip content</p>
+            <p>some tooltip content</p>
+          </div>
+        </Tooltip>
+      </div>
+      <div class="uizg-previewCode">
+        {`
+          <Tooltip direction="right" align="center">
+            <Button>Vertical Align center</Button>
+            <div slot="content">...</div>
+          </Tooltip>
+          <Tooltip direction="right" align="top">
+            <Button>Vertical Align top</Button>
+            <div slot="content">...</div>
+          </Tooltip>
+          <Tooltip direction="right" align="bottom">
+            <Button>Vertical Align bottom</Button>
+            <div slot="content">...</div>
+          </Tooltip>
+        `}
+      </div>
+    </div>
+
+    <div class="uizg-previewArea">
+      <div class="uizg-previewElement">
+        <Tooltip align="left">
+          <Button>Horizontal align left</Button>
+          <div slot="content">
+            <p>some tooltip content</p>
+            <p>some tooltip content</p>
+            <p>some tooltip content</p>
+          </div>
+        </Tooltip>
+        <Tooltip align="center">
+          <Button>Horizontal align center</Button>
+          <div slot="content">
+            <p>some tooltip content</p>
+            <p>some tooltip content</p>
+            <p>some tooltip content</p>
+          </div>
+        </Tooltip>
+        <Tooltip align="right">
+          <Button>Horizontal align right</Button>
+          <div slot="content">
+            <p>some tooltip content</p>
+            <p>some tooltip content</p>
+            <p>some tooltip content</p>
+          </div>
+        </Tooltip>
+      </div>
+      <div class="uizg-previewCode">
+        {`
+          <Tooltip align="left">
+            <Button>Horizontal align left</Button>
+            <div slot="content">...</div>
+          </Tooltip>
+          <Tooltip align="center">
+            <Button>Horizontal align center</Button>
+            <div slot="content">...</div>
+          </Tooltip>
+          <Tooltip align="right">
+            <Button>Horizontal align right</Button>
+            <div slot="content">...</div>
+          </Tooltip>
         `}
       </div>
     </div>
