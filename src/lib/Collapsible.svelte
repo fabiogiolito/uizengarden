@@ -4,7 +4,7 @@
   import IconChevronDown from "$lib/icons/IconChevronDown.svelte";
   import IconChevronRight from "$lib/icons/IconChevronRight.svelte";
 
-  export let title = "Title";
+  export let title = "";
   export let collapsed = false;
 
   export let classHeader = "collapsible__header";
@@ -22,17 +22,21 @@
 <!-- Header -->
 <div class={classHeader}>
 
-  <button
-    on:click={toggleCollapsed}
-    class={classTrigger}
-  >
-    <slot name="title" {collapsed}>
-      <span class={classTitle}>
-        {title}
-        <svelte:component this={collapsed ?  IconChevronRight : IconChevronDown} class="icon icon--sm" />
-      </span>
+  {#if title || $$slots.title || $$slots.trigger}
+    <slot name="trigger" {collapsed} {toggleCollapsed}>
+      <button
+        on:click={toggleCollapsed}
+        class={classTrigger}
+      >
+        <slot name="title" {collapsed}>
+          <span class={classTitle}>
+            {title}
+            <svelte:component this={collapsed ?  IconChevronRight : IconChevronDown} class="icon icon--sm" />
+          </span>
+        </slot>
+      </button>
     </slot>
-  </button>
+  {/if}
 
   <!-- Show action on right side -->
   <slot name="header" {collapsed} />
