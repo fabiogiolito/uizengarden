@@ -15,16 +15,16 @@
   export let prepend = false;
   export let append = false;
 
-  let className = "input";
-  export { className as class };
+  export let classBase      = "input";
+  export let classIcon      = `${classBase}__icon`;
+  export let classPrepend   = `${classBase}__prepend`;
+  export let classAppend    = `${classBase}__append`;
+  export let classContent   = `${classBase}__content`;
+  export let classTextarea  = `${classBase}__textarea`;
+  export let classValue     = `${classBase}__value`;
 
-  export let classIcon = "icon input__icon";
-  export let classPrepend = "input__prepend";
-  export let classAppend = "input__append";
-  export let classContent = "input__content";
-  export let classTextarea = "input__textarea";
-  export let classValue = "input__value";
-
+  let className = "";
+  export { className as class }; // Pass extra classes
 
   let textarea; // Reference
 
@@ -56,7 +56,7 @@
 </script>
 
 <!-- svelte-ignore a11y-label-has-associated-control -->
-<label class={className}>
+<label class="{classBase} {className}">
 
   {#if icon}
     <svelte:component this={icon} class={classIcon} />
