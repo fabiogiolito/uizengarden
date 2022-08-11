@@ -249,17 +249,33 @@
         <Dropdown down right>
           <Button slot="trigger">Down right</Button>
           <p>Dropdown menu</p>
+          <p>Dropdown menu</p>
+          <p>Dropdown menu</p>
+          <p>Dropdown menu</p>
+          <p>Dropdown menu</p>
         </Dropdown>
         <Dropdown down left>
           <Button slot="trigger">Down left</Button>
+          <p>Dropdown menu</p>
+          <p>Dropdown menu</p>
+          <p>Dropdown menu</p>
+          <p>Dropdown menu</p>
           <p>Dropdown menu</p>
         </Dropdown>
         <Dropdown up right>
           <Button slot="trigger">Up right</Button>
           <p>Dropdown menu</p>
+          <p>Dropdown menu</p>
+          <p>Dropdown menu</p>
+          <p>Dropdown menu</p>
+          <p>Dropdown menu</p>
         </Dropdown>
         <Dropdown up left>
           <Button slot="trigger">Up left</Button>
+          <p>Dropdown menu</p>
+          <p>Dropdown menu</p>
+          <p>Dropdown menu</p>
+          <p>Dropdown menu</p>
           <p>Dropdown menu</p>
         </Dropdown>
       </div>
@@ -288,39 +304,129 @@
     <div class="uizg-previewArea">
       <div class="uizg-previewElement">
         <Dropdown down right over>
-          <Button slot="trigger">Down right</Button>
+          <Button slot="trigger">Down right over</Button>
+          <p>Dropdown menu</p>
+          <p>Dropdown menu</p>
+          <p>Dropdown menu</p>
+          <p>Dropdown menu</p>
           <p>Dropdown menu</p>
         </Dropdown>
         <Dropdown down left over>
-          <Button slot="trigger">Down left</Button>
+          <Button slot="trigger">Down left over</Button>
+          <p>Dropdown menu</p>
+          <p>Dropdown menu</p>
+          <p>Dropdown menu</p>
+          <p>Dropdown menu</p>
           <p>Dropdown menu</p>
         </Dropdown>
         <Dropdown up right over>
-          <Button slot="trigger">Up right</Button>
+          <Button slot="trigger">Up right over</Button>
+          <p>Dropdown menu</p>
+          <p>Dropdown menu</p>
+          <p>Dropdown menu</p>
+          <p>Dropdown menu</p>
           <p>Dropdown menu</p>
         </Dropdown>
         <Dropdown up left over>
-          <Button slot="trigger">Up left</Button>
+          <Button slot="trigger">Up left over</Button>
+          <p>Dropdown menu</p>
+          <p>Dropdown menu</p>
+          <p>Dropdown menu</p>
+          <p>Dropdown menu</p>
           <p>Dropdown menu</p>
         </Dropdown>
       </div>
       <div class="uizg-previewCode">
         {`
           <Dropdown down right over>
-            <Button slot="trigger">Down right</Button>
+            <Button slot="trigger">Down right over</Button>
             <p>Dropdown menu</p>
           </Dropdown>
           <Dropdown down left over>
-            <Button slot="trigger">Down left</Button>
+            <Button slot="trigger">Down left over</Button>
             <p>Dropdown menu</p>
           </Dropdown>
           <Dropdown up right over>
-            <Button slot="trigger">Up right</Button>
+            <Button slot="trigger">Up right over</Button>
             <p>Dropdown menu</p>
           </Dropdown>
           <Dropdown up left over>
-            <Button slot="trigger">Up left</Button>
+            <Button slot="trigger">Up left over</Button>
             <p>Dropdown menu</p>
+          </Dropdown>
+        `}
+      </div>
+    </div>
+
+    <div class="uizg-previewArea">
+      <div class="uizg-previewElement">
+        <Dropdown down right side>
+          <Button slot="trigger">Down right side</Button>
+          <p>Dropdown menu</p>
+          <p>Dropdown menu</p>
+          <p>Dropdown menu</p>
+          <p>Dropdown menu</p>
+          <p>Dropdown menu</p>
+        </Dropdown>
+        <Dropdown down left side>
+          <Button slot="trigger">Down left side</Button>
+          <p>Dropdown menu</p>
+          <p>Dropdown menu</p>
+          <p>Dropdown menu</p>
+          <p>Dropdown menu</p>
+          <p>Dropdown menu</p>
+        </Dropdown>
+        <Dropdown up right side>
+          <Button slot="trigger">Up right side</Button>
+          <p>Dropdown menu</p>
+          <p>Dropdown menu</p>
+          <p>Dropdown menu</p>
+          <p>Dropdown menu</p>
+          <p>Dropdown menu</p>
+        </Dropdown>
+        <Dropdown up left side>
+          <Button slot="trigger">Up left side</Button>
+          <p>Dropdown menu</p>
+          <p>Dropdown menu</p>
+          <p>Dropdown menu</p>
+          <p>Dropdown menu</p>
+          <p>Dropdown menu</p>
+        </Dropdown>
+      </div>
+      <div class="uizg-previewCode">
+        {`
+          <Dropdown down right side>
+            <Button slot="trigger">Down right side</Button>
+            <p>Dropdown menu</p>
+          </Dropdown>
+          <Dropdown down left side>
+            <Button slot="trigger">Down left side</Button>
+            <p>Dropdown menu</p>
+          </Dropdown>
+          <Dropdown up right side>
+            <Button slot="trigger">Up right side</Button>
+            <p>Dropdown menu</p>
+          </Dropdown>
+          <Dropdown up left side>
+            <Button slot="trigger">Up left side</Button>
+            <p>Dropdown menu</p>
+          </Dropdown>
+        `}
+      </div>
+    </div>
+
+    <div class="uizg-previewArea">
+      <div class="uizg-previewElement">
+        <Dropdown hover>
+          <a href="#user-profile" slot="trigger">Hover me</a>
+          <p>Hover card</p>
+        </Dropdown>
+      </div>
+      <div class="uizg-previewCode">
+        {`
+          <Dropdown hover>
+            <a href="#user-profile" slot="trigger">Hover me</a>
+            <p>Hover card</p>
           </Dropdown>
         `}
       </div>
@@ -368,6 +474,33 @@
       </div>
     </div>
 
+    <div class="uizg-previewArea">
+      <div class="uizg-previewElement">
+        <Collapsible collapsed let:collapsed let:toggleCollapsed>
+          <div slot="trigger">
+            {#if collapsed}
+              <Button size="xs" on:click={toggleCollapsed}>2 more</Button>
+            {/if}
+          </div>
+          <p>Hello one</p>
+          <p>Hello two</p>
+        </Collapsible>
+      </div>
+      <div class="uizg-previewCode">
+        {`
+          <Collapsible collapsed let:collapsed let:toggleCollapsed>
+            <div slot="trigger">
+              {#if collapsed}
+                <Button size="xs" on:click={toggleCollapsed}>2 more</Button>
+              {/if}
+            </div>
+            <p>Hello one</p>
+            <p>Hello two</p>
+          </Collapsible>
+        `}
+      </div>
+    </div>
+
   </div>
 
   <!-- ============================== -->
@@ -378,20 +511,53 @@
 
     <div class="uizg-previewArea">
       <div class="uizg-previewElement">
-        <Button on:click={handleOpenModal}>Open modal</Button>
-        <Modal bind:open={modalOpen}>Content</Modal>
+        <Modal let:openModal let:closeModal>
+          <Button slot="trigger" on:click={openModal}>
+            Open modal with trigger slot
+          </Button>
+          <p>Content</p>
+          <Button on:click={closeModal}>Close modal</Button>
+        </Modal>
       </div>
       <div class="uizg-previewCode">
         {`
-          <Button on:click={handleOpenModal}>open modal</Button>
-          <Modal bind:open={modalOpen}>Content</Modal>
+          <Modal let:openModal let:closeModal>
+            <Button slot="trigger" on:click={openModal}>
+              Open modal with trigger slot
+            </Button>
+            <p>Content</p>
+            <Button on:click={closeModal}>Close modal</Button>
+          </Modal>
         `}
       </div>
     </div>
 
     <div class="uizg-previewArea">
       <div class="uizg-previewElement">
-        <Button on:click={modalRef.openModal}>Open modal</Button>
+        <Button on:click={handleOpenModal}>Open modal with external state</Button>
+        <Modal bind:open={modalOpen} let:closeModal>
+          <p>Content</p>
+          <Button on:click={closeModal}>Close modal</Button>
+        </Modal>
+      </div>
+      <div class="uizg-previewCode">
+        {`
+          <script>
+            let modalOpen = false;
+            function handleOpenModal() { modalOpen = true; }
+          </script>
+          <Button on:click={handleOpenModal}>Open modal with external state</Button>
+          <Modal bind:open={modalOpen} let:closeModal>
+            <p>Content</p>
+            <Button on:click={closeModal}>Close modal</Button>
+          </Modal>
+        `}
+      </div>
+    </div>
+
+    <div class="uizg-previewArea">
+      <div class="uizg-previewElement">
+        <Button on:click={modalRef.openModal}>Open modal with ref</Button>
         <Modal bind:this={modalRef}>
           <p>Content</p>
           <Button on:click={modalRef.closeModal}>Close modal</Button>
@@ -399,6 +565,9 @@
       </div>
       <div class="uizg-previewCode">
         {`
+          <script>
+            let modalRef;
+          </script>
           <Button on:click={modalRef.openModal}>Open modal</Button>
           <Modal bind:this={modalRef}>
             <p>Content</p>
