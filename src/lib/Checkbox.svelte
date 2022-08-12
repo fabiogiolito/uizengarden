@@ -10,10 +10,11 @@
   export let icon = IconCheck; // Checked icon
   export let value = "";
 
-  let className = "checkbox";
-  export { className as class };
+  export let classBase = "checkbox";
+  export let classChecked = `${classBase}--checked`;
 
-  export let classChecked = "checkbox--checked";
+  let className = "";
+  export { className as class };
 
   function toggleChecked() {
     checked = !checked;
@@ -33,7 +34,7 @@
 <div class="checkbox-label" on:click={toggleChecked}>
 
   <!-- Checkbox -->
-  <button class="{className} {checked ? classChecked : ''}">
+  <button class="{classBase} {className} {checked ? classChecked : ''}">
     <slot name="checkbox" {checked}>
       {#if checked}
         <svelte:component this={icon} size="sm" class="icon checkbox__icon" />

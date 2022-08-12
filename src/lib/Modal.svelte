@@ -4,11 +4,16 @@
 
   export let open = false;
 
-  let className = "modal";
+  export let classBase = "modal";
+  export let classOverlay = `${classBase}__overlay`;
+  export let classWindow  = `${classBase}__window`;
+
+  let className = "";
   export { className as class };
 
-  export let classOverlay = "modal__overlay";
-  export let classWindow = "modal__window";
+
+  // ===========================================
+  // Functions
 
   export function openModal() {
     open = true;
@@ -33,7 +38,7 @@
 
 {#if open}
 
-  <div use:teleport class={className}>
+  <div use:teleport class="{classBase} {className}">
 
     <!-- Close modal overlay -->
     <button

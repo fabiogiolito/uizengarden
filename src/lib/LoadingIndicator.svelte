@@ -1,6 +1,8 @@
 <script>
-  let className = "loading";
+  export let classBase = "loading";
+
+  let className = "";
   export { className as class };
 </script>
 
-<div class={className} />
+<div class="{classBase} {className}" />

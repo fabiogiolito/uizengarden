@@ -5,12 +5,13 @@
   export let text = "";
   export let open = false;
 
-  // Styles
-  let className = "tooltip";
-  export { className as class };
+  // Classes
+  export let classBase = "tooltip";
+  export let classTrigger = `${classBase}__trigger`;
+  export let classContent = `${classBase}__content`;
 
-  export let classTrigger = "tooltip__trigger";
-  export let classContent = "tooltip__content";
+  let className = "";
+  export { className as class }; // Extra classes
 
   // Position
   export let direction = 'up'; // up, down, left, right
@@ -148,7 +149,7 @@
 
 <!-- Text prop / Content slot -->
 {#if open}
-  <div class={className} use:teleport transition:fade={{duration}} {style}>
+  <div class="{classBase} {className}" use:teleport transition:fade={{duration}} {style}>
     <slot name="content">
       <div class={classContent}>
         {text}

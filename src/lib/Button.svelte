@@ -25,15 +25,21 @@
   export let type = false; // eg: primary, secondary → .btn--primary, .btn--secondary
   export let size = false; // eg: sm, lg → .btn--sm, .btn--lg
 
-  // Class prop
-  let className = "btn";
+  // Element classes
+  export let classBase              = "btn";
+  export let classCopyStatus        = `${classBase}__copyStatus`;
+  export let classContent           = `${classBase}__content`;
+  export let classLoadingIndicator  = `${classBase}__loading`;
+  export let classIcon              = `${classBase}__icon`;
+
+  // State classes
+  export let classLoading           = `${classBase}--loading`;
+  export let classSelected          = `${classBase}--selected`;
+
+  // Extra classes
+  let className = "";
   export { className as class };
 
-  // Element classes
-  export let classCopyStatus = "btn__copyStatus";
-  export let classContent = "btn__content";
-  export let classLoadingIndicator = "btn__loading";
-  export let classIcon = `icon ${size ? `icon--${size}` : ''} btn__icon`;
 
   // Icons
   export let icon = null;
@@ -90,11 +96,12 @@
 
 <svelte:element this={element ? element : href ? "a" : "button"}
   class="
+    {classBase}
+    {type     ? `${classBase}--${type}` : ''}
+    {size     ? `${classBase}--${size}` : ''}
+    {loading  ? classLoading  : ''}
+    {selected ? classSelected : ''}
     {className}
-    {type ? `btn--${type}` : ''}
-    {size ? `btn--${size}` : ''}
-    {loading ? 'btn--loading' : ''}
-    {selected ? 'btn--selected' : ''}
   "
   {href}
   {title}
