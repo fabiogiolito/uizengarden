@@ -2,30 +2,26 @@
   import { fly } from "svelte/transition";
   import { teleport } from "$lib/helpers/teleport";
 
-  // State
+  // Open state
   export let open = false;
-
-  // Open on hover
-  export let hover = false;
-  export let hoverDelay = 1000;
-  let hoverTimer;
 
   // Classes
   export let classTrigger = "dropdown__trigger";
   export let classMenu = "dropdown__menu";
 
-  // Direction
-  export let up = false;
-  export let down = !up;
-  export let left = false;
-  export let right = !left;
-
-  // Position Modifiers
-  export let side = false; // Display menu beside trigger
+  // Position
+  export let direction = 'down'; // up, down, left, right
+  export let align = ['up', 'down'].includes(direction) ? 'left' : 'top'; // center, left, right, top, bottom
+  
+  // Modifiers
   export let over = false; // Display menu over trigger
-
-  export let distance = 4; // Distance from trigger to menu edge in px
+  export let distance = 4; // in px
   export let duration = 150; // Transition duration in ms
+
+  // Open on hover
+  export let hover = false;
+  export let hoverDelay = 100;
+  let hoverTimer;
 
   let style = ""; // Calculated menu style
 
@@ -65,29 +61,54 @@
   function calculatePosition() {
     const container = triggerContainer.getBoundingClientRect();
     let position = { top: 0, right: 0, bottom: 0, left: 0 };
+    let transform = "";
 
-    if (up && (side || over)) {
-      position.bottom += window.innerHeight - container.bottom; // Align bottom
-    } else if (up) {
-      position.bottom += window.innerHeight - container.top + distance; // Align above with distance
+    if (direction == 'up') {
+      position.bottom = window.innerHeight - container.top + distance; // Align above with distance
+      if (over) position.bottom = window.innerHeight - container.bottom; // Align with bottom edge
     }
 
-    if (right && side) {
-      position.left += container.right + distance; // Align to the right with distance
-    } else if (right) {
-      position.left += container.left; // Align left
+    if (direction == 'down') {
+      position.top = container.bottom + distance; // Align below with distance
+      if (over) position.top = container.top; // Align with top edge
     }
 
-    if (down && (side || over)) {
-      position.top += container.top; // Align top
-    } else if (down) {
-      position.top += container.bottom + distance; // Align below with distance
+    if (direction == 'right') {
+      position.left = container.right + distance; // Align to the right with distance
+      if (over) position.left = container.left; // Align with left edge
     }
 
-    if (left && side) {
-      position.right += document.body.clientWidth - container.left + distance; // Align to the left with distance
-    } else if (left) {
-      position.right += document.body.clientWidth - container.right; // Align right
+    if (direction == 'left') {
+      position.right = document.body.clientWidth - container.left + distance; // Align to the left with distance
+      if (over) position.right = document.body.clientWidth - container.right; // Align with right edge
+    }
+
+    // Vertical align
+    if (['up', 'down'].includes(direction)) {
+      if (align == 'center') {
+        position.left = container.left + (container.width / 2);
+        transform = "transform: translateX(-50%);";
+      }
+      if (align == 'left') {
+        position.left = container.left;
+      }
+      if (align == 'right') {
+        position.right = document.body.clientWidth - container.right;
+      }
+    }
+
+    // Horizontal align
+    if (['left', 'right'].includes(direction)) {
+      if (align == 'center') {
+        position.top = container.top + (container.height / 2);
+        transform = "transform: translateY(-50%);";
+      }
+      if (align == 'top') {
+        position.top = container.top;
+      }
+      if (align == 'bottom') {
+        position.bottom = window.innerHeight - container.bottom;
+      }
     }
 
     style = ""; // Reset
@@ -95,10 +116,12 @@
     style += position.right   ? `right:   ${position.right}px; `  : '';
     style += position.bottom  ? `bottom:  ${position.bottom}px; ` : '';
     style += position.left    ? `left:    ${position.left}px; `   : '';
-    
-    // Transition options
-    if (down) transitionOptions = { duration: duration, y: distance * -1 };
-    if (up) transitionOptions = { duration: duration, y: distance };
+    style += transform;
+
+    if (direction == 'up')    transitionOptions = { duration: duration, y: distance };
+    if (direction == 'down')  transitionOptions = { duration: duration, y: distance * -1 };
+    if (direction == 'right') transitionOptions = { duration: duration, x: distance * -1 };
+    if (direction == 'left')  transitionOptions = { duration: duration, x: distance };
   }
 
   function updateScrollableParent(node) {
@@ -138,7 +161,7 @@
     if (e.type == 'mouseleave') {
       hoverTimer = window.setTimeout(() => {
         closeDropdown();
-      }, hoverDelay);
+      }, 100);
     }
   }
 
