@@ -67,6 +67,8 @@
   function toggleSelected() {
     selected = !selected;
 
+    dispatch('toggle', value);
+
     if (selected) {
       dispatch('select', value);
     } else {
