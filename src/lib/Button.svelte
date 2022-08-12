@@ -12,6 +12,8 @@
   export let title = null;
   export let disabled = false;
 
+  export let value = null; // optional value passed on click event
+
   export let toggle = false; // Enable toggle behavior
   export let selected = false; // Toggle state
 
@@ -59,11 +61,17 @@
     if (toggle) toggleSelected(); // Select / unselect
     if (copy || copyFunc) handlecopy(); // Copy text
     if (async) loading = true; // Enter loading state
-    dispatch('click', e); // Pass click event to parent
+    dispatch('click', value); // Pass click event to parent with optional value
   }
 
   function toggleSelected() {
     selected = !selected;
+
+    if (selected) {
+      dispatch('select', value);
+    } else {
+      dispatch('unselect', value);
+    }
   }
 
   function handlecopy() {
