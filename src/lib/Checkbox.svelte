@@ -1,9 +1,14 @@
 <script>
+  import { createEventDispatcher } from "svelte";
+
   import IconCheck from "$lib/icons/IconCheck.svelte";
+
+  const dispatch = createEventDispatcher();
 
   export let checked = false;
   export let label = ""; // Label text
   export let icon = IconCheck; // Checked icon
+  export let value = "";
 
   let className = "checkbox";
   export { className as class };
@@ -12,7 +17,15 @@
 
   function toggleChecked() {
     checked = !checked;
-    console.log('--did toggle', checked)
+
+    dispatch('toggle', value);
+
+    if (checked) {
+      dispatch('check', value);
+
+    } else {
+      dispatch('uncheck', value);
+    }
   }
 
 </script>
