@@ -142,7 +142,7 @@
 <svelte:window on:scroll={hideTooltip} on:resize={hideTooltip} />
 
 <!-- Trigger -->
-<span class={classTrigger} bind:this={triggerContainer} on:mouseenter={handleHover} on:mouseleave={handleHover}>
+<span class={classTrigger} bind:this={triggerContainer} on:mouseenter={handleHover} on:mouseleave={handleHover} on:click={hideTooltip}>
   <slot />
 </span>
 
