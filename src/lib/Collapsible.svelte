@@ -1,11 +1,16 @@
 <script>
+  import { createEventDispatcher } from "svelte";
   import { slide } from "svelte/transition";
-
+  
   import IconChevronDown from "$lib/icons/IconChevronDown.svelte";
   import IconChevronRight from "$lib/icons/IconChevronRight.svelte";
 
+  const dispatch = createEventDispatcher();
+
   export let title = "";
   export let collapsed = false;
+
+  export let value = null; // optional value passed on expand
 
   export let classHeader = "collapsible__header";
   export let classTrigger = "collapsible__trigger";
@@ -14,6 +19,14 @@
 
   function toggleCollapsed() {
     collapsed = !collapsed;
+
+    dispatch('toggle', value);
+
+    if (collapsed) {
+      dispatch('collapse', value);
+    } else {
+      dispatch('expand', value);
+    }
   }
 
 </script>
