@@ -3,16 +3,30 @@
   import Dropdown from "$lib/Dropdown.svelte";
   import IconChevronDown from "$lib/icons/IconChevronDown.svelte";
 
-  export let options = [];
-  export let labelKey = null;
+  // ====================================
+  // Dropdown settings
 
-  export let open = false;
+  export let [ 
+    open,                     // Open State
+    classTrigger, classMenu,  // Classes
+    direction, align,         // Position
+    over, distance, duration, // Modifiers
+    hover, hoverDelay,        // Open on hover
+  ] = Array();
+
+
+  // ====================================
+  // Select settings
+
+  export let options = [];
+  export let labelKey = null; // If options are objects, which object key should be used
+
   export let placeholder = null; // If has a placeholder it also means it can be null
 
-  export let multiselect = false;
+  export let multiselect = false; // Select multiple items (false = single select)
 
-  export let selected = placeholder ? [] : [options[0]]; // Selected options (all data)
-  export let focused = selected[0];
+  export let selected = placeholder ? [] : [options[0]]; // Selected options (value)
+  export let focused = selected[0]; // Which option is focused or hovered
 
   export let classOption = "select__option";
   export let classOptionSelected = "select__option--selected";
@@ -24,7 +38,9 @@
   $: label = getLabel(selected);
   $: focused = selected.slice(-1)[0]; // Focus on last selected
 
-  // -----------------------
+
+  // ====================================
+  // Functions
 
   function getLabel(selected) {
     if (selected.length > 1) {
@@ -139,7 +155,17 @@
 
 <svelte:body on:keydown={handleBodyKeyup} />
 
-<Dropdown bind:open>
+<Dropdown bind:open 
+  {hover}
+  {hoverDelay}
+  {classTrigger}
+  {classMenu}
+  {direction}
+  {align}
+  {over}
+  {distance}
+  {duration}
+>
 
   <!-- Trigger -->
   <slot name="trigger" slot="trigger" {selected}>

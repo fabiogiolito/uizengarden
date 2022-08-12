@@ -17,6 +17,7 @@
   import IconDownloadCloud from "$lib/icons/IconDownloadCloud.svelte";
   import IconCircle from "$lib/icons/IconCircle.svelte";
   import IconChevronDown from "$lib/icons/IconChevronDown.svelte";
+  import IconChevronRight from "$lib/icons/IconChevronRight.svelte";
   import IconAtSign from "$lib/icons/IconAtSign.svelte";
   import IconUser from "$lib/icons/IconUser.svelte";
   import IconPenTool from "$lib/icons/IconPenTool.svelte";
@@ -235,14 +236,14 @@
       <div class="uizg-previewElement">
         <Dropdown>
           <Button slot="trigger" iconRight={IconChevronDown}>Dropdown</Button>
-          <p>Dropdown content</p>
+          <p>Dropdown menu content</p>
         </Dropdown>
       </div>
       <div class="uizg-previewCode">
         {`
           <Dropdown>
             <Button slot="trigger" iconRight={IconChevronDown}>Dropdown</Button>
-            <p>Dropdown menu</p>
+            <p>Dropdown menu content</p>
           </Dropdown>
         `}
       </div>
@@ -252,14 +253,14 @@
       <div class="uizg-previewElement">
         <Dropdown let:open>
           <Button slot="trigger" type={open ? 'primary' : 'secondary'}>Dropdown</Button>
-          <p>Dropdown content</p>
+          <p>Dropdown menu content</p>
         </Dropdown>
       </div>
       <div class="uizg-previewCode">
         {`
           <Dropdown let:open>
             <Button slot="trigger" type={open ? 'primary' : 'secondary'}>Dropdown</Button>
-            <p>Dropdown menu</p>
+            <p>Dropdown menu content</p>
           </Dropdown>
         `}
       </div>
@@ -267,56 +268,56 @@
 
     <div class="uizg-previewArea">
       <div class="uizg-previewElement">
-        <Dropdown down right>
-          <Button slot="trigger">Down right</Button>
-          <p>Dropdown menu</p>
-          <p>Dropdown menu</p>
-          <p>Dropdown menu</p>
-          <p>Dropdown menu</p>
-          <p>Dropdown menu</p>
+        <Dropdown direction="down" align="left">
+          <Button slot="trigger">Down, Align left</Button>
+          <p>Dropdown menu content</p>
+          <p>Dropdown menu content</p>
+          <p>Dropdown menu content</p>
+          <p>Dropdown menu content</p>
+          <p>Dropdown menu content</p>
         </Dropdown>
-        <Dropdown down left>
-          <Button slot="trigger">Down left</Button>
-          <p>Dropdown menu</p>
-          <p>Dropdown menu</p>
-          <p>Dropdown menu</p>
-          <p>Dropdown menu</p>
-          <p>Dropdown menu</p>
+        <Dropdown direction="down" align="right">
+          <Button slot="trigger">Down, Align right</Button>
+          <p>Dropdown menu content</p>
+          <p>Dropdown menu content</p>
+          <p>Dropdown menu content</p>
+          <p>Dropdown menu content</p>
+          <p>Dropdown menu content</p>
         </Dropdown>
-        <Dropdown up right>
-          <Button slot="trigger">Up right</Button>
-          <p>Dropdown menu</p>
-          <p>Dropdown menu</p>
-          <p>Dropdown menu</p>
-          <p>Dropdown menu</p>
-          <p>Dropdown menu</p>
+        <Dropdown direction="up" align="left">
+          <Button slot="trigger">Up, align left</Button>
+          <p>Dropdown menu content</p>
+          <p>Dropdown menu content</p>
+          <p>Dropdown menu content</p>
+          <p>Dropdown menu content</p>
+          <p>Dropdown menu content</p>
         </Dropdown>
-        <Dropdown up left>
-          <Button slot="trigger">Up left</Button>
-          <p>Dropdown menu</p>
-          <p>Dropdown menu</p>
-          <p>Dropdown menu</p>
-          <p>Dropdown menu</p>
-          <p>Dropdown menu</p>
+        <Dropdown direction="up" align="right">
+          <Button slot="trigger">Up, align right</Button>
+          <p>Dropdown menu content</p>
+          <p>Dropdown menu content</p>
+          <p>Dropdown menu content</p>
+          <p>Dropdown menu content</p>
+          <p>Dropdown menu content</p>
         </Dropdown>
       </div>
       <div class="uizg-previewCode">
         {`
-          <Dropdown down right>
-            <Button slot="trigger">Down right</Button>
-            <p>Dropdown menu</p>
+          <Dropdown direction="down" align="left">
+            <Button slot="trigger">Down, Align left</Button>
+            <p>Dropdown menu content</p>
           </Dropdown>
-          <Dropdown down left>
-            <Button slot="trigger">Down left</Button>
-            <p>Dropdown menu</p>
+          <Dropdown direction="down" align="right">
+            <Button slot="trigger">Down, Align right</Button>
+            <p>Dropdown menu content</p>
           </Dropdown>
-          <Dropdown up right>
-            <Button slot="trigger">Up right</Button>
-            <p>Dropdown menu</p>
+          <Dropdown direction="up" align="left">
+            <Button slot="trigger">Up, align left</Button>
+            <p>Dropdown menu content</p>
           </Dropdown>
-          <Dropdown up left>
-            <Button slot="trigger">Up left</Button>
-            <p>Dropdown menu</p>
+          <Dropdown direction="up" align="right">
+            <Button slot="trigger">Up, align right</Button>
+            <p>Dropdown menu content</p>
           </Dropdown>
         `}
       </div>
@@ -324,56 +325,44 @@
 
     <div class="uizg-previewArea">
       <div class="uizg-previewElement">
-        <Dropdown down right over>
-          <Button slot="trigger">Down right over</Button>
-          <p>Dropdown menu</p>
-          <p>Dropdown menu</p>
-          <p>Dropdown menu</p>
-          <p>Dropdown menu</p>
-          <p>Dropdown menu</p>
+        <Dropdown direction="right" align="top">
+          <Button slot="trigger">Right, Align top</Button>
+          <p>Dropdown menu content</p>
+          <p>Dropdown menu content</p>
+          <p>Dropdown menu content</p>
+          <p>Dropdown menu content</p>
+          <p>Dropdown menu content</p>
         </Dropdown>
-        <Dropdown down left over>
-          <Button slot="trigger">Down left over</Button>
-          <p>Dropdown menu</p>
-          <p>Dropdown menu</p>
-          <p>Dropdown menu</p>
-          <p>Dropdown menu</p>
-          <p>Dropdown menu</p>
+        <Dropdown direction="right" align="center">
+          <Button slot="trigger">Right, Align center</Button>
+          <p>Dropdown menu content</p>
+          <p>Dropdown menu content</p>
+          <p>Dropdown menu content</p>
+          <p>Dropdown menu content</p>
+          <p>Dropdown menu content</p>
         </Dropdown>
-        <Dropdown up right over>
-          <Button slot="trigger">Up right over</Button>
-          <p>Dropdown menu</p>
-          <p>Dropdown menu</p>
-          <p>Dropdown menu</p>
-          <p>Dropdown menu</p>
-          <p>Dropdown menu</p>
-        </Dropdown>
-        <Dropdown up left over>
-          <Button slot="trigger">Up left over</Button>
-          <p>Dropdown menu</p>
-          <p>Dropdown menu</p>
-          <p>Dropdown menu</p>
-          <p>Dropdown menu</p>
-          <p>Dropdown menu</p>
+        <Dropdown direction="right" align="bottom">
+          <Button slot="trigger">Right, align bottom</Button>
+          <p>Dropdown menu content</p>
+          <p>Dropdown menu content</p>
+          <p>Dropdown menu content</p>
+          <p>Dropdown menu content</p>
+          <p>Dropdown menu content</p>
         </Dropdown>
       </div>
       <div class="uizg-previewCode">
         {`
-          <Dropdown down right over>
-            <Button slot="trigger">Down right over</Button>
-            <p>Dropdown menu</p>
+          <Dropdown direction="right" align="top">
+            <Button slot="trigger">Right, Align top</Button>
+            <p>Dropdown menu content</p>
           </Dropdown>
-          <Dropdown down left over>
-            <Button slot="trigger">Down left over</Button>
-            <p>Dropdown menu</p>
+          <Dropdown direction="right" align="center">
+            <Button slot="trigger">Right, Align center</Button>
+            <p>Dropdown menu content</p>
           </Dropdown>
-          <Dropdown up right over>
-            <Button slot="trigger">Up right over</Button>
-            <p>Dropdown menu</p>
-          </Dropdown>
-          <Dropdown up left over>
-            <Button slot="trigger">Up left over</Button>
-            <p>Dropdown menu</p>
+          <Dropdown direction="right" align="bottom">
+            <Button slot="trigger">Right, align bottom</Button>
+            <p>Dropdown menu content</p>
           </Dropdown>
         `}
       </div>
@@ -381,56 +370,101 @@
 
     <div class="uizg-previewArea">
       <div class="uizg-previewElement">
-        <Dropdown down right side>
-          <Button slot="trigger">Down right side</Button>
-          <p>Dropdown menu</p>
-          <p>Dropdown menu</p>
-          <p>Dropdown menu</p>
-          <p>Dropdown menu</p>
-          <p>Dropdown menu</p>
+        <Dropdown direction="left" align="top">
+          <Button slot="trigger">Left, Align top</Button>
+          <p>Dropdown menu content</p>
+          <p>Dropdown menu content</p>
+          <p>Dropdown menu content</p>
+          <p>Dropdown menu content</p>
+          <p>Dropdown menu content</p>
         </Dropdown>
-        <Dropdown down left side>
-          <Button slot="trigger">Down left side</Button>
-          <p>Dropdown menu</p>
-          <p>Dropdown menu</p>
-          <p>Dropdown menu</p>
-          <p>Dropdown menu</p>
-          <p>Dropdown menu</p>
+        <Dropdown direction="left" align="center">
+          <Button slot="trigger">Left, Align center</Button>
+          <p>Dropdown menu content</p>
+          <p>Dropdown menu content</p>
+          <p>Dropdown menu content</p>
+          <p>Dropdown menu content</p>
+          <p>Dropdown menu content</p>
         </Dropdown>
-        <Dropdown up right side>
-          <Button slot="trigger">Up right side</Button>
-          <p>Dropdown menu</p>
-          <p>Dropdown menu</p>
-          <p>Dropdown menu</p>
-          <p>Dropdown menu</p>
-          <p>Dropdown menu</p>
-        </Dropdown>
-        <Dropdown up left side>
-          <Button slot="trigger">Up left side</Button>
-          <p>Dropdown menu</p>
-          <p>Dropdown menu</p>
-          <p>Dropdown menu</p>
-          <p>Dropdown menu</p>
-          <p>Dropdown menu</p>
+        <Dropdown direction="left" align="bottom">
+          <Button slot="trigger">Left, align bottom</Button>
+          <p>Dropdown menu content</p>
+          <p>Dropdown menu content</p>
+          <p>Dropdown menu content</p>
+          <p>Dropdown menu content</p>
+          <p>Dropdown menu content</p>
         </Dropdown>
       </div>
       <div class="uizg-previewCode">
         {`
-          <Dropdown down right side>
-            <Button slot="trigger">Down right side</Button>
-            <p>Dropdown menu</p>
+          <Dropdown direction="left" align="top">
+            <Button slot="trigger">Left, Align top</Button>
+            <p>Dropdown menu content</p>
           </Dropdown>
-          <Dropdown down left side>
-            <Button slot="trigger">Down left side</Button>
-            <p>Dropdown menu</p>
+          <Dropdown direction="left" align="center">
+            <Button slot="trigger">Left, Align center</Button>
+            <p>Dropdown menu content</p>
           </Dropdown>
-          <Dropdown up right side>
-            <Button slot="trigger">Up right side</Button>
-            <p>Dropdown menu</p>
+          <Dropdown direction="left" align="bottom">
+            <Button slot="trigger">Left, align bottom</Button>
+            <p>Dropdown menu content</p>
           </Dropdown>
-          <Dropdown up left side>
-            <Button slot="trigger">Up left side</Button>
-            <p>Dropdown menu</p>
+        `}
+      </div>
+    </div>
+
+    <div class="uizg-previewArea">
+      <div class="uizg-previewElement">
+        <Dropdown over direction="down" align="left">
+          <Button slot="trigger">Over down</Button>
+          <p>Dropdown menu content</p>
+          <p>Dropdown menu content</p>
+          <p>Dropdown menu content</p>
+          <p>Dropdown menu content</p>
+          <p>Dropdown menu content</p>
+        </Dropdown>
+        <Dropdown over direction="up" align="left">
+          <Button slot="trigger">Over up</Button>
+          <p>Dropdown menu content</p>
+          <p>Dropdown menu content</p>
+          <p>Dropdown menu content</p>
+          <p>Dropdown menu content</p>
+          <p>Dropdown menu content</p>
+        </Dropdown>
+        <Dropdown over direction="right" align="top">
+          <Button slot="trigger">Over right</Button>
+          <p>Dropdown menu content</p>
+          <p>Dropdown menu content</p>
+          <p>Dropdown menu content</p>
+          <p>Dropdown menu content</p>
+          <p>Dropdown menu content</p>
+        </Dropdown>
+        <Dropdown over direction="left" align="top">
+          <Button slot="trigger">Over left</Button>
+          <p>Dropdown menu content</p>
+          <p>Dropdown menu content</p>
+          <p>Dropdown menu content</p>
+          <p>Dropdown menu content</p>
+          <p>Dropdown menu content</p>
+        </Dropdown>
+      </div>
+      <div class="uizg-previewCode">
+        {`
+          <Dropdown over direction="down" align="left">
+            <Button slot="trigger">Over down</Button>
+            <p>Dropdown menu content</p>
+          </Dropdown>
+          <Dropdown over direction="up" align="left">
+            <Button slot="trigger">Over up</Button>
+            <p>Dropdown menu content</p>
+          </Dropdown>
+          <Dropdown over direction="right" align="top">
+            <Button slot="trigger">Over right</Button>
+            <p>Dropdown menu content</p>
+          </Dropdown>
+          <Dropdown over direction="left" align="top">
+            <Button slot="trigger">Over left</Button>
+            <p>Dropdown menu content</p>
           </Dropdown>
         `}
       </div>
@@ -439,14 +473,22 @@
     <div class="uizg-previewArea">
       <div class="uizg-previewElement">
         <Dropdown hover>
-          <a href="#user-profile" slot="trigger">Hover me</a>
+          <Button slot="trigger">Hover me</Button>
+          <p>Hover card</p>
+        </Dropdown>
+        <Dropdown hover hoverDelay={1000}>
+          <Button slot="trigger">Hover me for 1s</Button>
           <p>Hover card</p>
         </Dropdown>
       </div>
       <div class="uizg-previewCode">
         {`
           <Dropdown hover>
-            <a href="#user-profile" slot="trigger">Hover me</a>
+            <Button slot="trigger">Hover me</Button>
+            <p>Hover card</p>
+          </Dropdown>
+          <Dropdown hover hoverDelay={1000}>
+            <Button slot="trigger">Hover me for 1s</Button>
             <p>Hover card</p>
           </Dropdown>
         `}
@@ -757,7 +799,9 @@
         </Select>
         <!-- Custom dropdown trigger -->
         <Select options={['one', 'two', 'three']}>
-          <Button slot="trigger" type="primary" icon={IconUser} let:selected>{selected[0]}</Button>
+          <div slot="trigger" let:selected style="border: 1px solid; padding: 0.25em 0.5em;">
+            <IconUser /> {selected[0]}
+          </div>
         </Select>
       </div>
       <div class="uizg-previewCode">
@@ -792,6 +836,24 @@
           <Select options={['one', 'two', 'three']}>
             <Button slot="trigger" type="primary" icon={IconUser} let:selected>{selected[0]}</Button>
           </Select>
+        `}
+      </div>
+    </div>
+
+    <div class="uizg-previewArea">
+      <div class="uizg-previewElement">
+        <Select options={['one', 'two', 'three']} placeholder="Open right" hover direction="up" align="center">
+          <Button slot="trigger">Hover me</Button>
+        </Select>
+        <Select options={['one', 'two', 'three']} placeholder="Open right" direction="right" align="center">
+          <Button slot="trigger" iconRight={IconChevronRight}>Open right</Button>
+        </Select>
+      </div>
+      <div class="uizg-previewCode">
+        {`
+          <Select options={['one', 'two', 'three']} placeholder="Pick one" />
+          <Select options={['one', 'two', 'three']} placeholder="Pick multiple" multiselect />
+          <Select options={['one', 'two', 'three']} />
         `}
       </div>
     </div>
