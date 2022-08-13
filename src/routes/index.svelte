@@ -1254,19 +1254,19 @@
 
     <div class="uizg-previewArea">
       <div class="uizg-previewElement">
-        <Slider value={20} knobLabels />
-        <Slider step={8} min={40} max={200} trackLabels />
-        <Slider decimals={2} knobLabels />
-        <Slider range valueStart={40} value={60} knobLabels />
-        <Slider minValue={50} maxValue={80} value={60} let:value>Current: {value}</Slider>
+        <Slider />
+        <Slider value={20} decimals={2} knobLabels />
+        <Slider step={20} min={40} max={200} stepLabels />
+        <Slider range valueStart={20} value={70} labels />
+        <Slider min={0} max={200} minValue={40} maxValue={160} valueStart={40} step={20} labels />
       </div>
       <div class="uizg-previewCode">
         {`
-          <Slider value={20} knobLabels />
-          <Slider step={8} min={40} max={200} trackLabels />
-          <Slider decimals={2} knobLabels />
-          <Slider range valueStart={40} value={60} knobLabels />
-          <Slider minValue={50} maxValue={80} value={60} let:value>Current: {value}</Slider>
+          <Slider />
+          <Slider value={20} decimals={2} knobLabels />
+          <Slider step={20} min={40} max={200} stepLabels />
+          <Slider range valueStart={20} value={70} labels />
+          <Slider min={0} max={200} minValue={40} maxValue={160} valueStart={40} step={20} labels />
         `}
       </div>
     </div>
