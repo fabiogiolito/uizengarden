@@ -1254,17 +1254,19 @@
 
     <div class="uizg-previewArea">
       <div class="uizg-previewElement">
-        <Slider />
-        <br /><br />
-        <Slider step={10} />
-        <br /><br />
-        <Slider decimals={2} />
-        <br /><br />
-        <Slider range decimals={2} />
+        <Slider value={20} knobLabels />
+        <Slider step={8} min={40} max={200} trackLabels />
+        <Slider decimals={2} knobLabels />
+        <Slider range valueStart={40} value={60} knobLabels />
+        <Slider minValue={50} maxValue={80} value={60} let:value>Current: {value}</Slider>
       </div>
       <div class="uizg-previewCode">
         {`
-          <Slider />
+          <Slider value={20} knobLabels />
+          <Slider step={8} min={40} max={200} trackLabels />
+          <Slider decimals={2} knobLabels />
+          <Slider range valueStart={40} value={60} knobLabels />
+          <Slider minValue={50} maxValue={80} value={60} let:value>Current: {value}</Slider>
         `}
       </div>
     </div>

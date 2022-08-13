@@ -236,17 +236,44 @@ body {
 
 .slider {
   width: 100%;
-  height: 8px;
+  margin: 2em 0;
+}
+
+.slider__track {
   position: relative;
-  background: #ccc;
-  border-radius: 8px;
+  width: 100%;
+  height: 0.5em;
+  background: rgb(var(--foreground) / 0.25);
+  border-radius: 0.5em;
+}
+
+.slider__track__value {
+  font-size: 0.8em;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  opacity: 0.5;
+}
+.slider__track__value--max {
+  left: auto;
+  right: 0;
+}
+
+.slider__progress {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  height: 100%;
+  background: rgb(var(--tint));
+  transform: translateY(-50%);
+  border-radius: 0.5em;
 }
 
 .slider__knob {
-  width: 24px;
-  height: 24px;
+  width: 1.5em;
+  height: 1.5em;
   border-radius: 100%;
-  background: black;
+  background: rgb(var(--foreground));
   position: absolute;
   top: 50%;
   transform: translate(-50%, -50%);
@@ -255,14 +282,19 @@ body {
 .slider__knob--active,
 .slider__knob--focused {
   transform: translate(-50%, -50%) scale(1.05);
-  background: green;
+  background: rgb(var(--tint));
+  box-shadow: 0 0 0 2px rgb(var(--background)), 0 0 0 4px rgb(var(--tint));
 }
 
-.slider__progress {
+.slider__knob__value {
   position: absolute;
-  top: 0;
-  left: 0;
-  height: 8px;
-  background: red;
-  border-radius: 8px;
+  bottom: 100%;
+  left: 50%;
+  margin-bottom: 6px;
+  transform: translateX(-50%);
+  background: rgb(var(--foreground));
+  color: rgb(var(--background));
+  border-radius: 10em;
+  padding: 0.25em 0.75em;
+  font-size: 0.8em;
 }

@@ -1,19 +1,33 @@
 <script>
+  import { createEventDispatcher } from "svelte";
 
-  export let min = 0;
-  export let max = 100;
+  const dispatch = createEventDispatcher();
 
-  export let range = false; // Range slider has two knobs
+  // Track value goes from 0 to 100
+  export let min = 0; // Track min value
+  export let max = 100; // Track max value
 
-  export let step = null; // Fix increments
+  // Knobs can go from minValue to maxValue
+  export let minValue = min; // Knob min value
+  export let maxValue = max; // Knob max value
 
-  export let decimals = 0; // Control slider precision. How many decimal places should values have.
-  export let nudge = 10;
+  // Enables start knob to select range
+  export let range = false;
 
-  export let valueStart = min; // Value for start knob
-  export let valueEnd = max; // Value for end knob
+  export let step = null; // Values change in steps
+  export let decimals = 0; // How many decimal places should values have (slider precision)
+  export let nudge = 1; // Arrow increment amount
+  export let bigNudge = 10; // Shift + arrow increment amount
 
-  // Ref
+  // Knob values
+  export let value = max; // Value for end knob
+  export let valueStart = min; // Value for start knob (if range)
+
+  // Show labels
+  export let trackLabels = false;
+  export let knobLabels = false;
+  
+  // Container ref
   let container;
 
   // State
@@ -38,23 +52,27 @@
 
     const containerBox = container.getBoundingClientRect();
     const percent = (e.clientX - containerBox.left) / containerBox.width;
-    let value = valueFromPercentInRange(percent, min, max);
-    value = round(value, decimals, min, max);
+    let val = valueFromPercentInRange(percent, min, max);
+    val = round(val, decimals, min, max);
 
     // Update correct value
-    if (knobActive == 'start') updateValue('start', value);
-    if (knobActive == 'end') updateValue('end', value);
+    if (knobActive == 'start') updateValue('start', val);
+    if (knobActive == 'end') updateValue('end', val);
   }
 
-  function updateValue(knob, value) {
+  function updateValue(knob, val) {
     if (knob == 'start') {
-      if (value >= min && value <= valueEnd) {
-        valueStart = value;
+      if (val <= value && val >= minValue && val <= maxValue) {
+        valueStart = val;
+        dispatch('change', valueStart);
+        dispatch('changeStart', valueStart);
       }
     }
     if (knob == 'end') {
-      if (value >= valueStart && value <= max) {
-        valueEnd = value;
+      if (val >= valueStart && val <= maxValue && val >= minValue) {
+        value = val;
+        dispatch('change', value);
+        dispatch('changeEnd', value);
       }
     }
   }
@@ -70,8 +88,8 @@
   function handleKeyDown(e) {
     if (!knobFocused) return;
 
-    let currentValue = knobFocused == 'start' ? valueStart : valueEnd;
-    let delta = e.shiftKey ? nudge : step || 1;
+    let currentValue = knobFocused == 'start' ? valueStart : value;
+    let delta = e.shiftKey ? bigNudge : step || nudge;
 
     // Increase
     if (e.key == "ArrowRight" || e.key == "ArrowUp") {
@@ -118,8 +136,8 @@
     return ((max - min) * percent) + min
   }
 
-  function percent(value, min = 0, max = 100) {
-    return (value - min) * 100 / (max - min) ;
+  function percent(val, min = 0, max = 100) {
+    return (val - min) * 100 / (max - min) ;
   }
 
 </script>
@@ -127,76 +145,61 @@
 <svelte:window on:pointerdown={handleBodyClick} on:keydown={handleKeyDown} on:pointerup={handlePointerUp} on:pointermove={handlePointerMove} />
 
 <div class="slider {range ? 'slider--range' : ''}" bind:this={container}>
-  <span class="slider__progress" style="left: {percent(valueStart, min, max)}%; right: {100 - percent(valueEnd, min, max)}%" />
 
-  <!-- Start -->
-  {#if range}
+  <div class="slider__track">
+    {#if trackLabels}
+      <div class="slider__track__value slider__track__value--min">{min}</div>
+      <div class="slider__track__value slider__track__value--max">{max}</div>
+    {/if}
+    <div class="slider__progress" style="left: {percent(valueStart, min, max)}%; right: {100 - percent(value, min, max)}%" />
+
+    <!-- Start -->
+    {#if range}
+      <button 
+        class="
+          slider__knob slider__knob--start
+          {knobActive == 'start' ? 'slider__knob--active' : ''}
+          {knobFocused == 'start' ? 'slider__knob--focused' : ''}
+        "
+        style="left: {percent(valueStart, min, max)}%;"
+        on:pointerdown={() => handlePointerDown('start')}
+        on:pointerup={() => handlePointerUp('start')}
+        on:focus={() => handleKnobFocus('start')}
+        on:blur={() => handleKnobBlur('start')}
+      >
+        {#if knobLabels && (knobActive == 'start' || knobFocused == 'start')}
+          <span class="slider__knob__value">{valueStart}</span>
+        {/if}
+      </button>
+    {/if}
+    
+    <!-- End -->
     <button 
       class="
-        slider__knob slider__knob--start
-        {knobActive == 'start' ? 'slider__knob--active' : ''}
-        {knobFocused == 'start' ? 'slider__knob--focused' : ''}
+        slider__knob {range ? 'slider__knob--end' : ''}
+        {knobActive == 'end' ? 'slider__knob--active' : ''}
+        {knobFocused == 'end' ? 'slider__knob--focused' : ''}
       "
-      style="left: {percent(valueStart, min, max)}%;"
-      on:pointerdown={() => handlePointerDown('start')}
-      on:pointerup={() => handlePointerUp('start')}
-      on:focus={() => handleKnobFocus('start')}
-      on:blur={() => handleKnobBlur('start')}
-    />
-  {/if}
-  
-  <!-- End -->
-  <button 
-    class="
-      slider__knob {range ? 'slider__knob--end' : ''}
-      {knobActive == 'end' ? 'slider__knob--active' : ''}
-      {knobFocused == 'end' ? 'slider__knob--focused' : ''}
-    "
-    style="left: {percent(valueEnd, min, max)}%;"
-    on:pointerdown={() => handlePointerDown('end')}
-    on:pointerup={() => handlePointerUp('end')}
-    on:focus={() => handleKnobFocus('end')}
-    on:blur={() => handleKnobBlur('end')}
+      style="left: {percent(value, min, max)}%;"
+      on:pointerdown={() => handlePointerDown('end')}
+      on:pointerup={() => handlePointerUp('end')}
+      on:focus={() => handleKnobFocus('end')}
+      on:blur={() => handleKnobBlur('end')}
+    >
+      {#if knobLabels && (knobActive == 'end' || knobFocused == 'end')}
+        <span class="slider__knob__value">{value}</span>
+      {/if}
+    </button>
+
+  </div>
+
+  <slot 
+    {min}
+    {max}
+    {minValue}
+    {maxValue}
+    {value}
+    {valueStart}
   />
+
 </div>
-
-<br />
-
-<p>{min} --- {valueStart} / {valueEnd} --- {max}</p>
-
-
-
-<style>
-  .slider {
-    width: 100%;
-    height: 8px;
-    position: relative;
-    background: #ccc;
-    border-radius: 8px;
-  }
-
-  .slider__knob {
-    width: 24px;
-    height: 24px;
-    border-radius: 100%;
-    background: black;
-    position: absolute;
-    top: 50%;
-    transform: translate(-50%, -50%);
-  }
-
-  .slider__knob--active,
-  .slider__knob--focused {
-    transform: translate(-50%, -50%) scale(1.05);
-    background: green;
-  }
-
-  .slider__progress {
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 8px;
-    background: red;
-    border-radius: 8px;
-  }
-</style>
