@@ -230,3 +230,39 @@ body {
   border-radius: 0.3em;
   pointer-events: none;
 }
+
+/* ======================================== */
+/* Slider */
+
+.slider {
+  width: 100%;
+  height: 8px;
+  position: relative;
+  background: #ccc;
+  border-radius: 8px;
+}
+
+.slider__knob {
+  width: 24px;
+  height: 24px;
+  border-radius: 100%;
+  background: black;
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.slider__knob--active,
+.slider__knob--focused {
+  transform: translate(-50%, -50%) scale(1.05);
+  background: green;
+}
+
+.slider__progress {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 8px;
+  background: red;
+  border-radius: 8px;
+}

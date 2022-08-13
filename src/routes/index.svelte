@@ -11,6 +11,7 @@
   import Checkbox from "$lib/Checkbox.svelte";
   import Tooltip from "$lib/Tooltip.svelte";
   import ToggleGroup from "$lib/ToggleGroup.svelte";
+  import Slider from "$lib/Slider.svelte";
 
   import IconCamera from "$lib/icons/IconCamera.svelte";
   import IconCopy from "$lib/icons/IconCopy.svelte";
@@ -1238,6 +1239,32 @@
           <Collapsible value={2} collapsed={current != 2} on:expand={setCurrent} title="Item 2">...</Collapsible>
           <Collapsible value={3} collapsed={current != 3} on:expand={setCurrent} title="Item 3">...</Collapsible>
         </ToggleGroup>
+        `}
+      </div>
+    </div>
+
+  </div>
+
+  
+  <!-- ============================== -->
+  <!-- Slider -->
+  <div class="uizg-component">
+
+    <h2>Slider</h2>
+
+    <div class="uizg-previewArea">
+      <div class="uizg-previewElement">
+        <Slider />
+        <br /><br />
+        <Slider step={10} />
+        <br /><br />
+        <Slider decimals={2} />
+        <br /><br />
+        <Slider range decimals={2} />
+      </div>
+      <div class="uizg-previewCode">
+        {`
+          <Slider />
         `}
       </div>
     </div>
