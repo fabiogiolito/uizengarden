@@ -32,6 +32,34 @@
   // Read only, no knobs or interactivity
   export let readonly = false;
 
+  // Classes
+  export let classBase = "slider";
+  export let classRange             = `${classBase}--range`;
+  export let classTrack             = `${classBase}__track`;
+  export let classSegment           = `${classBase}__segment`;
+  export let classSegmentDisabled   = `${classBase}__segment--disabled`;
+  export let classSegmentUnselected = `${classBase}__segment--unselected`;
+  export let classSegmentSelected   = `${classBase}__segment--selected`;
+  export let classLabel             = `${classBase}__label`;
+  export let classLabelMin          = `${classBase}__label--min`;
+  export let classLabelMax          = `${classBase}__label--max`;
+  export let classLabelMinValue     = `${classBase}__label--minValue`;
+  export let classLabelMaxValue     = `${classBase}__label--maxValue`;
+  export let classStep              = `${classBase}__step`;
+  export let classStepDisabled      = `${classBase}__step--disabled`;
+  export let classStepSelected      = `${classBase}__step--selected`;
+  export let classStepUnselected    = `${classBase}__step--unselected`;
+  export let classStepValue         = `${classBase}__step__value`;
+  export let classStepValueMain         = `${classBase}__step__value--main`;
+  export let classKnob              = `${classBase}__knob`;
+  export let classKnobStart         = `${classBase}__knob--start`;
+  export let classKnobEnd           = `${classBase}__knob--end`;
+  export let classKnobActive        = `${classBase}__knob--active`;
+  export let classKnobFocused       = `${classBase}__knob--focused`;
+  export let classKnobValue         = `${classBase}__knob__value`;
+
+  let className = "";
+  export { className as class }; // Extra classes
 
   // Container ref
   let container;
@@ -164,43 +192,43 @@
 
 <svelte:window on:pointerdown={handleClick} on:keydown={handleKeyDown} on:pointerup={handlePointerUp} on:pointermove={handlePointerMove} />
 
-<div class="slider {range ? 'slider--range' : ''}" bind:this={container}>
+<div class="{classBase} {range ? classRange : ''} {className}" bind:this={container}>
 
   <!-- Full track area -->
-  <div class="slider__track">
+  <div class={classTrack}>
 
     <!-- ===== Track segments ========================= -->
 
     <!-- From min to minValue -->
     {#if minValue > min}
       <div
-        class="slider__segment slider__segment--disabled"
+        class="{classSegment} {classSegmentDisabled}"
         style="left: 0%; right: {100 - percent(minValue, min, max)}%" 
       />
     {/if}
 
     <!-- From minValue to valueStart -->
     <div
-      class="slider__segment slider__segment--unselected"
+      class="{classSegment} {classSegmentUnselected}"
       style="left: {percent(minValue, min, max)}%; right: {100 - percent(valueStart, min, max)}%" 
     />
 
     <!-- From valueStart to value -->
     <div
-      class="slider__segment slider__segment--selected"
+      class="{classSegment} {classSegmentSelected}"
       style="left: {percent(valueStart, min, max)}%; right: {100 - percent(value, min, max)}%" 
     />
 
     <!-- From value to maxValue -->
     <div
-      class="slider__segment slider__segment--unselected"
+      class="{classSegment} {classSegmentUnselected}"
       style="left: {percent(value, min, max)}%; right: {100 - percent(maxValue, min, max)}%" 
     />
 
     <!-- From maxValue to max -->
     {#if maxValue < max}
       <div
-        class="slider__segment slider__segment--disabled"
+        class="{classSegment} {classSegmentDisabled}"
         style="left: {percent(maxValue, min, max)}%; right: 0%;"
       />
     {/if}
@@ -211,12 +239,12 @@
     <!-- Display min / max values -->
     {#if trackLabels}
 
-      <div class="slider__label slider__label--min" style="left: 0%;">{min}</div>
-      <div class="slider__label slider__label--max" style="right: 0%;">{max}</div>
+      <div class="{classLabel} {classLabelMin}" style="left: 0%;">{min}</div>
+      <div class="{classLabel} {classLabelMax}" style="right: 0%;">{max}</div>
 
       {#if minValue > min}
         <div
-          class="slider__label slider__label--minValue"
+          class="{classLabel} {classLabelMinValue}"
           style="left: {percent(minValue, min, max)}%;" 
         >
           {minValue}
@@ -225,7 +253,7 @@
       
       {#if maxValue < max}
         <div
-          class="slider__label slider__label--maxValue"
+          class="{classLabel} {classLabelMaxValue}"
           style="left: {percent(maxValue, min, max)}%;" 
         >
           {maxValue}
@@ -236,17 +264,24 @@
 
     {#if step && stepLabels}
       {#each Array(stepCount) as _, index}
-        {@const val = (step * index) + min}
+        {@const stepVal = (step * index) + min}
         <div
-          class="slider__step
-            {val < minValue ? 'slider__step--disabled' : ''}
-            {minValue < valueStart && val >= minValue && val <= valueStart ? 'slider__step--unselected' : ''}
-            {val >= valueStart && val <= value ? 'slider__step--selected' : ''}
-            {val > value && val <= maxValue ? 'slider__step--unselected' : ''}
-            {val > maxValue ? 'slider__step--disabled' : ''}
+          class="{classStep}
+            {stepVal < minValue ? classStepDisabled : ''}
+            {minValue < valueStart && stepVal >= minValue && stepVal <= valueStart ? classStepUnselected : ''}
+            {stepVal >= valueStart && stepVal <= value ? classStepSelected : ''}
+            {stepVal > value && stepVal <= maxValue ? classStepUnselected : ''}
+            {stepVal > maxValue ? {classStepDisabled} : ''}
           "
-          style="left: {percent(val, min, max)}%;"
-        />
+          style="left: {percent(stepVal, min, max)}%;"
+        >
+          <span class="
+            {classStepValue}
+            {trackLabels && [ min, minValue, maxValue, max ].includes(stepVal) ? classStepValueMain : ''}
+          ">
+            {stepVal}
+          </span>
+        </div>
       {/each}
     {/if}
     
@@ -259,9 +294,9 @@
       {#if range}
         <button 
           class="
-            slider__knob slider__knob--start
-            {knobActive == 'start' ? 'slider__knob--active' : ''}
-            {knobFocused == 'start' ? 'slider__knob--focused' : ''}
+            {classKnob} {classKnobStart}
+            {knobActive == 'start' ? classKnobActive : ''}
+            {knobFocused == 'start' ? classKnobFocused : ''}
           "
           style="left: {percent(valueStart, min, max)}%;"
           on:pointerdown={() => handlePointerDown('start')}
@@ -270,7 +305,7 @@
           on:blur={() => handleKnobBlur('start')}
         >
           {#if knobLabels && (knobActive == 'start' || knobFocused == 'start')}
-            <span class="slider__knob__value">{valueStart}</span>
+            <span class={classKnobValue}>{valueStart}</span>
           {/if}
         </button>
       {/if}
@@ -278,9 +313,9 @@
       <!-- Knob end -->
       <button 
         class="
-          slider__knob {range ? 'slider__knob--end' : ''}
-          {knobActive == 'end' ? 'slider__knob--active' : ''}
-          {knobFocused == 'end' ? 'slider__knob--focused' : ''}
+          {classKnob} {range ? classKnobEnd : ''}
+          {knobActive == 'end' ? classKnobActive : ''}
+          {knobFocused == 'end' ? classKnobFocused : ''}
         "
         style="left: {percent(value, min, max)}%;"
         on:pointerdown={() => handlePointerDown('end')}
@@ -289,7 +324,7 @@
         on:blur={() => handleKnobBlur('end')}
       >
         {#if knobLabels && (knobActive == 'end' || knobFocused == 'end')}
-          <span class="slider__knob__value">{value}</span>
+          <span class={classKnobValue}>{value}</span>
         {/if}
       </button>
 

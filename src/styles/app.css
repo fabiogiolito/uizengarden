@@ -314,6 +314,19 @@ body {
   background: rgb(var(--tint));
 }
 
+.slider__step__value {
+  font-size: 0.8em;
+  position: absolute;
+  top: 75%;
+  left: 50%;
+  opacity: 0.5;
+  transform: translateX(-50%);
+}
+
+.slider__step__value--main {
+  display: none;
+}
+
 /* Knobs -------- */
 
 .slider__knob {
