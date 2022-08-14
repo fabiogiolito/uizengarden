@@ -169,9 +169,11 @@
 >
 
   <!-- Trigger -->
-  <slot name="trigger" slot="trigger" {selected}>
+  <slot name="trigger" slot="trigger" {selected} {label} {focused} {open} {placeholder}>
     <Button iconRight={IconChevronDown}>
-      <slot name="label" {selected}>{title || label}</slot>
+      <slot name="label" {selected} {label} {focused} {open} {placeholder}>
+        {title || label}
+      </slot>
     </Button>
   </slot>
 

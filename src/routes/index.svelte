@@ -57,7 +57,6 @@
   .uizg-previewElement {
     background: rgb(var(--background));
     padding: 2rem;
-    text-align: center;
   }
   .uizg-previewCode {
     background: rgb(var(--foreground));
@@ -92,9 +91,9 @@
       </div>
       <div class="uizg-previewCode">
         {`
-          <Button>Button</Button>
-          <Button href="#link">Link</Button>
-          <Button element="div">Div</Button>
+  <Button>Button</Button>
+  <Button href="#link">Link</Button>
+  <Button element="div">Div</Button>
         `}
       </div>
     </div>
@@ -109,11 +108,11 @@
       </div>
       <div class="uizg-previewCode">
         {`
-          <Button size="xs">Extra Small</Button>
-          <Button size="sm">Small</Button>
-          <Button>Medium</Button>
-          <Button size="lg">Large</Button>
-          <Button size="xl">Extra Large</Button>
+  <Button size="xs">Extra Small</Button>
+  <Button size="sm">Small</Button>
+  <Button>Medium</Button>
+  <Button size="lg">Large</Button>
+  <Button size="xl">Extra Large</Button>
         `}
       </div>
     </div>
@@ -128,11 +127,11 @@
       </div>
       <div class="uizg-previewCode">
         {`
-          <Button icon={IconCircle} iconRight={IconCircle} size="xs">Extra Small</Button>
-          <Button icon={IconCircle} iconRight={IconCircle} size="sm">Small</Button>
-          <Button icon={IconCircle} iconRight={IconCircle}>Medium</Button>
-          <Button icon={IconCircle} iconRight={IconCircle} size="lg">Large</Button>
-          <Button icon={IconCircle} iconRight={IconCircle} size="xl">Extra Large</Button>
+  <Button icon={IconCircle} iconRight={IconCircle} size="xs">Extra Small</Button>
+  <Button icon={IconCircle} iconRight={IconCircle} size="sm">Small</Button>
+  <Button icon={IconCircle} iconRight={IconCircle}>Medium</Button>
+  <Button icon={IconCircle} iconRight={IconCircle} size="lg">Large</Button>
+  <Button icon={IconCircle} iconRight={IconCircle} size="xl">Extra Large</Button>
         `}
       </div>
     </div>
@@ -147,11 +146,11 @@
       </div>
       <div class="uizg-previewCode">
         {`
-          <Button>Regular</Button>
-          <Button type="primary">Primary</Button>
-          <Button type="secondary">Secondary</Button>
-          <Button type="primary-translucent">Primary translucent</Button>
-          <Button type="shadow">Shadow</Button>
+  <Button>Regular</Button>
+  <Button type="primary">Primary</Button>
+  <Button type="secondary">Secondary</Button>
+  <Button type="primary-translucent">Primary translucent</Button>
+  <Button type="shadow">Shadow</Button>
         `}
       </div>
     </div>
@@ -162,7 +161,7 @@
       </div>
       <div class="uizg-previewCode">
         {`
-          <Button async>With loading</Button>
+  <Button async>With loading</Button>
         `}
       </div>
     </div>
@@ -173,7 +172,7 @@
       </div>
       <div class="uizg-previewCode">
         {`
-          <Button copy="Hello" icon={IconCopy}>Copy Hello</Button>
+  <Button copy="Hello" icon={IconCopy}>Copy Hello</Button>
         `}
       </div>
     </div>
@@ -190,13 +189,13 @@
       </div>
       <div class="uizg-previewCode">
         {`
-          <Button
-            copyFunc={() => 'Hello with Function'}
-            copiedLabel="Success!"
-            iconRight={IconCopy}
-          >
-            Copy Hello with Function
-          </Button>
+  <Button
+    copyFunc={() => 'Hello with Function'}
+    copiedLabel="Success!"
+    iconRight={IconCopy}
+  >
+    Copy Hello with Function
+  </Button>
         `}
       </div>
     </div>
@@ -213,13 +212,13 @@
       </div>
       <div class="uizg-previewCode">
         {`
-          <Button toggle>Toggle</Button>
-          <Button toggle let:selected
-            on:select={() => console.log('did select')}
-            on:unselect={() => console.log('did unselect')}
-          >
-            {selected ? 'Following' : 'Follow'}
-          </Button>
+  <Button toggle>Toggle</Button>
+  <Button toggle let:selected
+    on:select={() => console.log('did select')}
+    on:unselect={() => console.log('did unselect')}
+  >
+    {selected ? 'Following' : 'Follow'}
+  </Button>
         `}
       </div>
     </div>
@@ -242,10 +241,10 @@
       </div>
       <div class="uizg-previewCode">
         {`
-          <Dropdown>
-            <Button slot="trigger" iconRight={IconChevronDown}>Dropdown</Button>
-            <p>Dropdown menu content</p>
-          </Dropdown>
+  <Dropdown>
+    <Button slot="trigger" iconRight={IconChevronDown}>Dropdown</Button>
+    <p>Dropdown menu content</p>
+  </Dropdown>
         `}
       </div>
     </div>
@@ -259,10 +258,10 @@
       </div>
       <div class="uizg-previewCode">
         {`
-          <Dropdown let:open>
-            <Button slot="trigger" type={open ? 'primary' : 'secondary'}>Dropdown</Button>
-            <p>Dropdown menu content</p>
-          </Dropdown>
+  <Dropdown let:open>
+    <Button slot="trigger" type={open ? 'primary' : 'secondary'}>Dropdown</Button>
+    <p>Dropdown menu content</p>
+  </Dropdown>
         `}
       </div>
     </div>
@@ -304,22 +303,22 @@
       </div>
       <div class="uizg-previewCode">
         {`
-          <Dropdown direction="down" align="left">
-            <Button slot="trigger">Down, Align left</Button>
-            <p>Dropdown menu content</p>
-          </Dropdown>
-          <Dropdown direction="down" align="right">
-            <Button slot="trigger">Down, Align right</Button>
-            <p>Dropdown menu content</p>
-          </Dropdown>
-          <Dropdown direction="up" align="left">
-            <Button slot="trigger">Up, align left</Button>
-            <p>Dropdown menu content</p>
-          </Dropdown>
-          <Dropdown direction="up" align="right">
-            <Button slot="trigger">Up, align right</Button>
-            <p>Dropdown menu content</p>
-          </Dropdown>
+  <Dropdown direction="down" align="left">
+    <Button slot="trigger">Down, Align left</Button>
+    <p>Dropdown menu content</p>
+  </Dropdown>
+  <Dropdown direction="down" align="right">
+    <Button slot="trigger">Down, Align right</Button>
+    <p>Dropdown menu content</p>
+  </Dropdown>
+  <Dropdown direction="up" align="left">
+    <Button slot="trigger">Up, align left</Button>
+    <p>Dropdown menu content</p>
+  </Dropdown>
+  <Dropdown direction="up" align="right">
+    <Button slot="trigger">Up, align right</Button>
+    <p>Dropdown menu content</p>
+  </Dropdown>
         `}
       </div>
     </div>
@@ -353,18 +352,18 @@
       </div>
       <div class="uizg-previewCode">
         {`
-          <Dropdown direction="right" align="top">
-            <Button slot="trigger">Right, Align top</Button>
-            <p>Dropdown menu content</p>
-          </Dropdown>
-          <Dropdown direction="right" align="center">
-            <Button slot="trigger">Right, Align center</Button>
-            <p>Dropdown menu content</p>
-          </Dropdown>
-          <Dropdown direction="right" align="bottom">
-            <Button slot="trigger">Right, align bottom</Button>
-            <p>Dropdown menu content</p>
-          </Dropdown>
+  <Dropdown direction="right" align="top">
+    <Button slot="trigger">Right, Align top</Button>
+    <p>Dropdown menu content</p>
+  </Dropdown>
+  <Dropdown direction="right" align="center">
+    <Button slot="trigger">Right, Align center</Button>
+    <p>Dropdown menu content</p>
+  </Dropdown>
+  <Dropdown direction="right" align="bottom">
+    <Button slot="trigger">Right, align bottom</Button>
+    <p>Dropdown menu content</p>
+  </Dropdown>
         `}
       </div>
     </div>
@@ -398,18 +397,18 @@
       </div>
       <div class="uizg-previewCode">
         {`
-          <Dropdown direction="left" align="top">
-            <Button slot="trigger">Left, Align top</Button>
-            <p>Dropdown menu content</p>
-          </Dropdown>
-          <Dropdown direction="left" align="center">
-            <Button slot="trigger">Left, Align center</Button>
-            <p>Dropdown menu content</p>
-          </Dropdown>
-          <Dropdown direction="left" align="bottom">
-            <Button slot="trigger">Left, align bottom</Button>
-            <p>Dropdown menu content</p>
-          </Dropdown>
+  <Dropdown direction="left" align="top">
+    <Button slot="trigger">Left, Align top</Button>
+    <p>Dropdown menu content</p>
+  </Dropdown>
+  <Dropdown direction="left" align="center">
+    <Button slot="trigger">Left, Align center</Button>
+    <p>Dropdown menu content</p>
+  </Dropdown>
+  <Dropdown direction="left" align="bottom">
+    <Button slot="trigger">Left, align bottom</Button>
+    <p>Dropdown menu content</p>
+  </Dropdown>
         `}
       </div>
     </div>
@@ -451,22 +450,22 @@
       </div>
       <div class="uizg-previewCode">
         {`
-          <Dropdown over direction="down" align="left">
-            <Button slot="trigger">Over down</Button>
-            <p>Dropdown menu content</p>
-          </Dropdown>
-          <Dropdown over direction="up" align="left">
-            <Button slot="trigger">Over up</Button>
-            <p>Dropdown menu content</p>
-          </Dropdown>
-          <Dropdown over direction="right" align="top">
-            <Button slot="trigger">Over right</Button>
-            <p>Dropdown menu content</p>
-          </Dropdown>
-          <Dropdown over direction="left" align="top">
-            <Button slot="trigger">Over left</Button>
-            <p>Dropdown menu content</p>
-          </Dropdown>
+  <Dropdown over direction="down" align="left">
+    <Button slot="trigger">Over down</Button>
+    <p>Dropdown menu content</p>
+  </Dropdown>
+  <Dropdown over direction="up" align="left">
+    <Button slot="trigger">Over up</Button>
+    <p>Dropdown menu content</p>
+  </Dropdown>
+  <Dropdown over direction="right" align="top">
+    <Button slot="trigger">Over right</Button>
+    <p>Dropdown menu content</p>
+  </Dropdown>
+  <Dropdown over direction="left" align="top">
+    <Button slot="trigger">Over left</Button>
+    <p>Dropdown menu content</p>
+  </Dropdown>
         `}
       </div>
     </div>
@@ -484,14 +483,14 @@
       </div>
       <div class="uizg-previewCode">
         {`
-          <Dropdown hover>
-            <Button slot="trigger">Hover me</Button>
-            <p>Hover card</p>
-          </Dropdown>
-          <Dropdown hover hoverDelay={1000}>
-            <Button slot="trigger">Hover me for 1s</Button>
-            <p>Hover card</p>
-          </Dropdown>
+  <Dropdown hover>
+    <Button slot="trigger">Hover me</Button>
+    <p>Hover card</p>
+  </Dropdown>
+  <Dropdown hover hoverDelay={1000}>
+    <Button slot="trigger">Hover me for 1s</Button>
+    <p>Hover card</p>
+  </Dropdown>
         `}
       </div>
     </div>
@@ -512,9 +511,9 @@
       </div>
       <div class="uizg-previewCode">
         {`
-          <Collapsible title="Hello">
-            <p>World</p>
-          </Collapsible>
+  <Collapsible title="Hello">
+    <p>World</p>
+  </Collapsible>
         `}
       </div>
     </div>
@@ -529,11 +528,11 @@
       </div>
       <div class="uizg-previewCode">
         {`
-          <Collapsible let:collapsed>
-            <span slot="title">Click me to {collapsed ? "open" : "close"}</span>
-            <Button size="xs" slot="header">Action</Button>
-            <p>Hello</p>
-          </Collapsible>
+  <Collapsible let:collapsed>
+    <span slot="title">Click me to {collapsed ? "open" : "close"}</span>
+    <Button size="xs" slot="header">Action</Button>
+    <p>Hello</p>
+  </Collapsible>
         `}
       </div>
     </div>
@@ -554,17 +553,17 @@
       </div>
       <div class="uizg-previewCode">
         {`
-          <Collapsible collapsed let:collapsed let:toggleCollapsed>
-            <div slot="trigger">
-              {#if collapsed}
-                <div transition:slide>
-                  <Button size="xs" on:click={toggleCollapsed}>2 more</Button>
-                </div>
-              {/if}
-            </div>
-            <p>Hello one</p>
-            <p>Hello two</p>
-          </Collapsible>
+  <Collapsible collapsed let:collapsed let:toggleCollapsed>
+    <div slot="trigger">
+      {#if collapsed}
+        <div transition:slide>
+          <Button size="xs" on:click={toggleCollapsed}>2 more</Button>
+        </div>
+      {/if}
+    </div>
+    <p>Hello one</p>
+    <p>Hello two</p>
+  </Collapsible>
         `}
       </div>
     </div>
@@ -589,13 +588,13 @@
       </div>
       <div class="uizg-previewCode">
         {`
-          <Modal let:openModal let:closeModal>
-            <Button slot="trigger" on:click={openModal}>
-              Open modal with trigger slot
-            </Button>
-            <p>Content</p>
-            <Button on:click={closeModal}>Close modal</Button>
-          </Modal>
+  <Modal let:openModal let:closeModal>
+    <Button slot="trigger" on:click={openModal}>
+      Open modal with trigger slot
+    </Button>
+    <p>Content</p>
+    <Button on:click={closeModal}>Close modal</Button>
+  </Modal>
         `}
       </div>
     </div>
@@ -610,15 +609,15 @@
       </div>
       <div class="uizg-previewCode">
         {`
-          <script>
-            let modalOpen = false;
-            function handleOpenModal() { modalOpen = true; }
-          </script>
-          <Button on:click={handleOpenModal}>Open modal with external state</Button>
-          <Modal bind:open={modalOpen} let:closeModal>
-            <p>Content</p>
-            <Button on:click={closeModal}>Close modal</Button>
-          </Modal>
+  <script>
+    let modalOpen = false;
+    function handleOpenModal() { modalOpen = true; }
+  </script>
+  <Button on:click={handleOpenModal}>Open modal with external state</Button>
+  <Modal bind:open={modalOpen} let:closeModal>
+    <p>Content</p>
+    <Button on:click={closeModal}>Close modal</Button>
+  </Modal>
         `}
       </div>
     </div>
@@ -633,14 +632,14 @@
       </div>
       <div class="uizg-previewCode">
         {`
-          <script>
-            let modalRef;
-          </script>
-          <Button on:click={modalRef.openModal}>Open modal</Button>
-          <Modal bind:this={modalRef}>
-            <p>Content</p>
-            <Button on:click={modalRef.closeModal}>Close modal</Button>
-          </Modal>
+  <script>
+    let modalRef;
+  </script>
+  <Button on:click={modalRef.openModal}>Open modal</Button>
+  <Modal bind:this={modalRef}>
+    <p>Content</p>
+    <Button on:click={modalRef.closeModal}>Close modal</Button>
+  </Modal>
         `}
       </div>
     </div>
@@ -656,12 +655,12 @@
       </div>
       <div class="uizg-previewCode">
         {`
-          <Modal title="My modal" let:openModal >
-            <Button slot="trigger" on:click={openModal}>
-              Modal with title
-            </Button>
-            <p>Content</p>
-          </Modal>
+  <Modal title="My modal" let:openModal >
+    <Button slot="trigger" on:click={openModal}>
+      Modal with title
+    </Button>
+    <p>Content</p>
+  </Modal>
         `}
       </div>
     </div>
@@ -679,14 +678,14 @@
       </div>
       <div class="uizg-previewCode">
         {`
-          <Modal let:openModal let:closeModal>
-            <Button slot="trigger" on:click={openModal}>
-              Modal with header and footer
-            </Button>
-            <div slot="header">My modal</div>
-            <p>Content</p>
-            <Button slot="footer" on:click={closeModal}>Close modal</Button>
-          </Modal>
+  <Modal let:openModal let:closeModal>
+    <Button slot="trigger" on:click={openModal}>
+      Modal with header and footer
+    </Button>
+    <div slot="header">My modal</div>
+    <p>Content</p>
+    <Button slot="footer" on:click={closeModal}>Close modal</Button>
+  </Modal>
         `}
       </div>
     </div>
@@ -705,15 +704,15 @@
       </div>
       <div class="uizg-previewCode">
         {`
-          <Modal dialog title="Are you sure?" let:openModal let:closeModal>
-            <Button slot="trigger" on:click={openModal}>
-              Modal dialog
-            </Button>
-            <div slot="footer">
-              <Button on:click={() => { console.log('action'); closeModal(); }}>Yes</Button>
-              <Button on:click={closeModal}>No</Button>
-            </div>
-          </Modal>
+  <Modal dialog title="Are you sure?" let:openModal let:closeModal>
+    <Button slot="trigger" on:click={openModal}>
+      Modal dialog
+    </Button>
+    <div slot="footer">
+      <Button on:click={() => { console.log('action'); closeModal(); }}>Yes</Button>
+      <Button on:click={closeModal}>No</Button>
+    </div>
+  </Modal>
         `}
       </div>
     </div>
@@ -733,7 +732,7 @@
       </div>
       <div class="uizg-previewCode">
         {`
-          <Input value="Hello world" />
+  <Input value="Hello world" />
         `}
       </div>
     </div>
@@ -744,7 +743,7 @@
       </div>
       <div class="uizg-previewCode">
         {`
-          <Input prepend="$" append=".00" placeholder="value" />
+  <Input prepend="$" append=".00" placeholder="value" />
         `}
       </div>
     </div>
@@ -758,10 +757,10 @@
       </div>
       <div class="uizg-previewCode">
         {`
-          <Input placeholder="username">
-            <IconAtSign slot="prepend" />
-            <Button slot="append">Create account</Button>
-          </Input>
+  <Input placeholder="username">
+    <IconAtSign slot="prepend" />
+    <Button slot="append">Create account</Button>
+  </Input>
         `}
       </div>
     </div>
@@ -782,9 +781,9 @@
       </div>
       <div class="uizg-previewCode">
         {`
-          <IconCamera />
-          <IconCopy />
-          <IconDownloadCloud />
+  <IconCamera />
+  <IconCopy />
+  <IconDownloadCloud />
         `}
       </div>
     </div>
@@ -797,9 +796,9 @@
       </div>
       <div class="uizg-previewCode">
         {`
-          <IconDownloadCloud size="sm" />
-          <IconDownloadCloud />
-          <IconDownloadCloud size="lg" />
+  <IconDownloadCloud size="sm" />
+  <IconDownloadCloud />
+  <IconDownloadCloud size="lg" />
         `}
       </div>
     </div>
@@ -818,7 +817,7 @@
       </div>
       <div class="uizg-previewCode">
         {`
-          <LoadingIndicator />
+  <LoadingIndicator />
         `}
       </div>
     </div>
@@ -841,11 +840,11 @@
       </div>
       <div class="uizg-previewCode">
         {`
-          <Select options={['one', 'two', 'three']} placeholder="Pick one" />
-          <Select options={['one', 'two', 'three']} placeholder="Pick multiple" multiselect />
-          <Select options={['one', 'two', 'three']} />
-          <Select options={['Recent', 'Popular', 'Trending']} title="Sort by" />
-          <Select options={['Recent', 'Popular', 'Trending']} title="Sort by" selected="Recent" />
+  <Select options={['one', 'two', 'three']} placeholder="Pick one" />
+  <Select options={['one', 'two', 'three']} placeholder="Pick multiple" multiselect />
+  <Select options={['one', 'two', 'three']} />
+  <Select options={['Recent', 'Popular', 'Trending']} title="Sort by" />
+  <Select options={['Recent', 'Popular', 'Trending']} title="Sort by" selected="Recent" />
         `}
       </div>
     </div>
@@ -884,36 +883,71 @@
       </div>
       <div class="uizg-previewCode">
         {`
-          <!-- Custom option object -->
-          <Select
-            options={[{name: 'Fabio', emoji: '🦊'},{name: 'James', emoji: '🦁'},{name: 'Jessica', emoji: '🐯'}]}
-            labelKey="name"
-          />
+  <!-- Custom option object -->
+  <Select
+    options={[{name: 'Fabio', emoji: '🦊'},{name: 'James', emoji: '🦁'},{name: 'Jessica', emoji: '🐯'}]}
+    labelKey="name"
+  />
 
-          <!-- Custom options -->
-          <Select
-            options={[{name: 'Fabio', emoji: '🦊'},{name: 'James', emoji: '🦁'},{name: 'Jessica', emoji: '🐯'}]}
-            labelKey="name"
-          >
-            <p slot="option" let:option let:isSelected let:isFocused>
-              {isFocused ? '› ' : ''}
-              {option.emoji} {option.name}
-              {isSelected ? '✓ ' : ''}
-            </p>
-          </Select>
+  <!-- Custom options -->
+  <Select
+    options={[{name: 'Fabio', emoji: '🦊'},{name: 'James', emoji: '🦁'},{name: 'Jessica', emoji: '🐯'}]}
+    labelKey="name"
+  >
+    <p slot="option" let:option let:isSelected let:isFocused>
+      {isFocused ? '› ' : ''}
+      {option.emoji} {option.name}
+      {isSelected ? '✓ ' : ''}
+    </p>
+  </Select>
 
-          <!-- Custom dropdown label -->
-          <Select
-            options={[{name: 'Fabio', emoji: '🦊'},{name: 'James', emoji: '🦁'},{name: 'Jessica', emoji: '🐯'}]}
-            labelKey="name"
-          >
-            <span slot="label" let:selected>{selected[0].emoji} {selected[0].name}</span>
-          </Select>
+  <!-- Custom dropdown label -->
+  <Select
+    options={[{name: 'Fabio', emoji: '🦊'},{name: 'James', emoji: '🦁'},{name: 'Jessica', emoji: '🐯'}]}
+    labelKey="name"
+  >
+    <span slot="label" let:selected>{selected[0].emoji} {selected[0].name}</span>
+  </Select>
 
-          <!-- Custom dropdown trigger -->
-          <Select options={['one', 'two', 'three']}>
-            <Button slot="trigger" type="primary" icon={IconUser} let:selected>{selected[0]}</Button>
-          </Select>
+  <!-- Custom dropdown trigger -->
+  <Select options={['one', 'two', 'three']}>
+    <Button slot="trigger" type="primary" icon={IconUser} let:selected>{selected[0]}</Button>
+  </Select>
+        `}
+      </div>
+    </div>
+
+    <div class="uizg-previewArea">
+      <div class="uizg-previewElement">
+        <Select
+          options={[{emoji: '🫥', emotion: 'Not sure'}, {emoji: '😀', emotion: 'Happy'}, {emoji: '🙁', emotion: 'Sad'}]}
+          labelKey="emotion"
+          let:focused let:open let:selected
+        >
+          <Button slot="trigger">
+            How are you feeling?
+            {open ? focused.emoji || selected[0].emoji : selected[0].emoji}
+          </Button>
+          <p slot="option" let:option>
+            {option.emoji} {option.emotion}
+          </p>
+        </Select>
+      </div>
+      <div class="uizg-previewCode">
+        {`
+  <Select
+    options={[{emoji: '🫥', emotion: 'Not sure'}, {emoji: '😀', emotion: 'Happy'}, {emoji: '🙁', emotion: 'Sad'}]}
+    labelKey="emotion"
+    let:focused let:open let:selected
+  >
+    <Button slot="trigger">
+      How are you feeling?
+      {open ? focused.emoji || selected[0].emoji : selected[0].emoji}
+    </Button>
+    <p slot="option" let:option>
+      {option.emoji} {option.emotion}
+    </p>
+  </Select>
         `}
       </div>
     </div>
@@ -929,9 +963,9 @@
       </div>
       <div class="uizg-previewCode">
         {`
-          <Select options={['one', 'two', 'three']} placeholder="Pick one" />
-          <Select options={['one', 'two', 'three']} placeholder="Pick multiple" multiselect />
-          <Select options={['one', 'two', 'three']} />
+  <Select options={['one', 'two', 'three']} placeholder="Pick one" />
+  <Select options={['one', 'two', 'three']} placeholder="Pick multiple" multiselect />
+  <Select options={['one', 'two', 'three']} />
         `}
       </div>
     </div>
@@ -951,7 +985,7 @@
       </div>
       <div class="uizg-previewCode">
         {`
-          <Checkbox />
+  <Checkbox />
         `}
       </div>
     </div>
@@ -962,7 +996,7 @@
       </div>
       <div class="uizg-previewCode">
         {`
-          <Checkbox label="Checkbox label" />
+  <Checkbox label="Checkbox label" />
         `}
       </div>
     </div>
@@ -976,10 +1010,10 @@
       </div>
       <div class="uizg-previewCode">
         {`
-          <Checkbox>
-            <p>Custom label</p>
-            <small>With slot</small>
-          </Checkbox>
+  <Checkbox>
+    <p>Custom label</p>
+    <small>With slot</small>
+  </Checkbox>
         `}
       </div>
     </div>
@@ -990,12 +1024,12 @@
       </div>
       <div class="uizg-previewCode">
         {`
-          <Checkbox label="Custom checkbox icon" let:checked>
-            <svelte:component slot="checkbox"
-              class="icon checkbox__icon"
-              this={checked ? IconPenTool : null}
-            />
-          </Checkbox>
+  <Checkbox label="Custom checkbox icon" let:checked>
+    <svelte:component slot="checkbox"
+      class="icon checkbox__icon"
+      this={checked ? IconPenTool : null}
+    />
+  </Checkbox>
         `}
       </div>
     </div>
@@ -1008,12 +1042,12 @@
       </div>
       <div class="uizg-previewCode">
         {`
-          <Checkbox label="Custom checkbox icon" let:checked>
-            <svelte:component slot="checkbox"
-              class="icon checkbox__icon"
-              this={checked ? IconPenTool : null}
-            />
-          </Checkbox>
+  <Checkbox label="Custom checkbox icon" let:checked>
+    <svelte:component slot="checkbox"
+      class="icon checkbox__icon"
+      this={checked ? IconPenTool : null}
+    />
+  </Checkbox>
         `}
       </div>
     </div>
@@ -1035,9 +1069,9 @@
       </div>
       <div class="uizg-previewCode">
         {`
-          <Tooltip text="Hello!">
-            Hover me
-          </Tooltip>
+  <Tooltip text="Hello!">
+    Hover me
+  </Tooltip>
         `}
       </div>
     </div>
@@ -1051,10 +1085,10 @@
       </div>
       <div class="uizg-previewCode">
         {`
-          <Tooltip>
-            <IconHeart slot="content" />
-            Hover me
-          </Tooltip>
+  <Tooltip>
+    <IconHeart slot="content" />
+    Hover me
+  </Tooltip>
         `}
       </div>
     </div>
@@ -1096,22 +1130,22 @@
       </div>
       <div class="uizg-previewCode">
         {`
-          <Tooltip direction="up">
-            <Button>Tooltip up</Button>
-            <div slot="content">...</div>
-          </Tooltip>
-          <Tooltip direction="right">
-            <Button>Tooltip right</Button>
-            <div slot="content">...</div>
-          </Tooltip>
-          <Tooltip direction="down">
-            <Button>Tooltip down</Button>
-            <div slot="content">...</div>
-          </Tooltip>
-          <Tooltip direction="left">
-            <Button>Tooltip left</Button>
-            <div slot="content">...</div>
-          </Tooltip>
+  <Tooltip direction="up">
+    <Button>Tooltip up</Button>
+    <div slot="content">...</div>
+  </Tooltip>
+  <Tooltip direction="right">
+    <Button>Tooltip right</Button>
+    <div slot="content">...</div>
+  </Tooltip>
+  <Tooltip direction="down">
+    <Button>Tooltip down</Button>
+    <div slot="content">...</div>
+  </Tooltip>
+  <Tooltip direction="left">
+    <Button>Tooltip left</Button>
+    <div slot="content">...</div>
+  </Tooltip>
         `}
       </div>
     </div>
@@ -1145,18 +1179,18 @@
       </div>
       <div class="uizg-previewCode">
         {`
-          <Tooltip direction="right" align="center">
-            <Button>Vertical Align center</Button>
-            <div slot="content">...</div>
-          </Tooltip>
-          <Tooltip direction="right" align="top">
-            <Button>Vertical Align top</Button>
-            <div slot="content">...</div>
-          </Tooltip>
-          <Tooltip direction="right" align="bottom">
-            <Button>Vertical Align bottom</Button>
-            <div slot="content">...</div>
-          </Tooltip>
+  <Tooltip direction="right" align="center">
+    <Button>Vertical Align center</Button>
+    <div slot="content">...</div>
+  </Tooltip>
+  <Tooltip direction="right" align="top">
+    <Button>Vertical Align top</Button>
+    <div slot="content">...</div>
+  </Tooltip>
+  <Tooltip direction="right" align="bottom">
+    <Button>Vertical Align bottom</Button>
+    <div slot="content">...</div>
+  </Tooltip>
         `}
       </div>
     </div>
@@ -1190,18 +1224,18 @@
       </div>
       <div class="uizg-previewCode">
         {`
-          <Tooltip align="left">
-            <Button>Horizontal align left</Button>
-            <div slot="content">...</div>
-          </Tooltip>
-          <Tooltip align="center">
-            <Button>Horizontal align center</Button>
-            <div slot="content">...</div>
-          </Tooltip>
-          <Tooltip align="right">
-            <Button>Horizontal align right</Button>
-            <div slot="content">...</div>
-          </Tooltip>
+  <Tooltip align="left">
+    <Button>Horizontal align left</Button>
+    <div slot="content">...</div>
+  </Tooltip>
+  <Tooltip align="center">
+    <Button>Horizontal align center</Button>
+    <div slot="content">...</div>
+  </Tooltip>
+  <Tooltip align="right">
+    <Button>Horizontal align right</Button>
+    <div slot="content">...</div>
+  </Tooltip>
         `}
       </div>
     </div>
@@ -1224,11 +1258,11 @@
       </div>
       <div class="uizg-previewCode">
         {`
-          <ToggleGroup let:current let:setCurrent>
-            <p on:click={() => setCurrent(1)}>Item 1 {current == 1 ? '(selected)' : ''}</p>
-            <p on:click={() => setCurrent(2)}>Item 2 {current == 2 ? '(selected)' : ''}</p>
-            <p on:click={() => setCurrent(3)}>Item 3 {current == 3 ? '(selected)' : ''}</p>
-          </ToggleGroup>
+  <ToggleGroup let:current let:setCurrent>
+    <p on:click={() => setCurrent(1)}>Item 1 {current == 1 ? '(selected)' : ''}</p>
+    <p on:click={() => setCurrent(2)}>Item 2 {current == 2 ? '(selected)' : ''}</p>
+    <p on:click={() => setCurrent(3)}>Item 3 {current == 3 ? '(selected)' : ''}</p>
+  </ToggleGroup>
         `}
       </div>
     </div>
@@ -1246,14 +1280,14 @@
       </div>
       <div class="uizg-previewCode">
         {`
-          <ToggleGroup current={2} let:current let:setCurrent>
-            <Button value={1} selected={current == 1} on:click={setCurrent}>Tab 1</Button>
-            <Button value={2} selected={current == 2} on:click={setCurrent}>Tab 2</Button>
-            <Button value={3} selected={current == 3} on:click={setCurrent}>Tab 3</Button>
+  <ToggleGroup current={2} let:current let:setCurrent>
+    <Button value={1} selected={current == 1} on:click={setCurrent}>Tab 1</Button>
+    <Button value={2} selected={current == 2} on:click={setCurrent}>Tab 2</Button>
+    <Button value={3} selected={current == 3} on:click={setCurrent}>Tab 3</Button>
 
-            <!-- Content logic here -->
-            <p>Current Tab is {current}</p>
-          </ToggleGroup>
+    <!-- Content logic here -->
+    <p>Current Tab is {current}</p>
+  </ToggleGroup>
         `}
       </div>
     </div>
@@ -1269,15 +1303,15 @@
       </div>
       <div class="uizg-previewCode">
         {`
-          <script>
-            let currentTab = 1;
-          </script>
-          <ToggleGroup bind:current={currentTab} let:current let:setCurrent>
-            <Button value={1} selected={current == 1} on:click={setCurrent}>Tab 1</Button>
-            <Button value={2} selected={current == 2} on:click={setCurrent}>Tab 2</Button>
-            <Button value={3} selected={current == 3} on:click={setCurrent}>Tab 3</Button>
-          </ToggleGroup>
-          <p>Current Tab is {currentTab}</p>
+  <script>
+    let currentTab = 1;
+  </script>
+  <ToggleGroup bind:current={currentTab} let:current let:setCurrent>
+    <Button value={1} selected={current == 1} on:click={setCurrent}>Tab 1</Button>
+    <Button value={2} selected={current == 2} on:click={setCurrent}>Tab 2</Button>
+    <Button value={3} selected={current == 3} on:click={setCurrent}>Tab 3</Button>
+  </ToggleGroup>
+  <p>Current Tab is {currentTab}</p>
         `}
       </div>
     </div>
@@ -1292,11 +1326,11 @@
       </div>
       <div class="uizg-previewCode">
         {`
-          <ToggleGroup current={'Item 2'} let:current let:setCurrent>
-            {#each ['Item 1', 'Item 2', 'Item 3'] as option}
-              <div><Checkbox value={option} checked={current == option} on:check={setCurrent} label={option} /></div>
-            {/each}
-          </ToggleGroup>
+  <ToggleGroup current={'Item 2'} let:current let:setCurrent>
+    {#each ['Item 1', 'Item 2', 'Item 3'] as option}
+      <div><Checkbox value={option} checked={current == option} on:check={setCurrent} label={option} /></div>
+    {/each}
+  </ToggleGroup>
         `}
       </div>
     </div>
@@ -1311,11 +1345,11 @@
       </div>
       <div class="uizg-previewCode">
         {`
-        <ToggleGroup current={1} let:current let:setCurrent>
-          <Collapsible value={1} collapsed={current != 1} on:expand={setCurrent} title="Item 1">...</Collapsible>
-          <Collapsible value={2} collapsed={current != 2} on:expand={setCurrent} title="Item 2">...</Collapsible>
-          <Collapsible value={3} collapsed={current != 3} on:expand={setCurrent} title="Item 3">...</Collapsible>
-        </ToggleGroup>
+  <ToggleGroup current={1} let:current let:setCurrent>
+    <Collapsible value={1} collapsed={current != 1} on:expand={setCurrent} title="Item 1">...</Collapsible>
+    <Collapsible value={2} collapsed={current != 2} on:expand={setCurrent} title="Item 2">...</Collapsible>
+    <Collapsible value={3} collapsed={current != 3} on:expand={setCurrent} title="Item 3">...</Collapsible>
+  </ToggleGroup>
         `}
       </div>
     </div>
@@ -1339,11 +1373,11 @@
       </div>
       <div class="uizg-previewCode">
         {`
-          <Slider />
-          <Slider value={20} decimals={2} knobLabels />
-          <Slider step={20} min={40} max={200} stepLabels />
-          <Slider range valueStart={20} value={70} labels />
-          <Slider min={0} max={200} minValue={40} maxValue={160} valueStart={40} step={20} labels />
+  <Slider />
+  <Slider value={20} decimals={2} knobLabels />
+  <Slider step={20} min={40} max={200} stepLabels />
+  <Slider range valueStart={20} value={70} labels />
+  <Slider min={0} max={200} minValue={40} maxValue={160} valueStart={40} step={20} labels />
         `}
       </div>
     </div>
