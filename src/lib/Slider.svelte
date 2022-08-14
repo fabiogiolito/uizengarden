@@ -131,7 +131,7 @@
     if (!knobFocused) return;
 
     let currentValue = knobFocused == 'start' ? valueStart : value;
-    let delta = e.shiftKey ? bigNudge : step || nudge;
+    let delta = step || (e.shiftKey ? bigNudge : nudge); // Step disables nudge/bigNudge values
 
     // Increase
     if (e.key == "ArrowRight" || e.key == "ArrowUp") {
