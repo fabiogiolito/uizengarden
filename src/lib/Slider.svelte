@@ -159,7 +159,7 @@
     // Clicked on track
     if (container.contains(e.srcElement)) {
 
-      knobActive = 'end'; // activate end knob
+      knobActive = knobActive || 'end'; // activate end knob if nothing active
       handlePointerMove(e); // move knob
 
     // Clicked outside track
@@ -299,7 +299,7 @@
             {knobFocused == 'start' ? classKnobFocused : ''}
           "
           style="left: {percent(valueStart, min, max)}%;"
-          on:pointerdown|stopPropagation={() => handlePointerDown('start')}
+          on:pointerdown={() => handlePointerDown('start')}
           on:pointerup={() => handlePointerUp('start')}
           on:focus={() => handleKnobFocus('start')}
           on:blur={() => handleKnobBlur('start')}
@@ -318,7 +318,7 @@
           {knobFocused == 'end' ? classKnobFocused : ''}
         "
         style="left: {percent(value, min, max)}%;"
-        on:pointerdown|stopPropagation={() => handlePointerDown('end')}
+        on:pointerdown={() => handlePointerDown('end')}
         on:pointerup={() => handlePointerUp('end')}
         on:focus={() => handleKnobFocus('end')}
         on:blur={() => handleKnobBlur('end')}
