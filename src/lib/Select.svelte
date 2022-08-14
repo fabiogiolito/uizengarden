@@ -21,11 +21,12 @@
   export let options = [];
   export let labelKey = null; // If options are objects, which object key should be used
 
+  export let title = null; // Fixed title on trigger
   export let placeholder = null; // If has a placeholder it also means it can be null
 
   export let multiselect = false; // Select multiple items (false = single select)
 
-  export let selected = placeholder ? [] : [options[0]]; // Selected options (value)
+  export let selected = (title || placeholder) ? [] : [options[0]]; // Selected options (value)
   export let focused = selected[0]; // Which option is focused or hovered
 
   export let classOption = "select__option";
@@ -170,7 +171,7 @@
   <!-- Trigger -->
   <slot name="trigger" slot="trigger" {selected}>
     <Button iconRight={IconChevronDown}>
-      <slot name="label" {selected}>{label}</slot>
+      <slot name="label" {selected}>{title || label}</slot>
     </Button>
   </slot>
 

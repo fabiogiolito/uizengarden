@@ -836,12 +836,16 @@
         <Select options={['one', 'two', 'three']} placeholder="Pick one" />
         <Select options={['one', 'two', 'three']} placeholder="Pick multiple" multiselect />
         <Select options={['one', 'two', 'three']} />
+        <Select options={['Recent', 'Popular', 'Trending']} title="Sort by" />
+        <Select options={['Recent', 'Popular', 'Trending']} title="Sort by" selected="Recent" />
       </div>
       <div class="uizg-previewCode">
         {`
           <Select options={['one', 'two', 'three']} placeholder="Pick one" />
           <Select options={['one', 'two', 'three']} placeholder="Pick multiple" multiselect />
           <Select options={['one', 'two', 'three']} />
+          <Select options={['Recent', 'Popular', 'Trending']} title="Sort by" />
+          <Select options={['Recent', 'Popular', 'Trending']} title="Sort by" selected="Recent" />
         `}
       </div>
     </div>
