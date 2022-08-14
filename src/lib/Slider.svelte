@@ -271,7 +271,7 @@
             {minValue < valueStart && stepVal >= minValue && stepVal <= valueStart ? classStepUnselected : ''}
             {stepVal >= valueStart && stepVal <= value ? classStepSelected : ''}
             {stepVal > value && stepVal <= maxValue ? classStepUnselected : ''}
-            {stepVal > maxValue ? {classStepDisabled} : ''}
+            {stepVal > maxValue ? classStepDisabled : ''}
           "
           style="left: {percent(stepVal, min, max)}%;"
         >
@@ -299,7 +299,7 @@
             {knobFocused == 'start' ? classKnobFocused : ''}
           "
           style="left: {percent(valueStart, min, max)}%;"
-          on:pointerdown={() => handlePointerDown('start')}
+          on:pointerdown|stopPropagation={() => handlePointerDown('start')}
           on:pointerup={() => handlePointerUp('start')}
           on:focus={() => handleKnobFocus('start')}
           on:blur={() => handleKnobBlur('start')}
@@ -318,7 +318,7 @@
           {knobFocused == 'end' ? classKnobFocused : ''}
         "
         style="left: {percent(value, min, max)}%;"
-        on:pointerdown={() => handlePointerDown('end')}
+        on:pointerdown|stopPropagation={() => handlePointerDown('end')}
         on:pointerup={() => handlePointerUp('end')}
         on:focus={() => handleKnobFocus('end')}
         on:blur={() => handleKnobBlur('end')}
