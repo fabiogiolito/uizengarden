@@ -982,10 +982,14 @@
     <div class="uizg-previewArea">
       <div class="uizg-previewElement">
         <Checkbox />
+        <Checkbox type="radio" />
+        <Checkbox type="switch" />
       </div>
       <div class="uizg-previewCode">
         {`
   <Checkbox />
+  <Checkbox type="radio" />
+  <Checkbox type="switch" />
         `}
       </div>
     </div>
@@ -1003,14 +1007,14 @@
 
     <div class="uizg-previewArea">
       <div class="uizg-previewElement">
-        <Checkbox>
+        <Checkbox type="switch">
           <p>Custom label</p>
           <small>With slot</small>
         </Checkbox>
       </div>
       <div class="uizg-previewCode">
         {`
-  <Checkbox>
+  <Checkbox type="switch">
     <p>Custom label</p>
     <small>With slot</small>
   </Checkbox>
@@ -1020,33 +1024,39 @@
 
     <div class="uizg-previewArea">
       <div class="uizg-previewElement">
-        <Checkbox label="Custom checkbox icon" icon={IconPenTool} />
+        <Checkbox label="Custom icon" icon={IconPenTool} checked />
+        <Checkbox label="Custom icon" icon={IconPenTool} checked type="radio" />
       </div>
       <div class="uizg-previewCode">
         {`
-  <Checkbox label="Custom checkbox icon" let:checked>
-    <svelte:component slot="checkbox"
-      class="icon checkbox__icon"
-      this={checked ? IconPenTool : null}
-    />
-  </Checkbox>
+  <Checkbox label="Custom icon" icon={IconPenTool} checked />
+  <Checkbox label="Custom icon" icon={IconPenTool} checked type="radio" />
         `}
       </div>
     </div>
 
     <div class="uizg-previewArea">
       <div class="uizg-previewElement">
-        <Checkbox label="Custom checkbox icon slot" let:checked>
-          <svelte:component slot="checkbox" class="icon checkbox__icon" size="sm" this={checked ? IconPenTool : null} />
+        <Checkbox label="Custom icon slot" checked>
+          <span slot="icon" let:checked>{ checked ? 'Y' : 'N' }</span>
+        </Checkbox>
+        <Checkbox label="Custom icon slot" checked type="radio">
+          <span slot="icon" let:checked>{ checked ? 'Y' : 'N' }</span>
+        </Checkbox>
+        <Checkbox label="Custom icon slot" checked type="switch">
+          <span slot="icon" let:checked>{ checked ? 'Y' : 'N' }</span>
         </Checkbox>
       </div>
       <div class="uizg-previewCode">
         {`
-  <Checkbox label="Custom checkbox icon" let:checked>
-    <svelte:component slot="checkbox"
-      class="icon checkbox__icon"
-      this={checked ? IconPenTool : null}
-    />
+  <Checkbox label="Custom icon slot" checked>
+    <span slot="icon" let:checked>{ checked ? 'Y' : 'N' }</span>
+  </Checkbox>
+  <Checkbox label="Custom icon slot" checked type="radio">
+    <span slot="icon" let:checked>{ checked ? 'Y' : 'N' }</span>
+  </Checkbox>
+  <Checkbox label="Custom icon slot" checked type="switch">
+    <span slot="icon" let:checked>{ checked ? 'Y' : 'N' }</span>
   </Checkbox>
         `}
       </div>
@@ -1320,7 +1330,7 @@
       <div class="uizg-previewElement">
         <ToggleGroup current={'Item 2'} let:current let:setCurrent>
           {#each ['Item 1', 'Item 2', 'Item 3'] as option}
-            <div><Checkbox value={option} checked={current == option} on:check={setCurrent} label={option} /></div>
+            <div><Checkbox type="radio" value={option} checked={current == option} on:check={setCurrent} label={option} /></div>
           {/each}
         </ToggleGroup>
       </div>
