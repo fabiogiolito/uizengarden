@@ -17,8 +17,11 @@
   import IconCopy from "$lib/icons/IconCopy.svelte";
   import IconDownloadCloud from "$lib/icons/IconDownloadCloud.svelte";
   import IconCircle from "$lib/icons/IconCircle.svelte";
-  import IconChevronDown from "$lib/icons/IconChevronDown.svelte";
+  import IconChevronLeft from "$lib/icons/IconChevronLeft.svelte";
   import IconChevronRight from "$lib/icons/IconChevronRight.svelte";
+  import IconChevronDown from "$lib/icons/IconChevronDown.svelte";
+  import IconChevronUp from "$lib/icons/IconChevronUp.svelte";
+  import IconDot from "$lib/icons/IconDot.svelte";
   import IconAtSign from "$lib/icons/IconAtSign.svelte";
   import IconUser from "$lib/icons/IconUser.svelte";
   import IconPenTool from "$lib/icons/IconPenTool.svelte";
@@ -1388,6 +1391,35 @@
   <Slider step={20} min={40} max={200} stepLabels />
   <Slider range valueStart={20} value={70} labels />
   <Slider min={0} max={200} minValue={40} maxValue={160} valueStart={40} step={20} labels />
+        `}
+      </div>
+    </div>
+
+    <div class="uizg-previewArea">
+      <div class="uizg-previewElement">
+        <Slider range icon={IconChevronLeft} iconStart={IconChevronRight} iconFocused={IconDot} iconStartFocused={IconDot} />
+        <Slider step="12.5" decimals="1" labelMin="🌕" labelMax="🌕" let:value>
+          <span slot="icon">
+            {["🌕", "🌖", "🌗", "🌘", "🌑", "🌒", "🌓", "🌔", "🌕"][value * 8 / 100]}
+          </span>
+        </Slider>
+        <Slider>
+          <span slot="labelMin">🐶</span>
+          <span slot="labelMax">🐱</span>
+        </Slider>
+      </div>
+      <div class="uizg-previewCode">
+        {`
+  <Slider range icon={IconChevronLeft} iconStart={IconChevronRight} iconFocused={IconDot} iconStartFocused={IconDot} />
+  <Slider step="12.5" decimals="1" labelMin="🌕" labelMax="🌕" let:value>
+    <span slot="icon">
+      {["🌕", "🌖", "🌗", "🌘", "🌑", "🌒", "🌓", "🌔", "🌕"][value * 8 / 100]}
+    </span>
+  </Slider>
+  <Slider>
+    <span slot="labelMin">🐶</span>
+    <span slot="labelMax">🐱</span>
+  </Slider>
         `}
       </div>
     </div>

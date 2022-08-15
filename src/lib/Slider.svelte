@@ -1,6 +1,8 @@
 <script>
   import { createEventDispatcher } from "svelte";
 
+  import IconDot from "$lib/icons/IconDot.svelte";
+
   const dispatch = createEventDispatcher();
 
   // Track value goes from 0 to 100
@@ -28,6 +30,16 @@
   export let trackLabels = labels; // min, minValue, maxValue, max
   export let knobLabels = labels; // when knob is active
   export let stepLabels = labels; // where steps are
+
+  // Custom label
+  export let labelMin = false;
+  export let labelMax = false;
+
+  // Knob icons
+  export let icon = false; // End value knob icon
+  export let iconFocused = icon; // End value knob icon when active
+  export let iconStart = icon; // Start value knob icon
+  export let iconStartFocused = icon; // Start value knob icon when active
   
   // Read only, no knobs or interactivity
   export let readonly = false;
@@ -50,13 +62,15 @@
   export let classStepSelected      = `${classBase}__step--selected`;
   export let classStepUnselected    = `${classBase}__step--unselected`;
   export let classStepValue         = `${classBase}__step__value`;
-  export let classStepValueMain         = `${classBase}__step__value--main`;
+  export let classStepValueMain     = `${classBase}__step__value--main`;
   export let classKnob              = `${classBase}__knob`;
   export let classKnobStart         = `${classBase}__knob--start`;
   export let classKnobEnd           = `${classBase}__knob--end`;
   export let classKnobActive        = `${classBase}__knob--active`;
   export let classKnobFocused       = `${classBase}__knob--focused`;
   export let classKnobValue         = `${classBase}__knob__value`;
+  export let classKnobIconContainer = `${classBase}__knob__icon-container`;
+  export let classKnobIcon          = `${classBase}__knob__icon`;
 
   let className = "";
   export { className as class }; // Extra classes
@@ -237,10 +251,23 @@
     <!-- ===== Labels ========================= -->
 
     <!-- Display min / max values -->
-    {#if trackLabels}
+    {#if trackLabels || labelMin || labelMax || $$slots.labelMin || $$slots.labelMax}
 
-      <div class="{classLabel} {classLabelMin}" style="left: 0%;">{min}</div>
-      <div class="{classLabel} {classLabelMax}" style="right: 0%;">{max}</div>
+      {#if trackLabels || labelMin || $$slots.labelMin}
+        <div class="{classLabel} {classLabelMin}" style="left: 0%;">
+          <slot name="labelMin">
+            {labelMin || min}
+          </slot>
+        </div>
+      {/if}
+
+      {#if trackLabels || labelMin || $$slots.labelMin}
+        <div class="{classLabel} {classLabelMax}" style="right: 0%;">
+          <slot name="labelMax">
+            {labelMax || max}
+          </slot>
+        </div>
+      {/if}
 
       {#if minValue > min}
         <div
@@ -307,6 +334,22 @@
           {#if knobLabels && (knobActive == 'start' || knobFocused == 'start')}
             <span class={classKnobValue}>{valueStart}</span>
           {/if}
+
+          <!-- Icons -->
+          {#if (iconStart && knobFocused !== 'start' && knobActive !== 'start') || $$slots.iconStart}
+            <span class={classKnobIconContainer}>
+              <slot name="iconStart">
+                <svelte:component this={iconStart} class="icon {classKnobIcon}" />
+              </slot>
+            </span>
+          {/if}
+          {#if (iconStartFocused && (knobActive == 'start' || knobFocused == 'start')) || $$slots.iconStartFocused}
+            <span class={classKnobIconContainer}>
+              <span class="iconStartFocused">
+                <svelte:component this={iconStartFocused} class="icon {classKnobIcon}" />
+              </span>
+            </span>
+          {/if}
         </button>
       {/if}
       
@@ -325,6 +368,22 @@
       >
         {#if knobLabels && (knobActive == 'end' || knobFocused == 'end')}
           <span class={classKnobValue}>{value}</span>
+        {/if}
+
+        <!-- Icons -->
+        {#if (icon && knobFocused !== 'end' && knobActive !== 'end') || $$slots.icon}
+          <span class={classKnobIconContainer}>
+            <slot name="icon">
+              <svelte:component this={icon} class="icon {classKnobIcon}" />
+            </slot>
+          </span>
+        {/if}
+        {#if (iconFocused && (knobActive == 'end' || knobFocused == 'end')) || $$slots.iconFocused}
+          <span class={classKnobIconContainer}>
+            <slot name="iconFocused">
+              <svelte:component this={iconFocused} class="icon {classKnobIcon}" />
+            </slot>
+          </span>
         {/if}
       </button>
 
