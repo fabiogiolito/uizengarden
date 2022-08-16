@@ -1458,7 +1458,6 @@
         <Slider range
           on:changeStart={(e) => console.log('Changed Start Value', e.detail)}
           on:changeEnd={(e) => console.log('Changed End Value', e.detail)}
-          let:valueStart let:value let:min
         />
       </div>
       <div class="uizg-previewCode">
@@ -1466,7 +1465,6 @@
   <Slider range
     on:changeStart={(e) => console.log('Changed Start Value', e.detail)}
     on:changeEnd={(e) => console.log('Changed End Value', e.detail)}
-    let:valueStart let:value let:min
   />
         `}
       </div>
