@@ -26,6 +26,8 @@
   import IconUser from "$lib/icons/IconUser.svelte";
   import IconPenTool from "$lib/icons/IconPenTool.svelte";
   import IconHeart from "$lib/icons/IconHeart.svelte";
+  import IconBell from "$lib/icons/IconBell.svelte";
+  import IconBellOff from "$lib/icons/IconBellOff.svelte";
 
   let modalOpen = false;
   let modalRef;
@@ -1041,25 +1043,52 @@
     <div class="uizg-previewArea">
       <div class="uizg-previewElement">
         <Checkbox label="Custom icon slot" checked>
-          <span slot="icon" let:checked>{ checked ? 'Y' : 'N' }</span>
+          <svelte:component this={checked ? IconBell : IconBellOff} size="xs" slot="icon" let:checked />
         </Checkbox>
         <Checkbox label="Custom icon slot" checked type="radio">
-          <span slot="icon" let:checked>{ checked ? 'Y' : 'N' }</span>
+          <svelte:component this={checked ? IconBell : IconBellOff} size="xs" slot="icon" let:checked />
         </Checkbox>
         <Checkbox label="Custom icon slot" checked type="switch">
-          <span slot="icon" let:checked>{ checked ? 'Y' : 'N' }</span>
+          <svelte:component this={checked ? IconBell : IconBellOff} size="xs" slot="icon" let:checked />
         </Checkbox>
       </div>
       <div class="uizg-previewCode">
         {`
   <Checkbox label="Custom icon slot" checked>
-    <span slot="icon" let:checked>{ checked ? 'Y' : 'N' }</span>
+    <svelte:component this={checked ? IconBell : IconBellOff} size="xs" slot="icon" let:checked />
   </Checkbox>
   <Checkbox label="Custom icon slot" checked type="radio">
-    <span slot="icon" let:checked>{ checked ? 'Y' : 'N' }</span>
+    <svelte:component this={checked ? IconBell : IconBellOff} size="xs" slot="icon" let:checked />
   </Checkbox>
   <Checkbox label="Custom icon slot" checked type="switch">
-    <span slot="icon" let:checked>{ checked ? 'Y' : 'N' }</span>
+    <svelte:component this={checked ? IconBell : IconBellOff} size="xs" slot="icon" let:checked />
+  </Checkbox>
+        `}
+      </div>
+    </div>
+
+    <div class="uizg-previewArea">
+      <div class="uizg-previewElement">
+        <Checkbox label="Custom icon slot" checked>
+          <span slot="icon" let:checked style="font-size: 0.6em; font-weight: bold;">{ checked ? 'Y' : 'N' }</span>
+        </Checkbox>
+        <Checkbox label="Custom icon slot" checked type="radio">
+          <span slot="icon" let:checked style="font-size: 0.6em; font-weight: bold;">{ checked ? 'Y' : 'N' }</span>
+        </Checkbox>
+        <Checkbox label="Custom icon slot" checked type="switch">
+          <span slot="icon" let:checked style="font-size: 0.6em; font-weight: bold;">{ checked ? 'Y' : 'N' }</span>
+        </Checkbox>
+      </div>
+      <div class="uizg-previewCode">
+        {`
+  <Checkbox label="Custom icon slot" checked>
+    <span slot="icon" let:checked style="font-size: 0.6em; font-weight: bold;">{ checked ? 'Y' : 'N' }</span>
+  </Checkbox>
+  <Checkbox label="Custom icon slot" checked type="radio">
+    <span slot="icon" let:checked style="font-size: 0.6em; font-weight: bold;">{ checked ? 'Y' : 'N' }</span>
+  </Checkbox>
+  <Checkbox label="Custom icon slot" checked type="switch">
+    <span slot="icon" let:checked style="font-size: 0.6em; font-weight: bold;">{ checked ? 'Y' : 'N' }</span>
   </Checkbox>
         `}
       </div>
@@ -1398,28 +1427,47 @@
     <div class="uizg-previewArea">
       <div class="uizg-previewElement">
         <Slider range icon={IconChevronLeft} iconStart={IconChevronRight} iconFocused={IconDot} iconStartFocused={IconDot} />
-        <Slider step="12.5" decimals="1" labelMin="🌕" labelMax="🌕" let:value>
-          <span slot="icon">
-            {["🌕", "🌖", "🌗", "🌘", "🌑", "🌒", "🌓", "🌔", "🌕"][value * 8 / 100]}
+        <Slider step="12.5" decimals="1" labelMin="☹️" labelMax="😁" let:value>
+          <span slot="icon" style="font-size: 2em;">
+            {["☹️", "🙁", "😔", "😒", "😌", "🙂", "😀", "😄", "😁"][value * 8 / 100]}
           </span>
         </Slider>
-        <Slider>
-          <span slot="labelMin">🐶</span>
-          <span slot="labelMax">🐱</span>
+        <Slider let:min let:max let:value>
+          <span slot="labelMin">🐶 {value == min ? 'woof' : ''}</span>
+          <span slot="labelMax">{value == max ? 'meow' : ''} 🐱</span>
         </Slider>
       </div>
       <div class="uizg-previewCode">
         {`
   <Slider range icon={IconChevronLeft} iconStart={IconChevronRight} iconFocused={IconDot} iconStartFocused={IconDot} />
-  <Slider step="12.5" decimals="1" labelMin="🌕" labelMax="🌕" let:value>
-    <span slot="icon">
-      {["🌕", "🌖", "🌗", "🌘", "🌑", "🌒", "🌓", "🌔", "🌕"][value * 8 / 100]}
+  <Slider step="12.5" decimals="1" labelMin="☹️" labelMax="😁" let:value>
+    <span slot="icon" style="font-size: 2em;">
+      {["☹️", "🙁", "😔", "😒", "😌", "🙂", "😀", "😄", "😁"][value * 8 / 100]}
     </span>
   </Slider>
-  <Slider>
-    <span slot="labelMin">🐶</span>
-    <span slot="labelMax">🐱</span>
+  <Slider let:min let:max let:value>
+    <span slot="labelMin">🐶 {value == min ? 'woof' : ''}</span>
+    <span slot="labelMax">{value == max ? 'meow' : ''} 🐱</span>
   </Slider>
+        `}
+      </div>
+    </div>
+
+    <div class="uizg-previewArea">
+      <div class="uizg-previewElement">
+        <Slider range
+          on:changeStart={(e) => console.log('Changed Start Value', e.detail)}
+          on:changeEnd={(e) => console.log('Changed End Value', e.detail)}
+          let:valueStart let:value let:min
+        />
+      </div>
+      <div class="uizg-previewCode">
+        {`
+  <Slider range
+    on:changeStart={(e) => console.log('Changed Start Value', e.detail)}
+    on:changeEnd={(e) => console.log('Changed End Value', e.detail)}
+    let:valueStart let:value let:min
+  />
         `}
       </div>
     </div>
