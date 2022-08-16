@@ -18,6 +18,7 @@
   // ====================================
   // Select settings
 
+  // Data
   export let options = [];
   export let labelKey = null; // If options are objects, which object key should be used
 
@@ -26,6 +27,7 @@
 
   export let multiselect = false; // Select multiple items (false = single select)
 
+  // Options state
   export let selected = (title || placeholder) ? [] : [options[0]]; // Selected options (value)
   export let focused = selected[0]; // Which option is focused or hovered
 
@@ -33,15 +35,38 @@
   export let classOptionSelected = "select__option--selected";
   export let classOptionFocused = "select__option--focused";
 
+  // export let input = false; // Trigger is input field
+
+  // Show filter input
+  export let filter = false; // Show filter input on list
+  export let filterPlaceholder = filter && filter !== true ? filter : "Filter"; // Placeholder text for filter input
+  export let filterInput = false; // Ref to autofocus input
+
   let filterTimer = null;
   let filterString = "";
 
   $: label = getLabel(selected);
   $: focused = selected.slice(-1)[0]; // Focus on last selected
 
+  $: filteredOptions = filter ? getFilteredOptions(options, filterString) : options;
+  $: if (!open) filterString = "";
+  $: if (open) {
+    window.setTimeout(() => {
+      if (filterInput) filterInput.focus();
+    }, 200)
+  };
+
 
   // ====================================
   // Functions
+
+  function getFilteredOptions(opt, string) {
+    if (!string) return opt;
+    return opt.filter(o => {
+      const keyString = labelKey ? o[labelKey].toLowerCase() : o.toLowerCase();
+      return keyString.match(string.toLowerCase());
+    })
+  }
 
   function getLabel(selected) {
     if (selected.length > 1) {
@@ -68,8 +93,8 @@
       // Cannot multiselect, so replace selection
       selected = [option];
     }
-    // Auto close if can't multiselect
-    if (!multiselect) open = false;
+
+    if (!multiselect) open = false; // Auto close if can't multiselect
   }
 
   function clearSelection() {
@@ -86,7 +111,7 @@
       e.preventDefault();
       selectOption(focused);
     }
-    if (e.key == "Backspace" && multiselect && placeholder) {
+    if (e.key == "Backspace" && multiselect && placeholder && !filter) {
       clearSelection();
     }
     if (isLetter(e.key) || isNumber(e.key)) {
@@ -96,6 +121,8 @@
   }
 
   function updateFilterString(key) {
+    if (filter) return; // Filter input present, so no need to manually manage this
+
     // Append filter string
     filterString = `${filterString}${key}`;
 
@@ -105,33 +132,33 @@
     // Set timer again: reset filter string after 1s
     filterTimer = window.setTimeout(() => {
       filterString = "";
-    }, 1000);
+    }, 500);
   }
 
   function focusFirstMatch(string) {
-    if (!filterString) focused = options[0]; // No filterString, focus on first item
+    if (!filterString) focused = filteredOptions[0]; // No filterString, focus on first item
     let match;
     if (labelKey) {
-      match = options.find(option => option[labelKey].toLowerCase().startsWith(filterString));
+      match = filteredOptions.find(option => option[labelKey].toLowerCase().startsWith(filterString));
     } else {
-      match = options.find(option => option.toLowerCase().startsWith(filterString));
+      match = filteredOptions.find(option => option.toLowerCase().startsWith(filterString));
     }
     if (match) focused = match; // Found match, set focused
   }
 
   function changeFocus(key) {
-    let currentIndex = options.indexOf(focused); // Index or -1
-    let nextIndex = key == "ArrowDown" ? currentIndex + 1 : currentIndex - 1;
+    let currentIndex = filteredOptions.indexOf(focused); // Index or -1
+    let nextIndex = (key == "ArrowDown") ? currentIndex + 1 : currentIndex - 1;
 
     if (currentIndex == -1) {
       nextIndex = 0; // Select first
     } else if (nextIndex < 0) {
-      nextIndex = options.length - 1; // Wrap back to end
-    } else if (nextIndex > options.length - 1) {
+      nextIndex = filteredOptions.length - 1; // Wrap back to end
+    } else if (nextIndex > filteredOptions.length - 1) {
       nextIndex = 0; // Wrap back to beginning
     }
 
-    focused = options[nextIndex];
+    focused = filteredOptions[nextIndex];
   }
 
   // Helpers
@@ -177,13 +204,13 @@
     </Button>
   </slot>
 
-  <!-- Clear selection -->
-  {#if multiselect && placeholder && selected.length}
-    <button on:click={clearSelection}>clear</button>
+  <!-- Filter input -->
+  {#if filter}
+    <input bind:this={filterInput} type="text" placeholder={filterPlaceholder} bind:value={filterString} />
   {/if}
 
   <!-- Menu -->
-  {#each options as option}
+  {#each filteredOptions as option}
 
     <div>
       <button
@@ -205,6 +232,12 @@
     </div>
 
   {/each}
+
+  <!-- Clear selection -->
+  {#if multiselect && placeholder && selected.length}
+    <button on:click={clearSelection}>clear</button>
+  {/if}
+
 
 </Dropdown>
 

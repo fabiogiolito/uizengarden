@@ -922,6 +922,38 @@
       </div>
     </div>
 
+
+    <div class="uizg-previewArea">
+      <div class="uizg-previewElement">
+        <Select filter options={['one', 'two', 'three']} placeholder="Pick one" />
+        <Select filter options={['one', 'two', 'three']} placeholder="Pick multiple" multiselect />
+        <Select filter placeholder="Pick one"
+          options={[{name: 'Fabio', emoji: '🦊'},{name: 'James', emoji: '🦁'},{name: 'Jessica', emoji: '🐯'}]}
+          labelKey="name"
+        />
+        <Select filter placeholder="Pick multiple"
+          options={[{name: 'Fabio', emoji: '🦊'},{name: 'James', emoji: '🦁'},{name: 'Jessica', emoji: '🐯'}]}
+          labelKey="name"
+          multiselect
+        />
+      </div>
+      <div class="uizg-previewCode">
+        {`
+  <Select filter options={['one', 'two', 'three']} placeholder="Pick one" />
+  <Select filter options={['one', 'two', 'three']} placeholder="Pick multiple" multiselect />
+  <Select filter placeholder="Pick one"
+    options={[{name: 'Fabio', emoji: '🦊'},{name: 'James', emoji: '🦁'},{name: 'Jessica', emoji: '🐯'}]}
+    labelKey="name"
+  />
+  <Select filter placeholder="Pick multiple"
+    options={[{name: 'Fabio', emoji: '🦊'},{name: 'James', emoji: '🦁'},{name: 'Jessica', emoji: '🐯'}]}
+    labelKey="name"
+    multiselect
+  />
+        `}
+      </div>
+    </div>
+
     <div class="uizg-previewArea">
       <div class="uizg-previewElement">
         <Select
