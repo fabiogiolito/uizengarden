@@ -1118,10 +1118,13 @@
     <div class="uizg-previewArea">
       <div class="uizg-previewElement">
         <p>Input trigger</p>
-        <Select input placeholder="What's your favorite fruit?" options={['apple', 'banana', 'guava', 'fig', 'orange', 'mango', 'papaya']} />
+        <p><Select input placeholder="Favorite fruit" options={['apple', 'banana', 'orange', 'mango']} /></p>
+        <p><Select input placeholder="Favorite fruit" options={['apple', 'banana', 'orange', 'mango']} selected={['mango']} /></p>
       </div>
       <div class="uizg-previewCode">
         {`
+  <Select input placeholder="Favorite fruit" options={['apple', 'banana', 'orange', 'mango']} />
+  <Select input placeholder="Favorite fruit" options={['apple', 'banana', 'orange', 'mango']} selected={['mango']} />
         `}
       </div>
     </div>

@@ -35,10 +35,6 @@
 
   export let multiselect = false; // Select multiple items (false = single select)
 
-  // Trigger is input field
-  export let input = false;
-  export let inputValue = "";
-
   // Show filter field on dropdown
   export let filter = false; // Show filter input on list
   export let filterPlaceholder = filter && filter !== true ? filter : "Filter"; // Placeholder text for filter input
@@ -48,6 +44,10 @@
   // Options state
   export let selected = (title || placeholder) ? [] : [options[0]]; // Selected options (value)
   export let focused = selected[0]; // Which option is focused or hovered
+
+  // Trigger is input field
+  export let input = false;
+  export let inputValue = selected[0];
 
   // Classes
   export let classBase = "select";
