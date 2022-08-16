@@ -5,6 +5,9 @@
   // Open state
   export let open = false;
 
+  // Reference
+  export let menu = undefined;
+
   // Classes
   export let classTrigger = "dropdown__trigger";
   export let classMenu = "dropdown__menu";
@@ -178,7 +181,7 @@
 
 <!-- Menu -->
 {#if open}
-  <div use:teleport on:click|stopPropagation transition:fly={transitionOptions} class={classMenu} {style} on:mouseenter={handleHover} on:mouseleave={handleHover}>
+  <div bind:this={menu} use:teleport on:click|stopPropagation transition:fly={transitionOptions} class={classMenu} {style} on:mouseenter={handleHover} on:mouseleave={handleHover}>
     <slot />
   </div>
 {/if}

@@ -1,4 +1,6 @@
 <script>
+  import { tick } from "svelte";
+
   import Button from "$lib/Button.svelte";
   import Dropdown from "$lib/Dropdown.svelte";
   import IconChevronDown from "$lib/icons/IconChevronDown.svelte";
@@ -8,6 +10,7 @@
 
   export let [ 
     open,                     // Open State
+    menu,                     // Reference
     classTrigger, classMenu,  // Classes
     direction, align,         // Position
     over, distance, duration, // Modifiers
@@ -139,9 +142,9 @@
     if (!filterString) focused = filteredOptions[0]; // No filterString, focus on first item
     let match;
     if (labelKey) {
-      match = filteredOptions.find(option => option[labelKey].toLowerCase().startsWith(filterString));
+      match = filteredOptions.find(option => `${option[labelKey]}`.toLowerCase().startsWith(filterString));
     } else {
-      match = filteredOptions.find(option => option.toLowerCase().startsWith(filterString));
+      match = filteredOptions.find(option => `${option}`.toLowerCase().startsWith(filterString));
     }
     if (match) focused = match; // Found match, set focused
   }
@@ -159,6 +162,14 @@
     }
 
     focused = filteredOptions[nextIndex];
+    scrollToFocusedElement();
+  }
+
+  async function scrollToFocusedElement() {
+    if (!menu) return;
+    await tick();
+    const focusedEl = menu.querySelector(`.${classOptionFocused}`);
+    focusedEl.scrollIntoView({ block: "center" });
   }
 
   // Helpers
@@ -183,7 +194,7 @@
 
 <svelte:body on:keydown={handleBodyKeyup} />
 
-<Dropdown bind:open 
+<Dropdown bind:open bind:menu
   {hover}
   {hoverDelay}
   {classTrigger}

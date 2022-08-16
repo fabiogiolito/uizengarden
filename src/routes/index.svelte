@@ -856,6 +856,17 @@
 
     <div class="uizg-previewArea">
       <div class="uizg-previewElement">
+        <Select options={[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20]} placeholder="Scroll options" />
+      </div>
+      <div class="uizg-previewCode">
+        {`
+  <Select options={[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20]} placeholder="Scroll options" />
+        `}
+      </div>
+    </div>
+
+    <div class="uizg-previewArea">
+      <div class="uizg-previewElement">
         <!-- Custom option object -->
         <Select
           options={[{name: 'Fabio', emoji: '🦊'},{name: 'James', emoji: '🦁'},{name: 'Jessica', emoji: '🐯'}]}
@@ -921,7 +932,6 @@
         `}
       </div>
     </div>
-
 
     <div class="uizg-previewArea">
       <div class="uizg-previewElement">
