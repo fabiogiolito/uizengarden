@@ -23,7 +23,7 @@
 
   // Knob values
   export let value = round((maxValue / 2) + (minValue / 2), decimals, min, max); // Value for end knob (default half)
-  export let valueStart = min; // Value for start knob (if range)
+  export let valueStart = range ? round((value / 2) + (min / 2), decimals, min, max) : min; // Value for start knob, 1/4 if range, or min
 
   // Show labels
   export let labels = false; // All labels
