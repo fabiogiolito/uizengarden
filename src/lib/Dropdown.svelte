@@ -175,8 +175,8 @@
 
 </script>
 
-<svelte:window on:scroll={closeDropdown} on:resize={closeDropdown} />
-<svelte:body on:click={handleBodyClick} on:keyup={handleKeyUp} />
+<svelte:window on:scroll={closeDropdown} on:resize={closeDropdown} on:click={handleBodyClick} />
+<svelte:body on:keyup={handleKeyUp} />
 
 
 <!-- Trigger -->
