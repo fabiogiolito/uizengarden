@@ -25,6 +25,8 @@
   export let options = [];
   export let labelKey = null; // If options are objects, which object key should be used
 
+  export let fetchOptions = null; // Function to fetch remote options
+
   export let title = null; // Fixed title on trigger
   export let placeholder = null; // If has a placeholder it also means it can be null
 
@@ -34,9 +36,12 @@
   export let selected = (title || placeholder) ? [] : [options[0]]; // Selected options (value)
   export let focused = selected[0]; // Which option is focused or hovered
 
-  export let classOption = "select__option";
-  export let classOptionSelected = "select__option--selected";
-  export let classOptionFocused = "select__option--focused";
+  export let classBase = "select";
+  export let classList = `${classBase}__list`;
+  export let classOptionContainer = `${classBase}__option-container`;
+  export let classOption = `${classBase}__option`;
+  export let classOptionSelected = `${classBase}__option--selected`;
+  export let classOptionFocused = `${classBase}__option--focused`;
 
   // export let input = false; // Trigger is input field
 
@@ -51,24 +56,30 @@
   $: label = getLabel(selected);
   $: focused = selected.slice(-1)[0]; // Focus on last selected
 
-  $: filteredOptions = filter ? getFilteredOptions(options, filterString) : options;
-  $: if (!open) filterString = "";
-  $: if (open) {
-    window.setTimeout(() => {
-      if (filterInput) filterInput.focus();
-    }, 200)
-  };
+  let filteredOptions = [];
+  $: if (options) filteredOptions = filter ? getFilteredOptions(options, filterString) : options; // Filter options based on filterString
+  
+  $: if (!open) filterString = ""; // Clear filter when closed
+  $: if (filterInput) filterInput.focus(); // Focus on filter input
 
+  $: if (filter && fetchOptions) debounce(() => { getRemoteOptions(filterString) }); // get remote options
 
   // ====================================
   // Functions
 
+  async function getRemoteOptions() {
+    if (!fetchOptions) return;
+    options = await fetchOptions(filterString);
+  }
+
   function getFilteredOptions(opt, string) {
     if (!string) return opt;
-    return opt.filter(o => {
+    const filtered = opt.filter(o => {
       const keyString = labelKey ? o[labelKey].toLowerCase() : o.toLowerCase();
       return keyString.match(string.toLowerCase());
-    })
+    });
+    focused = filtered[0];
+    return filtered;
   }
 
   function getLabel(selected) {
@@ -82,6 +93,7 @@
   }
 
   function selectOption(option) {
+    if (!option) return;
     if (selected.includes(option)) {
       if (selected.length == 1 && !placeholder) {
         // Can't unselect because it's the only one selected and can't be null
@@ -169,7 +181,7 @@
     if (!menu) return;
     await tick();
     const focusedEl = menu.querySelector(`.${classOptionFocused}`);
-    focusedEl.scrollIntoView({ block: "center" });
+    if (focusedEl) focusedEl.scrollIntoView({ block: "center" });
   }
 
   // Helpers
@@ -188,6 +200,15 @@
       return false;
     }
     return (key >= '0' && key <= '9');
+  }
+
+  let debounceTimer = null;
+
+  function debounce(callback) {
+    clearTimeout(debounceTimer);
+    debounceTimer = setTimeout(() => {
+      callback();
+    }, 500);
   }
 
 </script>
@@ -220,29 +241,30 @@
     <input bind:this={filterInput} type="text" placeholder={filterPlaceholder} bind:value={filterString} />
   {/if}
 
-  <!-- Menu -->
-  {#each filteredOptions as option}
+  <slot name="prependMenu" />
 
-    <div>
-      <button
-        on:click={() => selectOption(option)}
-        on:mouseenter={() => focused = option}
-        class="
-          {classOption}
-          {selected.includes(option) ? classOptionSelected : ''}
-          {focused == option ? classOptionFocused : ''}
-        "
-      >
+  <div class={classList}>
+    {#each filteredOptions as option}
+      <div class={classOptionContainer}>
+        <button
+          on:click={() => selectOption(option)}
+          on:mouseenter={() => focused = option}
+          class="
+            {classOption}
+            {selected.includes(option) ? classOptionSelected : ''}
+            {focused == option ? classOptionFocused : ''}
+          "
+        >
+          <!-- Override option code with slot -->
+          <slot name="option" {option} isSelected={selected.includes(option)} isFocused={focused == option}>
+            {labelKey ? option[labelKey] : option}
+          </slot>
+        </button>
+      </div>
+    {/each}
+  </div>
 
-        <!-- Override option code with slot -->
-        <slot name="option" {option} isSelected={selected.includes(option)} isFocused={focused == option}>
-          {labelKey ? option[labelKey] : option}
-        </slot>
-
-      </button>
-    </div>
-
-  {/each}
+  <slot name="appendMenu" />
 
   <!-- Clear selection -->
   {#if multiselect && placeholder && selected.length}
