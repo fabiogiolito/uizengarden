@@ -32,6 +32,7 @@
   export let placeholder = null; // If has a placeholder it also means it can be null
   export let label = null; // Label based on selected items
   export let iconRight = IconChevronDown;
+  export let labelEmpty = "No results";
 
   export let multiselect = false; // Select multiple items (false = single select)
 
@@ -144,8 +145,14 @@
       changeFocusedOption(e.key == "ArrowDown" ? 1 : -1);
     }
 
-    // Select focused option with return or spacebar
-    if (e.key == "Enter" || e.key == " ") {
+    // Select focused option with return
+    if (e.key == "Enter") {
+      e.preventDefault();
+      selectOption(focused);
+    }
+
+    // Select focused option with spacebar
+    if (e.key == " " && !filter && !input) {
       e.preventDefault();
       selectOption(focused);
     }
@@ -310,11 +317,13 @@
         </button>
       </div>
     {:else}
-      <div class={classEmptyLabel}>
-        <slot name="empty">
-          <em>No results</em>
-        </slot>
-      </div>
+      <slot name="empty" {inputValue}>
+        {#if labelEmpty}
+          <div class={classEmptyLabel}>
+            <em>{labelEmpty}</em>
+          </div>
+        {/if}
+      </slot>
     {/each}
   </div>
 

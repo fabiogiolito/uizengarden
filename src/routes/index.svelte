@@ -1120,11 +1120,19 @@
         <p>Input trigger</p>
         <p><Select input placeholder="Favorite fruit" options={['apple', 'banana', 'orange', 'mango']} /></p>
         <p><Select input placeholder="Favorite fruit" options={['apple', 'banana', 'orange', 'mango']} selected={['mango']} /></p>
+        <p>
+          <Select input placeholder="Favorite fruit" options={['apple', 'banana', 'orange', 'mango']} let:inputValue>
+            <button slot="empty" on:click={() => alert("create " + inputValue)}>Create new</button>
+          </Select>
+        </p>
       </div>
       <div class="uizg-previewCode">
         {`
   <Select input placeholder="Favorite fruit" options={['apple', 'banana', 'orange', 'mango']} />
   <Select input placeholder="Favorite fruit" options={['apple', 'banana', 'orange', 'mango']} selected={['mango']} />
+  <Select input placeholder="Favorite fruit" options={['apple', 'banana', 'orange', 'mango']} let:inputValue>
+    <button slot="empty" on:click={() => alert("create " + inputValue)}>Create new</button>
+  </Select>
         `}
       </div>
     </div>
