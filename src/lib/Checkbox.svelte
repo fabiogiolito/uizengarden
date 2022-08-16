@@ -49,7 +49,7 @@
     <span class={classIconContainer}>
       <slot name="icon" {checked}>
         {#if checked && type !== 'switch'}
-          <svelte:component this={icon} size="sm" class="icon {classIcon}" />
+          <svelte:component this={icon} size="sm" class={classIcon} />
         {/if}
       </slot>
     </span>
