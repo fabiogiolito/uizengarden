@@ -5,18 +5,19 @@
   export let text = "";
   export let open = false;
 
-  // Classes
-  export let classBase = "tooltip";
-  export let classTrigger = `${classBase}__trigger`;
-  export let classContent = `${classBase}__content`;
-
-  let className = "";
-  export { className as class }; // Extra classes
-
   // Position
   export let direction = 'up'; // up, down, left, right
   export let align = 'center'; // center, left, right, top, bottom
   export let distance = 4; // in px
+
+  // Classes
+  export let classBase = "tooltip";
+  export let classTrigger = `${classBase}__trigger`;
+  export let classContent = `${classBase}__content`;
+  export let classDirection = `${classBase}--${direction}-${align}`;
+
+  let className = "";
+  export { className as class }; // Extra classes
 
   // Delay
   export let delay = 100;
@@ -149,7 +150,7 @@
 
 <!-- Text prop / Content slot -->
 {#if open}
-  <div class="{classBase} {className}" use:teleport transition:fade={{duration}} {style}>
+  <div class="{classBase} {className} {classDirection}" use:teleport transition:fade={{duration}} {style}>
     <slot name="content">
       <div class={classContent}>
         {text}

@@ -8,14 +8,19 @@
   // Reference
   export let menu = undefined;
 
-  // Classes
-  export let classTrigger = "dropdown__trigger";
-  export let classMenu = "dropdown__menu";
-
   // Position
   export let direction = 'down'; // up, down, left, right
   export let align = ['up', 'down'].includes(direction) ? 'left' : 'top'; // center, left, right, top, bottom
-  
+
+  // Classes
+  export let baseClass = "dropdown";
+  export let classTrigger   = `${baseClass}__trigger`;
+  export let classMenu      = `${baseClass}__menu`;
+  export let classDirection = `${baseClass}--${direction}-${align}`;
+
+  let className = "";
+  export { className as class }; // extra classes
+
   // Modifiers
   export let over = false; // Display menu over trigger
   export let distance = 4; // in px
@@ -175,13 +180,28 @@
 
 
 <!-- Trigger -->
-<div bind:this={triggerContainer} on:click={toggleDropdown} class={classTrigger} on:mouseenter={handleHover} on:mouseleave={handleHover}>
+<div
+  bind:this={triggerContainer}
+  on:click={toggleDropdown}
+  class={classTrigger}
+  on:mouseenter={handleHover}
+  on:mouseleave={handleHover}
+>
   <slot name="trigger" {open} />
 </div>
 
 <!-- Menu -->
 {#if open}
-  <div bind:this={menu} use:teleport on:click|stopPropagation transition:fly={transitionOptions} class={classMenu} {style} on:mouseenter={handleHover} on:mouseleave={handleHover}>
+  <div
+    bind:this={menu}
+    use:teleport
+    on:click|stopPropagation
+    on:mouseenter={handleHover}
+    on:mouseleave={handleHover}
+    transition:fly={transitionOptions}
+    class="{classMenu} {classDirection} {className}"
+    {style}
+  >
     <slot />
   </div>
 {/if}
