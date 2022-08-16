@@ -17,173 +17,204 @@
     hover, hoverDelay,        // Open on hover
   ] = Array();
 
+  let dropdownRef;
 
   // ====================================
   // Select settings
 
   // Data
-  export let options = [];
-  export let labelKey = null; // If options are objects, which object key should be used
+  export let options = []; // Array of strings or objects
+  export let labelKey = null; // If options are objects, which object key should be used as option label
 
   export let fetchOptions = null; // Function to fetch remote options
 
-  export let title = null; // Fixed title on trigger
+  export let title = null; // Fixed title on trigger (overrides placeholder and label)
   export let placeholder = null; // If has a placeholder it also means it can be null
+  export let label = null; // Label based on selected items
+  export let iconRight = IconChevronDown;
 
   export let multiselect = false; // Select multiple items (false = single select)
+
+  // Trigger is input field
+  export let input = false;
+  export let inputValue = "";
+
+  // Show filter field on dropdown
+  export let filter = false; // Show filter input on list
+  export let filterPlaceholder = filter && filter !== true ? filter : "Filter"; // Placeholder text for filter input
+  export let filterInput = false; // Ref to autofocus input
+  export let filterValue = "";
 
   // Options state
   export let selected = (title || placeholder) ? [] : [options[0]]; // Selected options (value)
   export let focused = selected[0]; // Which option is focused or hovered
 
+  // Classes
   export let classBase = "select";
   export let classList = `${classBase}__list`;
+  export let classEmpty = `${classBase}__list--empty`;
+  export let classEmptyLabel = `${classBase}__empty-label`;
   export let classOptionContainer = `${classBase}__option-container`;
   export let classOption = `${classBase}__option`;
   export let classOptionSelected = `${classBase}__option--selected`;
   export let classOptionFocused = `${classBase}__option--focused`;
 
-  // export let input = false; // Trigger is input field
+  // Focus match - type something jump focus to matching option
+  let focusMatchString = "";
+  let focusMatchTimer = null;
 
-  // Show filter input
-  export let filter = false; // Show filter input on list
-  export let filterPlaceholder = filter && filter !== true ? filter : "Filter"; // Placeholder text for filter input
-  export let filterInput = false; // Ref to autofocus input
+  // Filter options based on filterValue
+  let filteredOptions = options;
 
-  let filterTimer = null;
-  let filterString = "";
+  $: filteredOptions = updateFilteredOptions(options, filterValue); // Filter options when filter value changes  
+  $: if (filter && !open) filterValue = ""; // Clear filter input when closed
+  $: if (filterInput) filterInput.focus(); // Autofocus on filter input
+  $: if (fetchOptions) debounce(() => { getRemoteOptions(filterValue) }); // Get remote options for filterValue
+  $: focusMatchOption(focusMatchString); // Look for matching option to focus
+  $: label = setLabelForSelection(selected); // Write label based on current selection
 
-  $: label = getLabel(selected);
-  $: focused = selected.slice(-1)[0]; // Focus on last selected
-
-  let filteredOptions = [];
-  $: if (options) filteredOptions = filter ? getFilteredOptions(options, filterString) : options; // Filter options based on filterString
-  
-  $: if (!open) filterString = ""; // Clear filter when closed
-  $: if (filterInput) filterInput.focus(); // Focus on filter input
-
-  $: if (filter && fetchOptions) debounce(() => { getRemoteOptions(filterString) }); // get remote options
 
   // ====================================
   // Functions
 
-  async function getRemoteOptions() {
+  
+  // Get remote options for filterValue
+  async function getRemoteOptions(filterValue) {
     if (!fetchOptions) return;
-    options = await fetchOptions(filterString);
+    options = await fetchOptions(filterValue);
   }
 
-  function getFilteredOptions(opt, string) {
+
+  // Return filtered options based on string
+  function updateFilteredOptions(opt, string) {
     if (!string) return opt;
     const filtered = opt.filter(o => {
       const keyString = labelKey ? o[labelKey].toLowerCase() : o.toLowerCase();
       return keyString.match(string.toLowerCase());
     });
-    focused = filtered[0];
+    focused = filtered[0]; // autofocus on first item
     return filtered;
   }
 
-  function getLabel(selected) {
-    if (selected.length > 1) {
+
+  // Write label based on current selection
+  function setLabelForSelection(selected) {
+    if (selected.length > 1) { // Multiple selected
       return `${selected.length} selected`;
-    } else if (selected.length == 1) {
+    } else if (selected.length == 1) { // One selected
       return labelKey ? selected[0][labelKey] : selected[0];
-    } else {
-      return placeholder;
+    } else { // Nothing selected
+      return "";
     }
   }
 
+
+  // Handle click on option (add or remove to selected)
   function selectOption(option) {
     if (!option) return;
-    if (selected.includes(option)) {
+    if (selected.includes(option)) { // Already selected, will try unselecting
       if (selected.length == 1 && !placeholder) {
         // Can't unselect because it's the only one selected and can't be null
-      } else {
+      } else { 
         // Unselect option
         selected = selected.filter(s => s !== option);
       }
-    } else if (multiselect) {
-      // Can multiselect, so add to selection
+    } else if (multiselect) { // Multiselect, so add to selection
       selected = [...selected, option];
-    } else {
-      // Cannot multiselect, so replace selection
+    } else { // Single select so replace selection
       selected = [option];
     }
 
-    if (!multiselect) open = false; // Auto close if can't multiselect
+    if (!multiselect) open = false; // Auto close if single select
+    if (input) inputValue = selected[0];
   }
 
   function clearSelection() {
     selected = [];
   }
 
-  function handleBodyKeyup(e) {
+
+  // Handle keypresses when dropdown is open
+  function handleBodyKeydown(e) {
     if (!open) return;
+
+    // Change focused option to next/prev
     if (e.key == "ArrowDown" || e.key == "ArrowUp") {
       e.preventDefault();
-      changeFocus(e.key);
+      changeFocusedOption(e.key == "ArrowDown" ? 1 : -1);
     }
+
+    // Select focused option with return or spacebar
     if (e.key == "Enter" || e.key == " ") {
       e.preventDefault();
       selectOption(focused);
     }
-    if (e.key == "Backspace" && multiselect && placeholder && !filter) {
+
+    // Clear all selected options if multiselect and has placeholder
+    if (e.key == "Backspace" && multiselect && placeholder) {
+      console.log(e.shiftKey, e.metaKey);
+      // Ignore if filter or input, unless shift or cmd also pressed
+      if ((filter || input) && !e.shiftKey && !e.metaKey) return;
       clearSelection();
     }
+
+    // Jump focus to option that match key
     if (isLetter(e.key) || isNumber(e.key)) {
-      updateFilterString(e.key.toLowerCase());
-      focusFirstMatch(filterString);
+      setFocusMatchTimer(e.key);
     }
   }
 
-  function updateFilterString(key) {
-    if (filter) return; // Filter input present, so no need to manually manage this
 
-    // Append filter string
-    filterString = `${filterString}${key}`;
-
-    // Clear timer
-    if (filterTimer) window.clearTimeout(filterTimer);
-
-    // Set timer again: reset filter string after 1s
-    filterTimer = window.setTimeout(() => {
-      filterString = "";
-    }, 500);
+  // Add string to focusMatchString temporarily (auto resets with timer)
+  function setFocusMatchTimer(key) {
+    focusMatchString += `${key.toLowerCase()}`; // Append key to filter string
+    clearTimeout(focusMatchTimer); // Clear reset timer if any
+    focusMatchTimer = window.setTimeout(() => focusMatchString = "", 500); // set new timer
   }
 
-  function focusFirstMatch(string) {
-    if (!filterString) focused = filteredOptions[0]; // No filterString, focus on first item
-    let match;
-    if (labelKey) {
-      match = filteredOptions.find(option => `${option[labelKey]}`.toLowerCase().startsWith(filterString));
-    } else {
-      match = filteredOptions.find(option => `${option}`.toLowerCase().startsWith(filterString));
-    }
-    if (match) focused = match; // Found match, set focused
-  }
 
-  function changeFocus(key) {
+  // Select next or previous option
+  function changeFocusedOption(amount) { // amount is 1 or -1
     let currentIndex = filteredOptions.indexOf(focused); // Index or -1
-    let nextIndex = (key == "ArrowDown") ? currentIndex + 1 : currentIndex - 1;
+    let nextIndex = currentIndex + amount;
 
-    if (currentIndex == -1) {
-      nextIndex = 0; // Select first
-    } else if (nextIndex < 0) {
+    // Wrap if index out of bounds
+    if (nextIndex < 0) {
       nextIndex = filteredOptions.length - 1; // Wrap back to end
     } else if (nextIndex > filteredOptions.length - 1) {
       nextIndex = 0; // Wrap back to beginning
     }
 
     focused = filteredOptions[nextIndex];
-    scrollToFocusedElement();
+    scrollToFocusedOption();
   }
 
-  async function scrollToFocusedElement() {
+
+  // Find option that match, and focus
+  function focusMatchOption(string) {
+    if (!string) return;
+    focused = options.find(o => `${labelKey ? o[labelKey] : o}`.toLowerCase().startsWith(string));
+    // Can't find, try again with last character
+    if (!focused && string.length > 1) focusMatchOption(string.slice(-1));
+  }
+
+  // Keep option in view as you navigate up/down when list scrolls
+  async function scrollToFocusedOption() {
     if (!menu) return;
     await tick();
     const focusedEl = menu.querySelector(`.${classOptionFocused}`);
     if (focusedEl) focusedEl.scrollIntoView({ block: "center" });
   }
 
+  // Handle input trigger change
+  function handleInputValueChange() {
+    if (!open) dropdownRef.openDropdown();
+    if (!inputValue) dropdownRef.closeDropdown();
+    filterValue = inputValue; // Filter list with value
+  }
+
+
+  // ----------------------------------------
   // Helpers
 
   function isLetter(key) {
@@ -213,9 +244,9 @@
 
 </script>
 
-<svelte:body on:keydown={handleBodyKeyup} />
+<svelte:body on:keydown={handleBodyKeydown} />
 
-<Dropdown bind:open bind:menu
+<Dropdown bind:open bind:menu bind:this={dropdownRef}
   {hover}
   {hoverDelay}
   {classTrigger}
@@ -225,25 +256,42 @@
   {over}
   {distance}
   {duration}
+  let:openDropdown
+  let:closeDropdown
 >
 
   <!-- Trigger -->
   <slot name="trigger" slot="trigger" {selected} {label} {focused} {open} {placeholder}>
-    <Button iconRight={IconChevronDown}>
-      <slot name="label" {selected} {label} {focused} {open} {placeholder}>
-        {title || label}
-      </slot>
-    </Button>
+    {#if input}
+      <input type="text"
+        bind:value={inputValue}
+        on:focus={openDropdown}
+        on:blur={closeDropdown}
+        on:click|stopPropagation
+        on:input={handleInputValueChange}
+        {placeholder} 
+      />
+    {:else}
+      <Button iconRight={iconRight}>
+        <slot name="label" {selected} {label} {focused} {open} {placeholder}>
+          {title || label || placeholder}
+        </slot>
+      </Button>
+    {/if}
   </slot>
 
-  <!-- Filter input -->
+  <!-- Filter input on dropdown -->
   {#if filter}
-    <input bind:this={filterInput} type="text" placeholder={filterPlaceholder} bind:value={filterString} />
+    <input type="text" bind:this={filterInput}
+      placeholder={filterPlaceholder}
+      bind:value={filterValue}
+      on:change={() => open = true }
+    />
   {/if}
 
   <slot name="prependMenu" />
 
-  <div class={classList}>
+  <div class="{classList} {!filteredOptions.length ? classEmpty : ''}">
     {#each filteredOptions as option}
       <div class={classOptionContainer}>
         <button
@@ -260,6 +308,12 @@
             {labelKey ? option[labelKey] : option}
           </slot>
         </button>
+      </div>
+    {:else}
+      <div class={classEmptyLabel}>
+        <slot name="empty">
+          <em>No results</em>
+        </slot>
       </div>
     {/each}
   </div>

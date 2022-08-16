@@ -1117,6 +1117,17 @@
 
     <div class="uizg-previewArea">
       <div class="uizg-previewElement">
+        <p>Input trigger</p>
+        <Select input placeholder="What's your favorite fruit?" options={['apple', 'banana', 'guava', 'fig', 'orange', 'mango', 'papaya']} />
+      </div>
+      <div class="uizg-previewCode">
+        {`
+        `}
+      </div>
+    </div>
+
+    <div class="uizg-previewArea">
+      <div class="uizg-previewElement">
         <p>Fetch options remotely</p>
         <Select filter filterPlaceholder="Search for a country" fetchOptions={fetchContent} placeholder="Select one" />
       </div>
@@ -1141,6 +1152,7 @@
 
     <div class="uizg-previewArea">
       <div class="uizg-previewElement">
+        <p>Option objects</p>
         <!-- Custom option object -->
         <Select
           options={[{name: 'Fabio', emoji: '🦊'},{name: 'James', emoji: '🦁'},{name: 'Jessica', emoji: '🐯'}]}
@@ -1209,6 +1221,7 @@
 
     <div class="uizg-previewArea">
       <div class="uizg-previewElement">
+        <p>Filter list</p>
         <Select filter options={['one', 'two', 'three']} placeholder="Pick one" />
         <Select filter options={['one', 'two', 'three']} placeholder="Pick multiple" multiselect />
         <Select filter placeholder="Pick one"
@@ -1275,12 +1288,8 @@
 
     <div class="uizg-previewArea">
       <div class="uizg-previewElement">
-        <Select options={['one', 'two', 'three']} placeholder="Open right" hover direction="up" align="center">
-          <Button slot="trigger">Hover me</Button>
-        </Select>
-        <Select options={['one', 'two', 'three']} placeholder="Open right" direction="right" align="center">
-          <Button slot="trigger" iconRight={IconChevronRight}>Open right</Button>
-        </Select>
+        <Select options={['one', 'two', 'three']} placeholder="Hover me" hover direction="up" align="center" iconRight={false} />
+        <Select options={['one', 'two', 'three']} placeholder="Open right" direction="right" align="center" iconRight={IconChevronRight} />
       </div>
       <div class="uizg-previewCode">
         {`

@@ -42,18 +42,19 @@
   // ========================================================
   // Functions
 
-  function toggleDropdown() {
+  export function toggleDropdown() {
     open ? closeDropdown() : openDropdown()
   }
 
-  function openDropdown() {
+  export function openDropdown() {
+    console.log("open dropdown called");
     calculatePosition();
     open = true;
     updateScrollableParent(triggerContainer);
     // TODO: Set and trap focus
   }
 
-  function closeDropdown() {
+  export function closeDropdown() {
     if (!open) return;
     open = false; // Close menu
     updateScrollableParent(triggerContainer); // Reset scrollableParent
@@ -187,7 +188,7 @@
   on:mouseenter={handleHover}
   on:mouseleave={handleHover}
 >
-  <slot name="trigger" {open} />
+  <slot name="trigger" {open} {openDropdown} {closeDropdown} />
 </div>
 
 <!-- Menu -->
