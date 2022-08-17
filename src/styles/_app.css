@@ -17,7 +17,99 @@
 /* ==================================== */
 /* Structure */
 
-.uizg-layout {
+h1 {
+  font-size: 2em;
+  font-weight: 700;
+}
+
+h2 {
+  font-size: 1.5em;
+  font-weight: 700;
+  line-height: 1.2em;
+  margin-bottom: 0.5em;
+}
+
+h3 {
+  font-size: 1em;
+  font-weight: 700;
+  line-height: 1.2em;
+  margin-bottom: 0.5em;
+}
+
+h4 {
+  font-size: 0.75em;
+  opacity: 0.5;
+  text-transform: uppercase;
+  line-height: 1.2em;
+  margin-bottom: 0.5em;
+}
+
+p {
+  line-height: 1.4em;
+  margin-bottom: 1em;
+}
+
+p:last-child {
+  margin-bottom: 0;
+}
+
+hr {
+  border-color: rgb(var(--background-tertiary));
+  margin: 2.5em 0;
+}
+
+.uizg-columns {
+  display: flex;
+  min-height: 100%;
+}
+
+.uizg-sidebar {
+  width: 240px;
+  padding: 2.5em 1.5em;
+  background: rgb(var(--foreground));
+  color: rgb(var(--background));
+}
+
+.uizg-sidebar-content {
+  position: sticky;
+  top: 2.5em;
+}
+
+.uizg-container {
+  width: 80ch;
+  margin: 0 auto;
+  padding: 2.5em;
+}
+
+.uizg-previewArea {
+  margin-bottom: 4em;
+}
+
+.uizg-previewElement,
+.uizg-previewCode {
+  padding: 2em;
+  border-radius: 1em;
+  margin-bottom: 1em;
+}
+
+.uizg-previewElement {
+  background: rgb(var(--background));
+  border: 1px solid rgb(var(--background-quaternary));
+  min-height: 15em;
+  align-items: center;
+  justify-content: center;
+}
+
+.uizg-previewCode {
+  background: rgb(var(--foreground));
+  color: rgb(var(--background));
+  font-family: monospace;
+  padding: 0 1.5em;
+  white-space: pre-wrap;
+  font-size: 0.875em;
+}
+
+/* .uizg-layout {
   max-width: 800px;
   margin: 40px auto;
 }
@@ -53,4 +145,4 @@
   height: 100px;
   padding: 50px 0;
   overflow: auto;
-}
+} */

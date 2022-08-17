@@ -11,6 +11,8 @@
   export let href = null; // If href is present will use <a />
   export let title = null;
   export let disabled = false;
+  
+  export let label = null; // Button label (or use default slot)
 
   export let value = null; // optional value passed on click event
 
@@ -26,15 +28,20 @@
   export let size = false; // eg: sm, lg → .btn--sm, .btn--lg
 
   // Element classes
-  export let classBase              = "btn";
-  export let classCopyStatus        = `${classBase}__copyStatus`;
-  export let classContent           = `${classBase}__content`;
-  export let classLoadingIndicator  = `${classBase}__loading`;
-  export let classIcon              = `${classBase}__icon`;
-
-  // State classes
-  export let classLoading           = `${classBase}--loading`;
-  export let classSelected          = `${classBase}--selected`;
+  export let classBase               = "btn";
+  export let classIconBtn           = `${classBase}--icon-btn`;
+  export let classSelected           = `${classBase}--selected`;
+  export let classUnselected         = `${classBase}--unselected`;
+  export let classLoading            = `${classBase}--loading`;
+  export let classDisabled           = `${classBase}--disabled`;
+  export let classCopyStatus         = `${classBase}__copy-status`;
+  export let classContent            = `${classBase}__content`;
+  export let classLabel              = `${classBase}__label`;
+  export let classLoadingIndicator   = `${classBase}__loading`;
+  export let classIconContainer      = `${classBase}__icon-container`;
+  export let classIconContainerLeft  = `${classBase}__icon-container--left`;
+  export let classIconContainerRight = `${classBase}__icon-container--right`;
+  export let classIcon               = `${classBase}__icon`;
 
   // Extra classes
   let className = "";
@@ -100,7 +107,9 @@
     {type     ? `${classBase}--${type}` : ''}
     {size     ? `${classBase}--${size}` : ''}
     {loading  ? classLoading  : ''}
-    {selected ? classSelected : ''}
+    {toggle ? (selected ? classSelected : classUnselected) : ''}
+    {disabled || loading ? classDisabled : ''}
+    {(icon || iconRight) && !label && !$$slots.default ? classIconBtn : ''}
     {className}
   "
   {href}
@@ -111,21 +120,45 @@
   on:click={handleClick}
 >
 
-  <!-- Left side icon -->
-  <svelte:component this={icon} class={classIcon} />
+  <span class={classContent}>
 
-  <!-- Copy status -->
-  {#if copyStatus}
-    <span in:fade class={classCopyStatus}>
-      {copyStatus}
-    </span>
+    <!-- Left side icon -->
+    <slot name="icon">
+      {#if icon}
+        <span class="{classIconContainer} {classIconContainerLeft}">
+          <svelte:component this={icon} class={classIcon} />
+        </span>
+      {/if}
+    </slot>
 
-  <!-- Content -->
-  {:else if $$slots.default}
-    <span in:fade class={classContent}>
-      <slot {selected} />
-    </span>
-  {/if}
+    <!-- Copy status -->
+    {#if copyStatus}
+      <span in:fade class={classLabel} {classCopyStatus}>
+        {copyStatus}
+      </span>
+
+    <!-- Content -->
+    {:else if $$slots.default}
+      <span in:fade class={classLabel}>
+        <slot {selected} />
+      </span>
+
+    {:else if label}
+      <span in:fade class={classLabel}>
+        {label}
+      </span>
+    {/if}
+
+    <!-- Icon right size -->
+    <slot name="iconRight">
+      {#if iconRight}
+        <span class="{classIconContainer} {classIconContainerRight}">
+          <svelte:component this={iconRight} class={classIcon} />
+        </span>
+      {/if}
+    </slot>
+
+  </span>
 
   <!-- Loading spinner -->
   {#if loading}
@@ -133,8 +166,5 @@
       <LoadingIndicator />
     </span>
   {/if}
-
-  <!-- Icon right size -->
-  <svelte:component this={iconRight} class={classIcon} />
 
 </svelte:element>
