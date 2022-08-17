@@ -1,29 +1,38 @@
 <script>
   import "../styles/_preflight.css"
   import "../styles/_app.css"
+
+  import Link from "$lib/Link.svelte";
 </script>
 
 <div class="uizg-columns">
   <div class="uizg-sidebar">
     <div class="uizg-sidebar-content">
-      <h1>
-        <a href="/">UIZG</a>
-      </h1>
-      <br />
+      <h1><a href="/">UIZG</a></h1>
+
+      <hr />
+
       <h4>Components</h4>
       <ul>
-        <li><a href="/button">Button</a></li>
-        <li><a href="/dropdown">Dropdown</a></li>
-        <li><a href="/collapsible">Collapsible</a></li>
-        <li><a href="/modal">Modal</a></li>
-        <li><a href="/input">Input</a></li>
-        <li><a href="/icons">Icons</a></li>
-        <li><a href="/loading-indicator">Loading indicator</a></li>
-        <li><a href="/select">Select</a></li>
-        <li><a href="/checkbox">Checkbox</a></li>
-        <li><a href="/tooltip">Tooltip</a></li>
-        <li><a href="/toggle-group">ToggleGroup</a></li>
-        <li><a href="/slider">Slider</a></li>
+        <li><Link href="/button">Button</Link></li>
+        <li><Link href="/dropdown">Dropdown</Link></li>
+        <li><Link href="/collapsible">Collapsible</Link></li>
+        <li><Link href="/modal">Modal</Link></li>
+        <li><Link href="/input">Input</Link></li>
+        <li><Link href="/icons">Icons</Link></li>
+        <li><Link href="/loading-indicator">Loading indicator</Link></li>
+        <li><Link href="/select">Select</Link></li>
+        <li><Link href="/checkbox">Checkbox</Link></li>
+        <li><Link href="/tooltip">Tooltip</Link></li>
+        <li><Link href="/toggle-group">ToggleGroup</Link></li>
+        <li><Link href="/slider">Slider</Link></li>
+        <li><Link href="/link">Link</Link></li>
+      </ul>
+
+      <hr />
+
+      <h4>Styles</h4>
+      <ul>
       </ul>
     </div>
   </div>

@@ -54,7 +54,8 @@ p:last-child {
 }
 
 hr {
-  border-color: rgb(var(--background-tertiary));
+  border-color: currentColor;
+  opacity: 0.1;
   margin: 2.5em 0;
 }
 
