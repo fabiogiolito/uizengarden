@@ -206,13 +206,3 @@
     <slot />
   </div>
 {/if}
-
-<style>
-  .dropdown__trigger {
-    display: inline-block;
-  }
-  .dropdown__menu {
-    position: fixed;
-    z-index: 50;
-  }
-</style>

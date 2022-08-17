@@ -1,0 +1,21 @@
+/* ============================================= */
+/* Component functionality */
+
+.dropdown__menu {
+  position: fixed;
+}
+
+/* ============================================= */
+/* Styles */
+
+.dropdown__trigger {
+  display: inline-block;
+}
+
+.dropdown__menu {
+  background: rgb(var(--background));
+  color: rgb(var(--foreground));
+  padding: 0.3em 0.75em;
+  border-radius: 0.3em;
+  box-shadow: 0 0 0 1px rgb(var(--foreground) / 0.2) inset, 0 1px 2px rgb(var(--foreground) / 0.1);
+}

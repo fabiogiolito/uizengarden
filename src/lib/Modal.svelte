@@ -115,33 +115,3 @@
   </div>
 
 {/if}
-
-<style>
-  .modal {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    width: 100%;
-    height: 100%;
-    display: grid;
-    place-items: center;
-  }
-  .modal__overlay {
-    background: rgb(var(--foreground) / 0.5);
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    width: 100%;
-    height: 100%;
-  }
-  .modal__window {
-    position: absolute;
-    background: rgb(var(--background));
-    width: 50vw;
-    max-height: 80vh;
-  }
-</style>

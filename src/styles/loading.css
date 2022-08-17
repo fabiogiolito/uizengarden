@@ -1,0 +1,21 @@
+/* ============================================= */
+/* Component functionality */
+
+/* ============================================= */
+/* Styles */
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.loading {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  border-radius: 50%;
+  border: 0.1em solid;
+  border-color: currentColor transparent currentColor transparent;
+  animation: spin 1s linear infinite;
+}

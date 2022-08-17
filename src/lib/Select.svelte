@@ -336,16 +336,3 @@
 
 
 </Dropdown>
-
-
-<style>
-  .select__option {
-
-  }
-  .select__option--selected {
-    background: limegreen;
-  }
-  .select__option--focused {
-    background: green;
-  }
-</style>

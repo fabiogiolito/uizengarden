@@ -1,0 +1,21 @@
+/* ============================================= */
+/* Component functionality */
+
+.tooltip__trigger {
+  display: inline-flex;
+}
+.tooltip {
+  position: fixed;
+}
+
+/* ============================================= */
+/* Styles */
+
+.tooltip {
+  background: rgb(var(--foreground));
+  color: rgb(var(--background));
+  font-size: 0.75rem;
+  padding: 0.3em 0.75em;
+  border-radius: 0.3em;
+  pointer-events: none;
+}

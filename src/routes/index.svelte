@@ -300,47 +300,6 @@
   }
 </script>
 
-<style>
-  .uizg-layout {
-    max-width: 800px;
-    margin: 40px auto;
-  }
-  .uizg-component {
-    background: rgb(var(--background));
-    padding: 2rem;
-    border-radius: 1rem;
-  }
-  .uizg-component h2 {
-    font-weight: 600;
-    font-size: 1.5rem;
-  }
-  .uizg-previewArea {
-    margin-top: 16px;
-    border-radius: 1rem;
-    overflow: hidden;
-    border: 1px solid rgb(var(--foreground));
-  }
-  .uizg-previewElement {
-    background: rgb(var(--background));
-    padding: 2rem;
-  }
-  .uizg-previewCode {
-    background: rgb(var(--foreground));
-    color: rgb(var(--background));
-    font-family: monospace;
-    white-space: pre-wrap;
-    font-size: 0.75em;
-  }
-
-  .uizg-scrollArea {
-    border: 1px solid rgb(var(--foreground));
-    height: 100px;
-    padding: 50px 0;
-    overflow: auto;
-  }
-
-</style>
-
 <div class="uizg-layout">
 
   <!-- ============================== -->

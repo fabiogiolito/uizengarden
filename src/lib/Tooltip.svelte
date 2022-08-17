@@ -158,13 +158,3 @@
     </slot>
   </div>
 {/if}
-
-<style>
-  .tooltip__trigger {
-    display: inline-flex;
-  }
-  .tooltip {
-    position: fixed;
-    z-index: 50;
-  }
-</style>

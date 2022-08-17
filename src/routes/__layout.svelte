@@ -1,6 +1,6 @@
 <script>
-  import "../styles/preflight.css"
-  import "../styles/app.css"
+  import "../styles/_preflight.css"
+  import "../styles/_app.css"
 </script>
 
 <slot />
