@@ -27,6 +27,7 @@
         <li><Link href="/toggle-group">ToggleGroup</Link></li>
         <li><Link href="/slider">Slider</Link></li>
         <li><Link href="/link">Link</Link></li>
+        <li><Link href="/breadcrumb">Breadcrumb</Link></li>
       </ul>
 
       <hr />

@@ -1,0 +1,26 @@
+/* ============================================= */
+/* Component functionality */
+
+/* ============================================= */
+/* Styles */
+
+.breadcrumb {
+  padding: 1em;
+  border-radius: 0.5em;
+  background: rgb(var(--background-tertiary));
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+}
+
+.breadcrumb__item {
+  color: rgb(var(--tint));
+}
+
+.breadcrumb__item--current {
+  color: rgb(var(--foreground) / 0.75);
+}
+
+.breadcrumb__separator {
+  color: rgb(var(--foreground) / 0.5);
+}
