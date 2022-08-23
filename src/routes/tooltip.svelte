@@ -5,6 +5,8 @@
   import Button from "$lib/Button.svelte";
 
   import IconHeart from "$lib/icons/IconHeart.svelte";
+  import IconAtSign from "$lib/icons/IconAtSign.svelte";
+
 </script>
 
 
@@ -178,5 +180,24 @@
   <Tooltip align="right">
     <Button>Horizontal align right</Button>
     <div slot="content">...</div>
+  </Tooltip>
+`} />
+
+<div class="uizg-preview">
+  <div class="uizg-preview__element">
+    <Tooltip text="click to copy icon name" copy="IconHeart">
+      <Button><IconHeart /></Button>
+    </Tooltip>
+    <Tooltip copy="Hello World">
+      <Button>Copy text</Button>
+    </Tooltip>
+  </div>
+</div>
+<Highlight code={`
+  <Tooltip text="click to copy icon name" copy="IconHeart">
+    <Button><IconHeart /></Button>
+  </Tooltip>
+  <Tooltip copy="Hello World">
+    <Button>Copy text</Button>
   </Tooltip>
 `} />

@@ -19,6 +19,15 @@
   let className = "";
   export { className as class }; // Extra classes
 
+  // Copy text
+  export let copy = null; // Option 1: Text that will be copied
+  export let copyFunc = null; // Option 2: Function to fetch text to be copied
+  export let copiedLabel = "Copied!"; // Text to shopw when copied
+  let copyStatus = null; // Control copy status
+  $: if (copyStatus) {
+    setTimeout(() => { copyStatus = "" }, 2000); // Reset copy status after 2 seconds
+  }
+
   // Delay
   export let delay = 100;
   export let duration = 100;
@@ -32,15 +41,36 @@
   // ====================================
   // Functions
 
+  function handlecopy() {
+    console.log("---- handle copy");
+    if (!copy && !copyFunc) return; // Nothing to copy
+    if (copyFunc) copy = copyFunc(); // Get text from function
+    if (navigator?.clipboard) { // Check for support
+      navigator.clipboard.writeText(copy) // Copy to clipboard
+      .then(() => {
+        copyStatus = copiedLabel; // Show copied status
+      })
+    }
+  }
+
   function showTooltip() {
     calculatePosition();
     open = true;
     updateScrollableParent(triggerContainer);
   }
 
+  function handleClick() {
+    if (copy || copyFunc) {
+      handlecopy();
+    } else {
+      hideTooltip();
+    }
+  }
+
   function hideTooltip() {
     if (!open) return
     open = false;
+    copyStatus = "";
     updateScrollableParent(triggerContainer); // Reset scrollableParent
   }
 
@@ -144,17 +174,23 @@
 <svelte:window on:scroll={hideTooltip} on:resize={hideTooltip} />
 
 <!-- Trigger -->
-<span class={classTrigger} bind:this={triggerContainer} on:mouseenter={handleHover} on:mouseleave={handleHover} on:click={hideTooltip}>
+<span class={classTrigger} bind:this={triggerContainer} on:mouseenter={handleHover} on:mouseleave={handleHover} on:click={handleClick}>
   <slot />
 </span>
 
 <!-- Text prop / Content slot -->
-{#if open}
+{#if open && (text || $$slots.content || copyStatus)}
   <div class="{classBase} {className} {classDirection}" use:teleport transition:fade={{duration}} {style}>
-    <slot name="content">
-      <div class={classContent}>
-        {text}
-      </div>
-    </slot>
+    {#if copyStatus}
+      <span in:fade class={classContent}>
+        {copyStatus}
+      </span>
+    {:else}
+      <slot name="content">
+        <div in:fade class={classContent}>
+          {text}
+        </div>
+      </slot>
+    {/if}
   </div>
 {/if}
