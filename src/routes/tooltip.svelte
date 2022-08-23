@@ -10,7 +10,7 @@
 </script>
 
 
-<h2>Component</h2>
+<h2>Tooltip</h2>
 
 <hr />
 
