@@ -279,7 +279,7 @@
         {placeholder} 
       />
     {:else}
-      <Button iconRight={iconRight}>
+      <Button class={classTrigger} iconRight={iconRight}>
         <slot name="label" {selected} {label} {focused} {open} {placeholder}>
           {title || label || placeholder}
         </slot>

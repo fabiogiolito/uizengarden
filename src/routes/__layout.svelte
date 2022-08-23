@@ -30,6 +30,7 @@
         <li><Link href="/link">Link</Link></li>
         <li><Link href="/breadcrumb">Breadcrumb</Link></li>
         <li><Link href="/highlight">Highlight</Link></li>
+        <li><Link href="/stepper">Stepper</Link></li>
       </ul>
 
       <hr />

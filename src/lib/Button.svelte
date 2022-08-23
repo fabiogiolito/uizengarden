@@ -46,6 +46,7 @@
   // Extra classes
   let className = "";
   export { className as class };
+  export let style = "";
 
 
   // Icons
@@ -112,6 +113,7 @@
     {(icon || iconRight) && !label && !$$slots.default ? classIconBtn : ''}
     {className}
   "
+  {style}
   {href}
   {title}
   {role}

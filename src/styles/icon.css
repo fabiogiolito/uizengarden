@@ -5,6 +5,7 @@
 /* Styles */
 
 .icon {
+  flex-shrink: 0;
   display: inline-block;
   width: 1em;
   height: 1em;
