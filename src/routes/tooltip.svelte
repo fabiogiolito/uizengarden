@@ -1,4 +1,6 @@
 <script>
+  import Highlight from "$lib/Highlight.svelte";
+  
   import Tooltip from "$lib/Tooltip.svelte";
   import Button from "$lib/Button.svelte";
 
@@ -10,40 +12,36 @@
 
 <hr />
 
-<div class="uizg-previewArea">
-  <div class="uizg-previewElement">
+<div class="uizg-preview">
+  <div class="uizg-preview__element">
     <Tooltip text="Hello!">
       Hover me
     </Tooltip>
   </div>
-  <div class="uizg-previewCode">
-    {`
-<Tooltip text="Hello!">
-Hover me
-</Tooltip>
-    `}
-  </div>
 </div>
+<Highlight code={`
+  <Tooltip text="Hello!">
+    Hover me
+  </Tooltip>
+`} />
 
-<div class="uizg-previewArea">
-  <div class="uizg-previewElement">
+<div class="uizg-preview">
+  <div class="uizg-preview__element">
     <Tooltip>
       <IconHeart slot="content" />
       Hover me
     </Tooltip>
   </div>
-  <div class="uizg-previewCode">
-    {`
-<Tooltip>
-<IconHeart slot="content" />
-Hover me
-</Tooltip>
-    `}
-  </div>
 </div>
+<Highlight code={`
+  <Tooltip>
+    <IconHeart slot="content" />
+    Hover me
+  </Tooltip>
+`} />
 
-<div class="uizg-previewArea">
-  <div class="uizg-previewElement">
+<div class="uizg-preview">
+  <div class="uizg-preview__element">
     <Tooltip direction="up">
       <Button>Tooltip up</Button>
       <div slot="content">
@@ -77,30 +75,28 @@ Hover me
       </div>
     </Tooltip>
   </div>
-  <div class="uizg-previewCode">
-    {`
-<Tooltip direction="up">
-<Button>Tooltip up</Button>
-<div slot="content">...</div>
-</Tooltip>
-<Tooltip direction="right">
-<Button>Tooltip right</Button>
-<div slot="content">...</div>
-</Tooltip>
-<Tooltip direction="down">
-<Button>Tooltip down</Button>
-<div slot="content">...</div>
-</Tooltip>
-<Tooltip direction="left">
-<Button>Tooltip left</Button>
-<div slot="content">...</div>
-</Tooltip>
-    `}
-  </div>
 </div>
+<Highlight code={`
+  <Tooltip direction="up">
+    <Button>Tooltip up</Button>
+    <div slot="content">...</div>
+  </Tooltip>
+  <Tooltip direction="right">
+    <Button>Tooltip right</Button>
+    <div slot="content">...</div>
+  </Tooltip>
+  <Tooltip direction="down">
+    <Button>Tooltip down</Button>
+    <div slot="content">...</div>
+  </Tooltip>
+  <Tooltip direction="left">
+    <Button>Tooltip left</Button>
+    <div slot="content">...</div>
+  </Tooltip>
+`} />
 
-<div class="uizg-previewArea">
-  <div class="uizg-previewElement">
+<div class="uizg-preview">
+  <div class="uizg-preview__element">
     <Tooltip direction="right" align="center">
       <Button>Vertical Align center</Button>
       <div slot="content">
@@ -126,26 +122,24 @@ Hover me
       </div>
     </Tooltip>
   </div>
-  <div class="uizg-previewCode">
-    {`
-<Tooltip direction="right" align="center">
-<Button>Vertical Align center</Button>
-<div slot="content">...</div>
-</Tooltip>
-<Tooltip direction="right" align="top">
-<Button>Vertical Align top</Button>
-<div slot="content">...</div>
-</Tooltip>
-<Tooltip direction="right" align="bottom">
-<Button>Vertical Align bottom</Button>
-<div slot="content">...</div>
-</Tooltip>
-    `}
-  </div>
 </div>
+<Highlight code={`
+  <Tooltip direction="right" align="center">
+    <Button>Vertical Align center</Button>
+    <div slot="content">...</div>
+  </Tooltip>
+  <Tooltip direction="right" align="top">
+    <Button>Vertical Align top</Button>
+    <div slot="content">...</div>
+  </Tooltip>
+  <Tooltip direction="right" align="bottom">
+    <Button>Vertical Align bottom</Button>
+    <div slot="content">...</div>
+  </Tooltip>
+`} />
 
-<div class="uizg-previewArea">
-  <div class="uizg-previewElement">
+<div class="uizg-preview">
+  <div class="uizg-preview__element">
     <Tooltip align="left">
       <Button>Horizontal align left</Button>
       <div slot="content">
@@ -171,20 +165,18 @@ Hover me
       </div>
     </Tooltip>
   </div>
-  <div class="uizg-previewCode">
-    {`
-<Tooltip align="left">
-<Button>Horizontal align left</Button>
-<div slot="content">...</div>
-</Tooltip>
-<Tooltip align="center">
-<Button>Horizontal align center</Button>
-<div slot="content">...</div>
-</Tooltip>
-<Tooltip align="right">
-<Button>Horizontal align right</Button>
-<div slot="content">...</div>
-</Tooltip>
-    `}
-  </div>
 </div>
+<Highlight code={`
+  <Tooltip align="left">
+    <Button>Horizontal align left</Button>
+    <div slot="content">...</div>
+  </Tooltip>
+  <Tooltip align="center">
+    <Button>Horizontal align center</Button>
+    <div slot="content">...</div>
+  </Tooltip>
+  <Tooltip align="right">
+    <Button>Horizontal align right</Button>
+    <div slot="content">...</div>
+  </Tooltip>
+`} />

@@ -1,4 +1,6 @@
 <script>
+  import Highlight from "$lib/Highlight.svelte";
+
   import Input from "$lib/Input.svelte";
   import Button from "$lib/Button.svelte";
 
@@ -11,41 +13,35 @@
 
 <hr />
 
-<div class="uizg-previewArea">
-  <div class="uizg-previewElement">
+<div class="uizg-preview">
+  <div class="uizg-preview__element">
     <Input value="Hello world" />
   </div>
-  <div class="uizg-previewCode">
-    {`
-<Input value="Hello world" />
-    `}
-  </div>
 </div>
+<Highlight code={`
+  <Input value="Hello world" />
+`} />
 
-<div class="uizg-previewArea">
-  <div class="uizg-previewElement">
+<div class="uizg-preview">
+  <div class="uizg-preview__element">
     <Input prepend="$" append=".00" placeholder="value" />
   </div>
-  <div class="uizg-previewCode">
-    {`
-<Input prepend="$" append=".00" placeholder="value" />
-    `}
-  </div>
 </div>
+<Highlight code={`
+  <Input prepend="$" append=".00" placeholder="value" />
+`} />
 
-<div class="uizg-previewArea">
-  <div class="uizg-previewElement">
+<div class="uizg-preview">
+  <div class="uizg-preview__element">
     <Input placeholder="username">
       <IconAtSign slot="prepend" />
       <Button slot="append">Create account</Button>
     </Input>
   </div>
-  <div class="uizg-previewCode">
-    {`
-<Input placeholder="username">
-<IconAtSign slot="prepend" />
-<Button slot="append">Create account</Button>
-</Input>
-    `}
-  </div>
 </div>
+<Highlight code={`
+  <Input placeholder="username">
+    <IconAtSign slot="prepend" />
+    <Button slot="append">Create account</Button>
+  </Input>
+`} />

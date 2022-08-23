@@ -30,7 +30,7 @@
   --btn-background: var(--background);
   --btn-color: var(--foreground);
   --btn-border: var(--background-quaternary);
-  --btn-shadow: var(--background-tertiary);
+  --btn-shadow: var(--foreground) / 0.1;
 
   cursor: pointer;
   display: inline-block;

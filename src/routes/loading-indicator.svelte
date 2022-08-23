@@ -1,4 +1,6 @@
 <script>
+  import Highlight from "$lib/Highlight.svelte";
+
   import LoadingIndicator from "$lib/LoadingIndicator.svelte";
 </script>
 
@@ -7,13 +9,11 @@
 
 <hr />
 
-<div class="uizg-previewArea">
-  <div class="uizg-previewElement">
+<div class="uizg-preview">
+  <div class="uizg-preview__element">
     <LoadingIndicator />
   </div>
-  <div class="uizg-previewCode">
-    {`
-<LoadingIndicator />
-    `}
-  </div>
 </div>
+<Highlight code={`
+  <LoadingIndicator />
+`} />

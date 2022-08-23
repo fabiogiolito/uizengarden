@@ -5,7 +5,7 @@
 /* Styles */
 
 .slider {
-  width: 100%;
+  min-width: 24em;
   margin: 2em 0;
   user-select: none;
 }

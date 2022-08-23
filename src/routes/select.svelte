@@ -1,4 +1,6 @@
 <script>
+  import Highlight from "$lib/Highlight.svelte";
+
   import Select from "$lib/Select.svelte";
   import Button from "$lib/Button.svelte";
 
@@ -274,27 +276,25 @@
 
 <hr />
 
-<div class="uizg-previewArea">
-  <div class="uizg-previewElement">
+<div class="uizg-preview">
+  <div class="uizg-preview__element">
     <Select options={['one', 'two', 'three']} placeholder="Pick one" />
     <Select options={['one', 'two', 'three']} placeholder="Pick multiple" multiselect />
     <Select options={['one', 'two', 'three']} />
     <Select options={['Recent', 'Popular', 'Trending']} title="Sort by" />
     <Select options={['Recent', 'Popular', 'Trending']} title="Sort by" selected="Recent" />
   </div>
-  <div class="uizg-previewCode">
-    {`
-<Select options={['one', 'two', 'three']} placeholder="Pick one" />
-<Select options={['one', 'two', 'three']} placeholder="Pick multiple" multiselect />
-<Select options={['one', 'two', 'three']} />
-<Select options={['Recent', 'Popular', 'Trending']} title="Sort by" />
-<Select options={['Recent', 'Popular', 'Trending']} title="Sort by" selected="Recent" />
-    `}
-  </div>
 </div>
+<Highlight code={`
+  <Select options={['one', 'two', 'three']} placeholder="Pick one" />
+  <Select options={['one', 'two', 'three']} placeholder="Pick multiple" multiselect />
+  <Select options={['one', 'two', 'three']} />
+  <Select options={['Recent', 'Popular', 'Trending']} title="Sort by" />
+  <Select options={['Recent', 'Popular', 'Trending']} title="Sort by" selected="Recent" />
+`} />
 
-<div class="uizg-previewArea">
-  <div class="uizg-previewElement">
+<div class="uizg-preview">
+  <div class="uizg-preview__element">
     <p>Input trigger</p>
     <p><Select input placeholder="Favorite fruit" options={['apple', 'banana', 'orange', 'mango']} /></p>
     <p><Select input placeholder="Favorite fruit" options={['apple', 'banana', 'orange', 'mango']} selected={['mango']} /></p>
@@ -304,43 +304,37 @@
       </Select>
     </p>
   </div>
-  <div class="uizg-previewCode">
-    {`
-<Select input placeholder="Favorite fruit" options={['apple', 'banana', 'orange', 'mango']} />
-<Select input placeholder="Favorite fruit" options={['apple', 'banana', 'orange', 'mango']} selected={['mango']} />
-<Select input placeholder="Favorite fruit" options={['apple', 'banana', 'orange', 'mango']} let:inputValue>
-<button slot="empty" on:click={() => alert("create " + inputValue)}>Create new</button>
-</Select>
-    `}
-  </div>
 </div>
+<Highlight code={`
+  <Select input placeholder="Favorite fruit" options={['apple', 'banana', 'orange', 'mango']} />
+  <Select input placeholder="Favorite fruit" options={['apple', 'banana', 'orange', 'mango']} selected={['mango']} />
+  <Select input placeholder="Favorite fruit" options={['apple', 'banana', 'orange', 'mango']} let:inputValue>
+    <button slot="empty" on:click={() => alert("create " + inputValue)}>Create new</button>
+  </Select>
+`} />
 
-<div class="uizg-previewArea">
-  <div class="uizg-previewElement">
+<div class="uizg-preview">
+  <div class="uizg-preview__element">
     <p>Fetch options remotely</p>
     <Select filter filterPlaceholder="Search for a country" fetchOptions={fetchContent} placeholder="Select one" />
   </div>
-  <div class="uizg-previewCode">
-    {`
-<Select filter filterPlaceholder="Search for a country" fetchOptions={fetchContent} placeholder="Select one" />
-    `}
-  </div>
 </div>
+<Highlight code={`
+  <Select filter filterPlaceholder="Search for a country" fetchOptions={fetchContent} placeholder="Select one" />
+`} />
 
-<div class="uizg-previewArea">
-  <div class="uizg-previewElement">
+<div class="uizg-preview">
+  <div class="uizg-preview__element">
     <p>Scroll option to view</p>
     <Select options={[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20]} placeholder="Scroll options" />
   </div>
-  <div class="uizg-previewCode">
-    {`
-<Select options={[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20]} placeholder="Scroll options" />
-    `}
-  </div>
 </div>
+<Highlight code={`
+  <Select options={[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20]} placeholder="Scroll options" />
+`} />
 
-<div class="uizg-previewArea">
-  <div class="uizg-previewElement">
+<div class="uizg-preview">
+  <div class="uizg-preview__element">
     <p>Option objects</p>
     <!-- Custom option object -->
     <Select
@@ -372,44 +366,42 @@
       </div>
     </Select>
   </div>
-  <div class="uizg-previewCode">
-    {`
-<!-- Custom option object -->
-<Select
-options={[{name: 'Fabio', emoji: '🦊'},{name: 'James', emoji: '🦁'},{name: 'Jessica', emoji: '🐯'}]}
-labelKey="name"
-/>
-
-<!-- Custom options -->
-<Select
-options={[{name: 'Fabio', emoji: '🦊'},{name: 'James', emoji: '🦁'},{name: 'Jessica', emoji: '🐯'}]}
-labelKey="name"
->
-<p slot="option" let:option let:isSelected let:isFocused>
-  {isFocused ? '› ' : ''}
-  {option.emoji} {option.name}
-  {isSelected ? '✓ ' : ''}
-</p>
-</Select>
-
-<!-- Custom dropdown label -->
-<Select
-options={[{name: 'Fabio', emoji: '🦊'},{name: 'James', emoji: '🦁'},{name: 'Jessica', emoji: '🐯'}]}
-labelKey="name"
->
-<span slot="label" let:selected>{selected[0].emoji} {selected[0].name}</span>
-</Select>
-
-<!-- Custom dropdown trigger -->
-<Select options={['one', 'two', 'three']}>
-<Button slot="trigger" type="primary" icon={IconUser} let:selected>{selected[0]}</Button>
-</Select>
-    `}
-  </div>
 </div>
+<Highlight code={`
+  <!-- Custom option object -->
+  <Select
+    options={[{name: 'Fabio', emoji: '🦊'},{name: 'James', emoji: '🦁'},{name: 'Jessica', emoji: '🐯'}]}
+    labelKey="name"
+  />
 
-<div class="uizg-previewArea">
-  <div class="uizg-previewElement">
+  <!-- Custom options -->
+  <Select
+    options={[{name: 'Fabio', emoji: '🦊'},{name: 'James', emoji: '🦁'},{name: 'Jessica', emoji: '🐯'}]}
+    labelKey="name"
+  >
+  <p slot="option" let:option let:isSelected let:isFocused>
+    {isFocused ? '› ' : ''}
+    {option.emoji} {option.name}
+    {isSelected ? '✓ ' : ''}
+  </p>
+  </Select>
+
+  <!-- Custom dropdown label -->
+  <Select
+    options={[{name: 'Fabio', emoji: '🦊'},{name: 'James', emoji: '🦁'},{name: 'Jessica', emoji: '🐯'}]}
+    labelKey="name"
+  >
+    <span slot="label" let:selected>{selected[0].emoji} {selected[0].name}</span>
+  </Select>
+
+  <!-- Custom dropdown trigger -->
+  <Select options={['one', 'two', 'three']}>
+    <Button slot="trigger" type="primary" icon={IconUser} let:selected>{selected[0]}</Button>
+  </Select>
+`} />
+
+<div class="uizg-preview">
+  <div class="uizg-preview__element">
     <p>Filter list</p>
     <Select filter options={['one', 'two', 'three']} placeholder="Pick one" />
     <Select filter options={['one', 'two', 'three']} placeholder="Pick multiple" multiselect />
@@ -423,25 +415,23 @@ labelKey="name"
       multiselect
     />
   </div>
-  <div class="uizg-previewCode">
-    {`
-<Select filter options={['one', 'two', 'three']} placeholder="Pick one" />
-<Select filter options={['one', 'two', 'three']} placeholder="Pick multiple" multiselect />
-<Select filter placeholder="Pick one"
-options={[{name: 'Fabio', emoji: '🦊'},{name: 'James', emoji: '🦁'},{name: 'Jessica', emoji: '🐯'}]}
-labelKey="name"
-/>
-<Select filter placeholder="Pick multiple"
-options={[{name: 'Fabio', emoji: '🦊'},{name: 'James', emoji: '🦁'},{name: 'Jessica', emoji: '🐯'}]}
-labelKey="name"
-multiselect
-/>
-    `}
-  </div>
 </div>
+<Highlight code={`
+  <Select filter options={['one', 'two', 'three']} placeholder="Pick one" />
+  <Select filter options={['one', 'two', 'three']} placeholder="Pick multiple" multiselect />
+  <Select filter placeholder="Pick one"
+    options={[{name: 'Fabio', emoji: '🦊'},{name: 'James', emoji: '🦁'},{name: 'Jessica', emoji: '🐯'}]}
+    labelKey="name"
+  />
+  <Select filter placeholder="Pick multiple"
+    options={[{name: 'Fabio', emoji: '🦊'},{name: 'James', emoji: '🦁'},{name: 'Jessica', emoji: '🐯'}]}
+    labelKey="name"
+    multiselect
+  />
+`} />
 
-<div class="uizg-previewArea">
-  <div class="uizg-previewElement">
+<div class="uizg-preview">
+  <div class="uizg-preview__element">
     <Select
       options={[{emoji: '🫥', emotion: 'Not sure'}, {emoji: '😀', emotion: 'Happy'}, {emoji: '🙁', emotion: 'Sad'}]}
       labelKey="emotion"
@@ -456,35 +446,31 @@ multiselect
       </p>
     </Select>
   </div>
-  <div class="uizg-previewCode">
-    {`
-<Select
-options={[{emoji: '🫥', emotion: 'Not sure'}, {emoji: '😀', emotion: 'Happy'}, {emoji: '🙁', emotion: 'Sad'}]}
-labelKey="emotion"
-let:focused let:open let:selected
->
-<Button slot="trigger">
-  How are you feeling?
-  {open ? focused.emoji || selected[0].emoji : selected[0].emoji}
-</Button>
-<p slot="option" let:option>
-  {option.emoji} {option.emotion}
-</p>
-</Select>
-    `}
-  </div>
 </div>
+<Highlight code={`
+  <Select
+    options={[{emoji: '🫥', emotion: 'Not sure'}, {emoji: '😀', emotion: 'Happy'}, {emoji: '🙁', emotion: 'Sad'}]}
+    labelKey="emotion"
+    let:focused let:open let:selected
+  >
+  <Button slot="trigger">
+    How are you feeling?
+    {open ? focused.emoji || selected[0].emoji : selected[0].emoji}
+  </Button>
+  <p slot="option" let:option>
+    {option.emoji} {option.emotion}
+  </p>
+  </Select>
+`} />
 
-<div class="uizg-previewArea">
-  <div class="uizg-previewElement">
+<div class="uizg-preview">
+  <div class="uizg-preview__element">
     <Select options={['one', 'two', 'three']} placeholder="Hover me" hover direction="up" align="center" iconRight={false} />
     <Select options={['one', 'two', 'three']} placeholder="Open right" direction="right" align="center" iconRight={IconChevronRight} />
   </div>
-  <div class="uizg-previewCode">
-    {`
-<Select options={['one', 'two', 'three']} placeholder="Pick one" />
-<Select options={['one', 'two', 'three']} placeholder="Pick multiple" multiselect />
-<Select options={['one', 'two', 'three']} />
-    `}
-  </div>
 </div>
+<Highlight code={`
+  <Select options={['one', 'two', 'three']} placeholder="Pick one" />
+  <Select options={['one', 'two', 'three']} placeholder="Pick multiple" multiselect />
+  <Select options={['one', 'two', 'three']} />
+`} />

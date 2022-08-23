@@ -1,5 +1,6 @@
 <script>
   import "../styles/_preflight.css"
+  import "../styles/_prism.css"
   import "../styles/_app.css"
 
   import Link from "$lib/Link.svelte";
@@ -7,7 +8,7 @@
 
 <div class="uizg-columns">
   <div class="uizg-sidebar">
-    <div class="uizg-sidebar-content">
+    <div class="uizg-sidebar__content">
       <h1><a href="/">UIZG</a></h1>
 
       <hr />
@@ -28,6 +29,7 @@
         <li><Link href="/slider">Slider</Link></li>
         <li><Link href="/link">Link</Link></li>
         <li><Link href="/breadcrumb">Breadcrumb</Link></li>
+        <li><Link href="/highlight">Highlight</Link></li>
       </ul>
 
       <hr />

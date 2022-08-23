@@ -1,4 +1,6 @@
 <script>
+  import Highlight from "$lib/Highlight.svelte";
+
   import Breadcrumb from "$lib/Breadcrumb.svelte";
 </script>
 
@@ -7,8 +9,8 @@
 
 <hr />
 
-<div class="uizg-previewArea">
-  <div class="uizg-previewElement">
+<div class="uizg-preview">
+  <div class="uizg-preview__element">
     <Breadcrumb links={[
         { title: 'UIZG', href: "/" },
         { title: 'Components', href: "/" },
@@ -16,20 +18,18 @@
       ]}
     />
   </div>
-  <div class="uizg-previewCode">
-    {`
-<Breadcrumb links={[
-    { title: 'UIZG', href: "/" },
-    { title: 'Components', href: "/" },
-    { title: 'Breadcrumb', href: "/breadcrumb" },
-  ]}
-/>
-    `}
-  </div>
 </div>
+<Highlight code={`
+  <Breadcrumb links={[
+      { title: 'UIZG', href: "/" },
+      { title: 'Components', href: "/" },
+      { title: 'Breadcrumb', href: "/breadcrumb" },
+    ]}
+  />
+`} />
 
-<div class="uizg-previewArea">
-  <div class="uizg-previewElement">
+<div class="uizg-preview">
+  <div class="uizg-preview__element">
     <Breadcrumb links={[
         { title: 'UIZG', href: "#uizg" },
         { title: 'Components', href: "#components" },
@@ -39,18 +39,14 @@
       current="#breadcrumb"
     />
   </div>
-  <div class="uizg-previewCode">
-    {`
-<Breadcrumb links={[
-    { title: 'UIZG', href: "#uizg" },
-    { title: 'Components', href: "#components" },
-    { title: 'Breadcrumb', href: "#breadcrumb" },
-  ]}
-  separator="›"
-  current="#breadcrumb"
-/>
-    `}
-  </div>
 </div>
-
-
+<Highlight code={`
+  <Breadcrumb links={[
+      { title: 'UIZG', href: "#uizg" },
+      { title: 'Components', href: "#components" },
+      { title: 'Breadcrumb', href: "#breadcrumb" },
+    ]}
+    separator="›"
+    current="#breadcrumb"
+  />
+`} />

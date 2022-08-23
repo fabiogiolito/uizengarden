@@ -1,6 +1,7 @@
 <script>
   import { onMount } from "svelte";
 
+  import Highlight from "$lib/Highlight.svelte";
   import Tooltip from "$lib/Tooltip.svelte";
 
   import IconActivity from "$lib/icons/IconActivity.svelte";
@@ -298,38 +299,34 @@
 
 <hr />
 
-<div class="uizg-previewArea">
-  <div class="uizg-previewElement">
+<div class="uizg-preview">
+  <div class="uizg-preview__element">
     <IconCamera />
     <IconCopy />
     <IconDownloadCloud />
   </div>
-  <div class="uizg-previewCode">
-    {`
-<IconCamera />
-<IconCopy />
-<IconDownloadCloud />
-    `}
-  </div>
 </div>
+<Highlight code={`
+  <IconCamera />
+  <IconCopy />
+  <IconDownloadCloud />
+`} />
 
-<div class="uizg-previewArea">
-  <div class="uizg-previewElement">
+<div class="uizg-preview">
+  <div class="uizg-preview__element">
     <IconCopy size="sm" />
     <IconCopy />
     <IconCopy size="lg" />
   </div>
-  <div class="uizg-previewCode">
-    {`
-<IconDownloadCloud size="sm" />
-<IconDownloadCloud />
-<IconDownloadCloud size="lg" />
-    `}
-  </div>
 </div>
+<Highlight code={`
+  <IconDownloadCloud size="sm" />
+  <IconDownloadCloud />
+  <IconDownloadCloud size="lg" />
+`} />
 
-<div class="uizg-previewArea">
-  <div class="uizg-previewElement">
+<div class="uizg-preview">
+  <div class="uizg-preview__element">
     <Tooltip text="IconActivity"><IconActivity /></Tooltip>
     <Tooltip text="IconAirplay"><IconAirplay /></Tooltip>
     <Tooltip text="IconAlertCircle"><IconAlertCircle /></Tooltip>
