@@ -10,18 +10,21 @@
   export let autofocus = false;
   export let maxlength = false;
   export let multiline = false;
+
   export let icon = false;
+  export let iconRight = false;
 
   export let prepend = false;
   export let append = false;
 
-  export let classBase      = "input";
-  export let classIcon      = `${classBase}__icon`;
-  export let classPrepend   = `${classBase}__prepend`;
-  export let classAppend    = `${classBase}__append`;
-  export let classContent   = `${classBase}__content`;
-  export let classTextarea  = `${classBase}__textarea`;
-  export let classValue     = `${classBase}__value`;
+  export let classBase          = "input";
+  export let classSegment       = `${classBase}__segment`;
+  export let classContent       = `${classBase}__content`;
+  export let classIconContainer = `${classBase}__icon-container`;
+  export let classIcon          = `${classBase}__icon`;
+  export let classAccessory     = `${classBase}__accessory`;
+  export let classTextarea      = `${classBase}__textarea`;
+  export let classValue         = `${classBase}__value`;
 
   let className = "";
   export { className as class }; // Pass extra classes
@@ -58,17 +61,21 @@
 <!-- svelte-ignore a11y-label-has-associated-control -->
 <label class="{classBase} {className}">
 
-  {#if icon}
-    <svelte:component this={icon} class={classIcon} />
+  {#if prepend || $$slots.prepend}
+    <slot name="prepend">
+      <span class="{classSegment} {classAccessory}">
+        {prepend}
+      </span>
+    </slot>
   {/if}
 
-  <slot name="prepend">
-    {#if prepend}
-      <span class={classPrepend}>{prepend}</span>
-    {/if}
-  </slot>
+  {#if icon}
+    <span class="{classSegment} {classIconContainer}">
+      <svelte:component this={icon} class={classIcon} />
+    </span>
+  {/if}
 
-  <span class={classContent}>
+  <span class="{classSegment} {classContent}">
     <textarea
       class={classTextarea}
       bind:this={textarea}
@@ -85,10 +92,18 @@
     <span aria-hidden class={classValue}>{value}_</span>
   </span>
 
-  <slot name="append">
-    {#if append}
-      <span class={classAppend}>{append}</span>
-    {/if}
-  </slot>
+  {#if iconRight}
+    <span class="{classSegment} {classIconContainer}">
+      <svelte:component this={iconRight} class={classIcon} />
+    </span>
+  {/if}
+
+  {#if append || $$slots.append}
+    <slot name="append">
+      <span class="{classSegment} {classAccessory}">
+        {append}
+      </span>
+    </slot>
+  {/if}
 
 </label>

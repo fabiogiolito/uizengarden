@@ -6,6 +6,14 @@
   import IconChevronDown from "$lib/icons/IconChevronDown.svelte";
 
   // ====================================
+  // Button (trigger) settings
+
+  export let [ 
+    type, size
+  ] = Array();
+
+
+  // ====================================
   // Dropdown settings
 
   export let [ 
@@ -59,6 +67,8 @@
   export let classOption = `${classBase}__option`;
   export let classOptionSelected = `${classBase}__option--selected`;
   export let classOptionFocused = `${classBase}__option--focused`;
+
+  export let style = "";
 
   // Focus match - type something jump focus to matching option
   let focusMatchString = "";
@@ -279,7 +289,7 @@
         {placeholder} 
       />
     {:else}
-      <Button class={classTrigger} iconRight={iconRight}>
+      <Button class={classTrigger} iconRight={iconRight} {type} {size} {style}>
         <slot name="label" {selected} {label} {focused} {open} {placeholder}>
           {title || label || placeholder}
         </slot>

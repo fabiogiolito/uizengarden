@@ -5,6 +5,7 @@
   import Button from "$lib/Button.svelte";
 
   import IconAtSign from "$lib/icons/IconAtSign.svelte";
+  import IconCheck from "$lib/icons/IconCheck.svelte";
 
 </script>
 
@@ -24,6 +25,15 @@
 
 <div class="uizg-preview">
   <div class="uizg-preview__element">
+    <Input placeholder="username" value="JackSparrow" icon={IconAtSign} iconRight={IconCheck} />
+  </div>
+</div>
+<Highlight code={`
+  <Input placeholder="username" value="JackSparrow" icon={IconAtSign} iconRight={IconCheck} />
+`} />
+
+<div class="uizg-preview">
+  <div class="uizg-preview__element">
     <Input prepend="$" append=".00" placeholder="value" />
   </div>
 </div>
@@ -34,14 +44,14 @@
 <div class="uizg-preview">
   <div class="uizg-preview__element">
     <Input placeholder="username">
-      <IconAtSign slot="prepend" />
-      <Button slot="append">Create account</Button>
-    </Input>
+      <IconAtSign slot="prepend" class="input__segment" />
+      <Button slot="append" size="sm" type="secondary">Join</Button>
+    </Input> 
   </div>
 </div>
 <Highlight code={`
   <Input placeholder="username">
-    <IconAtSign slot="prepend" />
-    <Button slot="append">Create account</Button>
-  </Input>
+    <IconAtSign slot="prepend" class="input__segment" />
+    <Button slot="append" size="sm" type="secondary">Join</Button>
+  </Input> 
 `} />
