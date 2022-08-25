@@ -32,6 +32,7 @@
         <li><Link href="/highlight">Highlight</Link></li>
         <li><Link href="/stepper">Stepper</Link></li>
         <li><Link href="/avatar">Avatar</Link></li>
+        <li><Link href="/list">List</Link></li>
       </ul>
 
       <hr />

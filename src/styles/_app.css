@@ -16,6 +16,7 @@
 @import "./breadcrumb.css";
 @import "./stepper.css";
 @import "./avatar.css";
+@import "./list.css";
 
 /* ==================================== */
 /* Structure */
@@ -47,10 +48,6 @@ h4 {
 
 p {
   line-height: 1.4em;
-}
-
-p:last-child {
-  margin-bottom: 0;
 }
 
 hr {

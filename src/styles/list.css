@@ -1,0 +1,124 @@
+/* ============================================= */
+/* Component functionality */
+
+/* ============================================= */
+/* Styles */
+
+.list {
+  border: 1px solid rgb(var(--background-quaternary));
+  border-radius: 0.3em;
+  min-width: 20ch;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  padding: 0.25rem 0;
+}
+
+.list .list {
+  border: 0;
+  border-bottom: 1px solid rgb(var(--background-quaternary));
+  border-radius: 0;
+}
+
+.list .list:last-child {
+  border: 0;
+}
+
+.dropdown__menu .list {
+  border: 0;
+}
+
+/* --------------------------------------------- */
+/* Button / Item */
+
+.list .btn {
+  --btn-shadow: transparent;
+  --btn-border: transparent;
+  border-radius: 0;
+  width: 100%;
+  text-align: left;
+}
+
+.list .btn:not(.btn--selected, .btn--focused, :hover) {
+  --btn-background: transparent;
+}
+
+/* ----------------------------------------------- */
+/* Items */
+
+.list__item {
+  text-align: left;
+  display: flex;
+  align-items: center;
+}
+
+.list__item__label {
+  padding: 0.25rem 0.75rem;
+  flex: 1;
+}
+
+.list__item__icon-container {
+  display: flex;
+  align-items: center;
+  padding: 0 0.75rem;
+}
+
+.list__item__icon-container--left {
+  margin-right: -0.875em;
+}
+
+.list__item__icon-container--right {
+  margin-left: -0.875em;
+}
+
+/* --------------------------------------------- */
+/* List item types */
+
+.list__item--heading {
+  text-transform: uppercase;
+  opacity: 0.5;
+  font-size: 0.5em;
+  font-weight: 600;
+  padding-top: 0.25rem;
+}
+
+.list__item--divider {
+  background: rgb(var(--background-tertiary));
+  height: 2px;
+  width: 100%;
+  margin: 0.25rem 0;
+}
+
+/* --------------------------------------------- */
+/* List types */
+
+.list--dividers {
+  padding: 0;
+}
+
+.list--dividers .list__item:not(:last-child) {
+  border-bottom: 1px solid rgb(var(--background-quaternary));
+}
+
+.list--dividers .list__item__label {
+  padding: 0.5rem 0.75rem;
+}
+
+.list--dividers .btn:not(:last-child) {
+  border-bottom: 1px solid rgb(var(--background-quaternary));
+}
+
+.list--inset {
+  padding: 0.25rem;
+}
+
+.list--inset .list__item,
+.list--inset .btn {
+  border-radius: inherit;
+  margin-bottom: 2px;
+}
+
+.list--inset .list__item:last-child,
+.list--inset .btn:last-child {
+  margin-bottom: 0;
+}

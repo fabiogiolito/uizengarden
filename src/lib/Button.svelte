@@ -17,7 +17,10 @@
   export let value = null; // optional value passed on click event
 
   export let toggle = false; // Enable toggle behavior
-  export let selected = false; // Toggle state
+  export let toggled = false; // Toggle state
+
+  export let selected = false; // Selected state
+  export let focused = false; // Focused state
 
   // Accessibility
   export let role = null;
@@ -29,9 +32,11 @@
 
   // Element classes
   export let classBase               = "btn";
-  export let classIconBtn           = `${classBase}--icon-btn`;
+  export let classIconBtn            = `${classBase}--icon-btn`;
+  export let classToggled            = `${classBase}--toggled`;
+  export let classUntoggled          = `${classBase}--untoggled`;
   export let classSelected           = `${classBase}--selected`;
-  export let classUnselected         = `${classBase}--unselected`;
+  export let classFocused            = `${classBase}--focused`;
   export let classLoading            = `${classBase}--loading`;
   export let classDisabled           = `${classBase}--disabled`;
   export let classCopyStatus         = `${classBase}__copy-status`;
@@ -72,21 +77,21 @@
   // Functions
 
   function handleClick(e) {
-    if (toggle) toggleSelected(); // Select / unselect
+    if (toggle) toggleBtn(); // Toggled / Untoggled
     if (copy || copyFunc) handlecopy(); // Copy text
     if (async) loading = true; // Enter loading state
     dispatch('click', value); // Pass click event to parent with optional value
   }
 
-  function toggleSelected() {
-    selected = !selected;
+  function toggleBtn() {
+    toggled = !toggled;
 
     dispatch('toggle', value);
 
-    if (selected) {
-      dispatch('select', value);
+    if (toggled) {
+      dispatch('toggleOn', value);
     } else {
-      dispatch('unselect', value);
+      dispatch('toggleOff', value);
     }
   }
 
@@ -108,8 +113,10 @@
     {type     ? `${classBase}--${type}` : ''}
     {size     ? `${classBase}--${size}` : ''}
     {loading  ? classLoading  : ''}
-    {toggle ? (selected ? classSelected : classUnselected) : ''}
+    {toggle ? (toggled ? classToggled : classUntoggled) : ''}
     {disabled || loading ? classDisabled : ''}
+    {focused ? classFocused : ''}
+    {selected ? classSelected : ''}
     {(icon || iconRight) && !label && !$$slots.default ? classIconBtn : ''}
     {className}
   "
@@ -139,15 +146,16 @@
         {copyStatus}
       </span>
 
-    <!-- Content -->
-    {:else if $$slots.default}
-      <span in:fade class={classLabel}>
-        <slot {selected} />
-      </span>
-
+    <!-- Label prop -->
     {:else if label}
       <span in:fade class={classLabel}>
         {label}
+      </span>
+
+    <!-- Content -->
+    {:else if $$slots.default}
+      <span in:fade class={classLabel}>
+        <slot {toggled} />
       </span>
     {/if}
 
