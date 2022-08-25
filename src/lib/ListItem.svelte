@@ -9,8 +9,8 @@
   export let value = null; // optional value passed on click event
   export let element = "div";
 
-  export let heading;
-  export let divider;
+  export let heading = false;
+  export let divider = false;
 
   // Element classes
   export let classBase               = "list__item";

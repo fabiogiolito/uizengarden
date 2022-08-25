@@ -127,6 +127,7 @@
   {ariaLabel}
   disabled={disabled || loading}
   on:click={handleClick}
+  on:mouseenter
 >
 
   <span class={classContent}>

@@ -17,6 +17,8 @@
   export let prepend = false;
   export let append = false;
 
+  export let textarea; // Element reference
+
   export let classBase          = "input";
   export let classSegment       = `${classBase}__segment`;
   export let classContent       = `${classBase}__content`;
@@ -29,7 +31,8 @@
   let className = "";
   export { className as class }; // Pass extra classes
 
-  let textarea; // Reference
+
+  // ========================================
 
   // Handle some specific key combos
   function handleKeyDown(e) {
@@ -38,17 +41,22 @@
     if (!multiline && e.key == "Enter" && !e.shiftKey) {
       e.preventDefault();
       dispatch('return', e);
+      return;
     }
   
     if (e.key == "Escape") {
       e.preventDefault();
       dispatch('escape', e);
+      return;
     }
 
     // CMD + Up = Edit last message
     if (e.key == "ArrowUp" && e.metaKey) {
       dispatch('editLast');
+      return;
     }
+
+    dispatch('keydown', e);
   }
 
   onMount(() => {

@@ -3,6 +3,7 @@
 
   import Select from "$lib/Select.svelte";
   import Button from "$lib/Button.svelte";
+  import ListItem from "$lib/ListItem.svelte";
 
   import IconUser from "$lib/icons/IconUser.svelte";
   import IconChevronRight from "$lib/icons/IconChevronRight.svelte";
@@ -300,7 +301,7 @@
     <p><Select input placeholder="Favorite fruit" options={['apple', 'banana', 'orange', 'mango']} selected={['mango']} /></p>
     <p>
       <Select input placeholder="Favorite fruit" options={['apple', 'banana', 'orange', 'mango']} let:inputValue>
-        <button slot="empty" on:click={() => alert("create " + inputValue)}>Create new</button>
+        <Button slot="empty" on:click={() => alert("create " + inputValue)}>Create new</Button>
       </Select>
     </p>
   </div>
@@ -309,7 +310,7 @@
   <Select input placeholder="Favorite fruit" options={['apple', 'banana', 'orange', 'mango']} />
   <Select input placeholder="Favorite fruit" options={['apple', 'banana', 'orange', 'mango']} selected={['mango']} />
   <Select input placeholder="Favorite fruit" options={['apple', 'banana', 'orange', 'mango']} let:inputValue>
-    <button slot="empty" on:click={() => alert("create " + inputValue)}>Create new</button>
+    <Button slot="empty" on:click={() => alert("create " + inputValue)}>Create new</Button>
   </Select>
 `} />
 

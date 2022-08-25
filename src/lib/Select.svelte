@@ -3,7 +3,14 @@
 
   import Button from "$lib/Button.svelte";
   import Dropdown from "$lib/Dropdown.svelte";
+  import Input from "$lib/Input.svelte";
+  import List from "$lib/List.svelte";
+  import ListItem from "$lib/ListItem.svelte";
+  
   import IconChevronDown from "$lib/icons/IconChevronDown.svelte";
+  import IconSearch from "$lib/icons/IconSearch.svelte";
+  import LoadingIndicator from "$lib/LoadingIndicator.svelte";
+
 
   // ====================================
   // Button (trigger) settings
@@ -35,6 +42,7 @@
   export let labelKey = null; // If options are objects, which object key should be used as option label
 
   export let fetchOptions = null; // Function to fetch remote options
+  export let loading = false; // Is fetching state
 
   export let title = null; // Fixed title on trigger (overrides placeholder and label)
   export let placeholder = null; // If has a placeholder it also means it can be null
@@ -92,7 +100,9 @@
   // Get remote options for filterValue
   async function getRemoteOptions(filterValue) {
     if (!fetchOptions) return;
+    loading = true;
     options = await fetchOptions(filterValue);
+    loading = false;
   }
 
 
@@ -224,12 +234,21 @@
   }
 
   // Handle input trigger change
-  function handleInputValueChange() {
+  function handleInputValueChange(e) {
     if (!open) dropdownRef.openDropdown();
     if (!inputValue) dropdownRef.closeDropdown();
     filterValue = inputValue; // Filter list with value
   }
 
+  // Open options on arrow down when closed
+  function handleInputKeyDown(e) {
+    if (open) return;
+    if (e.detail.key == "ArrowDown") {
+      open = true;
+      filterValue = "";
+      e.detail.stopPropagation();
+    }
+  }
 
   // ----------------------------------------
   // Helpers
@@ -280,14 +299,16 @@
   <!-- Trigger -->
   <slot name="trigger" slot="trigger" {selected} {label} {focused} {open} {placeholder}>
     {#if input}
-      <input type="text"
-        bind:value={inputValue}
-        on:focus={openDropdown}
-        on:blur={closeDropdown}
-        on:click|stopPropagation
-        on:input={handleInputValueChange}
-        {placeholder} 
-      />
+      <span on:click|stopPropagation>
+        <Input
+          bind:value={inputValue}
+          on:focus={openDropdown}
+          on:blur={closeDropdown}
+          on:input={handleInputValueChange}
+          on:keydown={handleInputKeyDown}
+          {placeholder} 
+        />
+      </span>
     {:else}
       <Button class={classTrigger} iconRight={iconRight} {type} {size} {style}>
         <slot name="label" {selected} {label} {focused} {open} {placeholder}>
@@ -297,52 +318,68 @@
     {/if}
   </slot>
 
-  <!-- Filter input on dropdown -->
-  {#if filter}
-    <input type="text" bind:this={filterInput}
-      placeholder={filterPlaceholder}
-      bind:value={filterValue}
-      on:change={() => open = true }
-    />
-  {/if}
+  <!-- List -->
+  <List>
 
-  <slot name="prependMenu" />
+    <!-- Filter input on dropdown -->
+    {#if filter}
+      <Input bind:textarea={filterInput}
+        icon={IconSearch}
+        placeholder={filterPlaceholder}
+        bind:value={filterValue}
+        on:change={() => open = true }
+      />
+      <ListItem divider />
+    {/if}
 
-  <div class="{classList} {!filteredOptions.length ? classEmpty : ''}">
-    {#each filteredOptions as option}
-      <div class={classOptionContainer}>
-        <button
-          on:click={() => selectOption(option)}
-          on:mouseenter={() => focused = option}
-          class="
-            {classOption}
-            {selected.includes(option) ? classOptionSelected : ''}
-            {focused == option ? classOptionFocused : ''}
-          "
-        >
-          <!-- Override option code with slot -->
-          <slot name="option" {option} isSelected={selected.includes(option)} isFocused={focused == option}>
-            {labelKey ? option[labelKey] : option}
-          </slot>
-        </button>
-      </div>
-    {:else}
-      <slot name="empty" {inputValue}>
-        {#if labelEmpty}
-          <div class={classEmptyLabel}>
-            <em>{labelEmpty}</em>
-          </div>
-        {/if}
+    <slot name="prependMenu" {inputValue} />
+
+    {#if loading}
+      <slot name="loading">
+        <ListItem icon={LoadingIndicator}>Loading…</ListItem>
       </slot>
-    {/each}
-  </div>
+    {/if}
+    
 
-  <slot name="appendMenu" />
+    <!-- Loop options -->
+    <div class="{classList} {!filteredOptions.length ? classEmpty : ''}">
+      {#each filteredOptions as option}
+        <div class="
+          {classOptionContainer}
+          {focused == option ? classOptionFocused : ''}
+          {selected.includes(option) ? classOptionSelected : ''}
+        ">
+          <Button
+            on:click={() => selectOption(option)}
+            on:mouseenter={() => focused = option}
+            selected={selected.includes(option)}
+            focused={focused == option}
+            class={classOption}
+          >
+            <slot name="option" {option} isSelected={selected.includes(option)} isFocused={focused == option}>
+              {labelKey ? option[labelKey] : option}
+            </slot>
+          </Button>
+        </div>
+      {:else}
+        <slot name="empty" {inputValue}>
+          {#if labelEmpty}
+            <ListItem class={classEmptyLabel}>
+              <em>{labelEmpty}</em>
+            </ListItem>
+          {/if}
+        </slot>
+      {/each}
+    </div>
 
-  <!-- Clear selection -->
-  {#if multiselect && placeholder && selected.length}
-    <button on:click={clearSelection}>clear</button>
-  {/if}
+    <slot name="appendMenu" {inputValue} />
 
+    <!-- Clear selection -->
+    {#if multiselect && placeholder && selected.length}
+      <ListItem divider />
+      <Button on:click={clearSelection}>clear</Button>
+    {/if}
+
+  </List>
 
 </Dropdown>
