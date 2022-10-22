@@ -15,6 +15,7 @@
 
       <h4>Components</h4>
       <ul>
+        <li><Link href="/label">Label</Link></li>
         <li><Link href="/button">Button</Link></li>
         <li><Link href="/dropdown">Dropdown</Link></li>
         <li><Link href="/collapsible">Collapsible</Link></li>

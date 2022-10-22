@@ -11,6 +11,9 @@
   import IconChevronRight from "$lib/icons/IconChevronRight.svelte";
   import IconBold from "$lib/icons/IconBold.svelte";
   import IconItalic from "$lib/icons/IconItalic.svelte";
+  import IconAlignLeft from "$lib/icons/IconAlignLeft.svelte";
+  import IconAlignCenter from "$lib/icons/IconAlignCenter.svelte";
+  import IconAlignRight from "$lib/icons/IconAlignRight.svelte";
   import IconCheck from "$lib/icons/IconCheck.svelte";
   import IconEmpty from "$lib/icons/IconEmpty.svelte";
 
@@ -51,7 +54,7 @@
   </div>
 </div>
 <Highlight code={`
-  <List>
+  <List dividers>
     <Button>List item 1</Button>
     <Button label="List item 2" />
     <Button>List item 3</Button>
@@ -59,10 +62,10 @@
 `} />
 
 <!-- ------------------------------ -->
-<!-- LIST INSET -->
+<!-- LIST ROW -->
 <div class="uizg-preview">
   <div class="uizg-preview__element">
-    <List type="inset">
+    <List row>
       <Button>List item 1</Button>
       <Button label="List item 2" />
       <Button>List item 3</Button>
@@ -70,7 +73,81 @@
   </div>
 </div>
 <Highlight code={`
-  <List type="inset">
+  <List row>
+    <Button>List item 1</Button>
+    <Button label="List item 2" />
+    <Button>List item 3</Button>
+  </List>
+`} />
+
+<!-- ------------------------------ -->
+<!-- LIST ROW DIVIDER -->
+<div class="uizg-preview">
+  <div class="uizg-preview__element">
+    <List row dividers>
+      <Button>List item 1</Button>
+      <Button label="List item 2" />
+      <Button>List item 3</Button>
+    </List>
+  </div>
+</div>
+<Highlight code={`
+  <List row dividers>
+    <Button>List item 1</Button>
+    <Button label="List item 2" />
+    <Button>List item 3</Button>
+  </List>
+`} />
+
+
+<!-- ------------------------------ -->
+<!-- LIST ROW ICONS -->
+<div class="uizg-preview">
+  <div class="uizg-preview__element">
+    <List row inset>
+      <Button toggle icon={IconBold} />
+      <Button toggle icon={IconItalic} />
+      <ListItem divider />
+      <ListItem heading>Align</ListItem>
+      <ToggleGroup current="Left" let:current let:setCurrent>
+        <List row type="secondary">
+          <Button value="Left" selected={current == "Left"} on:click={setCurrent} icon={IconAlignLeft} />
+          <Button value="Center" selected={current == "Center"} on:click={setCurrent} icon={IconAlignCenter} />
+          <Button value="Right" selected={current == "Right"} on:click={setCurrent} icon={IconAlignRight} />
+        </List>
+      </ToggleGroup>
+    </List>
+  </div>
+</div>
+<Highlight code={`
+  <List row inset>
+    <Button toggle icon={IconBold} />
+    <Button toggle icon={IconItalic} />
+    <ListItem divider />
+    <ListItem heading>Align</ListItem>
+    <ToggleGroup current="Left" let:current let:setCurrent>
+      <List row type="secondary">
+        <Button value="Left" selected={current == "Left"} on:click={setCurrent} icon={IconAlignLeft} />
+        <Button value="Center" selected={current == "Center"} on:click={setCurrent} icon={IconAlignCenter} />
+        <Button value="Right" selected={current == "Right"} on:click={setCurrent} icon={IconAlignRight} />
+      </List>
+    </ToggleGroup>
+  </List>
+`} />
+
+<!-- ------------------------------ -->
+<!-- LIST INSET -->
+<div class="uizg-preview">
+  <div class="uizg-preview__element">
+    <List inset>
+      <Button>List item 1</Button>
+      <Button label="List item 2" />
+      <Button>List item 3</Button>
+    </List>
+  </div>
+</div>
+<Highlight code={`
+  <List inset>
     <Button>List item 1</Button>
     <Button label="List item 2" />
     <Button>List item 3</Button>
@@ -134,7 +211,7 @@
     <Button>List item 1</Button>
     <Button>List item 2</Button>
     <ListItem divider />
-    <ListItem heading label="Format" />
+    <ListItem heading label="format" />
     <Button icon={IconBold}>List item 3</Button>
     <Button icon={IconItalic}>List item 4</Button>
   </List>
@@ -192,6 +269,20 @@
   </div>
 </div>
 <Highlight code={`  
+  <List>
+    <ListItem>
+      <p><strong>Title</strong></p>
+      <p>Paragraph</p>
+    </ListItem>
+    <ListItem>
+      <p><strong>Title</strong></p>
+      <p>Paragraph</p>
+    </ListItem>
+    <ListItem>
+      <p><strong>Title</strong></p>
+      <p>Paragraph</p>
+    </ListItem>
+  </List>
 `} />
 
 <!-- ------------------------------ -->
@@ -215,29 +306,18 @@
   </div>
 </div>
 <Highlight code={`
-`} />
-
-<!-- ------------------------------ -->
-<!-- LIST TOGGLE GROUP -->
-<div class="uizg-preview">
-  <div class="uizg-preview__element">
-    <ToggleGroup let:current let:setCurrent current="team">
-      <List dividers>
-        <ListItem element="button" value="solo" on:click={setCurrent} icon={current == 'solo' ? IconCheck : IconEmpty}>
-          <p><strong>Solo</strong></p>
-          <small>Our individual plan</small>
-        </ListItem>
-        <ListItem element="button" value="team" on:click={setCurrent} icon={current == 'team' ? IconCheck : IconEmpty}>
-          <p><strong>Team</strong></p>
-          <small>For small teams up to 100 people</small>
-        </ListItem>
-        <ListItem element="button" value="enterprise" on:click={setCurrent} icon={current == 'enterprise' ? IconCheck : IconEmpty}>
-          <p><strong>Enterprise</strong></p>
-          <small>For large teams with specific needs</small>
-        </ListItem>
-      </List>
-    </ToggleGroup>
-  </div>
-</div>
-<Highlight code={`
+  <List dividers>
+    <ListItem>
+      <p><strong>Title</strong></p>
+      <p>Paragraph</p>
+    </ListItem>
+    <ListItem>
+      <p><strong>Title</strong></p>
+      <p>Paragraph</p>
+    </ListItem>
+    <ListItem>
+      <p><strong>Title</strong></p>
+      <p>Paragraph</p>
+    </ListItem>
+  </List>
 `} />

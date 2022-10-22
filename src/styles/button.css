@@ -2,11 +2,15 @@
 /* Component functionality */
 
 .btn {
+  display: inline-flex;
+  text-align: left;
   position: relative; /* to position .btn__loading */
   vertical-align: middle;
+  white-space: nowrap;
+  min-height: 2.675em;
 }
 
-.btn--loading .btn__content {
+.btn--loading .btn__label {
   opacity: 0; /* hide content when loading */
 }
 
@@ -14,7 +18,7 @@
 /* Structure 
 
   .btn (.btn--{size} .btn--{type} .btn--loading .btn--selected .btn--disabled)
-    .btn__content
+    .btn__content (.label)
       .btn__icon-container.btn__icon-container--left
         .btn__icon
       .btn__label (.btn__copyStatus)
@@ -30,9 +34,9 @@
   --btn-background: var(--background);
   --btn-color: var(--foreground);
   --btn-border: var(--background-quaternary);
+  --btn-border: var(--foreground) / 0.15;
   --btn-shadow: var(--foreground) / 0.1;
 
-  display: inline-block;
   align-items: stretch;
   background: rgb(var(--btn-background));
   color: rgb(var(--btn-color));
@@ -42,20 +46,14 @@
   border-radius: 0.375rem;
   box-shadow: rgb(var(--btn-shadow)) 0px 1px 2px 0px;
   transition: all ease-in-out 150ms;
-}
-
-button.btn,
-a.btn {
   cursor: pointer;
 }
 
-button.btn:hover,
-a.btn:hover {
+.btn:hover {
   --btn-background: var(--background-secondary);
-  --btn-color: var(--btn-color);
 }
 
-.btn.btn:disabled,
+.btn:disabled,
 .btn.btn--disabled {
   pointer-events: none;
   opacity: 0.5;
@@ -73,42 +71,12 @@ a.btn:hover {
   flex: 1;
 }
 
-.btn__icon-container {
-  display: flex;
-  align-items: center;
-  padding: 0.75em 0.75em;
-}
-
-.btn__icon-container--left {
-  margin-right: -1.25em;
-}
-
-.btn__icon-container--right {
-  margin-left: -1.25em;
-}
-
-/* Icon button */
-
-.btn--icon-btn .btn__icon-container {
-  margin: 0;
-}
-
-.btn--icon-btn .btn__icon-container--left:not(:last-child) {
-  margin-right: -0.5em;
-}
-
-.btn--icon-btn .btn__icon-container--right:not(:first-child) {
-  margin-left: -0.5em;
-}
-
 /* --------------------------------------------- */
 /* Types */
 
 .btn--primary {
   --btn-background: var(--tint);
   --btn-color: var(--tint-contrast);
-  --btn-border: var(--tint);
-  --btn-shadow: transparent;
 }
 .btn--primary:hover {
   --btn-background: var(--tint) / 0.9;
@@ -117,7 +85,7 @@ a.btn:hover {
 .btn--primary-translucent {
   --btn-background: var(--tint) / 0.1;
   --btn-color: var(--tint);
-  --btn-border: var(--tint) / 0.25;
+  --btn-border: var(--tint) / 0.1;
   --btn-shadow: transparent;
 }
 .btn--primary-translucent:hover {
@@ -135,9 +103,8 @@ a.btn:hover {
 }
 
 .btn--secondary-translucent {
-  --btn-background: var(--foreground) / 0.1;
+  --btn-background: var(--foreground) / 0.05;
   --btn-color: var(--foreground);
-  --btn-border: var(--foreground) / 0.25;
   --btn-shadow: transparent;
 }
 .btn--secondary-translucent:hover {
@@ -153,6 +120,12 @@ a.btn:hover {
 
 .btn--selected {
   --btn-background: var(--tint);
+  --btn-color: var(--background);
+}
+
+button.btn--selected:hover,
+a.btn--selected:hover {
+  --btn-background: var(--tint) / 0.9;
   --btn-color: var(--background);
 }
 

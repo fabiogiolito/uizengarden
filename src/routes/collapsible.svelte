@@ -47,9 +47,7 @@
     <Collapsible collapsed let:collapsed let:toggleCollapsed>
       <div slot="trigger">
         {#if collapsed}
-          <div transition:slide>
-            <Button size="xs" on:click={toggleCollapsed}>2 more</Button>
-          </div>
+          <Button size="xs" on:click={toggleCollapsed}>2 more</Button>
         {/if}
       </div>
       <p>Hello one</p>
@@ -59,14 +57,12 @@
 </div>
 <Highlight code={`
   <Collapsible collapsed let:collapsed let:toggleCollapsed>
-    <div slot="trigger">
-      {#if collapsed}
-        <div transition:slide>
+      <div slot="trigger">
+        {#if collapsed}
           <Button size="xs" on:click={toggleCollapsed}>2 more</Button>
-        </div>
-      {/if}
-    </div>
-    <p>Hello one</p>
-    <p>Hello two</p>
-  </Collapsible>
+        {/if}
+      </div>
+      <p>Hello one</p>
+      <p>Hello two</p>
+    </Collapsible>
 `} />

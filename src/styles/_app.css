@@ -3,6 +3,7 @@
 /* ==================================== */
 /* Components */
 
+@import "./label.css";
 @import "./button.css";
 @import "./dropdown.css";
 @import "./select.css";
@@ -20,6 +21,11 @@
 
 /* ==================================== */
 /* Structure */
+
+#teleport-container {
+  heigth: 0;
+  position: absolute;
+}
 
 h1 {
   font-size: 2em;
@@ -84,6 +90,8 @@ hr {
   padding: 2em;
   border-radius: 0.5em;
   display: flex;
+  flex-direction: column;
+  gap: 8px;
   align-items: center;
   justify-content: center;
   min-height: 15em;

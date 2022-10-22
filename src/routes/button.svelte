@@ -2,6 +2,8 @@
   import Highlight from "$lib/Highlight.svelte";
 
   import Button from "$lib/Button.svelte";
+
+  import Checkbox from "$lib/Checkbox.svelte";
   import IconAlignLeft from "$lib/icons/IconAlignLeft.svelte";
   import IconCopy from "$lib/icons/IconCopy.svelte";
   import IconChevronDown from "$lib/icons/IconChevronDown.svelte";
@@ -118,43 +120,53 @@
 
 <div class="uizg-preview">
   <div class="uizg-preview__element">
-    <Button toggle selected on:toggle={() => console.log('toggled')}>Toggle</Button>
+    <Button toggle on:toggle={() => console.log('toggled')}>Toggle</Button>
     <Button toggle
-      classSelected="btn--primary"
-      classUnselected="btn--secondary-translucent"
+      classToggled="btn--primary"
+      classUntoggled="btn--primary-translucent"
       label="Toggle"
     />
-    <Button toggle
-      on:select={() => console.log('did select')}
-      on:unselect={() => console.log('did unselect')}
-      classSelected=""
-      let:selected
+    <Button toggle toggled
+      on:select={() => console.log('handleFollow')}
+      on:unselect={() => console.log('handleUnfollow')}
+      classUntoggled="btn--primary"
+      classToggled=""
+      let:toggled
     >
-      {#if selected}
+      {#if toggled}
         <em>Following</em>
       {:else}
         <strong>Follow</strong>
       {/if}
     </Button>
   </div>
+  <div class="uizg-preview__element">
+    <Button element="div" toggle let:toggled classToggled="">
+      <Checkbox checked={toggled} label="I've read the terms of service" />
+    </Button>
+  </div>
 </div>
 <Highlight code={`
-  <Button toggle selected on:toggle={handleToggle}>Toggle</Button>
+  <Button toggle on:toggle={() => console.log('toggled')}>Toggle</Button>
   <Button toggle
-    classSelected="btn--primary"
-    classUnselected="btn--secondary-translucent"
+    classToggled="btn--primary"
+    classUntoggled="btn--primary-translucent"
     label="Toggle"
   />
-  <Button toggle
-    on:select={handleSelect}
-    on:unselect={handleUnselect}
-    classSelected=""
-    let:selected
+  <Button toggle toggled
+    on:select={handleFollow}
+    on:unselect={handleUnfollow}
+    classUntoggled="btn--primary"
+    classToggled=""
+    let:toggled
   >
-    {#if selected}
+    {#if toggled}
       <em>Following</em>
     {:else}
       <strong>Follow</strong>
     {/if}
+  </Button>
+  <Button element="div" toggle let:toggled classToggled="">
+    <Checkbox checked={toggled} label="I've read the terms of service" />
   </Button>
 `} />

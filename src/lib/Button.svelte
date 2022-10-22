@@ -2,6 +2,7 @@
   import { createEventDispatcher } from "svelte";
   import { fade } from "svelte/transition";
 
+  import Label from "$lib/Label.svelte";
   import LoadingIndicator from "$lib/LoadingIndicator.svelte";
 
   const dispatch = createEventDispatcher();
@@ -40,19 +41,13 @@
   export let classLoading            = `${classBase}--loading`;
   export let classDisabled           = `${classBase}--disabled`;
   export let classCopyStatus         = `${classBase}__copy-status`;
-  export let classContent            = `${classBase}__content`;
   export let classLabel              = `${classBase}__label`;
   export let classLoadingIndicator   = `${classBase}__loading`;
-  export let classIconContainer      = `${classBase}__icon-container`;
-  export let classIconContainerLeft  = `${classBase}__icon-container--left`;
-  export let classIconContainerRight = `${classBase}__icon-container--right`;
-  export let classIcon               = `${classBase}__icon`;
-
+  
   // Extra classes
   let className = "";
   export { className as class };
   export let style = "";
-
 
   // Icons
   export let icon = null;
@@ -83,7 +78,7 @@
     dispatch('click', value); // Pass click event to parent with optional value
   }
 
-  function toggleBtn() {
+  export function toggleBtn() {
     toggled = !toggled;
 
     dispatch('toggle', value);
@@ -113,7 +108,7 @@
     {type     ? `${classBase}--${type}` : ''}
     {size     ? `${classBase}--${size}` : ''}
     {loading  ? classLoading  : ''}
-    {toggle ? (toggled ? classToggled : classUntoggled) : ''}
+    {toggle ? toggled ? classToggled : classUntoggled : ''}
     {disabled || loading ? classDisabled : ''}
     {focused ? classFocused : ''}
     {selected ? classSelected : ''}
@@ -130,46 +125,25 @@
   on:mouseenter
 >
 
-  <span class={classContent}>
+  <Label {icon} {iconRight} text={label} class={classLabel}>
 
-    <!-- Left side icon -->
-    <slot name="icon">
-      {#if icon}
-        <span class="{classIconContainer} {classIconContainerLeft}">
-          <svelte:component this={icon} class={classIcon} />
-        </span>
-      {/if}
-    </slot>
-
+    <!-- Left icon -->
+    <slot name="icon" slot="icon" />
+    
     <!-- Copy status -->
     {#if copyStatus}
-      <span in:fade class={classLabel} {classCopyStatus}>
+      <span in:fade class="{classCopyStatus}">
         {copyStatus}
       </span>
 
-    <!-- Label prop -->
-    {:else if label}
-      <span in:fade class={classLabel}>
-        {label}
-      </span>
-
     <!-- Content -->
-    {:else if $$slots.default}
-      <span in:fade class={classLabel}>
-        <slot {toggled} />
-      </span>
+    {:else if label || $$slots.default}
+      <slot {toggled} {toggleBtn}>{label}</slot>
     {/if}
 
-    <!-- Icon right size -->
-    <slot name="iconRight">
-      {#if iconRight}
-        <span class="{classIconContainer} {classIconContainerRight}">
-          <svelte:component this={iconRight} class={classIcon} />
-        </span>
-      {/if}
-    </slot>
-
-  </span>
+    <!-- Right icon -->
+    <slot name="iconRight" slot="iconRight" />
+  </Label>
 
   <!-- Loading spinner -->
   {#if loading}

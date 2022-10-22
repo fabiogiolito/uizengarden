@@ -2,11 +2,14 @@
 
   export let type = null;
 
+  export let row = false;
+  export let inset = false;
   export let dividers = false;
 
   export let classBase = "list";
-  export let classInset = type == 'inset' ? `${classBase}--inset` : '';
-  export let classRow = type == 'row' ? `${classBase}--row` : '';
+  export let classInset = inset ? `${classBase}--inset` : '';
+  export let classRow = row ? `${classBase}--row` : '';
+  export let classSecondary = type == 'secondary' ? `${classBase}--secondary` : '';
 
   export let classDividers = dividers ? `${classBase}--dividers` : '';
 
@@ -18,6 +21,6 @@
 
 </script>
 
-<div class="{classBase} {classInset} {classRow} {classDividers} {className}" {style}>
+<div class="{classBase} {classDividers} {classRow} {classInset} {classSecondary} {className}" {style}>
   <slot />
 </div>
