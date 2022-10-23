@@ -17,6 +17,7 @@
       <ul>
         <li><Link href="/label">Label</Link></li>
         <li><Link href="/button">Button</Link></li>
+        <li><Link href="/list">List</Link></li>
         <li><Link href="/dropdown">Dropdown</Link></li>
         <li><Link href="/collapsible">Collapsible</Link></li>
         <li><Link href="/modal">Modal</Link></li>
@@ -33,7 +34,6 @@
         <li><Link href="/highlight">Highlight</Link></li>
         <li><Link href="/stepper">Stepper</Link></li>
         <li><Link href="/avatar">Avatar</Link></li>
-        <li><Link href="/list">List</Link></li>
       </ul>
 
       <hr />

@@ -2,25 +2,23 @@
   import { createEventDispatcher } from "svelte";
 
   import Dropdown from "$lib/Dropdown.svelte";
+  import Label from "$lib/Label.svelte";
 
   const dispatch = createEventDispatcher();
 
   export let label = null; // Button label (or use default slot)
   export let value = null; // optional value passed on click event
-  export let element = "div";
 
-  export let heading = false;
-  export let divider = false;
+  export let divider = null;
+  export let heading = null;
+
+  export let href = null; // Make it a link
+  export let action = null; // Make it a button
+
+  export let element = href ? "a" : action ? "button" : "div"; // Link, Button or Div (or set manually)
 
   // Element classes
-  export let classBase               = "list__item";
-  export let classHeading            = heading ? `${classBase}--heading` : '';
-  export let classDivider            = divider ? `${classBase}--divider` : '';
-  export let classLabel              = `${classBase}__label`;
-  export let classIconContainer      = `${classBase}__icon-container`;
-  export let classIconContainerLeft  = `${classBase}__icon-container--left`;
-  export let classIconContainerRight = `${classBase}__icon-container--right`;
-  export let classIcon               = `${classBase}__icon`;
+  export let classBase = "list__item";
 
   // Extra classes
   let className = "";
@@ -36,6 +34,7 @@
   // Functions
 
   function handleClick(e) {
+    if (action) action(); // Call action if available
     dispatch('click', value); // Pass click event to parent with optional value
   }
 </script>
@@ -49,37 +48,30 @@
     </svelte:self>
     <div><slot name="submenu" /></div>
   </Dropdown>
+
+{:else if divider}
+
+  <!-- Attn: Whitespace needed inside div so element is not removed -->
+  <!-- TODO: figure out why element doesn't show if empty when there's no css rule for it -->
+  <div class="list__divider"> </div>
+
+{:else if heading}
+
+  <Label class="list__heading" {icon} {iconRight}>
+    {heading}
+  </Label>
+
 {:else}
 
-  <svelte:element this={element} on:click={handleClick}
-    class="{classBase} {classDivider} {classHeading} {className}"
-    {style}
-  >
+  <!-- svelte-ignore a11y-click-events-have-key-events -->
+  <svelte:element this={element} {href} on:click={handleClick} class="{classBase} {className}" {style}>
 
-    <!-- Left side icon -->
-    <slot name="icon">
-      {#if icon}
-        <span class="{classIconContainer} {classIconContainerLeft}">
-          <svelte:component this={icon} class={classIcon} />
-        </span>
-      {/if}
-    </slot>
+    <Label {icon} {iconRight}>
+      <slot name="icon" slot="icon" />
+      <slot>{label}</slot>
+      <slot name="iconRight" slot="iconRight" />
+    </Label>
 
-    <span class={classLabel}>
-      <slot>
-        {label || ''}
-      </slot>
-    </span>
-
-    <!-- Icon right size -->
-    <slot name="iconRight">
-      {#if iconRight}
-        <span class="{classIconContainer} {classIconContainerRight}">
-          <svelte:component this={iconRight} class={classIcon} />
-        </span>
-      {/if}
-    </slot>
-    
   </svelte:element>
 
 {/if}

@@ -3,9 +3,11 @@
   
   import Dropdown from "$lib/Dropdown.svelte";
   import Button from "$lib/Button.svelte";
+  import List from "$lib/List.svelte";
 
   import IconChevronDown from "$lib/icons/IconChevronDown.svelte";
   import IconChevronRight from "$lib/icons/IconChevronRight.svelte";
+  import IconX from "$lib/icons/IconX.svelte";
 
 </script>
 
@@ -18,38 +20,34 @@
   <div class="uizg-preview__element">
     <Dropdown>
       <Button slot="trigger" iconRight={IconChevronDown}>Dropdown</Button>
-      <div class="list">
-        <Button classBase="list__item" label="List item" />
-        <Button classBase="list__item" label="List item" />
-        <Dropdown classTrigger="list__submenu" direction="right" align="top" let:open>
-          <Button direction="right" slot="trigger" classBase="list__item" class={open ? 'list__item--focused' : ''} iconRight={IconChevronRight}>Dropdown</Button>
-          <div class="list">
-            <Button classBase="list__item" label="List item" />
-            <Button classBase="list__item" label="List item" />
-            <Button classBase="list__item" label="List item" />
-          </div>
+      <List>
+        <Button label="Option 1" />
+        <Button label="Option 2" />
+        <Dropdown direction="right">
+          <Button slot="trigger" iconRight={IconChevronRight}>More</Button>
+          <List>
+            <Button label="Option 3" />
+            <Button label="Option 4" />
+          </List>
         </Dropdown>
-        <Button classBase="list__item" label="List item" />
-      </div>
+      </List>
     </Dropdown>
   </div>
 </div>
 <Highlight code={`
   <Dropdown>
     <Button slot="trigger" iconRight={IconChevronDown}>Dropdown</Button>
-    <div class="list">
-      <Button classBase="list__item" label="List item" />
-      <Button classBase="list__item" label="List item" />
-      <Dropdown classTrigger="list__submenu" direction="right" align="top" let:open>
-        <Button direction="right" slot="trigger" classBase="list__item" class={open ? 'list__item--focused' : ''} iconRight={IconChevronRight}>Dropdown</Button>
-        <div class="list">
-          <Button classBase="list__item" label="List item" />
-          <Button classBase="list__item" label="List item" />
-          <Button classBase="list__item" label="List item" />
-        </div>
+    <List>
+      <Button label="Option 1" />
+      <Button label="Option 2" />
+      <Dropdown direction="right">
+        <Button slot="trigger" iconRight={IconChevronRight}>More</Button>
+        <List>
+          <Button label="Option 3" />
+          <Button label="Option 4" />
+        </List>
       </Dropdown>
-      <Button classBase="list__item" label="List item" />
-    </div>
+    </List>
   </Dropdown>
 `} />
 
@@ -57,22 +55,14 @@
   <div class="uizg-preview__element">
     <Dropdown let:open>
       <Button slot="trigger" type={open ? 'primary' : 'secondary'}>Dropdown</Button>
-      <div class="list list--inset">
-        <Button classBase="list__item" label="List item" />
-        <Button classBase="list__item" label="List item" />
-        <Button classBase="list__item" label="List item" />
-      </div>
+      <div style="padding: 1em;">Dropdowns can have any content</div>
     </Dropdown>
   </div>
 </div>
 <Highlight code={`
   <Dropdown let:open>
     <Button slot="trigger" type={open ? 'primary' : 'secondary'}>Dropdown</Button>
-    <div class="list list--inset">
-      <Button classBase="list__item" label="List item" />
-      <Button classBase="list__item" label="List item" />
-      <Button classBase="list__item" label="List item" />
-    </div>
+    <div style="padding: 1em;">Dropdowns can have any content</div>
   </Dropdown>
 `} />
 
@@ -80,113 +70,94 @@
   <div class="uizg-preview__element">
     <Dropdown direction="down" align="left">
       <Button slot="trigger">Down, Align left</Button>
-      <div class="list">
-        <div class="list__group">
-          <Button classBase="list__item" label="List item" />
-          <Button classBase="list__item" label="List item" />
-          <Button classBase="list__item" label="List item" />
-        </div>
-        <div class="list__group">
-          <div class="list__heading">Danger</div>
-          <Button classBase="list__item" label="List item" />
-          <Button classBase="list__item" label="List item" />
-          <Button classBase="list__item" label="List item" />
-        </div>
-      </div>
+      <List>
+        <List>
+          <Button label="Option 1" />
+          <Button label="Option 2" />
+        </List>
+      </List>
     </Dropdown>
     <Dropdown direction="down" align="right">
       <Button slot="trigger">Down, Align right</Button>
-      <div class="list list--inset">
-        <div class="list__group">
-          <div class="list__heading">Edit</div>
-          <Button classBase="list__item" label="List item" />
-          <Button classBase="list__item" label="List item" class="list__item--active" />
-          <Button classBase="list__item" label="List item" />
-        </div>
-
-        <div class="list__group">
-          <div class="list__heading">Danger</div>
-          <Button classBase="list__item" label="List item" />
-        </div>
-      </div>
+      <List>
+        <List>
+          <Button label="Option 1" />
+          <Button label="Option 2" />
+        </List>
+      </List>
     </Dropdown>
     <Dropdown direction="up" align="left">
       <Button slot="trigger">Up, align left</Button>
-      <div class="list">
-        <Button classBase="list__item" label="List item" />
-        <Button classBase="list__item" label="List item" />
-        <Button classBase="list__item" label="List item" />
-      </div>
+      <List>
+        <Button label="Option 1" />
+        <Button label="Option 2" />
+      </List>
     </Dropdown>
     <Dropdown direction="up" align="right">
       <Button slot="trigger">Up, align right</Button>
-      <div class="list">
-        <Button classBase="list__item" label="List item" />
-        <Button classBase="list__item" label="List item" />
-        <Button classBase="list__item" label="List item" />
-      </div>
+      <List>
+        <Button label="Option 1" />
+        <Button label="Option 2" />
+      </List>
     </Dropdown>
   </div>
 </div>
 <Highlight code={`
   <Dropdown direction="down" align="left">
-    <Button slot="trigger">Down, Align left</Button>
-    <p>Dropdown menu content</p>
-  </Dropdown>
-  <Dropdown direction="down" align="right">
-    <Button slot="trigger">Down, Align right</Button>
-    <p>Dropdown menu content</p>
-  </Dropdown>
-  <Dropdown direction="up" align="left">
-    <Button slot="trigger">Up, align left</Button>
-    <p>Dropdown menu content</p>
-  </Dropdown>
-  <Dropdown direction="up" align="right">
-    <Button slot="trigger">Up, align right</Button>
-    <p>Dropdown menu content</p>
-  </Dropdown>
+      <Button slot="trigger">Down, Align left</Button>
+      <List>...</List>
+    </Dropdown>
+    <Dropdown direction="down" align="right">
+      <Button slot="trigger">Down, Align right</Button>
+      <List>...</List>
+    </Dropdown>
+    <Dropdown direction="up" align="left">
+      <Button slot="trigger">Up, align left</Button>
+      <List>...</List>
+    </Dropdown>
+    <Dropdown direction="up" align="right">
+      <Button slot="trigger">Up, align right</Button>
+      <List>...</List>
+    </Dropdown>
 `} />
 
 <div class="uizg-preview">
   <div class="uizg-preview__element">
     <Dropdown direction="right" align="top">
       <Button slot="trigger">Right, Align top</Button>
-      <div class="list">
-        <Button classBase="list__item" label="List item" />
-        <Button classBase="list__item" label="List item" />
-        <Button classBase="list__item" label="List item" />
-      </div>
+      <List>
+        <Button label="Option 1" />
+        <Button label="Option 2" />
+      </List>
     </Dropdown>
     <Dropdown direction="right" align="center">
       <Button slot="trigger">Right, Align center</Button>
-      <div class="list">
-        <Button classBase="list__item" label="List item" />
-        <Button classBase="list__item" label="List item" />
-        <Button classBase="list__item" label="List item" />
-      </div>
+      <List>
+        <Button label="Option 1" />
+        <Button label="Option 2" />
+      </List>
     </Dropdown>
     <Dropdown direction="right" align="bottom">
       <Button slot="trigger">Right, align bottom</Button>
-      <div class="list">
-        <Button classBase="list__item" label="List item" />
-        <Button classBase="list__item" label="List item" />
-        <Button classBase="list__item" label="List item" />
-      </div>
+      <List>
+        <Button label="Option 1" />
+        <Button label="Option 2" />
+      </List>
     </Dropdown>
   </div>
 </div>
 <Highlight code={`
   <Dropdown direction="right" align="top">
     <Button slot="trigger">Right, Align top</Button>
-    <p>Dropdown menu content</p>
+    <List>...</List>
   </Dropdown>
   <Dropdown direction="right" align="center">
     <Button slot="trigger">Right, Align center</Button>
-    <p>Dropdown menu content</p>
+    <List>...</List>
   </Dropdown>
   <Dropdown direction="right" align="bottom">
     <Button slot="trigger">Right, align bottom</Button>
-    <p>Dropdown menu content</p>
+    <List>...</List>
   </Dropdown>
 `} />
 
@@ -194,42 +165,39 @@
   <div class="uizg-preview__element">
     <Dropdown direction="left" align="top">
       <Button slot="trigger">Left, Align top</Button>
-      <div class="list">
-        <Button classBase="list__item" label="List item" />
-        <Button classBase="list__item" label="List item" />
-        <Button classBase="list__item" label="List item" />
-      </div>
+      <List>
+        <Button label="Option 1" />
+        <Button label="Option 2" />
+      </List>
     </Dropdown>
     <Dropdown direction="left" align="center">
       <Button slot="trigger">Left, Align center</Button>
-      <div class="list">
-        <Button classBase="list__item" label="List item" />
-        <Button classBase="list__item" label="List item" />
-        <Button classBase="list__item" label="List item" />
-      </div>
+      <List>
+        <Button label="Option 1" />
+        <Button label="Option 2" />
+      </List>
     </Dropdown>
     <Dropdown direction="left" align="bottom">
       <Button slot="trigger">Left, align bottom</Button>
-      <div class="list">
-        <Button classBase="list__item" label="List item" />
-        <Button classBase="list__item" label="List item" />
-        <Button classBase="list__item" label="List item" />
-      </div>
+      <List>
+        <Button label="Option 1" />
+        <Button label="Option 2" />
+      </List>
     </Dropdown>
   </div>
 </div>
 <Highlight code={`
   <Dropdown direction="left" align="top">
     <Button slot="trigger">Left, Align top</Button>
-    <p>Dropdown menu content</p>
+    <List>...</List>
   </Dropdown>
   <Dropdown direction="left" align="center">
     <Button slot="trigger">Left, Align center</Button>
-    <p>Dropdown menu content</p>
+    <List>...</List>
   </Dropdown>
   <Dropdown direction="left" align="bottom">
     <Button slot="trigger">Left, align bottom</Button>
-    <p>Dropdown menu content</p>
+    <List>...</List>
   </Dropdown>
 `} />
 
@@ -237,54 +205,50 @@
   <div class="uizg-preview__element">
     <Dropdown over direction="down" align="left">
       <Button slot="trigger">Over down</Button>
-      <div class="list">
-        <Button classBase="list__item" label="List item" />
-        <Button classBase="list__item" label="List item" />
-        <Button classBase="list__item" label="List item" />
-      </div>
+      <List>
+        <Button label="Option 1" />
+        <Button label="Option 2" />
+      </List>
     </Dropdown>
     <Dropdown over direction="up" align="left">
       <Button slot="trigger">Over up</Button>
-      <div class="list">
-        <Button classBase="list__item" label="List item" />
-        <Button classBase="list__item" label="List item" />
-        <Button classBase="list__item" label="List item" />
-      </div>
+      <List>
+        <Button label="Option 1" />
+        <Button label="Option 2" />
+      </List>
     </Dropdown>
     <Dropdown over direction="right" align="top">
       <Button slot="trigger">Over right</Button>
-      <div class="list">
-        <Button classBase="list__item" label="List item" />
-        <Button classBase="list__item" label="List item" />
-        <Button classBase="list__item" label="List item" />
-      </div>
+      <List>
+        <Button label="Option 1" />
+        <Button label="Option 2" />
+      </List>
     </Dropdown>
     <Dropdown over direction="left" align="top">
       <Button slot="trigger">Over left</Button>
-      <div class="list">
-        <Button classBase="list__item" label="List item" />
-        <Button classBase="list__item" label="List item" />
-        <Button classBase="list__item" label="List item" />
-      </div>
+      <List>
+        <Button label="Option 1" />
+        <Button label="Option 2" />
+      </List>
     </Dropdown>
   </div>
 </div>
 <Highlight code={`
   <Dropdown over direction="down" align="left">
     <Button slot="trigger">Over down</Button>
-    <p>Dropdown menu content</p>
+    <List>...</List>
   </Dropdown>
   <Dropdown over direction="up" align="left">
     <Button slot="trigger">Over up</Button>
-    <p>Dropdown menu content</p>
+    <List>...</List>
   </Dropdown>
   <Dropdown over direction="right" align="top">
     <Button slot="trigger">Over right</Button>
-    <p>Dropdown menu content</p>
+    <List>...</List>
   </Dropdown>
   <Dropdown over direction="left" align="top">
     <Button slot="trigger">Over left</Button>
-    <p>Dropdown menu content</p>
+    <List>...</List>
   </Dropdown>
 `} />
 
@@ -292,21 +256,33 @@
   <div class="uizg-preview__element">
     <Dropdown hover>
       <Button slot="trigger">Hover me</Button>
-      <p>Hover card</p>
+      <div style="padding: 1em;">
+        <p>User name</p>
+        <p><small>@username</small></p>
+      </div>
     </Dropdown>
     <Dropdown hover hoverDelay={1000}>
       <Button slot="trigger">Hover me for 1s</Button>
-      <p>Hover card</p>
+      <div style="padding: 1em;">
+        <p>User name</p>
+        <p><small>@username</small></p>
+      </div>
     </Dropdown>
   </div>
 </div>
 <Highlight code={`
   <Dropdown hover>
     <Button slot="trigger">Hover me</Button>
-    <p>Hover card</p>
+    <div style="padding: 1em;">
+      <p>User name</p>
+      <p><small>@username</small></p>
+    </div>
   </Dropdown>
   <Dropdown hover hoverDelay={1000}>
     <Button slot="trigger">Hover me for 1s</Button>
-    <p>Hover card</p>
+    <div style="padding: 1em;">
+      <p>User name</p>
+      <p><small>@username</small></p>
+    </div>
   </Dropdown>
 `} />

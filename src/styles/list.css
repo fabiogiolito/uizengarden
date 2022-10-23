@@ -1,33 +1,29 @@
 /* ============================================= */
-/* Component functionality */
-
-/* ============================================= */
 /* Styles */
 
 .list {
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+
   border: 1px solid rgb(var(--background-quaternary));
   border-radius: 0.3em;
   min-width: 20ch;
-  display: flex;
-  flex-direction: column;
   overflow: hidden;
   padding: 0.25rem 0;
-  flex-shrink: 0;
 }
-
-/* .list .list {
-  border: 0;
-  border-bottom: 1px solid rgb(var(--background-quaternary));
-  border-radius: 0;
-}
-
-.list .list:last-child {
-  border: 0;
-} */
 
 .dropdown__menu .list {
   border: 0;
 }
+
+.list .list {
+  border: 0;
+  border-radius: 0;
+}
+
+/* --------------------------------------------- */
+/* List types */
 
 .list--secondary {
   border: 0;
@@ -35,121 +31,32 @@
 }
 
 /* --------------------------------------------- */
-/* Button / Item */
+/* List direction */
 
-.list .btn {
-  --btn-shadow: transparent;
-  --btn-border: transparent;
-  border-radius: 0;
-  width: 100%;
-  text-align: left;
-}
-
-.list .btn:not(.btn--selected, .btn--focused, :hover) {
-  --btn-background: transparent;
-}
-
-/* ----------------------------------------------- */
-/* Input */
-
-.list .input {
-  box-shadow: none;
-  border-color: transparent;
-}
-
-/* ----------------------------------------------- */
-/* Items */
-
-.list__item {
-  text-align: left;
-  display: flex;
-  align-items: center;
-}
-
-.list__item__label {
-  padding: 0.25rem 0.75rem;
-  flex: 1;
-}
-
-.list__item__icon-container {
-  display: flex;
-  align-items: center;
-  padding: 0 0.75rem;
-}
-
-.list__item__icon-container--left {
-  margin-right: -0.875em;
-}
-
-.list__item__icon-container--right {
-  margin-left: -0.875em;
+.list--row {
+  flex-direction: row;
+  min-width: auto;
+  padding: 0;
 }
 
 /* --------------------------------------------- */
-/* List item types */
-
-.list__item--heading {
-  text-transform: uppercase;
-  opacity: 0.5;
-  font-size: 0.5em;
-  font-weight: 600;
-  padding-top: 0.25rem;
-}
-
-.list__item--divider {
-  background: rgb(var(--background-tertiary));
-  height: 2px;
-  width: 100%;
-  margin: 0.25rem 0;
-}
-
-/* --------------------------------------------- */
-/* List Dividers */
+/* List modifier: Dividers */
 
 .list--dividers {
   padding: 0;
 }
 
-.list--dividers .list__item:not(:last-child) {
+.list--dividers > :not(.list__heading):not(:last-child) {
   border-bottom: 1px solid rgb(var(--background-quaternary));
 }
 
-.list--dividers .list__item__label {
-  padding: 0.5rem 0.75rem;
-}
-
-.list--dividers .btn:not(:last-child) {
-  border-bottom: 1px solid rgb(var(--background-quaternary));
-}
-
-.list--row.list--dividers .btn:not(:last-child) {
+.list--row.list--dividers > :not(.list__heading):not(:last-child) {
   border-bottom: 0;
   border-right: 1px solid rgb(var(--background-quaternary));
 }
 
 /* --------------------------------------------- */
-/* List Row */
-
-.list--row {
-  min-width: auto;
-  flex-direction: row;
-  padding: 0;
-}
-
-.list--row .list__item--divider {
-  width: 2px;
-  height: 100%;
-  margin: 0 0.25rem;
-  display: inline;
-  align-self: center;
-}
-
-.list--row .list__item--heading {
-  padding: 0;
-}
-
-/* --------------------------------------------- */
-/* List Inset */
+/* List modifier: Inset */
 
 .list--inset {
   padding: 0.25rem;
@@ -175,4 +82,67 @@
 .list--row.list--inset .list__item:last-child,
 .list--row.list--inset .btn:last-child {
   margin-right: 0;
+}
+
+/* --------------------------------------------- */
+/* List elements */
+
+.list__item {
+  padding: 0.5em 1em;
+  display: flex;
+}
+
+.list__heading {
+  text-transform: uppercase;
+  font-size: 0.625em;
+  font-weight: 600;
+  opacity: 0.75;
+  padding: 0.625em 1.4em 0.5em;
+}
+
+.list--row .list__heading {
+  align-self: center;
+  padding: 0 1em;
+}
+
+.list__divider {
+  display: inline-block;
+  background: rgb(var(--background-tertiary));
+  height: 2px;
+  width: 100%;
+  margin: 0.25rem 0;
+  flex-shrink: 0;
+}
+
+.list--row .list__divider {
+  width: 2px;
+  height: 100%;
+  margin: 0 0.25rem;
+  align-self: center;
+}
+
+/* --------------------------------------------- */
+/* Adjust buttons in list */
+
+.list .btn {
+  --btn-shadow: transparent;
+  --btn-border: transparent;
+  width: 100%;
+  text-align: left;
+}
+
+.list:not(.list--inset) .btn {
+  border-radius: 0;
+}
+
+.list .btn:not(.btn--selected, .btn--focused, :hover) {
+  --btn-background: transparent;
+}
+
+/* ----------------------------------------------- */
+/* Input */
+
+.list .input {
+  box-shadow: none;
+  border-color: transparent;
 }

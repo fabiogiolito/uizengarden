@@ -128,8 +128,8 @@
     style += transform;
 
     if (direction == 'up')    transitionOptions = { duration: duration, y: distance };
-    if (direction == 'down')  transitionOptions = { duration: duration, y: distance * -1 };
-    if (direction == 'right') transitionOptions = { duration: duration, x: distance * -1 };
+    if (direction == 'right') transitionOptions = { duration: duration, x: distance > 0 ? distance * -1 : distance * 2 };
+    if (direction == 'down')  transitionOptions = { duration: duration, y: distance > 0 ? distance * -1 : distance * 2 };
     if (direction == 'left')  transitionOptions = { duration: duration, x: distance };
   }
 
