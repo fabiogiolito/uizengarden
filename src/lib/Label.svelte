@@ -5,6 +5,7 @@
   export let title = null;
   
   export let text = null; // content
+  export let subtext = null; // small text content
 
   // Accessibility
   export let role = null;
@@ -17,7 +18,9 @@
   export let classIconContainerLeft  = `${classBase}__icon-container--left`;
   export let classIconContainerRight = `${classBase}__icon-container--right`;
   export let classIcon               = `${classBase}__icon`;
+  export let classContent            = `${classBase}__content`;
   export let classText               = `${classBase}__text`;
+  export let classSubtext            = `${classBase}__subtext`;
 
   // Extra classes
   let className = "";
@@ -54,8 +57,13 @@
 
   <!-- Content -->
   {#if text || $$slots.default}
-    <span class={classText}>
-      <slot>{text}</slot>
+    <span class={classContent}>
+      <slot>
+        <span class={classText}>{text}</span>
+        {#if subtext}
+          <span class={classSubtext}>{subtext}</span>
+        {/if}
+      </slot>
     </span>
   {/if}
   

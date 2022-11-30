@@ -18,11 +18,13 @@
   <div class="uizg-preview__element">
     <p><Label>This is some text</Label></p>
     <p><Label text="This is using a text prop" /></p>
+    <p><Label text="This is using a text prop" subtext="and subtext" /></p>
   </div>
 </div>
 <Highlight code={`
   <p><Label>This is some text</Label></p>
   <p><Label text="This is using a text prop" /></p>
+  <p><Label text="This is using a text prop" subtext="and subtext" /></p>
 `} />
 
 
