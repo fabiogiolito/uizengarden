@@ -12,9 +12,7 @@
   flex-direction: column;
 }
 
-.label__text {
-}
-
+.label__content:empty,
 .label__text:empty {
   display: none;
 }
