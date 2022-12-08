@@ -56,14 +56,18 @@
   {/if}
 
   <!-- Content -->
-  {#if text || $$slots.default}
+  {#if text || subtext}
     <span class={classContent}>
-      <slot>
+      {#if text}
         <span class={classText}>{text}</span>
-        {#if subtext}
-          <span class={classSubtext}>{subtext}</span>
-        {/if}
-      </slot>
+      {/if}
+      {#if subtext}
+        <span class={classSubtext}>{subtext}</span>
+      {/if}
+    </span>
+  {:else if $$slots.default}
+    <span class={classContent}>
+      <slot />
     </span>
   {/if}
   
