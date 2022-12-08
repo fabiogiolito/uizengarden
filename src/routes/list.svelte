@@ -19,6 +19,7 @@
   import IconEmpty from "$lib/icons/IconEmpty.svelte";
   import IconSettings from "$lib/icons/IconSettings.svelte";
   import IconLogOut from "$lib/icons/IconLogOut.svelte";
+  import IconExternalLink from "$lib/icons/IconExternalLink.svelte";
 
 </script>
 
@@ -89,20 +90,20 @@
   <div class="uizg-preview__element">
     <List options={[
       { heading: "Links" },
-      { label: "Link 1", href: "#1", iconRight: IconChevronRight },
-      { label: "Link 2", href: "#2", iconRight: IconChevronRight },
+      { text: "Link 1", href: "#1", iconRight: IconExternalLink },
+      { text: "Link 2", href: "#2", iconRight: IconExternalLink },
       { divider: true },
-      { label: "Button", action: () => alert('clicked button'), class: "btn btn--primary-translucent" },
+      { text: "Button", action: () => alert('clicked button'), class: "btn btn--primary-translucent" },
     ]} />
   </div>
 </div>
 <Highlight code={`
   <List options={[
     { heading: "Links" },
-    { label: "Link 1", href: "#1", iconRight: IconChevronRight },
-    { label: "Link 2", href: "#2", iconRight: IconChevronRight },
+    { text: "Link 1", href: "#1", iconRight: IconChevronRight },
+    { text: "Link 2", href: "#2", iconRight: IconChevronRight },
     { divider: true },
-    { label: "Button", action: handleClick, class: "btn btn--primary-translucent" },
+    { text: "Button", action: handleClick, class: "btn btn--primary-translucent" },
   ]} />
 `} />
 
@@ -274,7 +275,7 @@
     <Button>List item 1</Button>
     <Button>List item 2</Button>
     <ListItem divider />
-    <ListItem heading label="format" />
+    <ListItem heading="format" />
     <Button icon={IconBold}>List item 3</Button>
     <Button icon={IconItalic}>List item 4</Button>
   </List>
@@ -345,6 +346,35 @@
     <ListItem>
       <p><strong>Title</strong></p>
       <p>Paragraph</p>
+    </ListItem>
+  </List>
+`} />
+
+<!-- ------------------------------ -->
+<!-- LIST ITEM DIVIDERS -->
+<div class="uizg-preview">
+  <div class="uizg-preview__element">
+    <List dividers>
+      <ListItem>
+        <Avatar slot="icon" />
+        <p><strong>Title</strong></p>
+        <p>Paragraph</p>
+      </ListItem>
+      <ListItem text="Name" subtext="@username">
+        <Avatar slot="icon" />
+      </ListItem>
+    </List>
+  </div>
+</div>
+<Highlight code={`
+  <List dividers>
+    <ListItem>
+      <Avatar slot="icon" />
+      <p><strong>Title</strong></p>
+      <p>Paragraph</p>
+    </ListItem>
+    <ListItem text="Name" subtext="@username">
+      <Avatar slot="icon" />
     </ListItem>
   </List>
 `} />
