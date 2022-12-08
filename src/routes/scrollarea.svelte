@@ -5,7 +5,7 @@
 </script>
 
 
-<h2>Button</h2>
+<h2>Scroll area</h2>
 
 <hr />
 
