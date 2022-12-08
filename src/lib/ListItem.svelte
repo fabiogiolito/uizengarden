@@ -6,7 +6,8 @@
 
   const dispatch = createEventDispatcher();
 
-  export let label = null; // Button label (or use default slot)
+  export let text = null; // label (or use default slot)
+  export let subtext = null; // label (or use default slot)
   export let value = null; // optional value passed on click event
 
   export let divider = null;
@@ -39,17 +40,7 @@
   }
 </script>
 
-{#if $$slots.submenu}
-  <Dropdown direction="right" align="top">
-    <svelte:self slot="trigger" {value} {icon} {iconRight}>
-      <slot>
-        {label || ''}
-      </slot>
-    </svelte:self>
-    <div><slot name="submenu" /></div>
-  </Dropdown>
-
-{:else if divider}
+{#if divider}
 
   <!-- Attn: Whitespace needed inside div so element is not removed -->
   <!-- TODO: figure out why element doesn't show if empty when there's no css rule for it -->
@@ -66,9 +57,9 @@
   <!-- svelte-ignore a11y-click-events-have-key-events -->
   <svelte:element this={element} {href} on:click={handleClick} class="{classBase} {className}" {style}>
 
-    <Label {icon} {iconRight}>
+    <Label {icon} {iconRight} {text} {subtext}>
       <slot name="icon" slot="icon" />
-      <slot>{label}</slot>
+      <slot>{text}</slot>
       <slot name="iconRight" slot="iconRight" />
     </Label>
 
