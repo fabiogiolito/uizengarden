@@ -46,7 +46,8 @@
   padding: 0;
 }
 
-.list--dividers > :not(.list__heading):not(:last-child) {
+.list--dividers > :not(.list__heading):not(:last-child),
+.list--dividers .scrollarea__content > :not(.list__heading):not(:last-child) {
   border-bottom: 1px solid rgb(var(--background-quaternary));
 }
 
@@ -145,4 +146,22 @@
 .list .input {
   box-shadow: none;
   border-color: transparent;
+}
+
+/* ----------------------------------------------- */
+/* ScrollArea */
+
+.list:has(.scrollarea) {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.list--inset:has(.scrollarea) {
+  padding-right: 0;
+}
+
+.list--inset .scrollarea__content {
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
+  padding-right: 0.25rem;
 }

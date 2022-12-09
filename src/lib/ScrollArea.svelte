@@ -1,12 +1,10 @@
 <script>
-  // import { createEventDispatcher } from "svelte";
-  // import { fade } from "svelte/transition";
-
-  // const dispatch = createEventDispatcher();
 
   // Props
 
   export let minThumb = 24;
+
+  export let overlap = false;
 
   // Element classes
   export let classBase = `scrollarea`;
@@ -15,6 +13,7 @@
   export let classThumbContainer = `${classBase}__thumb-container`;
   export let classThumb = `${classBase}__thumb`;
   export let classScrolling = `${classBase}--scrolling`;
+  export let classOverlap = `${classBase}--overlap`;
 
   // Extra classes
   let className = "";
@@ -95,6 +94,7 @@
   class="
     {classBase}
     {scrolling || dragging ? classScrolling : ''}
+    {overlap ? classOverlap : ''}
     {className}
   "
   {style}

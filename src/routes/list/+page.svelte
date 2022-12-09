@@ -7,7 +7,8 @@
   import Avatar from "$lib/Avatar.svelte";
   import Button from "$lib/Button.svelte";
   import Dropdown from "$lib/Dropdown.svelte";
-  import ToggleGroup from "$lib/ToggleGroup.svelte"
+  import ToggleGroup from "$lib/ToggleGroup.svelte";
+  import ScrollArea from "$lib/ScrollArea.svelte";
 
   import IconChevronRight from "$lib/icons/IconChevronRight.svelte";
   import IconBold from "$lib/icons/IconBold.svelte";
@@ -376,5 +377,28 @@
     <ListItem text="Name" subtext="@username">
       <Avatar slot="icon" />
     </ListItem>
+  </List>
+`} />
+
+<!-- ------------------------------ -->
+<!-- SCROLLING LIST -->
+<div class="uizg-preview">
+  <div class="uizg-preview__element">
+    <List dividers>
+      <ScrollArea overlap style="height: 200px;">
+        {#each Array(10) as _, i}
+          <Button>List item {i+1}</Button>
+        {/each}
+      </ScrollArea>
+    </List>
+  </div>
+</div>
+<Highlight code={`
+  <List dividers>
+    <ScrollArea overlap style="height: 200px;">
+      {#each Array(10) as _, i}
+        <Button>List item {i+1}</Button>
+      {/each}
+    </ScrollArea>
   </List>
 `} />
