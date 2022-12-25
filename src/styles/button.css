@@ -8,6 +8,7 @@
   vertical-align: middle;
   white-space: nowrap;
   min-height: 2.675em;
+  flex-shrink: 0;
 }
 
 .btn--loading .btn__label {
@@ -76,6 +77,10 @@
 /* --------------------------------------------- */
 /* Types */
 
+.btn--transparent {
+  --btn-background: transparent;
+}
+
 .btn--primary {
   --btn-background: var(--tint);
   --btn-color: var(--tint-contrast);
@@ -91,6 +96,16 @@
   --btn-shadow: transparent;
 }
 .btn--primary-translucent:hover {
+  --btn-background: var(--tint) / 0.15;
+}
+
+.btn--primary-transparent {
+  --btn-background: transparent;
+  --btn-color: var(--tint);
+  --btn-border: var(--tint) / 0.1;
+  --btn-shadow: transparent;
+}
+.btn--primary-transparent:hover {
   --btn-background: var(--tint) / 0.15;
 }
 
@@ -151,6 +166,13 @@ a.btn--selected:hover {
 }
 .btn--xl {
   font-size: 1.25rem;
+}
+
+/* --------------------------------------------- */
+/* Icon btn */
+
+.btn--icon-btn .icon {
+  transform: scale(1.25);
 }
 
 /* --------------------------------------------- */
