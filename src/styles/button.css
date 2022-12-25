@@ -169,13 +169,6 @@ a.btn--selected:hover {
 }
 
 /* --------------------------------------------- */
-/* Icon btn */
-
-.btn--icon-btn .icon {
-  transform: scale(1.25);
-}
-
-/* --------------------------------------------- */
 /* Loading */
 
 .btn__loading {
