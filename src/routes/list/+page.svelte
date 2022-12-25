@@ -9,6 +9,7 @@
   import Dropdown from "$lib/Dropdown.svelte";
   import ToggleGroup from "$lib/ToggleGroup.svelte";
   import ScrollArea from "$lib/ScrollArea.svelte";
+  import Input from "$lib/Input.svelte";
 
   import IconChevronRight from "$lib/icons/IconChevronRight.svelte";
   import IconBold from "$lib/icons/IconBold.svelte";
@@ -21,6 +22,9 @@
   import IconSettings from "$lib/icons/IconSettings.svelte";
   import IconLogOut from "$lib/icons/IconLogOut.svelte";
   import IconExternalLink from "$lib/icons/IconExternalLink.svelte";
+  import IconSmile from "$lib/icons/IconSmile.svelte";
+  import IconPaperclip from "$lib/icons/IconPaperclip.svelte";
+  import IconSend from "$lib/icons/IconSend.svelte";
 
 </script>
 
@@ -188,15 +192,15 @@
 <div class="uizg-preview">
   <div class="uizg-preview__element">
     <List row inset>
-      <Button toggle icon={IconBold} />
-      <Button toggle icon={IconItalic} />
+      <Button size="sm" toggle icon={IconBold} />
+      <Button size="sm" toggle icon={IconItalic} />
       <ListItem divider />
       <ListItem heading="Align" />
       <ToggleGroup current="Left" let:current let:setCurrent>
         <List row type="secondary">
-          <Button value="Left" selected={current == "Left"} on:click={setCurrent} icon={IconAlignLeft} />
-          <Button value="Center" selected={current == "Center"} on:click={setCurrent} icon={IconAlignCenter} />
-          <Button value="Right" selected={current == "Right"} on:click={setCurrent} icon={IconAlignRight} />
+          <Button size="sm" type="transparent" value="Left" selected={current == "Left"} on:click={setCurrent} icon={IconAlignLeft} />
+          <Button size="sm" type="transparent" value="Center" selected={current == "Center"} on:click={setCurrent} icon={IconAlignCenter} />
+          <Button size="sm" type="transparent" value="Right" selected={current == "Right"} on:click={setCurrent} icon={IconAlignRight} />
         </List>
       </ToggleGroup>
     </List>
@@ -400,5 +404,30 @@
         <Button>List item {i+1}</Button>
       {/each}
     </ScrollArea>
+  </List>
+`} />
+
+
+<!-- ------------------------------ -->
+<!-- Sample -->
+
+<div class="uizg-preview">
+  <div class="uizg-preview__element">
+    <List row inset>
+      <Avatar image="https://pbs.twimg.com/profile_images/1547348110216658950/I_8fmKjU_400x400.jpg" />
+      <Input placeholder="Say something nice…" />
+      <Button type="transparent" icon={IconSmile} />
+      <Button type="transparent" icon={IconPaperclip} />
+      <Button type="primary-transparent" icon={IconSend} />
+    </List>
+  </div>
+</div>
+<Highlight code={`
+  <List row inset>
+    <Avatar image="https://pbs.twimg.com/profile_images/1547348110216658950/I_8fmKjU_400x400.jpg" />
+    <Input placeholder="Say something nice…" />
+    <Button type="transparent" icon={IconSmile} />
+    <Button type="transparent" icon={IconPaperclip} />
+    <Button type="primary-transparent" icon={IconSend} />
   </List>
 `} />
