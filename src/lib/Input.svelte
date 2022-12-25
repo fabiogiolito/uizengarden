@@ -5,6 +5,7 @@
 
   export let value = "";
   export let name = "";
+  export let type = "text";
   export let placeholder = "";
   export let disabled = false;
   export let autofocus = false;
@@ -30,6 +31,7 @@
 
   let className = "";
   export { className as class }; // Pass extra classes
+  export let style = "";
 
 
   // ========================================
@@ -67,7 +69,7 @@
 </script>
 
 <!-- svelte-ignore a11y-label-has-associated-control -->
-<label class="{classBase} {className}">
+<label class="{classBase} {className}" {style}>
 
   {#if prepend || $$slots.prepend}
     <slot name="prepend">
@@ -84,20 +86,35 @@
   {/if}
 
   <span class="{classSegment} {classContent}">
-    <textarea
-      class={classTextarea}
-      bind:this={textarea}
-      bind:value
-      {placeholder}
-      {disabled}
-      {maxlength}
-      {name}
-      on:keydown={handleKeyDown}
-      on:focus
-      on:input
-      on:blur
-    />
-    <span aria-hidden class={classValue}>{value}_</span>
+    {#if multiline}
+      <textarea
+        class={classTextarea}
+        bind:this={textarea}
+        bind:value
+        {placeholder}
+        {disabled}
+        {maxlength}
+        {name}
+        on:keydown={handleKeyDown}
+        on:focus
+        on:input
+        on:blur
+      />
+      <span aria-hidden class={classValue}>{value}_</span>
+    {:else}
+      <input
+        {type}
+        {value}
+        {placeholder}
+        {disabled}
+        {maxlength}
+        {name}
+        on:keydown={handleKeyDown}
+        on:focus
+        on:input
+        on:blur
+      />
+    {/if}
   </span>
 
   {#if iconRight}

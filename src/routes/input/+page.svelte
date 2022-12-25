@@ -55,3 +55,12 @@
     <Button slot="append" size="sm" type="secondary">Join</Button>
   </Input> 
 `} />
+
+<div class="uizg-preview">
+  <div class="uizg-preview__element">
+    <Input multiline value="Curabitur suscipit lectus lorem, convallis convallis est blandit quis. Nunc sagittis at leo eu faucibus. Maecenas rutrum lorem eros, ut sollicitudin urna blandit vel." style="max-width: 200px;" />
+  </div>
+</div>
+<Highlight code={`
+  <Input multiline value="..." style="max-width: 200px;" />
+`} />
