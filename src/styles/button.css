@@ -132,18 +132,18 @@
 /* States */
 
 .btn--focused {
-  --btn-background: var(--tint) / 0.1;
+  --btn-background: var(--tint) / 0.25;
 }
 
 .btn--selected {
-  --btn-background: var(--tint);
-  --btn-color: var(--background);
+  --btn-background: var(--tint) / 0.1;
 }
 
 button.btn--selected:hover,
-a.btn--selected:hover {
-  --btn-background: var(--tint) / 0.9;
-  --btn-color: var(--background);
+a.btn--selected:hover,
+button.btn--selected.btn--focused,
+a.btn--selected.btn--focused {
+  --btn-background: var(--tint) / 0.25;
 }
 
 .btn--toggled {

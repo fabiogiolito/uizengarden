@@ -6,6 +6,7 @@
   import Input from "$lib/Input.svelte";
   import List from "$lib/List.svelte";
   import ListItem from "$lib/ListItem.svelte";
+  import ScrollArea from "$lib/ScrollArea.svelte";
   
   import IconChevronDown from "$lib/icons/IconChevronDown.svelte";
   import IconSearch from "$lib/icons/IconSearch.svelte";
@@ -16,8 +17,10 @@
   // Button (trigger) settings
 
   export let [ 
-    type, size
+    type, size, icon
   ] = Array();
+
+  export let iconRight = IconChevronDown;
 
 
   // ====================================
@@ -47,27 +50,27 @@
   export let title = null; // Fixed title on trigger (overrides placeholder and label)
   export let placeholder = null; // If has a placeholder it also means it can be null
   export let label = null; // Label based on selected items
-  export let iconRight = IconChevronDown;
   export let labelEmpty = "No results";
 
-  export let multiselect = false; // Select multiple items (false = single select)
-
-  // Show filter field on dropdown
-  export let filter = false; // Show filter input on list
-  export let filterPlaceholder = filter && filter !== true ? filter : "Filter"; // Placeholder text for filter input
-  export let filterInput = false; // Ref to autofocus input
-  export let filterValue = "";
+  export let multiple = false; // Select multiple items (false = single select)
 
   // Options state
   export let selected = (title || placeholder) ? [] : [options[0]]; // Selected options (value)
   export let focused = selected[0]; // Which option is focused or hovered
 
   // Trigger is input field
-  export let input = false;
+  export let input = false; // Toggle input trigger
   export let inputValue = selected[0];
+
+  // Show filter field on dropdown
+  export let filter = false; // Show filter input on list
+  export let filterValue = "";
+  export let filterPlaceholder = filter && filter !== true ? filter : "Filter"; // Placeholder text for filter input
+  export let filterInput = false; // Ref to autofocus input
 
   // Classes
   export let classBase = "select";
+  export let classPlaceholder = `${classBase}__placeholder`;
   export let classList = `${classBase}__list`;
   export let classEmpty = `${classBase}__list--empty`;
   export let classEmptyLabel = `${classBase}__empty-label`;
@@ -78,12 +81,9 @@
 
   export let style = "";
 
-  // Focus match - type something jump focus to matching option
+  // Focus match - typing something jumps focus to matching option
   let focusMatchString = "";
-  let focusMatchTimer = null;
-
-  // Filter options based on filterValue
-  let filteredOptions = options;
+  let focusMatchTimer = null; // group keys as you type, reset after delay
 
   $: filteredOptions = updateFilteredOptions(options, filterValue); // Filter options when filter value changes  
   $: if (filter && !open) filterValue = ""; // Clear filter input when closed
@@ -92,20 +92,29 @@
   $: focusMatchOption(focusMatchString); // Look for matching option to focus
   $: label = setLabelForSelection(selected); // Write label based on current selection
 
-
   // ====================================
   // Functions
 
-  
-  // Get remote options for filterValue
-  async function getRemoteOptions(filterValue) {
-    if (!fetchOptions) return;
-    loading = true;
-    options = await fetchOptions(filterValue);
-    loading = false;
+  // Handle click on option (add or remove to selected)
+  export function selectOption(option) {
+    if (!option) return;
+    if (selected.includes(option)) { // Already selected, will try unselecting
+      if (selected.length == 1 && !placeholder) {
+        // Can't unselect because it's the only one selected and can't be null
+      } else { 
+        // Unselect option
+        selected = selected.filter(s => s !== option);
+      }
+    } else if (multiple) { // Multiselect, so add to selection
+      selected = [...selected, option];
+    } else { // Single select so replace selection
+      selected = [option];
+    }
+
+    if (!multiple) open = false; // Auto close if single select
+    if (input) inputValue = selected[0] || ''; // Update value when option is selected
   }
-
-
+  
   // Return filtered options based on string
   function updateFilteredOptions(opt, string) {
     if (!string) return opt;
@@ -129,29 +138,16 @@
     }
   }
 
-
-  // Handle click on option (add or remove to selected)
-  function selectOption(option) {
-    if (!option) return;
-    if (selected.includes(option)) { // Already selected, will try unselecting
-      if (selected.length == 1 && !placeholder) {
-        // Can't unselect because it's the only one selected and can't be null
-      } else { 
-        // Unselect option
-        selected = selected.filter(s => s !== option);
-      }
-    } else if (multiselect) { // Multiselect, so add to selection
-      selected = [...selected, option];
-    } else { // Single select so replace selection
-      selected = [option];
-    }
-
-    if (!multiselect) open = false; // Auto close if single select
-    if (input) inputValue = selected[0];
-  }
-
   function clearSelection() {
     selected = [];
+  }
+
+  // Get remote options for filterValue
+  async function getRemoteOptions(filterValue) {
+    if (!fetchOptions) return;
+    loading = true;
+    options = await fetchOptions(filterValue);
+    loading = false;
   }
 
 
@@ -178,7 +174,7 @@
     }
 
     // Clear all selected options if multiselect and has placeholder
-    if (e.key == "Backspace" && multiselect && placeholder) {
+    if (e.key == "Backspace" && multiple && placeholder) {
       console.log(e.shiftKey, e.metaKey);
       // Ignore if filter or input, unless shift or cmd also pressed
       if ((filter || input) && !e.shiftKey && !e.metaKey) return;
@@ -282,7 +278,9 @@
 
 <svelte:body on:keydown={handleBodyKeydown} />
 
+<!-- svelte-ignore a11y-click-events-have-key-events -->
 <Dropdown bind:open bind:menu bind:this={dropdownRef}
+  matchWidth
   {hover}
   {hoverDelay}
   {classTrigger}
@@ -310,10 +308,18 @@
         />
       </span>
     {:else}
-      <Button class={classTrigger} iconRight={iconRight} {type} {size} {style}>
-        <slot name="label" {selected} {label} {focused} {open} {placeholder}>
-          {title || label || placeholder}
+      <Button {type} {size} {style} {icon} {iconRight}
+        class={classTrigger}
+      >
+        <slot name="icon" slot="icon" {selected} />
+        <slot name="label" {selected} {title} {label} {focused} {open} {placeholder}>
+          {#if title || label}
+            {title || label}
+          {:else}
+            <span class={classPlaceholder}>{placeholder}</span>
+          {/if}
         </slot>
+        <slot name="iconRight" slot="iconRight" {selected} />
       </Button>
     {/if}
   </slot>
@@ -323,7 +329,7 @@
 
     <!-- Filter input on dropdown -->
     {#if filter}
-      <Input bind:textarea={filterInput}
+      <Input bind:field={filterInput}
         icon={IconSearch}
         placeholder={filterPlaceholder}
         bind:value={filterValue}
@@ -338,44 +344,51 @@
       <slot name="loading">
         <ListItem icon={LoadingIndicator}>Loading…</ListItem>
       </slot>
-    {/if}
+    {:else}
     
 
-    <!-- Loop options -->
-    <div class="{classList} {!filteredOptions.length ? classEmpty : ''}">
-      {#each filteredOptions as option}
-        <div class="
-          {classOptionContainer}
-          {focused == option ? classOptionFocused : ''}
-          {selected.includes(option) ? classOptionSelected : ''}
-        ">
-          <Button
-            on:click={() => selectOption(option)}
-            on:mouseenter={() => focused = option}
-            selected={selected.includes(option)}
-            focused={focused == option}
-            class={classOption}
-          >
-            <slot name="option" {option} isSelected={selected.includes(option)} isFocused={focused == option}>
-              {labelKey ? option[labelKey] : option}
+      <ScrollArea overlap>
+
+        <!-- Loop options -->
+        <div class="{classList} {!filteredOptions.length ? classEmpty : ''}">
+          {#each filteredOptions as option}
+            <div class="
+              {classOptionContainer}
+              {focused == option ? classOptionFocused : ''}
+              {selected.includes(option) ? classOptionSelected : ''}
+            ">
+              <Button
+                on:click={() => selectOption(option)}
+                on:mouseenter={() => focused = option}
+                selected={selected.includes(option)}
+                focused={focused == option}
+                class={classOption}
+              >
+                <slot name="optionIcon" slot="icon" {option} isSelected={selected.includes(option)} isFocused={focused == option} />
+                <slot name="optionLabel" {option} isSelected={selected.includes(option)} isFocused={focused == option}>
+                  {labelKey ? option[labelKey] : option}
+                </slot>
+                <slot name="optionIconRight" slot="iconRight" {option} isSelected={selected.includes(option)} isFocused={focused == option} />
+              </Button>
+            </div>
+          {:else}
+            <slot name="empty" {inputValue} {selectOption} {selected}>
+              {#if labelEmpty}
+                <ListItem class={classEmptyLabel}>
+                  <em>{labelEmpty}</em>
+                </ListItem>
+              {/if}
             </slot>
-          </Button>
+          {/each}
         </div>
-      {:else}
-        <slot name="empty" {inputValue}>
-          {#if labelEmpty}
-            <ListItem class={classEmptyLabel}>
-              <em>{labelEmpty}</em>
-            </ListItem>
-          {/if}
-        </slot>
-      {/each}
-    </div>
+
+      </ScrollArea>
+    {/if}
 
     <slot name="appendMenu" {inputValue} />
 
     <!-- Clear selection -->
-    {#if multiselect && placeholder && selected.length}
+    {#if multiple && placeholder && selected.length}
       <ListItem divider />
       <Button on:click={clearSelection}>clear</Button>
     {/if}

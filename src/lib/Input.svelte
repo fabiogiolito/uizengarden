@@ -18,7 +18,7 @@
   export let prepend = false;
   export let append = false;
 
-  export let textarea; // Element reference
+  export let field; // Element reference
 
   export let classBase          = "input";
   export let classSegment       = `${classBase}__segment`;
@@ -26,7 +26,9 @@
   export let classIconContainer = `${classBase}__icon-container`;
   export let classIcon          = `${classBase}__icon`;
   export let classAccessory     = `${classBase}__accessory`;
+  export let classField         = `${classBase}__field`;
   export let classTextarea      = `${classBase}__textarea`;
+  export let classInput         = `${classBase}__input`;
   export let classValue         = `${classBase}__value`;
 
   let className = "";
@@ -38,7 +40,6 @@
 
   // Handle some specific key combos
   function handleKeyDown(e) {
-
     // Pressed Return (without shift) on non-multiline text
     if (!multiline && e.key == "Enter" && !e.shiftKey) {
       e.preventDefault();
@@ -61,9 +62,16 @@
     dispatch('keydown', e);
   }
 
+  // Handle typing on input
+  // Workaround for bind:value for input with dynamic type
+  function handleInput(e) {
+    value = e.target.value;
+    dispatch('input', e);
+  }
+
   onMount(() => {
-    if ( autofocus && textarea ) {
-      textarea?.focus();
+    if ( autofocus && field ) {
+      field?.focus();
     }
   });
 </script>
@@ -88,8 +96,8 @@
   <span class="{classSegment} {classContent}">
     {#if multiline}
       <textarea
-        class={classTextarea}
-        bind:this={textarea}
+        class="{classField} {classTextarea}"
+        bind:this={field}
         bind:value
         {placeholder}
         {disabled}
@@ -103,15 +111,17 @@
       <span aria-hidden class={classValue}>{value}_</span>
     {:else}
       <input
+        class="{classField} {classInput}"
+        bind:this={field}
         {type}
         {value}
         {placeholder}
         {disabled}
         {maxlength}
         {name}
+        on:input={handleInput}
         on:keydown={handleKeyDown}
         on:focus
-        on:input
         on:blur
       />
     {/if}

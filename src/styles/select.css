@@ -9,3 +9,7 @@
   max-height: 200px;
   overflow-y: auto;
 }
+
+.select__placeholder {
+  opacity: 0.75;
+}

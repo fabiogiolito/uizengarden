@@ -1,12 +1,19 @@
 <script>
+  import { createEventDispatcher } from "svelte";
   import { fly } from "svelte/transition";
   import { teleport } from "$lib/helpers/teleport";
+
+  const dispatch = createEventDispatcher();
 
   // Open state
   export let open = false;
 
   // Reference
   export let menu = undefined;
+
+  // Size
+  // Make dropdown's min-width equal to trigger's width
+  export let matchWidth = false;
 
   // Position
   export let direction = 'down'; // up, down, left, right
@@ -47,10 +54,10 @@
   }
 
   export function openDropdown() {
-    console.log("open dropdown called");
     calculatePosition();
     open = true;
     updateScrollableParent(triggerContainer);
+    dispatch('open');
     // TODO: Set and trap focus
   }
 
@@ -58,6 +65,7 @@
     if (!open) return;
     open = false; // Close menu
     updateScrollableParent(triggerContainer); // Reset scrollableParent
+    dispatch('close');
   }
 
   function handleBodyClick(e) {
@@ -127,6 +135,10 @@
     style += position.left    ? `left:    ${position.left}px; `   : '';
     style += transform;
 
+    // Make dropdown's min-width equal to trigger's width
+    if (matchWidth) style += `min-width: ${container.width}px;`;
+
+    // Animate from the correct direction
     if (direction == 'up')    transitionOptions = { duration: duration, y: distance };
     if (direction == 'right') transitionOptions = { duration: duration, x: distance > 0 ? distance * -1 : distance * 2 };
     if (direction == 'down')  transitionOptions = { duration: duration, y: distance > 0 ? distance * -1 : distance * 2 };

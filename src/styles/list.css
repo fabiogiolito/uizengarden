@@ -123,6 +123,14 @@
   align-self: center;
 }
 
+/* Kill divider margin if sibling to scrollarea */
+.scrollarea + .list__divider {
+  margin: 0;
+}
+.list__divider:has(+ .scrollarea) {
+  margin-bottom: 0;
+}
+
 /* --------------------------------------------- */
 /* Adjust buttons in list */
 
