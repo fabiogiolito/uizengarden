@@ -72,6 +72,7 @@
 .btn__label {
   padding: 0.5em 1em;
   flex: 1;
+  overflow: hidden;
 }
 
 /* --------------------------------------------- */
@@ -182,4 +183,18 @@ a.btn--selected.btn--focused {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+/* --------------------------------------------- */
+/* Wrap */
+
+.btn--wrap {
+  white-space: normal;
+}
+
+.btn--wrap .btn__label {
+  /* Undo truncate */
+  overflow: visible;
+  white-space: normal;
+  text-overflow: none;
 }

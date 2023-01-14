@@ -4,6 +4,7 @@
   align-items: center;
   text-align: left;
   gap: 0.5em;
+  overflow: hidden;
 }
 
 .label__content {
@@ -27,4 +28,14 @@
   width: 1em;
   height: 1em;
   line-height: 0;
+}
+
+/* ============================================= */
+/* Truncate text */
+
+.label--truncate .label__content,
+.btn:not(.btn--wrap) .label__content {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
