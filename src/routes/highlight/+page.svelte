@@ -12,3 +12,10 @@
     // Your code here
   \`} />
 `} />
+
+<Highlight 
+  tabs={[
+    { name: "Svelte", code: `<Button />`},
+    { name: "HTML", code: `<button>Label</button>`}
+  ]}
+ />
