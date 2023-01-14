@@ -7,6 +7,8 @@
   export let text = null; // content
   export let subtext = null; // small text content
 
+  export let truncate = false; // Truncate text to one line
+
   // Accessibility
   export let role = null;
   export let ariaLabel = null;
@@ -14,6 +16,7 @@
   // Element classes
   export let classBase               = "label";
   export let classIconLabel          = `${classBase}--icon-label`; // No text, just icon
+  export let classTruncate           = `${classBase}--truncate`; // Truncate long text
   export let classIconContainer      = `${classBase}__icon-container`;
   export let classIconContainerLeft  = `${classBase}__icon-container--left`;
   export let classIconContainerRight = `${classBase}__icon-container--right`;
@@ -36,6 +39,7 @@
 <svelte:element this={element}
   class="
     {classBase}
+    {truncate ? classTruncate : ''}
     {(icon || iconRight) && !text && !$$slots.default ? classIconLabel : ''}
     {className}
   "

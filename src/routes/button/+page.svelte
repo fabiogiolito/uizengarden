@@ -79,6 +79,21 @@
 
 <div class="uizg-preview">
   <div class="uizg-preview__element">
+    <Button style="width: 200px;">
+      Button labels truncate by default
+    </Button>
+    <Button wrap style="width: 200px;">
+      This button label wraps to a new line
+    </Button>
+  </div>
+</div>
+<Highlight code={`
+  <Button style="width: 200px;">Button labels truncate by default</Button>
+  <Button wrap style="width: 200px;">This button label wraps to a new line</Button>
+`} />
+
+<div class="uizg-preview">
+  <div class="uizg-preview__element">
     <Button icon={IconPlus}>New post</Button>
     <Button iconRight={IconChevronDown}>Published</Button>
     <Button icon={IconAlignLeft} iconRight={IconChevronDown}>Left</Button>

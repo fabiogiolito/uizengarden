@@ -30,9 +30,11 @@
   // Structure variants
   export let type = false; // eg: primary, secondary → .btn--primary, .btn--secondary
   export let size = false; // eg: sm, lg → .btn--sm, .btn--lg
+  export let wrap = false; // Wrapping button
 
   // Element classes
   export let classBase               = "btn";
+  export let classWrap               = `${classBase}--wrap`;
   export let classIconBtn            = `${classBase}--icon-btn`;
   export let classToggled            = `${classBase}--toggled`;
   export let classUntoggled          = `${classBase}--untoggled`;
@@ -107,6 +109,7 @@
     {classBase}
     {type     ? `${classBase}--${type}` : ''}
     {size     ? `${classBase}--${size}` : ''}
+    {wrap     ? classWrap : ''}
     {loading  ? classLoading  : ''}
     {toggle ? toggled ? classToggled : classUntoggled : ''}
     {disabled || loading ? classDisabled : ''}
