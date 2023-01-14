@@ -89,6 +89,7 @@
   $: if (filter && !open) filterValue = ""; // Clear filter input when closed
   $: if (filterInput) filterInput.focus(); // Autofocus on filter input
   $: if (fetchOptions) debounce(() => { getRemoteOptions(filterValue) }); // Get remote options for filterValue
+  $: if (menu) scrollToFocusedOption();
   $: focusMatchOption(focusMatchString); // Look for matching option to focus
   $: label = setLabelForSelection(selected); // Write label based on current selection
 
@@ -97,7 +98,11 @@
 
   // Handle click on option (add or remove to selected)
   export function selectOption(option) {
-    if (!option) return;
+    if (!option) {
+      clearSelection();
+      open = false;
+      return
+    }
     if (selected.includes(option)) { // Already selected, will try unselecting
       if (selected.length == 1 && !placeholder) {
         // Can't unselect because it's the only one selected and can't be null
@@ -217,8 +222,12 @@
   function focusMatchOption(string) {
     if (!string) return;
     focused = options.find(o => `${labelKey ? o[labelKey] : o}`.toLowerCase().startsWith(string));
-    // Can't find, try again with last character
-    if (!focused && string.length > 1) focusMatchOption(string.slice(-1));
+    if (focused) {
+      scrollToFocusedOption();
+    } else if (string.length > 1) {
+      // Can't find, try again with last character
+      focusMatchOption(string.slice(-1));
+    }
   }
 
   // Keep option in view as you navigate up/down when list scrolls
@@ -346,11 +355,11 @@
       </slot>
     {:else}
     
-
       <ScrollArea overlap>
 
-        <!-- Loop options -->
+        <!-- List -->
         <div class="{classList} {!filteredOptions.length ? classEmpty : ''}">
+          <!-- Loop options -->
           {#each filteredOptions as option}
             <div class="
               {classOptionContainer}
