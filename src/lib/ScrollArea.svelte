@@ -35,6 +35,14 @@
 
 
   // =================================================================
+  // How it works
+
+  // .scrollarea scrolls nativelly but has a hidden scrollbar
+  // .scrollarea__content is a wrapper for the content
+  // .scrollarea__bar is a faked styled scrollbar
+
+
+  // =================================================================
   // Functions
 
   function setupScrollbar() {
