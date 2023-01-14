@@ -4,12 +4,10 @@
 /* ============================================= */
 /* Styles */
 
-.select__list {
-  min-width: 160px;
-  max-height: 200px;
-  overflow-y: auto;
-}
-
 .select__placeholder {
   opacity: 0.75;
+}
+
+.select__list .scrollarea__content {
+  max-height: 200px;
 }

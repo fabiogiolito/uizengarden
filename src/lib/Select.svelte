@@ -396,7 +396,7 @@
     {:else}
     
       <!-- List -->
-      <ScrollArea overlap class="{classList} {!filteredOptions.length ? classEmpty : ''}">
+      <ScrollArea reset={filteredOptions} overlap class="{classList} {!filteredOptions.length ? classEmpty : ''}">
 
         <List>
 

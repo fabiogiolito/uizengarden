@@ -1,10 +1,13 @@
 <script>
+  import { tick } from "svelte";
 
   // Props
 
   export let minThumb = 24;
 
   export let overlap = false;
+
+  export let reset = false; // update prop to recalculate size
 
   // Element classes
   export let classBase = `scrollarea`;
@@ -32,12 +35,13 @@
   let dragging = false;
 
   $: if (containerRef) setupScrollbar();
+  $: if (reset) resetScrollbar();
 
 
   // =================================================================
   // How it works
 
-  // .scrollarea scrolls nativelly but has a hidden scrollbar
+  // .scrollarea scrolls natively but has a hidden scrollbar
   // .scrollarea__content is a wrapper for the content
   // .scrollarea__bar is a faked styled scrollbar
 
@@ -45,16 +49,25 @@
   // =================================================================
   // Functions
 
-  function setupScrollbar() {
+  async function setupScrollbar() {
     if (!containerRef) return;
 
-    // Area doesn't scroll
-    if (containerRef.offsetHeight >= containerRef.scrollHeight) return;
+    // Calculate positions for scrolling content
+    if (containerRef.offsetHeight < containerRef.scrollHeight) {
+      thumbHeight = Math.max(containerRef.offsetHeight * (2 - containerRef.scrollHeight / containerRef.offsetHeight), minThumb);
+      thumbOffset = ((containerRef.offsetHeight - thumbHeight) * containerRef.scrollTop / (containerRef.scrollHeight - containerRef.offsetHeight));
 
-    // Calculate thumb height and position
-    thumbHeight = Math.max(containerRef.offsetHeight * (2 - containerRef.scrollHeight / containerRef.offsetHeight), minThumb);
-    thumbOffset = ((containerRef.offsetHeight - thumbHeight) * containerRef.scrollTop / (containerRef.scrollHeight - containerRef.offsetHeight));
+    } else { // Doesn't scroll, reset
+      thumbHeight = 0;
+      thumbOffset = 0;
+    }
   }
+
+  async function resetScrollbar() {
+    await tick(); // await for any content updates before recalculating so we get the correct current size
+    setupScrollbar();
+  }
+
 
   // Scrolling
 

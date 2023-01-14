@@ -1,6 +1,5 @@
 .scrollarea {
   position: relative;
-  display: flex;
   gap: 0.25em;
 }
 
