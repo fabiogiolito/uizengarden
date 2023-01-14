@@ -44,7 +44,7 @@
       </ul>
     </div>
   </div>
-  <div class="uizg-container">
+  <div class="uizg-page">
     <slot />
   </div>
 </div>

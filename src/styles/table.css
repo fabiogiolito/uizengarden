@@ -1,0 +1,23 @@
+.table {
+  text-align: left;
+}
+
+/* Align content inside cells */
+.table :is(td, th) {
+  vertical-align: top;
+  padding: 0.5rem;
+}
+
+/* Horizontal gap */
+.table :is(td, th):not(:last-child) {
+  border-right: 1rem solid transparent;
+}
+
+/* Vertical gap */
+.table tr:not(:last-child) {
+  border-bottom: 0.25rem solid transparent;
+}
+
+.table tr:nth-child(odd) {
+  background: rgb(var(--background-secondary));
+}
