@@ -2,13 +2,18 @@
   import Prism from '@magidoc/plugin-svelte-prismjs';
   import 'prism-svelte';
 
+  import Button from "$lib/Button.svelte";
+  import ToggleGroup from "$lib/ToggleGroup.svelte";
+
   export let language = "svelte";
   export let code = "";
+  export let tabs = [];
 
   export let showLineNumbers = true;
   export let showCopyButton = true;
 
-  $: source = cleanCode(code);
+  // Tabs state
+  let toggleGroupCurrent = tabs[0]?.name;
 
   // ==================================
 
@@ -28,4 +33,34 @@
 
 </script>
 
-<Prism {language} {source} {showLineNumbers} {showCopyButton} />
+<div class="highlight">
+  {#if tabs.length}
+
+  <ToggleGroup bind:current={toggleGroupCurrent} let:setCurrent>
+    
+    <!-- Tabs -->
+    <!-- TODO: Replace with actual tabs component -->
+    <div class="highlight__tabs">
+      {#each tabs as tab}
+        <Button size="sm" type={toggleGroupCurrent == tab.name ? "primary" : "secondary"}
+          value={tab.name}
+          on:click={setCurrent}
+        >
+          {tab.name}
+        </Button>
+      {/each}
+    </div>
+
+    <!-- Content -->
+    {#each tabs as tab}
+      {#if toggleGroupCurrent == tab.name}
+        <Prism {language} source={cleanCode(tab.code)} {showLineNumbers} {showCopyButton} />
+      {/if}
+    {/each}
+  </ToggleGroup>
+
+
+  {:else if code}
+    <Prism {language} source={cleanCode(code)} {showLineNumbers} {showCopyButton} />
+  {/if}
+</div>
