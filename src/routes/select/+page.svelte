@@ -346,7 +346,7 @@
   </div>
 </div>
 <Highlight code={`
-  <Select filter filterPlaceholder="Find fruit" placeholder="Choose one" options={fruits} />
+  <Select filter filterPlaceholder="Find fruit" placeholder="Pick multiple" options={fruits} />
 `} />
 
 <!-- Object list -->
@@ -396,19 +396,13 @@
     <Select options={alignOptions} labelKey="name" style="width: 120px;">
       <svelte:component slot="icon" let:selected this={selected[0].icon} />
       <svelte:component slot="optionIcon" let:option this={option.icon} />
-      <span slot="optionLabel" let:option let:isSelected let:isFocused>
-        {option.name}
-      </span>
     </Select>
   </div>
 </div>
 <Highlight code={`
-  <Select options={alignOptions} labelKey="name">
+  <Select options={alignOptions} labelKey="name" style="width: 120px;">
     <svelte:component slot="icon" let:selected this={selected[0].icon} />
     <svelte:component slot="optionIcon" let:option this={option.icon} />
-    <span slot="optionLabel" let:option let:isSelected let:isFocused>
-      {option.name}
-    </span>
   </Select>
 `} />
 

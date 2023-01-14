@@ -22,6 +22,10 @@
 
   export let iconRight = IconChevronDown;
 
+  // ====================================
+  // List item options
+  
+
 
   // ====================================
   // Dropdown settings
@@ -99,8 +103,8 @@
   // Handle click on option (add or remove to selected)
   export function selectOption(option) {
     if (!option) {
-      clearSelection();
-      open = false;
+      handleClearSelection();
+      handleDropdownClose();
       return
     }
     if (selected.includes(option)) { // Already selected, will try unselecting
@@ -116,7 +120,7 @@
       selected = [option];
     }
 
-    if (!multiple) open = false; // Auto close if single select
+    if (!multiple) handleDropdownClose(); // Auto close if single select
     if (input) inputValue = selected[0] || ''; // Update value when option is selected
   }
   
@@ -131,6 +135,19 @@
     return filtered;
   }
 
+  // Handle dropdown close
+  function handleDropdownClose() {
+    focusMatchString = "";
+    filterValue = "";
+    focused = selected[0];
+    open = false;
+  }
+
+  // Handle dropdown open
+  function handleDropdownOpen() {
+    if (open) return;
+    open = true;
+  }
 
   // Write label based on current selection
   function setLabelForSelection(selected) {
@@ -143,7 +160,7 @@
     }
   }
 
-  function clearSelection() {
+  function handleClearSelection() {
     selected = [];
   }
 
@@ -183,7 +200,7 @@
       console.log(e.shiftKey, e.metaKey);
       // Ignore if filter or input, unless shift or cmd also pressed
       if ((filter || input) && !e.shiftKey && !e.metaKey) return;
-      clearSelection();
+      handleClearSelection();
     }
 
     // Jump focus to option that match key
@@ -249,7 +266,7 @@
   function handleInputKeyDown(e) {
     if (open) return;
     if (e.detail.key == "ArrowDown") {
-      open = true;
+      handleDropdownOpen();
       filterValue = "";
       e.detail.stopPropagation();
     }
@@ -342,7 +359,7 @@
         icon={IconSearch}
         placeholder={filterPlaceholder}
         bind:value={filterValue}
-        on:change={() => open = true }
+        on:change={handleDropdownOpen}
       />
       <ListItem divider />
     {/if}
@@ -355,41 +372,39 @@
       </slot>
     {:else}
     
-      <ScrollArea overlap>
+      <!-- List -->
+      <ScrollArea overlap class="{classList} {!filteredOptions.length ? classEmpty : ''}">
 
-        <!-- List -->
-        <div class="{classList} {!filteredOptions.length ? classEmpty : ''}">
-          <!-- Loop options -->
-          {#each filteredOptions as option}
-            <div class="
-              {classOptionContainer}
-              {focused == option ? classOptionFocused : ''}
-              {selected.includes(option) ? classOptionSelected : ''}
-            ">
-              <Button
-                on:click={() => selectOption(option)}
-                on:mouseenter={() => focused = option}
-                selected={selected.includes(option)}
-                focused={focused == option}
-                class={classOption}
-              >
-                <slot name="optionIcon" slot="icon" {option} isSelected={selected.includes(option)} isFocused={focused == option} />
-                <slot name="optionLabel" {option} isSelected={selected.includes(option)} isFocused={focused == option}>
-                  {labelKey ? option[labelKey] : option}
-                </slot>
-                <slot name="optionIconRight" slot="iconRight" {option} isSelected={selected.includes(option)} isFocused={focused == option} />
-              </Button>
-            </div>
-          {:else}
-            <slot name="empty" {inputValue} {selectOption} {selected}>
-              {#if labelEmpty}
-                <ListItem class={classEmptyLabel}>
-                  <em>{labelEmpty}</em>
-                </ListItem>
-              {/if}
-            </slot>
-          {/each}
-        </div>
+        <!-- Loop options -->
+        {#each filteredOptions as option}
+          <div class="
+            {classOptionContainer}
+            {focused == option ? classOptionFocused : ''}
+            {selected.includes(option) ? classOptionSelected : ''}
+          ">
+            <Button
+              on:click={() => selectOption(option)}
+              on:mouseenter={() => focused = option}
+              selected={selected.includes(option)}
+              focused={focused == option}
+              class={classOption}
+            >
+              <slot name="optionIcon" slot="icon" {option} isSelected={selected.includes(option)} isFocused={focused == option} />
+              <slot name="optionLabel" {option} isSelected={selected.includes(option)} isFocused={focused == option}>
+                {labelKey ? option[labelKey] : option}
+              </slot>
+              <slot name="optionIconRight" slot="iconRight" {option} isSelected={selected.includes(option)} isFocused={focused == option} />
+            </Button>
+          </div>
+        {:else}
+          <slot name="empty" {inputValue} {selectOption} {selected}>
+            {#if labelEmpty}
+              <ListItem class={classEmptyLabel}>
+                <small><em>{labelEmpty}</em></small>
+              </ListItem>
+            {/if}
+          </slot>
+        {/each}
 
       </ScrollArea>
     {/if}
@@ -399,7 +414,7 @@
     <!-- Clear selection -->
     {#if multiple && placeholder && selected.length}
       <ListItem divider />
-      <Button on:click={clearSelection}>clear</Button>
+      <Button on:click={handleClearSelection}>clear</Button>
     {/if}
 
   </List>
