@@ -5,6 +5,7 @@
   import Button from "$lib/Button.svelte";
   import ListItem from "$lib/ListItem.svelte";
 
+  import IconArrowRight from "$lib/icons/IconArrowRight.svelte";
   import IconChevronRight from "$lib/icons/IconChevronRight.svelte";
   import IconAlignLeft from "$lib/icons/IconAlignLeft.svelte";
   import IconAlignCenter from "$lib/icons/IconAlignCenter.svelte";
@@ -295,6 +296,22 @@
 </div>
 <Highlight code={`
   <Select options={['Apple', 'Banana', ...]} selected={["Banana"]} />
+`} />
+
+<!-- Basic example -->
+<div class="uizg-preview">
+  <div class="uizg-preview__element">
+    <div style="width: 320px;">
+      <p style="margin-bottom: 0.5em;">What is your favorite fruit?</p>
+      <Select selectedIconRight={true} options={fruits} selected={["Banana"]} style="width: 320px;" />
+      <p style="margin: 1.5em 0 0.5em 0;">What is your least favorite fruit?</p>
+      <Select selectedIcon={IconArrowRight} options={fruits} selected={["Cantaloupe"]} style="width: 320px;" />
+    </div>
+  </div>
+</div>
+<Highlight code={`
+  <Select selectedIconRight options={fruits} selected={["Banana"]} />
+  <Select selectedIcon={IconArrowRight} options={fruits} selected={["Cantaloupe"]} />
 `} />
 
 <!-- With Placeholder -->

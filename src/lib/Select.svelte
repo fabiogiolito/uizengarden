@@ -7,8 +7,10 @@
   import List from "$lib/List.svelte";
   import ListItem from "$lib/ListItem.svelte";
   import ScrollArea from "$lib/ScrollArea.svelte";
-  
+
+  import IconCheck from "$lib/icons/IconCheck.svelte";
   import IconChevronDown from "$lib/icons/IconChevronDown.svelte";
+  import IconEmpty from "$lib/icons/IconEmpty.svelte";
   import IconSearch from "$lib/icons/IconSearch.svelte";
   import LoadingIndicator from "$lib/LoadingIndicator.svelte";
 
@@ -25,6 +27,13 @@
   // ====================================
   // List item options
   
+  export let selectedIcon = false;
+  export let selectedIconRight = false;
+
+  // Clear multiple selection
+  export let clearLabel = "Clear";
+  export let clearIcon = false;
+  export let clearIconRight = false;
 
 
   // ====================================
@@ -78,7 +87,6 @@
   export let classList = `${classBase}__list`;
   export let classEmpty = `${classBase}__list--empty`;
   export let classEmptyLabel = `${classBase}__empty-label`;
-  export let classOptionContainer = `${classBase}__option-container`;
   export let classOption = `${classBase}__option`;
   export let classOptionSelected = `${classBase}__option--selected`;
   export let classOptionFocused = `${classBase}__option--focused`;
@@ -275,6 +283,22 @@
   // ----------------------------------------
   // Helpers
 
+  function iconForOption(option, selected) {
+    if (selectedIcon) { // Should show icon
+      if (selected.includes(option)) {
+        return selectedIcon == true ? IconCheck : selectedIcon; // Show default checkmark icon or defined custom icon
+      } else {
+        return IconEmpty; // Not selected, show empty icon for correct alignment
+      }
+    }
+  }
+  
+  function iconRightForOption(option, selected) {
+    if (!selected.includes(option)) return; // Not selected, no icon
+    if (selectedIconRight == true) return IconCheck; // Use default icon (checkmark)
+    return selectedIconRight; // Use custom icon if defined, or default to no icon
+  }
+
   function isLetter(key) {
     key = key.toLowerCase();
     if (key.length !== 1) {
@@ -351,7 +375,7 @@
   </slot>
 
   <!-- List -->
-  <List>
+  <List dividers>
 
     <!-- Filter input on dropdown -->
     {#if filter}
@@ -361,7 +385,6 @@
         bind:value={filterValue}
         on:change={handleDropdownOpen}
       />
-      <ListItem divider />
     {/if}
 
     <slot name="prependMenu" {inputValue} />
@@ -375,36 +398,43 @@
       <!-- List -->
       <ScrollArea overlap class="{classList} {!filteredOptions.length ? classEmpty : ''}">
 
-        <!-- Loop options -->
-        {#each filteredOptions as option}
-          <div class="
-            {classOptionContainer}
-            {focused == option ? classOptionFocused : ''}
-            {selected.includes(option) ? classOptionSelected : ''}
-          ">
-            <Button
-              on:click={() => selectOption(option)}
-              on:mouseenter={() => focused = option}
-              selected={selected.includes(option)}
-              focused={focused == option}
-              class={classOption}
-            >
-              <slot name="optionIcon" slot="icon" {option} isSelected={selected.includes(option)} isFocused={focused == option} />
-              <slot name="optionLabel" {option} isSelected={selected.includes(option)} isFocused={focused == option}>
-                {labelKey ? option[labelKey] : option}
-              </slot>
-              <slot name="optionIconRight" slot="iconRight" {option} isSelected={selected.includes(option)} isFocused={focused == option} />
-            </Button>
-          </div>
-        {:else}
-          <slot name="empty" {inputValue} {selectOption} {selected}>
-            {#if labelEmpty}
-              <ListItem class={classEmptyLabel}>
-                <small><em>{labelEmpty}</em></small>
-              </ListItem>
-            {/if}
-          </slot>
-        {/each}
+        <List>
+
+          <!-- Loop options -->
+          {#each filteredOptions as option}
+            <slot name="option" {option} {focused} {selected}>
+              <Button
+                on:click={() => selectOption(option)}
+                on:mouseenter={() => focused = option}
+                selected={!selectedIcon && !selectedIconRight && selected.includes(option)}
+                focused={focused == option}
+                icon={iconForOption(option, selected)}
+                iconRight={iconRightForOption(option, selected)}
+                class="
+                  {classOption}
+                  {focused == option ? classOptionFocused : ''}
+                  {selected.includes(option) ? classOptionSelected : ''}
+                "
+              >
+                <slot name="optionIcon" slot="icon" {option} isSelected={selected.includes(option)} isFocused={focused == option} />
+                <slot name="optionLabel" {option} isSelected={selected.includes(option)} isFocused={focused == option}>
+                  {labelKey ? option[labelKey] : option}
+                </slot>
+                <slot name="optionIconRight" slot="iconRight" {option} isSelected={selected.includes(option)} isFocused={focused == option} />
+              </Button>
+            </slot>
+
+          {:else}
+            <slot name="empty" {inputValue} {selectOption} {selected}>
+              {#if labelEmpty}
+                <ListItem class={classEmptyLabel}>
+                  <small><em>{labelEmpty}</em></small>
+                </ListItem>
+              {/if}
+            </slot>
+          {/each}
+
+        </List>
 
       </ScrollArea>
     {/if}
@@ -413,8 +443,12 @@
 
     <!-- Clear selection -->
     {#if multiple && placeholder && selected.length}
-      <ListItem divider />
-      <Button on:click={handleClearSelection}>clear</Button>
+      <Button
+        label={clearLabel}
+        icon={clearIcon}
+        iconRight={clearIconRight}
+        on:click={handleClearSelection}
+      />
     {/if}
 
   </List>
