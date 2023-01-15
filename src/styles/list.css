@@ -13,12 +13,12 @@
   padding: 0.25rem 0;
 }
 
+.list .list,
 .dropdown__menu .list {
   border: 0;
 }
 
-.list:not(.list--inset) .list {
-  border: 0;
+.list:not(.list--inset) .list:not(.list--inset) {
   border-radius: 0;
 }
 
@@ -65,24 +65,31 @@
 }
 
 .list--inset .list__item,
-.list--inset .btn {
+.list--inset > .btn,
+.list--inset .dropdown__trigger .btn {
   border-radius: inherit;
   margin-bottom: 2px;
 }
 
+.list--inset .dropdown__trigger {
+  border-radius: inherit;
+}
+
 .list--inset .list__item:last-child,
-.list--inset .btn:last-child {
+.list--inset > .btn:last-child,
+.list--inset .dropdown__trigger:last-child {
   margin-bottom: 0;
 }
 
 .list--row.list--inset .list__item,
-.list--row.list--inset .btn {
+.list--row.list--inset > .btn,
+.list--row.list--inset .dropdown__trigger {
   margin-bottom: 0;
   margin-right: 2px;
 }
 
 .list--row.list--inset .list__item:last-child,
-.list--row.list--inset .btn:last-child {
+.list--row.list--inset > .btn:last-child .list--row.list--inset .dropdown__trigger:last-child {
   margin-right: 0;
 }
 
@@ -134,24 +141,27 @@
 /* --------------------------------------------- */
 /* Adjust buttons in list */
 
-.list .btn {
+.list > .btn,
+.list .dropdown__trigger .btn {
   --btn-shadow: transparent;
   --btn-border: transparent;
 }
 
-.list:not(.list--row) .btn {
+.list:not(.list--row) > .btn,
+.list:not(.list--row) .dropdown__trigger .btn {
   width: 100%;
   text-align: left;
 }
 
-.list:not(.list--inset) .btn {
+.list:not(.list--inset) > .btn,
+.list:not(.list--inset) .dropdown__trigger .btn {
   border-radius: 0;
 }
 
 /* ----------------------------------------------- */
 /* Input */
 
-.list .input {
+.list > .input {
   box-shadow: none;
   border: 0;
   border-radius: 0;

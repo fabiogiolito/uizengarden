@@ -4,6 +4,7 @@
   import List from "$lib/List.svelte";
   import ListItem from "$lib/ListItem.svelte";
 
+  import Label from "$lib/Label.svelte";
   import Avatar from "$lib/Avatar.svelte";
   import Button from "$lib/Button.svelte";
   import Dropdown from "$lib/Dropdown.svelte";
@@ -25,6 +26,7 @@
   import IconSmile from "$lib/icons/IconSmile.svelte";
   import IconPaperclip from "$lib/icons/IconPaperclip.svelte";
   import IconSend from "$lib/icons/IconSend.svelte";
+  import IconSearch from "$lib/icons/IconSearch.svelte";
 
 </script>
 
@@ -58,7 +60,13 @@
     <List inset>
       <Button>List item 1</Button>
       <Button>List item 2</Button>
-      <Button>List item 3</Button>
+      <Dropdown direction="right">
+        <Button slot="trigger" iconRight={IconChevronRight}>More</Button>
+        <List>
+          <Button>List item A</Button>
+          <Button>List item B</Button>
+        </List>
+      </Dropdown>
     </List>
   </div>
 </div>
@@ -119,15 +127,12 @@
     <List style="width: 320px;">
       <ListItem href="#profile">
         <Avatar slot="icon" initials="UN" />
-        <p>User name</p>
-        <p><small>@username</small></p>
-        <IconChevronRight slot="iconRight" />
+        <p>User Name</p>
+        <small>@username</small>
       </ListItem>
       <ListItem divider />
-      <List>
-        <ListItem icon={IconSettings} href="#settings">Settings</ListItem>
-        <ListItem icon={IconLogOut} action={() => alert('log out')}>Log out</ListItem>
-      </List>
+      <ListItem icon={IconSettings} href="#settings">Settings</ListItem>
+      <ListItem icon={IconLogOut} action={() => alert('log out')}>Log out</ListItem>
     </List>
   </div>
 </div>
@@ -135,15 +140,12 @@
   <List>
     <ListItem href="#profile">
       <Avatar slot="icon" initials="UN" />
-      <p>User name</p>
-      <p><small>@username</small></p>
-      <IconChevronRight slot="iconRight" />
+      <p>User Name</p>
+      <small>@username</small>
     </ListItem>
     <ListItem divider />
-    <List>
-      <ListItem icon={IconSettings} href="#settings">Settings</ListItem>
-      <ListItem icon={IconLogOut} action={handleLogOut}>Log out</ListItem>
-    </List>
+    <ListItem icon={IconSettings} href="#settings">Settings</ListItem>
+    <ListItem icon={IconLogOut} action={() => alert('log out')}>Log out</ListItem>
   </List>
 `} />
 
@@ -194,8 +196,7 @@
     <List row inset>
       <Button size="sm" toggle icon={IconBold} />
       <Button size="sm" toggle icon={IconItalic} />
-      <ListItem divider />
-      <ListItem heading="Align" />
+      <ListItem divider heading="Align" />
       <ToggleGroup current="Left" let:current let:setCurrent>
         <List row type="secondary">
           <Button size="sm" type="transparent" value="Left" selected={current == "Left"} on:click={setCurrent} icon={IconAlignLeft} />
@@ -208,15 +209,14 @@
 </div>
 <Highlight code={`
   <List row inset>
-    <Button toggle icon={IconBold} />
-    <Button toggle icon={IconItalic} />
-    <ListItem divider />
-    <ListItem heading="Align" />
+    <Button size="sm" toggle icon={IconBold} />
+    <Button size="sm" toggle icon={IconItalic} />
+    <ListItem divider heading="Align" />
     <ToggleGroup current="Left" let:current let:setCurrent>
       <List row type="secondary">
-        <Button value="Left" selected={current == "Left"} on:click={setCurrent} icon={IconAlignLeft} />
-        <Button value="Center" selected={current == "Center"} on:click={setCurrent} icon={IconAlignCenter} />
-        <Button value="Right" selected={current == "Right"} on:click={setCurrent} icon={IconAlignRight} />
+        <Button size="sm" type="transparent" value="Left" selected={current == "Left"} on:click={setCurrent} icon={IconAlignLeft} />
+        <Button size="sm" type="transparent" value="Center" selected={current == "Center"} on:click={setCurrent} icon={IconAlignCenter} />
+        <Button size="sm" type="transparent" value="Right" selected={current == "Right"} on:click={setCurrent} icon={IconAlignRight} />
       </List>
     </ToggleGroup>
   </List>
@@ -268,8 +268,7 @@
     <List>
       <Button>List item 1</Button>
       <Button>List item 2</Button>
-      <ListItem divider />
-      <ListItem heading="format" />
+      <ListItem divider heading="format" />
       <Button icon={IconBold}>List item 3</Button>
       <Button icon={IconItalic}>List item 4</Button>
     </List>
@@ -279,8 +278,7 @@
   <List>
     <Button>List item 1</Button>
     <Button>List item 2</Button>
-    <ListItem divider />
-    <ListItem heading="format" />
+    <ListItem divider heading="format" />
     <Button icon={IconBold}>List item 3</Button>
     <Button icon={IconItalic}>List item 4</Button>
   </List>
@@ -304,7 +302,7 @@
   </div>
 </div>
 <Highlight code={`
-  <List>
+  <List heading="with dropdown">
     <Button>List item 1</Button>
     <Button>List item 2</Button>
     <Dropdown direction="right">
@@ -314,6 +312,33 @@
         <Button>List item B</Button>
       </List>
     </Dropdown>
+  </List>
+`} />
+
+<!-- ------------------------------ -->
+<!-- LIST SUBMENU -->
+<div class="uizg-preview">
+  <div class="uizg-preview__element">
+    <List heading="with input" dividers>
+      <Input placeholder="Search" icon={IconSearch} />
+      <Button>List item 1</Button>
+      <Button>List item 2</Button>
+      <List inset row>
+        <Button size="sm" type="primary-translucent">New file</Button>
+        <Button size="sm" type="transparent">Cancel</Button>
+      </List>
+    </List>
+  </div>
+</div>
+<Highlight code={`
+  <List heading="with input" dividers>
+    <Input placeholder="Search" icon={IconSearch} />
+    <Button>List item 1</Button>
+    <Button>List item 2</Button>
+    <List inset row>
+      <Button size="sm" type="primary-translucent">New file</Button>
+      <Button size="sm" type="transparent">Cancel</Button>
+    </List>
   </List>
 `} />
 
