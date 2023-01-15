@@ -1,8 +1,11 @@
 <script>
   
   // Props
-  export let element = "span";
+  export let href = null; // Make it a link
+
+  export let element = href ? "a" : "span";
   export let title = null;
+
   
   export let text = null; // content
   export let subtext = null; // small text content
@@ -43,6 +46,7 @@
     {(icon || iconRight) && !text && !$$slots.default ? classIconLabel : ''}
     {className}
   "
+  {href}
   {style}
   {title}
   {role}
