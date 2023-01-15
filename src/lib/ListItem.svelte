@@ -41,18 +41,18 @@
 </script>
 
 {#if divider}
-
   <!-- Attn: Whitespace needed inside div so element is not removed -->
   <!-- TODO: figure out why element doesn't show if empty when there's no css rule for it -->
   <div class="list__divider"> </div>
+{/if}
 
-{:else if heading}
-
+{#if heading}
   <Label class="list__heading" {icon} {iconRight}>
     {heading}
   </Label>
+{/if}
 
-{:else}
+{#if $$slots.default || text}
 
   <!-- svelte-ignore a11y-click-events-have-key-events -->
   <svelte:element this={element} {href} on:click={handleClick} class="{classBase} {className}" {style}>
