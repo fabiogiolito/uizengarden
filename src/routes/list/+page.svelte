@@ -27,6 +27,7 @@
   import IconPaperclip from "$lib/icons/IconPaperclip.svelte";
   import IconSend from "$lib/icons/IconSend.svelte";
   import IconSearch from "$lib/icons/IconSearch.svelte";
+  import IconFilePlus from "$lib/icons/IconFilePlus.svelte";
 
 </script>
 
@@ -194,14 +195,14 @@
 <div class="uizg-preview">
   <div class="uizg-preview__element">
     <List row inset>
-      <Button size="sm" toggle icon={IconBold} />
-      <Button size="sm" toggle icon={IconItalic} />
+      <Button toggle classToggled="btn--secondary" icon={IconBold} size="sm" />
+      <Button toggle classToggled="btn--secondary" icon={IconItalic} size="sm" />
       <ListItem divider heading="Align" />
       <ToggleGroup current="Left" let:current let:setCurrent>
         <List row type="secondary">
-          <Button size="sm" type="transparent" value="Left" selected={current == "Left"} on:click={setCurrent} icon={IconAlignLeft} />
-          <Button size="sm" type="transparent" value="Center" selected={current == "Center"} on:click={setCurrent} icon={IconAlignCenter} />
-          <Button size="sm" type="transparent" value="Right" selected={current == "Right"} on:click={setCurrent} icon={IconAlignRight} />
+          <Button size="sm" on:click={setCurrent} value="Left" icon={IconAlignLeft} type={current == "Left" ? 'secondary' : 'transparent'} />
+          <Button size="sm" on:click={setCurrent} value="Center" icon={IconAlignCenter} type={current == "Center" ? 'secondary' : 'transparent'} />
+          <Button size="sm" on:click={setCurrent} value="Right" icon={IconAlignRight} type={current == "Right" ? 'secondary' : 'transparent'} />
         </List>
       </ToggleGroup>
     </List>
@@ -209,14 +210,14 @@
 </div>
 <Highlight code={`
   <List row inset>
-    <Button size="sm" toggle icon={IconBold} />
-    <Button size="sm" toggle icon={IconItalic} />
+    <Button toggle classToggled="btn--secondary" icon={IconBold} size="sm" />
+    <Button toggle classToggled="btn--secondary" icon={IconItalic} size="sm" />
     <ListItem divider heading="Align" />
     <ToggleGroup current="Left" let:current let:setCurrent>
       <List row type="secondary">
-        <Button size="sm" type="transparent" value="Left" selected={current == "Left"} on:click={setCurrent} icon={IconAlignLeft} />
-        <Button size="sm" type="transparent" value="Center" selected={current == "Center"} on:click={setCurrent} icon={IconAlignCenter} />
-        <Button size="sm" type="transparent" value="Right" selected={current == "Right"} on:click={setCurrent} icon={IconAlignRight} />
+        <Button size="sm" on:click={setCurrent} value="Left" icon={IconAlignLeft} type={current == "Left" ? 'secondary' : 'transparent'} />
+        <Button size="sm" on:click={setCurrent} value="Center" icon={IconAlignCenter} type={current == "Center" ? 'secondary' : 'transparent'} />
+        <Button size="sm" on:click={setCurrent} value="Right" icon={IconAlignRight} type={current == "Right" ? 'secondary' : 'transparent'} />
       </List>
     </ToggleGroup>
   </List>
@@ -319,14 +320,14 @@
 <!-- LIST SUBMENU -->
 <div class="uizg-preview">
   <div class="uizg-preview__element">
-    <List heading="with input" dividers>
+    <List dividers>
+      <List row>
+        <ListItem flex text="Files" />
+        <Button icon={IconFilePlus} type="primary-transparent" />
+      </List>
       <Input placeholder="Search" icon={IconSearch} />
       <Button>List item 1</Button>
       <Button>List item 2</Button>
-      <List inset row>
-        <Button size="sm" type="primary-translucent">New file</Button>
-        <Button size="sm" type="transparent">Cancel</Button>
-      </List>
     </List>
   </div>
 </div>
@@ -414,20 +415,47 @@
 <div class="uizg-preview">
   <div class="uizg-preview__element">
     <List dividers>
-      <ScrollArea overlap style="height: 200px;">
+      <ScrollArea style="height: 180px;">
         {#each Array(10) as _, i}
-          <Button>List item {i+1}</Button>
+          <ListItem>List item {i+1}</ListItem>
         {/each}
       </ScrollArea>
     </List>
   </div>
 </div>
 <Highlight code={`
-  <List dividers>
+  <List>
     <ScrollArea overlap style="height: 200px;">
       {#each Array(10) as _, i}
-        <Button>List item {i+1}</Button>
+        <ListItem>List item {i+1}</ListItem>
       {/each}
+    </ScrollArea>
+  </List>
+`} />
+
+<!-- ------------------------------ -->
+<!-- SCROLLING LIST WITH BUTTONS -->
+<div class="uizg-preview">
+  <div class="uizg-preview__element">
+    <List>
+      <ScrollArea style="height: 200px;">
+        <List dividers>
+          {#each Array(10) as _, i}
+            <Button>List item {i+1}</Button>
+          {/each}
+        </List>
+      </ScrollArea>
+    </List>
+  </div>
+</div>
+<Highlight code={`
+  <List>
+    <ScrollArea overlap style="height: 200px;">
+      <List dividers>
+        {#each Array(10) as _, i}
+          <Button>List item {i+1}</Button>
+        {/each}
+      </List>
     </ScrollArea>
   </List>
 `} />

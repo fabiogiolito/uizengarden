@@ -34,7 +34,7 @@
     {/if}
   </slot>
 
-  <!-- Programatic list -->
+  <!-- Programmatic list -->
   {#if options && options.length}
     {#each options as option}
       <ListItem {...option} />

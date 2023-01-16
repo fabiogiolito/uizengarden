@@ -12,6 +12,7 @@
 
   export let divider = null;
   export let heading = null;
+  export let flex = null;
 
   export let href = null; // Make it a link
   export let action = null; // Make it a button
@@ -20,6 +21,9 @@
 
   // Element classes
   export let classBase = "list__item";
+  export let classFlex = "list__item--flex";
+  export let classDivider = "list__divider";
+  export let classHeading = "list__heading";
 
   // Extra classes
   let className = "";
@@ -43,25 +47,37 @@
 {#if divider}
   <!-- Attn: Whitespace needed inside div so element is not removed -->
   <!-- TODO: figure out why element doesn't show if empty when there's no css rule for it -->
-  <div class="list__divider"> </div>
+  <div class={classDivider}> </div>
 {/if}
 
 {#if heading}
-  <Label class="list__heading" {icon} {iconRight}>
+  <Label class={classHeading} {icon} {iconRight}>
     {heading}
   </Label>
 {/if}
 
-{#if $$slots.default || text}
+{#if $$slots.default || text || flex}
 
   <!-- svelte-ignore a11y-click-events-have-key-events -->
-  <svelte:element this={element} {href} on:click={handleClick} class="{classBase} {className}" {style}>
+  <svelte:element
+    this={element}
+    {href}
+    on:click={handleClick}
+    class="
+      {classBase}
+      {flex ? classFlex : ''}
+      {className}
+    "
+    {style}
+  >
 
-    <Label {icon} {iconRight} {text} {subtext}>
-      <slot name="icon" slot="icon" />
-      <slot>{text}</slot>
-      <slot name="iconRight" slot="iconRight" />
-    </Label>
+    {#if $$slots.default || text}
+      <Label {icon} {iconRight} {text} {subtext}>
+        <slot name="icon" slot="icon" />
+        <slot>{text}</slot>
+        <slot name="iconRight" slot="iconRight" />
+      </Label>
+    {/if}
 
   </svelte:element>
 
