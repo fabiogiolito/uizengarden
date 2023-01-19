@@ -1,81 +1,240 @@
 <script>
-  import { onMount } from "svelte";
-
   import Highlight from "$lib/Highlight.svelte";
   import Tooltip from "$lib/Tooltip.svelte";
 
+  import IconAccessibility from "$lib/icons/IconAccessibility.svelte";
   import IconActivity from "$lib/icons/IconActivity.svelte";
   import IconAirplay from "$lib/icons/IconAirplay.svelte";
+  import IconAirVent from "$lib/icons/IconAirVent.svelte";
+  import IconAlarmCheck from "$lib/icons/IconAlarmCheck.svelte";
+  import IconAlarmClock from "$lib/icons/IconAlarmClock.svelte";
+  import IconAlarmClockOff from "$lib/icons/IconAlarmClockOff.svelte";
+  import IconAlarmMinus from "$lib/icons/IconAlarmMinus.svelte";
+  import IconAlarmPlus from "$lib/icons/IconAlarmPlus.svelte";
+  import IconAlbum from "$lib/icons/IconAlbum.svelte";
   import IconAlertCircle from "$lib/icons/IconAlertCircle.svelte";
   import IconAlertOctagon from "$lib/icons/IconAlertOctagon.svelte";
   import IconAlertTriangle from "$lib/icons/IconAlertTriangle.svelte";
   import IconAlignCenter from "$lib/icons/IconAlignCenter.svelte";
+  import IconAlignCenterHorizontal from "$lib/icons/IconAlignCenterHorizontal.svelte";
+  import IconAlignCenterVertical from "$lib/icons/IconAlignCenterVertical.svelte";
+  import IconAlignEndHorizontal from "$lib/icons/IconAlignEndHorizontal.svelte";
+  import IconAlignEndVertical from "$lib/icons/IconAlignEndVertical.svelte";
+  import IconAlignHorizontalDistributeCenter from "$lib/icons/IconAlignHorizontalDistributeCenter.svelte";
+  import IconAlignHorizontalDistributeEnd from "$lib/icons/IconAlignHorizontalDistributeEnd.svelte";
+  import IconAlignHorizontalDistributeStart from "$lib/icons/IconAlignHorizontalDistributeStart.svelte";
+  import IconAlignHorizontalJustifyCenter from "$lib/icons/IconAlignHorizontalJustifyCenter.svelte";
+  import IconAlignHorizontalJustifyEnd from "$lib/icons/IconAlignHorizontalJustifyEnd.svelte";
+  import IconAlignHorizontalJustifyStart from "$lib/icons/IconAlignHorizontalJustifyStart.svelte";
+  import IconAlignHorizontalSpaceAround from "$lib/icons/IconAlignHorizontalSpaceAround.svelte";
+  import IconAlignHorizontalSpaceBetween from "$lib/icons/IconAlignHorizontalSpaceBetween.svelte";
   import IconAlignJustify from "$lib/icons/IconAlignJustify.svelte";
   import IconAlignLeft from "$lib/icons/IconAlignLeft.svelte";
   import IconAlignRight from "$lib/icons/IconAlignRight.svelte";
+  import IconAlignStartHorizontal from "$lib/icons/IconAlignStartHorizontal.svelte";
+  import IconAlignStartVertical from "$lib/icons/IconAlignStartVertical.svelte";
+  import IconAlignVerticalDistributeCenter from "$lib/icons/IconAlignVerticalDistributeCenter.svelte";
+  import IconAlignVerticalDistributeEnd from "$lib/icons/IconAlignVerticalDistributeEnd.svelte";
+  import IconAlignVerticalDistributeStart from "$lib/icons/IconAlignVerticalDistributeStart.svelte";
+  import IconAlignVerticalJustifyCenter from "$lib/icons/IconAlignVerticalJustifyCenter.svelte";
+  import IconAlignVerticalJustifyEnd from "$lib/icons/IconAlignVerticalJustifyEnd.svelte";
+  import IconAlignVerticalJustifyStart from "$lib/icons/IconAlignVerticalJustifyStart.svelte";
+  import IconAlignVerticalSpaceAround from "$lib/icons/IconAlignVerticalSpaceAround.svelte";
+  import IconAlignVerticalSpaceBetween from "$lib/icons/IconAlignVerticalSpaceBetween.svelte";
   import IconAnchor from "$lib/icons/IconAnchor.svelte";
+  import IconAngry from "$lib/icons/IconAngry.svelte";
+  import IconAnnoyed from "$lib/icons/IconAnnoyed.svelte";
   import IconAperture from "$lib/icons/IconAperture.svelte";
+  import IconApple from "$lib/icons/IconApple.svelte";
   import IconArchive from "$lib/icons/IconArchive.svelte";
+  import IconArchiveRestore from "$lib/icons/IconArchiveRestore.svelte";
+  import IconArmchair from "$lib/icons/IconArmchair.svelte";
+  import IconArrowBigDown from "$lib/icons/IconArrowBigDown.svelte";
+  import IconArrowBigLeft from "$lib/icons/IconArrowBigLeft.svelte";
+  import IconArrowBigRight from "$lib/icons/IconArrowBigRight.svelte";
+  import IconArrowBigUp from "$lib/icons/IconArrowBigUp.svelte";
   import IconArrowDown from "$lib/icons/IconArrowDown.svelte";
   import IconArrowDownCircle from "$lib/icons/IconArrowDownCircle.svelte";
   import IconArrowDownLeft from "$lib/icons/IconArrowDownLeft.svelte";
   import IconArrowDownRight from "$lib/icons/IconArrowDownRight.svelte";
   import IconArrowLeft from "$lib/icons/IconArrowLeft.svelte";
   import IconArrowLeftCircle from "$lib/icons/IconArrowLeftCircle.svelte";
+  import IconArrowLeftRight from "$lib/icons/IconArrowLeftRight.svelte";
   import IconArrowRight from "$lib/icons/IconArrowRight.svelte";
   import IconArrowRightCircle from "$lib/icons/IconArrowRightCircle.svelte";
   import IconArrowUp from "$lib/icons/IconArrowUp.svelte";
   import IconArrowUpCircle from "$lib/icons/IconArrowUpCircle.svelte";
+  import IconArrowUpDown from "$lib/icons/IconArrowUpDown.svelte";
   import IconArrowUpLeft from "$lib/icons/IconArrowUpLeft.svelte";
   import IconArrowUpRight from "$lib/icons/IconArrowUpRight.svelte";
+  import IconAsterisk from "$lib/icons/IconAsterisk.svelte";
   import IconAtSign from "$lib/icons/IconAtSign.svelte";
   import IconAward from "$lib/icons/IconAward.svelte";
+  import IconAxe from "$lib/icons/IconAxe.svelte";
+  import IconAxis3D from "$lib/icons/IconAxis3D.svelte";
+  import IconBaby from "$lib/icons/IconBaby.svelte";
+  import IconBackpack from "$lib/icons/IconBackpack.svelte";
+  import IconBaggageClaim from "$lib/icons/IconBaggageClaim.svelte";
+  import IconBanana from "$lib/icons/IconBanana.svelte";
+  import IconBanknote from "$lib/icons/IconBanknote.svelte";
   import IconBarChart from "$lib/icons/IconBarChart.svelte";
   import IconBarChart2 from "$lib/icons/IconBarChart2.svelte";
+  import IconBarChart3 from "$lib/icons/IconBarChart3.svelte";
+  import IconBarChart4 from "$lib/icons/IconBarChart4.svelte";
+  import IconBarChartHorizontal from "$lib/icons/IconBarChartHorizontal.svelte";
+  import IconBaseline from "$lib/icons/IconBaseline.svelte";
+  import IconBath from "$lib/icons/IconBath.svelte";
   import IconBattery from "$lib/icons/IconBattery.svelte";
   import IconBatteryCharging from "$lib/icons/IconBatteryCharging.svelte";
+  import IconBatteryFull from "$lib/icons/IconBatteryFull.svelte";
+  import IconBatteryLow from "$lib/icons/IconBatteryLow.svelte";
+  import IconBatteryMedium from "$lib/icons/IconBatteryMedium.svelte";
+  import IconBeaker from "$lib/icons/IconBeaker.svelte";
+  import IconBean from "$lib/icons/IconBean.svelte";
+  import IconBeanOff from "$lib/icons/IconBeanOff.svelte";
+  import IconBed from "$lib/icons/IconBed.svelte";
+  import IconBedDouble from "$lib/icons/IconBedDouble.svelte";
+  import IconBedSingle from "$lib/icons/IconBedSingle.svelte";
+  import IconBeer from "$lib/icons/IconBeer.svelte";
   import IconBell from "$lib/icons/IconBell.svelte";
+  import IconBellMinus from "$lib/icons/IconBellMinus.svelte";
   import IconBellOff from "$lib/icons/IconBellOff.svelte";
+  import IconBellPlus from "$lib/icons/IconBellPlus.svelte";
+  import IconBellRing from "$lib/icons/IconBellRing.svelte";
+  import IconBike from "$lib/icons/IconBike.svelte";
+  import IconBinary from "$lib/icons/IconBinary.svelte";
+  import IconBitcoin from "$lib/icons/IconBitcoin.svelte";
   import IconBluetooth from "$lib/icons/IconBluetooth.svelte";
+  import IconBluetoothConnected from "$lib/icons/IconBluetoothConnected.svelte";
+  import IconBluetoothOff from "$lib/icons/IconBluetoothOff.svelte";
+  import IconBluetoothSearching from "$lib/icons/IconBluetoothSearching.svelte";
   import IconBold from "$lib/icons/IconBold.svelte";
+  import IconBomb from "$lib/icons/IconBomb.svelte";
+  import IconBone from "$lib/icons/IconBone.svelte";
   import IconBook from "$lib/icons/IconBook.svelte";
-  import IconBookOpen from "$lib/icons/IconBookOpen.svelte";
   import IconBookmark from "$lib/icons/IconBookmark.svelte";
+  import IconBookmarkMinus from "$lib/icons/IconBookmarkMinus.svelte";
+  import IconBookmarkPlus from "$lib/icons/IconBookmarkPlus.svelte";
+  import IconBookOpen from "$lib/icons/IconBookOpen.svelte";
+  import IconBookOpenCheck from "$lib/icons/IconBookOpenCheck.svelte";
+  import IconBot from "$lib/icons/IconBot.svelte";
   import IconBox from "$lib/icons/IconBox.svelte";
+  import IconBoxes from "$lib/icons/IconBoxes.svelte";
+  import IconBoxSelect from "$lib/icons/IconBoxSelect.svelte";
   import IconBriefcase from "$lib/icons/IconBriefcase.svelte";
+  import IconBrush from "$lib/icons/IconBrush.svelte";
+  import IconBug from "$lib/icons/IconBug.svelte";
+  import IconBuilding from "$lib/icons/IconBuilding.svelte";
+  import IconBuilding2 from "$lib/icons/IconBuilding2.svelte";
+  import IconBus from "$lib/icons/IconBus.svelte";
+  import IconCake from "$lib/icons/IconCake.svelte";
+  import IconCalculator from "$lib/icons/IconCalculator.svelte";
   import IconCalendar from "$lib/icons/IconCalendar.svelte";
+  import IconCalendarCheck from "$lib/icons/IconCalendarCheck.svelte";
+  import IconCalendarCheck2 from "$lib/icons/IconCalendarCheck2.svelte";
+  import IconCalendarClock from "$lib/icons/IconCalendarClock.svelte";
+  import IconCalendarDays from "$lib/icons/IconCalendarDays.svelte";
+  import IconCalendarHeart from "$lib/icons/IconCalendarHeart.svelte";
+  import IconCalendarMinus from "$lib/icons/IconCalendarMinus.svelte";
+  import IconCalendarOff from "$lib/icons/IconCalendarOff.svelte";
+  import IconCalendarPlus from "$lib/icons/IconCalendarPlus.svelte";
+  import IconCalendarRange from "$lib/icons/IconCalendarRange.svelte";
+  import IconCalendarSearch from "$lib/icons/IconCalendarSearch.svelte";
+  import IconCalendarX from "$lib/icons/IconCalendarX.svelte";
+  import IconCalendarX2 from "$lib/icons/IconCalendarX2.svelte";
   import IconCamera from "$lib/icons/IconCamera.svelte";
   import IconCameraOff from "$lib/icons/IconCameraOff.svelte";
+  import IconCandy from "$lib/icons/IconCandy.svelte";
+  import IconCandyOff from "$lib/icons/IconCandyOff.svelte";
+  import IconCar from "$lib/icons/IconCar.svelte";
+  import IconCarrot from "$lib/icons/IconCarrot.svelte";
   import IconCast from "$lib/icons/IconCast.svelte";
+  import IconCat from "$lib/icons/IconCat.svelte";
   import IconCheck from "$lib/icons/IconCheck.svelte";
+  import IconCheckCheck from "$lib/icons/IconCheckCheck.svelte";
   import IconCheckCircle from "$lib/icons/IconCheckCircle.svelte";
+  import IconCheckCircle2 from "$lib/icons/IconCheckCircle2.svelte";
   import IconCheckSquare from "$lib/icons/IconCheckSquare.svelte";
+  import IconChefHat from "$lib/icons/IconChefHat.svelte";
+  import IconCherry from "$lib/icons/IconCherry.svelte";
   import IconChevronDown from "$lib/icons/IconChevronDown.svelte";
+  import IconChevronFirst from "$lib/icons/IconChevronFirst.svelte";
+  import IconChevronLast from "$lib/icons/IconChevronLast.svelte";
   import IconChevronLeft from "$lib/icons/IconChevronLeft.svelte";
   import IconChevronRight from "$lib/icons/IconChevronRight.svelte";
-  import IconChevronUp from "$lib/icons/IconChevronUp.svelte";
   import IconChevronsDown from "$lib/icons/IconChevronsDown.svelte";
+  import IconChevronsDownUp from "$lib/icons/IconChevronsDownUp.svelte";
   import IconChevronsLeft from "$lib/icons/IconChevronsLeft.svelte";
+  import IconChevronsLeftRight from "$lib/icons/IconChevronsLeftRight.svelte";
   import IconChevronsRight from "$lib/icons/IconChevronsRight.svelte";
+  import IconChevronsRightLeft from "$lib/icons/IconChevronsRightLeft.svelte";
   import IconChevronsUp from "$lib/icons/IconChevronsUp.svelte";
+  import IconChevronsUpDown from "$lib/icons/IconChevronsUpDown.svelte";
+  import IconChevronUp from "$lib/icons/IconChevronUp.svelte";
   import IconChrome from "$lib/icons/IconChrome.svelte";
+  import IconCigarette from "$lib/icons/IconCigarette.svelte";
+  import IconCigaretteOff from "$lib/icons/IconCigaretteOff.svelte";
   import IconCircle from "$lib/icons/IconCircle.svelte";
+  import IconCircleDot from "$lib/icons/IconCircleDot.svelte";
+  import IconCircleEllipsis from "$lib/icons/IconCircleEllipsis.svelte";
+  import IconCircleSlashed from "$lib/icons/IconCircleSlashed.svelte";
+  import IconCitrus from "$lib/icons/IconCitrus.svelte";
+  import IconClapperboard from "$lib/icons/IconClapperboard.svelte";
   import IconClipboard from "$lib/icons/IconClipboard.svelte";
+  import IconClipboardCheck from "$lib/icons/IconClipboardCheck.svelte";
+  import IconClipboardCopy from "$lib/icons/IconClipboardCopy.svelte";
+  import IconClipboardEdit from "$lib/icons/IconClipboardEdit.svelte";
+  import IconClipboardList from "$lib/icons/IconClipboardList.svelte";
+  import IconClipboardSignature from "$lib/icons/IconClipboardSignature.svelte";
+  import IconClipboardType from "$lib/icons/IconClipboardType.svelte";
+  import IconClipboardX from "$lib/icons/IconClipboardX.svelte";
   import IconClock from "$lib/icons/IconClock.svelte";
+  import IconClock1 from "$lib/icons/IconClock1.svelte";
+  import IconClock2 from "$lib/icons/IconClock2.svelte";
+  import IconClock3 from "$lib/icons/IconClock3.svelte";
+  import IconClock4 from "$lib/icons/IconClock4.svelte";
+  import IconClock5 from "$lib/icons/IconClock5.svelte";
+  import IconClock6 from "$lib/icons/IconClock6.svelte";
+  import IconClock7 from "$lib/icons/IconClock7.svelte";
+  import IconClock8 from "$lib/icons/IconClock8.svelte";
+  import IconClock9 from "$lib/icons/IconClock9.svelte";
+  import IconClock10 from "$lib/icons/IconClock10.svelte";
+  import IconClock11 from "$lib/icons/IconClock11.svelte";
+  import IconClock12 from "$lib/icons/IconClock12.svelte";
   import IconCloud from "$lib/icons/IconCloud.svelte";
+  import IconCloudCog from "$lib/icons/IconCloudCog.svelte";
   import IconCloudDrizzle from "$lib/icons/IconCloudDrizzle.svelte";
+  import IconCloudFog from "$lib/icons/IconCloudFog.svelte";
+  import IconCloudHail from "$lib/icons/IconCloudHail.svelte";
   import IconCloudLightning from "$lib/icons/IconCloudLightning.svelte";
+  import IconCloudMoon from "$lib/icons/IconCloudMoon.svelte";
+  import IconCloudMoonRain from "$lib/icons/IconCloudMoonRain.svelte";
   import IconCloudOff from "$lib/icons/IconCloudOff.svelte";
   import IconCloudRain from "$lib/icons/IconCloudRain.svelte";
+  import IconCloudRainWind from "$lib/icons/IconCloudRainWind.svelte";
   import IconCloudSnow from "$lib/icons/IconCloudSnow.svelte";
+  import IconCloudSun from "$lib/icons/IconCloudSun.svelte";
+  import IconCloudSunRain from "$lib/icons/IconCloudSunRain.svelte";
+  import IconCloudy from "$lib/icons/IconCloudy.svelte";
+  import IconClover from "$lib/icons/IconClover.svelte";
   import IconCode from "$lib/icons/IconCode.svelte";
+  import IconCode2 from "$lib/icons/IconCode2.svelte";
   import IconCodepen from "$lib/icons/IconCodepen.svelte";
   import IconCodesandbox from "$lib/icons/IconCodesandbox.svelte";
   import IconCoffee from "$lib/icons/IconCoffee.svelte";
+  import IconCog from "$lib/icons/IconCog.svelte";
+  import IconCoins from "$lib/icons/IconCoins.svelte";
   import IconColumns from "$lib/icons/IconColumns.svelte";
   import IconCommand from "$lib/icons/IconCommand.svelte";
   import IconCompass from "$lib/icons/IconCompass.svelte";
+  import IconComponent from "$lib/icons/IconComponent.svelte";
+  import IconConciergeBell from "$lib/icons/IconConciergeBell.svelte";
+  import IconContact from "$lib/icons/IconContact.svelte";
+  import IconContrast from "$lib/icons/IconContrast.svelte";
+  import IconCookie from "$lib/icons/IconCookie.svelte";
   import IconCopy from "$lib/icons/IconCopy.svelte";
+  import IconCopyleft from "$lib/icons/IconCopyleft.svelte";
+  import IconCopyright from "$lib/icons/IconCopyright.svelte";
   import IconCornerDownLeft from "$lib/icons/IconCornerDownLeft.svelte";
   import IconCornerDownRight from "$lib/icons/IconCornerDownRight.svelte";
   import IconCornerLeftDown from "$lib/icons/IconCornerLeftDown.svelte";
@@ -86,107 +245,384 @@
   import IconCornerUpRight from "$lib/icons/IconCornerUpRight.svelte";
   import IconCpu from "$lib/icons/IconCpu.svelte";
   import IconCreditCard from "$lib/icons/IconCreditCard.svelte";
+  import IconCroissant from "$lib/icons/IconCroissant.svelte";
   import IconCrop from "$lib/icons/IconCrop.svelte";
+  import IconCross from "$lib/icons/IconCross.svelte";
   import IconCrosshair from "$lib/icons/IconCrosshair.svelte";
+  import IconCrown from "$lib/icons/IconCrown.svelte";
+  import IconCupSoda from "$lib/icons/IconCupSoda.svelte";
+  import IconCurlyBraces from "$lib/icons/IconCurlyBraces.svelte";
+  import IconCurrency from "$lib/icons/IconCurrency.svelte";
   import IconDatabase from "$lib/icons/IconDatabase.svelte";
   import IconDelete from "$lib/icons/IconDelete.svelte";
+  import IconDiamond from "$lib/icons/IconDiamond.svelte";
+  import IconDice1 from "$lib/icons/IconDice1.svelte";
+  import IconDice2 from "$lib/icons/IconDice2.svelte";
+  import IconDice3 from "$lib/icons/IconDice3.svelte";
+  import IconDice4 from "$lib/icons/IconDice4.svelte";
+  import IconDice5 from "$lib/icons/IconDice5.svelte";
+  import IconDice6 from "$lib/icons/IconDice6.svelte";
+  import IconDices from "$lib/icons/IconDices.svelte";
+  import IconDiff from "$lib/icons/IconDiff.svelte";
   import IconDisc from "$lib/icons/IconDisc.svelte";
   import IconDivide from "$lib/icons/IconDivide.svelte";
   import IconDivideCircle from "$lib/icons/IconDivideCircle.svelte";
   import IconDivideSquare from "$lib/icons/IconDivideSquare.svelte";
+  import IconDna from "$lib/icons/IconDna.svelte";
+  import IconDnaOff from "$lib/icons/IconDnaOff.svelte";
+  import IconDog from "$lib/icons/IconDog.svelte";
   import IconDollarSign from "$lib/icons/IconDollarSign.svelte";
-  import IconDot from "$lib/icons/IconDot.svelte";
   import IconDownload from "$lib/icons/IconDownload.svelte";
   import IconDownloadCloud from "$lib/icons/IconDownloadCloud.svelte";
   import IconDribbble from "$lib/icons/IconDribbble.svelte";
   import IconDroplet from "$lib/icons/IconDroplet.svelte";
+  import IconDroplets from "$lib/icons/IconDroplets.svelte";
+  import IconDrumstick from "$lib/icons/IconDrumstick.svelte";
+  import IconDumbbell from "$lib/icons/IconDumbbell.svelte";
+  import IconEar from "$lib/icons/IconEar.svelte";
+  import IconEarOff from "$lib/icons/IconEarOff.svelte";
   import IconEdit from "$lib/icons/IconEdit.svelte";
   import IconEdit2 from "$lib/icons/IconEdit2.svelte";
   import IconEdit3 from "$lib/icons/IconEdit3.svelte";
+  import IconEgg from "$lib/icons/IconEgg.svelte";
+  import IconEggFried from "$lib/icons/IconEggFried.svelte";
+  import IconEggOff from "$lib/icons/IconEggOff.svelte";
+  import IconEqual from "$lib/icons/IconEqual.svelte";
+  import IconEqualNot from "$lib/icons/IconEqualNot.svelte";
+  import IconEraser from "$lib/icons/IconEraser.svelte";
+  import IconEuro from "$lib/icons/IconEuro.svelte";
+  import IconExpand from "$lib/icons/IconExpand.svelte";
   import IconExternalLink from "$lib/icons/IconExternalLink.svelte";
   import IconEye from "$lib/icons/IconEye.svelte";
   import IconEyeOff from "$lib/icons/IconEyeOff.svelte";
   import IconFacebook from "$lib/icons/IconFacebook.svelte";
+  import IconFactory from "$lib/icons/IconFactory.svelte";
+  import IconFan from "$lib/icons/IconFan.svelte";
   import IconFastForward from "$lib/icons/IconFastForward.svelte";
   import IconFeather from "$lib/icons/IconFeather.svelte";
   import IconFigma from "$lib/icons/IconFigma.svelte";
   import IconFile from "$lib/icons/IconFile.svelte";
+  import IconFileArchive from "$lib/icons/IconFileArchive.svelte";
+  import IconFileAudio from "$lib/icons/IconFileAudio.svelte";
+  import IconFileAudio2 from "$lib/icons/IconFileAudio2.svelte";
+  import IconFileAxis3D from "$lib/icons/IconFileAxis3D.svelte";
+  import IconFileBadge from "$lib/icons/IconFileBadge.svelte";
+  import IconFileBadge2 from "$lib/icons/IconFileBadge2.svelte";
+  import IconFileBarChart from "$lib/icons/IconFileBarChart.svelte";
+  import IconFileBarChart2 from "$lib/icons/IconFileBarChart2.svelte";
+  import IconFileBox from "$lib/icons/IconFileBox.svelte";
+  import IconFileCheck from "$lib/icons/IconFileCheck.svelte";
+  import IconFileCheck2 from "$lib/icons/IconFileCheck2.svelte";
+  import IconFileClock from "$lib/icons/IconFileClock.svelte";
+  import IconFileCode from "$lib/icons/IconFileCode.svelte";
+  import IconFileCog from "$lib/icons/IconFileCog.svelte";
+  import IconFileCog2 from "$lib/icons/IconFileCog2.svelte";
+  import IconFileDiff from "$lib/icons/IconFileDiff.svelte";
+  import IconFileDigit from "$lib/icons/IconFileDigit.svelte";
+  import IconFileDown from "$lib/icons/IconFileDown.svelte";
+  import IconFileEdit from "$lib/icons/IconFileEdit.svelte";
+  import IconFileHeart from "$lib/icons/IconFileHeart.svelte";
+  import IconFileImage from "$lib/icons/IconFileImage.svelte";
+  import IconFileInput from "$lib/icons/IconFileInput.svelte";
+  import IconFileJson from "$lib/icons/IconFileJson.svelte";
+  import IconFileJson2 from "$lib/icons/IconFileJson2.svelte";
+  import IconFileKey from "$lib/icons/IconFileKey.svelte";
+  import IconFileKey2 from "$lib/icons/IconFileKey2.svelte";
+  import IconFileLineChart from "$lib/icons/IconFileLineChart.svelte";
+  import IconFileLock from "$lib/icons/IconFileLock.svelte";
+  import IconFileLock2 from "$lib/icons/IconFileLock2.svelte";
   import IconFileMinus from "$lib/icons/IconFileMinus.svelte";
+  import IconFileMinus2 from "$lib/icons/IconFileMinus2.svelte";
+  import IconFileOutput from "$lib/icons/IconFileOutput.svelte";
+  import IconFilePieChart from "$lib/icons/IconFilePieChart.svelte";
   import IconFilePlus from "$lib/icons/IconFilePlus.svelte";
+  import IconFilePlus2 from "$lib/icons/IconFilePlus2.svelte";
+  import IconFileQuestion from "$lib/icons/IconFileQuestion.svelte";
+  import IconFiles from "$lib/icons/IconFiles.svelte";
+  import IconFileScan from "$lib/icons/IconFileScan.svelte";
+  import IconFileSearch from "$lib/icons/IconFileSearch.svelte";
+  import IconFileSearch2 from "$lib/icons/IconFileSearch2.svelte";
+  import IconFileSignature from "$lib/icons/IconFileSignature.svelte";
+  import IconFileSpreadsheet from "$lib/icons/IconFileSpreadsheet.svelte";
+  import IconFileSymlink from "$lib/icons/IconFileSymlink.svelte";
+  import IconFileTerminal from "$lib/icons/IconFileTerminal.svelte";
   import IconFileText from "$lib/icons/IconFileText.svelte";
+  import IconFileType from "$lib/icons/IconFileType.svelte";
+  import IconFileType2 from "$lib/icons/IconFileType2.svelte";
+  import IconFileUp from "$lib/icons/IconFileUp.svelte";
+  import IconFileVideo from "$lib/icons/IconFileVideo.svelte";
+  import IconFileVideo2 from "$lib/icons/IconFileVideo2.svelte";
+  import IconFileVolume from "$lib/icons/IconFileVolume.svelte";
+  import IconFileVolume2 from "$lib/icons/IconFileVolume2.svelte";
+  import IconFileWarning from "$lib/icons/IconFileWarning.svelte";
+  import IconFileX from "$lib/icons/IconFileX.svelte";
+  import IconFileX2 from "$lib/icons/IconFileX2.svelte";
   import IconFilm from "$lib/icons/IconFilm.svelte";
   import IconFilter from "$lib/icons/IconFilter.svelte";
+  import IconFingerprint from "$lib/icons/IconFingerprint.svelte";
   import IconFlag from "$lib/icons/IconFlag.svelte";
+  import IconFlagOff from "$lib/icons/IconFlagOff.svelte";
+  import IconFlagTriangleLeft from "$lib/icons/IconFlagTriangleLeft.svelte";
+  import IconFlagTriangleRight from "$lib/icons/IconFlagTriangleRight.svelte";
+  import IconFlame from "$lib/icons/IconFlame.svelte";
+  import IconFlashlight from "$lib/icons/IconFlashlight.svelte";
+  import IconFlashlightOff from "$lib/icons/IconFlashlightOff.svelte";
+  import IconFlaskConical from "$lib/icons/IconFlaskConical.svelte";
+  import IconFlaskConicalOff from "$lib/icons/IconFlaskConicalOff.svelte";
+  import IconFlaskRound from "$lib/icons/IconFlaskRound.svelte";
+  import IconFlipHorizontal from "$lib/icons/IconFlipHorizontal.svelte";
+  import IconFlipHorizontal2 from "$lib/icons/IconFlipHorizontal2.svelte";
+  import IconFlipVertical from "$lib/icons/IconFlipVertical.svelte";
+  import IconFlipVertical2 from "$lib/icons/IconFlipVertical2.svelte";
+  import IconFlower from "$lib/icons/IconFlower.svelte";
+  import IconFlower2 from "$lib/icons/IconFlower2.svelte";
+  import IconFocus from "$lib/icons/IconFocus.svelte";
   import IconFolder from "$lib/icons/IconFolder.svelte";
+  import IconFolderArchive from "$lib/icons/IconFolderArchive.svelte";
+  import IconFolderCheck from "$lib/icons/IconFolderCheck.svelte";
+  import IconFolderClock from "$lib/icons/IconFolderClock.svelte";
+  import IconFolderClosed from "$lib/icons/IconFolderClosed.svelte";
+  import IconFolderCog from "$lib/icons/IconFolderCog.svelte";
+  import IconFolderCog2 from "$lib/icons/IconFolderCog2.svelte";
+  import IconFolderDown from "$lib/icons/IconFolderDown.svelte";
+  import IconFolderEdit from "$lib/icons/IconFolderEdit.svelte";
+  import IconFolderHeart from "$lib/icons/IconFolderHeart.svelte";
+  import IconFolderInput from "$lib/icons/IconFolderInput.svelte";
+  import IconFolderKey from "$lib/icons/IconFolderKey.svelte";
+  import IconFolderLock from "$lib/icons/IconFolderLock.svelte";
   import IconFolderMinus from "$lib/icons/IconFolderMinus.svelte";
+  import IconFolderOpen from "$lib/icons/IconFolderOpen.svelte";
+  import IconFolderOutput from "$lib/icons/IconFolderOutput.svelte";
   import IconFolderPlus from "$lib/icons/IconFolderPlus.svelte";
+  import IconFolders from "$lib/icons/IconFolders.svelte";
+  import IconFolderSearch from "$lib/icons/IconFolderSearch.svelte";
+  import IconFolderSearch2 from "$lib/icons/IconFolderSearch2.svelte";
+  import IconFolderSymlink from "$lib/icons/IconFolderSymlink.svelte";
+  import IconFolderTree from "$lib/icons/IconFolderTree.svelte";
+  import IconFolderUp from "$lib/icons/IconFolderUp.svelte";
+  import IconFolderX from "$lib/icons/IconFolderX.svelte";
+  import IconFormInput from "$lib/icons/IconFormInput.svelte";
+  import IconForward from "$lib/icons/IconForward.svelte";
+  import IconFrame from "$lib/icons/IconFrame.svelte";
   import IconFramer from "$lib/icons/IconFramer.svelte";
   import IconFrown from "$lib/icons/IconFrown.svelte";
+  import IconFuel from "$lib/icons/IconFuel.svelte";
+  import IconFunctionSquare from "$lib/icons/IconFunctionSquare.svelte";
+  import IconGamepad from "$lib/icons/IconGamepad.svelte";
+  import IconGamepad2 from "$lib/icons/IconGamepad2.svelte";
+  import IconGauge from "$lib/icons/IconGauge.svelte";
+  import IconGavel from "$lib/icons/IconGavel.svelte";
+  import IconGem from "$lib/icons/IconGem.svelte";
+  import IconGhost from "$lib/icons/IconGhost.svelte";
   import IconGift from "$lib/icons/IconGift.svelte";
   import IconGitBranch from "$lib/icons/IconGitBranch.svelte";
+  import IconGitBranchPlus from "$lib/icons/IconGitBranchPlus.svelte";
   import IconGitCommit from "$lib/icons/IconGitCommit.svelte";
-  import IconGitMerge from "$lib/icons/IconGitMerge.svelte";
-  import IconGitPullRequest from "$lib/icons/IconGitPullRequest.svelte";
+  import IconGitCompare from "$lib/icons/IconGitCompare.svelte";
+  import IconGitFork from "$lib/icons/IconGitFork.svelte";
   import IconGithub from "$lib/icons/IconGithub.svelte";
   import IconGitlab from "$lib/icons/IconGitlab.svelte";
+  import IconGitMerge from "$lib/icons/IconGitMerge.svelte";
+  import IconGitPullRequest from "$lib/icons/IconGitPullRequest.svelte";
+  import IconGitPullRequestClosed from "$lib/icons/IconGitPullRequestClosed.svelte";
+  import IconGitPullRequestDraft from "$lib/icons/IconGitPullRequestDraft.svelte";
+  import IconGlasses from "$lib/icons/IconGlasses.svelte";
+  import IconGlassWater from "$lib/icons/IconGlassWater.svelte";
   import IconGlobe from "$lib/icons/IconGlobe.svelte";
+  import IconGlobe2 from "$lib/icons/IconGlobe2.svelte";
+  import IconGrab from "$lib/icons/IconGrab.svelte";
+  import IconGraduationCap from "$lib/icons/IconGraduationCap.svelte";
+  import IconGrape from "$lib/icons/IconGrape.svelte";
   import IconGrid from "$lib/icons/IconGrid.svelte";
+  import IconGripHorizontal from "$lib/icons/IconGripHorizontal.svelte";
+  import IconGripVertical from "$lib/icons/IconGripVertical.svelte";
+  import IconHammer from "$lib/icons/IconHammer.svelte";
+  import IconHand from "$lib/icons/IconHand.svelte";
+  import IconHandMetal from "$lib/icons/IconHandMetal.svelte";
   import IconHardDrive from "$lib/icons/IconHardDrive.svelte";
+  import IconHardHat from "$lib/icons/IconHardHat.svelte";
   import IconHash from "$lib/icons/IconHash.svelte";
+  import IconHaze from "$lib/icons/IconHaze.svelte";
+  import IconHeading from "$lib/icons/IconHeading.svelte";
+  import IconHeading1 from "$lib/icons/IconHeading1.svelte";
+  import IconHeading2 from "$lib/icons/IconHeading2.svelte";
+  import IconHeading3 from "$lib/icons/IconHeading3.svelte";
+  import IconHeading4 from "$lib/icons/IconHeading4.svelte";
+  import IconHeading5 from "$lib/icons/IconHeading5.svelte";
+  import IconHeading6 from "$lib/icons/IconHeading6.svelte";
   import IconHeadphones from "$lib/icons/IconHeadphones.svelte";
   import IconHeart from "$lib/icons/IconHeart.svelte";
+  import IconHeartCrack from "$lib/icons/IconHeartCrack.svelte";
+  import IconHeartHandshake from "$lib/icons/IconHeartHandshake.svelte";
+  import IconHeartOff from "$lib/icons/IconHeartOff.svelte";
+  import IconHeartPulse from "$lib/icons/IconHeartPulse.svelte";
   import IconHelpCircle from "$lib/icons/IconHelpCircle.svelte";
   import IconHexagon from "$lib/icons/IconHexagon.svelte";
+  import IconHighlighter from "$lib/icons/IconHighlighter.svelte";
+  import IconHistory from "$lib/icons/IconHistory.svelte";
   import IconHome from "$lib/icons/IconHome.svelte";
+  import IconHop from "$lib/icons/IconHop.svelte";
+  import IconHopOff from "$lib/icons/IconHopOff.svelte";
+  import IconHourglass from "$lib/icons/IconHourglass.svelte";
+  import IconIceCream from "$lib/icons/IconIceCream.svelte";
   import IconImage from "$lib/icons/IconImage.svelte";
+  import IconImageMinus from "$lib/icons/IconImageMinus.svelte";
+  import IconImageOff from "$lib/icons/IconImageOff.svelte";
+  import IconImagePlus from "$lib/icons/IconImagePlus.svelte";
+  import IconImport from "$lib/icons/IconImport.svelte";
   import IconInbox from "$lib/icons/IconInbox.svelte";
+  import IconIndent from "$lib/icons/IconIndent.svelte";
+  import IconIndianRupee from "$lib/icons/IconIndianRupee.svelte";
+  import IconInfinity from "$lib/icons/IconInfinity.svelte";
   import IconInfo from "$lib/icons/IconInfo.svelte";
+  import IconInspect from "$lib/icons/IconInspect.svelte";
   import IconInstagram from "$lib/icons/IconInstagram.svelte";
   import IconItalic from "$lib/icons/IconItalic.svelte";
+  import IconJapaneseYen from "$lib/icons/IconJapaneseYen.svelte";
+  import IconJoystick from "$lib/icons/IconJoystick.svelte";
   import IconKey from "$lib/icons/IconKey.svelte";
+  import IconKeyboard from "$lib/icons/IconKeyboard.svelte";
+  import IconLamp from "$lib/icons/IconLamp.svelte";
+  import IconLampCeiling from "$lib/icons/IconLampCeiling.svelte";
+  import IconLampDesk from "$lib/icons/IconLampDesk.svelte";
+  import IconLampFloor from "$lib/icons/IconLampFloor.svelte";
+  import IconLampWallDown from "$lib/icons/IconLampWallDown.svelte";
+  import IconLampWallUp from "$lib/icons/IconLampWallUp.svelte";
+  import IconLandmark from "$lib/icons/IconLandmark.svelte";
+  import IconLanguages from "$lib/icons/IconLanguages.svelte";
+  import IconLaptop from "$lib/icons/IconLaptop.svelte";
+  import IconLaptop2 from "$lib/icons/IconLaptop2.svelte";
+  import IconLasso from "$lib/icons/IconLasso.svelte";
+  import IconLassoSelect from "$lib/icons/IconLassoSelect.svelte";
+  import IconLaugh from "$lib/icons/IconLaugh.svelte";
   import IconLayers from "$lib/icons/IconLayers.svelte";
   import IconLayout from "$lib/icons/IconLayout.svelte";
+  import IconLayoutDashboard from "$lib/icons/IconLayoutDashboard.svelte";
+  import IconLayoutGrid from "$lib/icons/IconLayoutGrid.svelte";
+  import IconLayoutList from "$lib/icons/IconLayoutList.svelte";
+  import IconLayoutTemplate from "$lib/icons/IconLayoutTemplate.svelte";
+  import IconLeaf from "$lib/icons/IconLeaf.svelte";
+  import IconLibrary from "$lib/icons/IconLibrary.svelte";
   import IconLifeBuoy from "$lib/icons/IconLifeBuoy.svelte";
+  import IconLightbulb from "$lib/icons/IconLightbulb.svelte";
+  import IconLightbulbOff from "$lib/icons/IconLightbulbOff.svelte";
+  import IconLineChart from "$lib/icons/IconLineChart.svelte";
   import IconLink from "$lib/icons/IconLink.svelte";
   import IconLink2 from "$lib/icons/IconLink2.svelte";
+  import IconLink2Off from "$lib/icons/IconLink2Off.svelte";
   import IconLinkedin from "$lib/icons/IconLinkedin.svelte";
   import IconList from "$lib/icons/IconList.svelte";
+  import IconListChecks from "$lib/icons/IconListChecks.svelte";
+  import IconListEnd from "$lib/icons/IconListEnd.svelte";
+  import IconListMinus from "$lib/icons/IconListMinus.svelte";
+  import IconListMusic from "$lib/icons/IconListMusic.svelte";
+  import IconListOrdered from "$lib/icons/IconListOrdered.svelte";
+  import IconListPlus from "$lib/icons/IconListPlus.svelte";
+  import IconListStart from "$lib/icons/IconListStart.svelte";
+  import IconListVideo from "$lib/icons/IconListVideo.svelte";
+  import IconListX from "$lib/icons/IconListX.svelte";
   import IconLoader from "$lib/icons/IconLoader.svelte";
+  import IconLoader2 from "$lib/icons/IconLoader2.svelte";
+  import IconLocate from "$lib/icons/IconLocate.svelte";
+  import IconLocateFixed from "$lib/icons/IconLocateFixed.svelte";
+  import IconLocateOff from "$lib/icons/IconLocateOff.svelte";
   import IconLock from "$lib/icons/IconLock.svelte";
   import IconLogIn from "$lib/icons/IconLogIn.svelte";
   import IconLogOut from "$lib/icons/IconLogOut.svelte";
+  import IconLuggage from "$lib/icons/IconLuggage.svelte";
+  import IconMagnet from "$lib/icons/IconMagnet.svelte";
   import IconMail from "$lib/icons/IconMail.svelte";
+  import IconMailCheck from "$lib/icons/IconMailCheck.svelte";
+  import IconMailMinus from "$lib/icons/IconMailMinus.svelte";
+  import IconMailOpen from "$lib/icons/IconMailOpen.svelte";
+  import IconMailPlus from "$lib/icons/IconMailPlus.svelte";
+  import IconMailQuestion from "$lib/icons/IconMailQuestion.svelte";
+  import IconMails from "$lib/icons/IconMails.svelte";
+  import IconMailSearch from "$lib/icons/IconMailSearch.svelte";
+  import IconMailWarning from "$lib/icons/IconMailWarning.svelte";
+  import IconMailX from "$lib/icons/IconMailX.svelte";
   import IconMap from "$lib/icons/IconMap.svelte";
   import IconMapPin from "$lib/icons/IconMapPin.svelte";
+  import IconMapPinOff from "$lib/icons/IconMapPinOff.svelte";
+  import IconMartini from "$lib/icons/IconMartini.svelte";
   import IconMaximize from "$lib/icons/IconMaximize.svelte";
   import IconMaximize2 from "$lib/icons/IconMaximize2.svelte";
+  import IconMedal from "$lib/icons/IconMedal.svelte";
+  import IconMegaphone from "$lib/icons/IconMegaphone.svelte";
+  import IconMegaphoneOff from "$lib/icons/IconMegaphoneOff.svelte";
   import IconMeh from "$lib/icons/IconMeh.svelte";
   import IconMenu from "$lib/icons/IconMenu.svelte";
   import IconMessageCircle from "$lib/icons/IconMessageCircle.svelte";
   import IconMessageSquare from "$lib/icons/IconMessageSquare.svelte";
   import IconMic from "$lib/icons/IconMic.svelte";
+  import IconMic2 from "$lib/icons/IconMic2.svelte";
   import IconMicOff from "$lib/icons/IconMicOff.svelte";
+  import IconMicroscope from "$lib/icons/IconMicroscope.svelte";
+  import IconMicrowave from "$lib/icons/IconMicrowave.svelte";
+  import IconMilestone from "$lib/icons/IconMilestone.svelte";
+  import IconMilk from "$lib/icons/IconMilk.svelte";
+  import IconMilkOff from "$lib/icons/IconMilkOff.svelte";
   import IconMinimize from "$lib/icons/IconMinimize.svelte";
   import IconMinimize2 from "$lib/icons/IconMinimize2.svelte";
   import IconMinus from "$lib/icons/IconMinus.svelte";
   import IconMinusCircle from "$lib/icons/IconMinusCircle.svelte";
   import IconMinusSquare from "$lib/icons/IconMinusSquare.svelte";
   import IconMonitor from "$lib/icons/IconMonitor.svelte";
+  import IconMonitorOff from "$lib/icons/IconMonitorOff.svelte";
+  import IconMonitorSmartphone from "$lib/icons/IconMonitorSmartphone.svelte";
+  import IconMonitorSpeaker from "$lib/icons/IconMonitorSpeaker.svelte";
   import IconMoon from "$lib/icons/IconMoon.svelte";
   import IconMoreHorizontal from "$lib/icons/IconMoreHorizontal.svelte";
   import IconMoreVertical from "$lib/icons/IconMoreVertical.svelte";
+  import IconMountain from "$lib/icons/IconMountain.svelte";
+  import IconMountainSnow from "$lib/icons/IconMountainSnow.svelte";
+  import IconMouse from "$lib/icons/IconMouse.svelte";
   import IconMousePointer from "$lib/icons/IconMousePointer.svelte";
+  import IconMousePointer2 from "$lib/icons/IconMousePointer2.svelte";
+  import IconMousePointerClick from "$lib/icons/IconMousePointerClick.svelte";
   import IconMove from "$lib/icons/IconMove.svelte";
+  import IconMove3D from "$lib/icons/IconMove3D.svelte";
+  import IconMoveDiagonal from "$lib/icons/IconMoveDiagonal.svelte";
+  import IconMoveDiagonal2 from "$lib/icons/IconMoveDiagonal2.svelte";
+  import IconMoveHorizontal from "$lib/icons/IconMoveHorizontal.svelte";
+  import IconMoveVertical from "$lib/icons/IconMoveVertical.svelte";
   import IconMusic from "$lib/icons/IconMusic.svelte";
+  import IconMusic2 from "$lib/icons/IconMusic2.svelte";
+  import IconMusic3 from "$lib/icons/IconMusic3.svelte";
+  import IconMusic4 from "$lib/icons/IconMusic4.svelte";
   import IconNavigation from "$lib/icons/IconNavigation.svelte";
   import IconNavigation2 from "$lib/icons/IconNavigation2.svelte";
+  import IconNavigation2Off from "$lib/icons/IconNavigation2Off.svelte";
+  import IconNavigationOff from "$lib/icons/IconNavigationOff.svelte";
+  import IconNetwork from "$lib/icons/IconNetwork.svelte";
+  import IconNewspaper from "$lib/icons/IconNewspaper.svelte";
+  import IconNut from "$lib/icons/IconNut.svelte";
+  import IconNutOff from "$lib/icons/IconNutOff.svelte";
   import IconOctagon from "$lib/icons/IconOctagon.svelte";
+  import IconOption from "$lib/icons/IconOption.svelte";
+  import IconOutdent from "$lib/icons/IconOutdent.svelte";
   import IconPackage from "$lib/icons/IconPackage.svelte";
+  import IconPackage2 from "$lib/icons/IconPackage2.svelte";
+  import IconPackageCheck from "$lib/icons/IconPackageCheck.svelte";
+  import IconPackageMinus from "$lib/icons/IconPackageMinus.svelte";
+  import IconPackageOpen from "$lib/icons/IconPackageOpen.svelte";
+  import IconPackagePlus from "$lib/icons/IconPackagePlus.svelte";
+  import IconPackageSearch from "$lib/icons/IconPackageSearch.svelte";
+  import IconPackageX from "$lib/icons/IconPackageX.svelte";
+  import IconPaintbrush from "$lib/icons/IconPaintbrush.svelte";
+  import IconPaintbrush2 from "$lib/icons/IconPaintbrush2.svelte";
+  import IconPaintBucket from "$lib/icons/IconPaintBucket.svelte";
+  import IconPalette from "$lib/icons/IconPalette.svelte";
+  import IconPalmtree from "$lib/icons/IconPalmtree.svelte";
   import IconPaperclip from "$lib/icons/IconPaperclip.svelte";
+  import IconPartyPopper from "$lib/icons/IconPartyPopper.svelte";
   import IconPause from "$lib/icons/IconPause.svelte";
   import IconPauseCircle from "$lib/icons/IconPauseCircle.svelte";
+  import IconPauseOctagon from "$lib/icons/IconPauseOctagon.svelte";
+  import IconPencil from "$lib/icons/IconPencil.svelte";
   import IconPenTool from "$lib/icons/IconPenTool.svelte";
   import IconPercent from "$lib/icons/IconPercent.svelte";
+  import IconPersonStanding from "$lib/icons/IconPersonStanding.svelte";
   import IconPhone from "$lib/icons/IconPhone.svelte";
   import IconPhoneCall from "$lib/icons/IconPhoneCall.svelte";
   import IconPhoneForwarded from "$lib/icons/IconPhoneForwarded.svelte";
@@ -195,94 +631,237 @@
   import IconPhoneOff from "$lib/icons/IconPhoneOff.svelte";
   import IconPhoneOutgoing from "$lib/icons/IconPhoneOutgoing.svelte";
   import IconPieChart from "$lib/icons/IconPieChart.svelte";
+  import IconPiggyBank from "$lib/icons/IconPiggyBank.svelte";
+  import IconPilcrow from "$lib/icons/IconPilcrow.svelte";
+  import IconPin from "$lib/icons/IconPin.svelte";
+  import IconPinOff from "$lib/icons/IconPinOff.svelte";
+  import IconPipette from "$lib/icons/IconPipette.svelte";
+  import IconPizza from "$lib/icons/IconPizza.svelte";
+  import IconPlane from "$lib/icons/IconPlane.svelte";
   import IconPlay from "$lib/icons/IconPlay.svelte";
   import IconPlayCircle from "$lib/icons/IconPlayCircle.svelte";
+  import IconPlug from "$lib/icons/IconPlug.svelte";
+  import IconPlug2 from "$lib/icons/IconPlug2.svelte";
+  import IconPlugZap from "$lib/icons/IconPlugZap.svelte";
   import IconPlus from "$lib/icons/IconPlus.svelte";
   import IconPlusCircle from "$lib/icons/IconPlusCircle.svelte";
   import IconPlusSquare from "$lib/icons/IconPlusSquare.svelte";
   import IconPocket from "$lib/icons/IconPocket.svelte";
+  import IconPodcast from "$lib/icons/IconPodcast.svelte";
+  import IconPointer from "$lib/icons/IconPointer.svelte";
+  import IconPoundSterling from "$lib/icons/IconPoundSterling.svelte";
   import IconPower from "$lib/icons/IconPower.svelte";
+  import IconPowerOff from "$lib/icons/IconPowerOff.svelte";
   import IconPrinter from "$lib/icons/IconPrinter.svelte";
+  import IconPuzzle from "$lib/icons/IconPuzzle.svelte";
+  import IconQrCode from "$lib/icons/IconQrCode.svelte";
+  import IconQuote from "$lib/icons/IconQuote.svelte";
   import IconRadio from "$lib/icons/IconRadio.svelte";
+  import IconRadioReceiver from "$lib/icons/IconRadioReceiver.svelte";
+  import IconRectangleHorizontal from "$lib/icons/IconRectangleHorizontal.svelte";
+  import IconRectangleVertical from "$lib/icons/IconRectangleVertical.svelte";
+  import IconRecycle from "$lib/icons/IconRecycle.svelte";
+  import IconRedo from "$lib/icons/IconRedo.svelte";
+  import IconRedo2 from "$lib/icons/IconRedo2.svelte";
   import IconRefreshCcw from "$lib/icons/IconRefreshCcw.svelte";
   import IconRefreshCw from "$lib/icons/IconRefreshCw.svelte";
+  import IconRefrigerator from "$lib/icons/IconRefrigerator.svelte";
+  import IconRegex from "$lib/icons/IconRegex.svelte";
   import IconRepeat from "$lib/icons/IconRepeat.svelte";
+  import IconRepeat1 from "$lib/icons/IconRepeat1.svelte";
+  import IconReply from "$lib/icons/IconReply.svelte";
+  import IconReplyAll from "$lib/icons/IconReplyAll.svelte";
   import IconRewind from "$lib/icons/IconRewind.svelte";
+  import IconRocket from "$lib/icons/IconRocket.svelte";
+  import IconRockingChair from "$lib/icons/IconRockingChair.svelte";
+  import IconRotate3D from "$lib/icons/IconRotate3D.svelte";
   import IconRotateCcw from "$lib/icons/IconRotateCcw.svelte";
   import IconRotateCw from "$lib/icons/IconRotateCw.svelte";
   import IconRss from "$lib/icons/IconRss.svelte";
+  import IconRuler from "$lib/icons/IconRuler.svelte";
+  import IconRussianRuble from "$lib/icons/IconRussianRuble.svelte";
+  import IconSailboat from "$lib/icons/IconSailboat.svelte";
   import IconSave from "$lib/icons/IconSave.svelte";
+  import IconScale from "$lib/icons/IconScale.svelte";
+  import IconScale3D from "$lib/icons/IconScale3D.svelte";
+  import IconScaling from "$lib/icons/IconScaling.svelte";
+  import IconScan from "$lib/icons/IconScan.svelte";
+  import IconScanFace from "$lib/icons/IconScanFace.svelte";
+  import IconScanLine from "$lib/icons/IconScanLine.svelte";
   import IconScissors from "$lib/icons/IconScissors.svelte";
+  import IconScreenShare from "$lib/icons/IconScreenShare.svelte";
+  import IconScreenShareOff from "$lib/icons/IconScreenShareOff.svelte";
+  import IconScroll from "$lib/icons/IconScroll.svelte";
   import IconSearch from "$lib/icons/IconSearch.svelte";
   import IconSend from "$lib/icons/IconSend.svelte";
+  import IconSeparatorHorizontal from "$lib/icons/IconSeparatorHorizontal.svelte";
+  import IconSeparatorVertical from "$lib/icons/IconSeparatorVertical.svelte";
   import IconServer from "$lib/icons/IconServer.svelte";
+  import IconServerCog from "$lib/icons/IconServerCog.svelte";
+  import IconServerCrash from "$lib/icons/IconServerCrash.svelte";
+  import IconServerOff from "$lib/icons/IconServerOff.svelte";
   import IconSettings from "$lib/icons/IconSettings.svelte";
+  import IconSettings2 from "$lib/icons/IconSettings2.svelte";
   import IconShare from "$lib/icons/IconShare.svelte";
   import IconShare2 from "$lib/icons/IconShare2.svelte";
+  import IconSheet from "$lib/icons/IconSheet.svelte";
   import IconShield from "$lib/icons/IconShield.svelte";
+  import IconShieldAlert from "$lib/icons/IconShieldAlert.svelte";
+  import IconShieldCheck from "$lib/icons/IconShieldCheck.svelte";
+  import IconShieldClose from "$lib/icons/IconShieldClose.svelte";
   import IconShieldOff from "$lib/icons/IconShieldOff.svelte";
+  import IconShirt from "$lib/icons/IconShirt.svelte";
   import IconShoppingBag from "$lib/icons/IconShoppingBag.svelte";
   import IconShoppingCart from "$lib/icons/IconShoppingCart.svelte";
+  import IconShovel from "$lib/icons/IconShovel.svelte";
+  import IconShowerHead from "$lib/icons/IconShowerHead.svelte";
+  import IconShrink from "$lib/icons/IconShrink.svelte";
+  import IconShrub from "$lib/icons/IconShrub.svelte";
   import IconShuffle from "$lib/icons/IconShuffle.svelte";
   import IconSidebar from "$lib/icons/IconSidebar.svelte";
+  import IconSidebarClose from "$lib/icons/IconSidebarClose.svelte";
+  import IconSidebarOpen from "$lib/icons/IconSidebarOpen.svelte";
+  import IconSigma from "$lib/icons/IconSigma.svelte";
+  import IconSignal from "$lib/icons/IconSignal.svelte";
+  import IconSignalHigh from "$lib/icons/IconSignalHigh.svelte";
+  import IconSignalLow from "$lib/icons/IconSignalLow.svelte";
+  import IconSignalMedium from "$lib/icons/IconSignalMedium.svelte";
+  import IconSignalZero from "$lib/icons/IconSignalZero.svelte";
+  import IconSiren from "$lib/icons/IconSiren.svelte";
   import IconSkipBack from "$lib/icons/IconSkipBack.svelte";
   import IconSkipForward from "$lib/icons/IconSkipForward.svelte";
+  import IconSkull from "$lib/icons/IconSkull.svelte";
   import IconSlack from "$lib/icons/IconSlack.svelte";
   import IconSlash from "$lib/icons/IconSlash.svelte";
+  import IconSlice from "$lib/icons/IconSlice.svelte";
   import IconSliders from "$lib/icons/IconSliders.svelte";
+  import IconSlidersHorizontal from "$lib/icons/IconSlidersHorizontal.svelte";
   import IconSmartphone from "$lib/icons/IconSmartphone.svelte";
+  import IconSmartphoneCharging from "$lib/icons/IconSmartphoneCharging.svelte";
   import IconSmile from "$lib/icons/IconSmile.svelte";
+  import IconSmilePlus from "$lib/icons/IconSmilePlus.svelte";
+  import IconSnowflake from "$lib/icons/IconSnowflake.svelte";
+  import IconSofa from "$lib/icons/IconSofa.svelte";
+  import IconSortAsc from "$lib/icons/IconSortAsc.svelte";
+  import IconSortDesc from "$lib/icons/IconSortDesc.svelte";
   import IconSpeaker from "$lib/icons/IconSpeaker.svelte";
+  import IconSpline from "$lib/icons/IconSpline.svelte";
+  import IconSprout from "$lib/icons/IconSprout.svelte";
   import IconSquare from "$lib/icons/IconSquare.svelte";
   import IconStar from "$lib/icons/IconStar.svelte";
+  import IconStarHalf from "$lib/icons/IconStarHalf.svelte";
+  import IconStarOff from "$lib/icons/IconStarOff.svelte";
+  import IconStethoscope from "$lib/icons/IconStethoscope.svelte";
+  import IconSticker from "$lib/icons/IconSticker.svelte";
+  import IconStickyNote from "$lib/icons/IconStickyNote.svelte";
   import IconStopCircle from "$lib/icons/IconStopCircle.svelte";
+  import IconStretchHorizontal from "$lib/icons/IconStretchHorizontal.svelte";
+  import IconStretchVertical from "$lib/icons/IconStretchVertical.svelte";
+  import IconStrikethrough from "$lib/icons/IconStrikethrough.svelte";
+  import IconSubscript from "$lib/icons/IconSubscript.svelte";
+  import IconSubtitles from "$lib/icons/IconSubtitles.svelte";
   import IconSun from "$lib/icons/IconSun.svelte";
+  import IconSunDim from "$lib/icons/IconSunDim.svelte";
+  import IconSunMedium from "$lib/icons/IconSunMedium.svelte";
+  import IconSunMoon from "$lib/icons/IconSunMoon.svelte";
   import IconSunrise from "$lib/icons/IconSunrise.svelte";
   import IconSunset from "$lib/icons/IconSunset.svelte";
+  import IconSunSnow from "$lib/icons/IconSunSnow.svelte";
+  import IconSuperscript from "$lib/icons/IconSuperscript.svelte";
+  import IconSwissFranc from "$lib/icons/IconSwissFranc.svelte";
+  import IconSwitchCamera from "$lib/icons/IconSwitchCamera.svelte";
+  import IconSword from "$lib/icons/IconSword.svelte";
+  import IconSwords from "$lib/icons/IconSwords.svelte";
+  import IconSyringe from "$lib/icons/IconSyringe.svelte";
   import IconTable from "$lib/icons/IconTable.svelte";
+  import IconTable2 from "$lib/icons/IconTable2.svelte";
   import IconTablet from "$lib/icons/IconTablet.svelte";
   import IconTag from "$lib/icons/IconTag.svelte";
+  import IconTags from "$lib/icons/IconTags.svelte";
   import IconTarget from "$lib/icons/IconTarget.svelte";
+  import IconTent from "$lib/icons/IconTent.svelte";
   import IconTerminal from "$lib/icons/IconTerminal.svelte";
+  import IconTerminalSquare from "$lib/icons/IconTerminalSquare.svelte";
+  import IconTextCursor from "$lib/icons/IconTextCursor.svelte";
+  import IconTextCursorInput from "$lib/icons/IconTextCursorInput.svelte";
   import IconThermometer from "$lib/icons/IconThermometer.svelte";
+  import IconThermometerSnowflake from "$lib/icons/IconThermometerSnowflake.svelte";
+  import IconThermometerSun from "$lib/icons/IconThermometerSun.svelte";
   import IconThumbsDown from "$lib/icons/IconThumbsDown.svelte";
   import IconThumbsUp from "$lib/icons/IconThumbsUp.svelte";
+  import IconTicket from "$lib/icons/IconTicket.svelte";
+  import IconTimer from "$lib/icons/IconTimer.svelte";
+  import IconTimerOff from "$lib/icons/IconTimerOff.svelte";
+  import IconTimerReset from "$lib/icons/IconTimerReset.svelte";
   import IconToggleLeft from "$lib/icons/IconToggleLeft.svelte";
   import IconToggleRight from "$lib/icons/IconToggleRight.svelte";
-  import IconTool from "$lib/icons/IconTool.svelte";
+  import IconTornado from "$lib/icons/IconTornado.svelte";
+  import IconToyBrick from "$lib/icons/IconToyBrick.svelte";
+  import IconTrain from "$lib/icons/IconTrain.svelte";
   import IconTrash from "$lib/icons/IconTrash.svelte";
   import IconTrash2 from "$lib/icons/IconTrash2.svelte";
+  import IconTreeDeciduous from "$lib/icons/IconTreeDeciduous.svelte";
+  import IconTreePine from "$lib/icons/IconTreePine.svelte";
+  import IconTrees from "$lib/icons/IconTrees.svelte";
   import IconTrello from "$lib/icons/IconTrello.svelte";
   import IconTrendingDown from "$lib/icons/IconTrendingDown.svelte";
   import IconTrendingUp from "$lib/icons/IconTrendingUp.svelte";
   import IconTriangle from "$lib/icons/IconTriangle.svelte";
+  import IconTrophy from "$lib/icons/IconTrophy.svelte";
   import IconTruck from "$lib/icons/IconTruck.svelte";
   import IconTv from "$lib/icons/IconTv.svelte";
+  import IconTv2 from "$lib/icons/IconTv2.svelte";
   import IconTwitch from "$lib/icons/IconTwitch.svelte";
   import IconTwitter from "$lib/icons/IconTwitter.svelte";
   import IconType from "$lib/icons/IconType.svelte";
   import IconUmbrella from "$lib/icons/IconUmbrella.svelte";
   import IconUnderline from "$lib/icons/IconUnderline.svelte";
+  import IconUndo from "$lib/icons/IconUndo.svelte";
+  import IconUndo2 from "$lib/icons/IconUndo2.svelte";
+  import IconUnlink from "$lib/icons/IconUnlink.svelte";
+  import IconUnlink2 from "$lib/icons/IconUnlink2.svelte";
   import IconUnlock from "$lib/icons/IconUnlock.svelte";
   import IconUpload from "$lib/icons/IconUpload.svelte";
   import IconUploadCloud from "$lib/icons/IconUploadCloud.svelte";
+  import IconUsb from "$lib/icons/IconUsb.svelte";
   import IconUser from "$lib/icons/IconUser.svelte";
   import IconUserCheck from "$lib/icons/IconUserCheck.svelte";
+  import IconUserCog from "$lib/icons/IconUserCog.svelte";
   import IconUserMinus from "$lib/icons/IconUserMinus.svelte";
   import IconUserPlus from "$lib/icons/IconUserPlus.svelte";
-  import IconUserX from "$lib/icons/IconUserX.svelte";
   import IconUsers from "$lib/icons/IconUsers.svelte";
+  import IconUserX from "$lib/icons/IconUserX.svelte";
+  import IconUtensils from "$lib/icons/IconUtensils.svelte";
+  import IconUtensilsCrossed from "$lib/icons/IconUtensilsCrossed.svelte";
+  import IconVegan from "$lib/icons/IconVegan.svelte";
+  import IconVenetianMask from "$lib/icons/IconVenetianMask.svelte";
+  import IconVerified from "$lib/icons/IconVerified.svelte";
+  import IconVibrate from "$lib/icons/IconVibrate.svelte";
+  import IconVibrateOff from "$lib/icons/IconVibrateOff.svelte";
   import IconVideo from "$lib/icons/IconVideo.svelte";
   import IconVideoOff from "$lib/icons/IconVideoOff.svelte";
+  import IconView from "$lib/icons/IconView.svelte";
   import IconVoicemail from "$lib/icons/IconVoicemail.svelte";
   import IconVolume from "$lib/icons/IconVolume.svelte";
+  import IconVolume1 from "$lib/icons/IconVolume1.svelte";
   import IconVolume2 from "$lib/icons/IconVolume2.svelte";
-  import IconVolume3 from "$lib/icons/IconVolume3.svelte";
   import IconVolumeX from "$lib/icons/IconVolumeX.svelte";
+  import IconWallet from "$lib/icons/IconWallet.svelte";
+  import IconWand from "$lib/icons/IconWand.svelte";
+  import IconWand2 from "$lib/icons/IconWand2.svelte";
   import IconWatch from "$lib/icons/IconWatch.svelte";
+  import IconWaves from "$lib/icons/IconWaves.svelte";
+  import IconWebcam from "$lib/icons/IconWebcam.svelte";
+  import IconWebhook from "$lib/icons/IconWebhook.svelte";
+  import IconWheat from "$lib/icons/IconWheat.svelte";
+  import IconWheatOff from "$lib/icons/IconWheatOff.svelte";
   import IconWifi from "$lib/icons/IconWifi.svelte";
   import IconWifiOff from "$lib/icons/IconWifiOff.svelte";
   import IconWind from "$lib/icons/IconWind.svelte";
+  import IconWine from "$lib/icons/IconWine.svelte";
+  import IconWineOff from "$lib/icons/IconWineOff.svelte";
+  import IconWrapText from "$lib/icons/IconWrapText.svelte";
+  import IconWrench from "$lib/icons/IconWrench.svelte";
   import IconX from "$lib/icons/IconX.svelte";
   import IconXCircle from "$lib/icons/IconXCircle.svelte";
   import IconXOctagon from "$lib/icons/IconXOctagon.svelte";
@@ -326,294 +905,875 @@
 `} />
 
 <div class="uizg-preview">
-  <div class="uizg-preview__element">
-    <Tooltip text="IconActivity"><IconActivity /></Tooltip>
-    <Tooltip text="IconAirplay"><IconAirplay /></Tooltip>
-    <Tooltip text="IconAlertCircle"><IconAlertCircle /></Tooltip>
-    <Tooltip text="IconAlertOctagon"><IconAlertOctagon /></Tooltip>
-    <Tooltip text="IconAlertTriangle"><IconAlertTriangle /></Tooltip>
-    <Tooltip text="IconAlignCenter"><IconAlignCenter /></Tooltip>
-    <Tooltip text="IconAlignJustify"><IconAlignJustify /></Tooltip>
-    <Tooltip text="IconAlignLeft"><IconAlignLeft /></Tooltip>
-    <Tooltip text="IconAlignRight"><IconAlignRight /></Tooltip>
-    <Tooltip text="IconAnchor"><IconAnchor /></Tooltip>
-    <Tooltip text="IconAperture"><IconAperture /></Tooltip>
-    <Tooltip text="IconArchive"><IconArchive /></Tooltip>
-    <Tooltip text="IconArrowDown"><IconArrowDown /></Tooltip>
-    <Tooltip text="IconArrowDownCircle"><IconArrowDownCircle /></Tooltip>
-    <Tooltip text="IconArrowDownLeft"><IconArrowDownLeft /></Tooltip>
-    <Tooltip text="IconArrowDownRight"><IconArrowDownRight /></Tooltip>
-    <Tooltip text="IconArrowLeft"><IconArrowLeft /></Tooltip>
-    <Tooltip text="IconArrowLeftCircle"><IconArrowLeftCircle /></Tooltip>
-    <Tooltip text="IconArrowRight"><IconArrowRight /></Tooltip>
-    <Tooltip text="IconArrowRightCircle"><IconArrowRightCircle /></Tooltip>
-    <Tooltip text="IconArrowUp"><IconArrowUp /></Tooltip>
-    <Tooltip text="IconArrowUpCircle"><IconArrowUpCircle /></Tooltip>
-    <Tooltip text="IconArrowUpLeft"><IconArrowUpLeft /></Tooltip>
-    <Tooltip text="IconArrowUpRight"><IconArrowUpRight /></Tooltip>
-    <Tooltip text="IconAtSign"><IconAtSign /></Tooltip>
-    <Tooltip text="IconAward"><IconAward /></Tooltip>
-    <Tooltip text="IconBarChart"><IconBarChart /></Tooltip>
-    <Tooltip text="IconBarChart2"><IconBarChart2 /></Tooltip>
-    <Tooltip text="IconBattery"><IconBattery /></Tooltip>
-    <Tooltip text="IconBatteryCharging"><IconBatteryCharging /></Tooltip>
-    <Tooltip text="IconBell"><IconBell /></Tooltip>
-    <Tooltip text="IconBellOff"><IconBellOff /></Tooltip>
-    <Tooltip text="IconBluetooth"><IconBluetooth /></Tooltip>
-    <Tooltip text="IconBold"><IconBold /></Tooltip>
-    <Tooltip text="IconBook"><IconBook /></Tooltip>
-    <Tooltip text="IconBookOpen"><IconBookOpen /></Tooltip>
-    <Tooltip text="IconBookmark"><IconBookmark /></Tooltip>
-    <Tooltip text="IconBox"><IconBox /></Tooltip>
-    <Tooltip text="IconBriefcase"><IconBriefcase /></Tooltip>
-    <Tooltip text="IconCalendar"><IconCalendar /></Tooltip>
-    <Tooltip text="IconCamera"><IconCamera /></Tooltip>
-    <Tooltip text="IconCameraOff"><IconCameraOff /></Tooltip>
-    <Tooltip text="IconCast"><IconCast /></Tooltip>
-    <Tooltip text="IconCheck"><IconCheck /></Tooltip>
-    <Tooltip text="IconCheckCircle"><IconCheckCircle /></Tooltip>
-    <Tooltip text="IconCheckSquare"><IconCheckSquare /></Tooltip>
-    <Tooltip text="IconChevronDown"><IconChevronDown /></Tooltip>
-    <Tooltip text="IconChevronLeft"><IconChevronLeft /></Tooltip>
-    <Tooltip text="IconChevronRight"><IconChevronRight /></Tooltip>
-    <Tooltip text="IconChevronUp"><IconChevronUp /></Tooltip>
-    <Tooltip text="IconChevronsDown"><IconChevronsDown /></Tooltip>
-    <Tooltip text="IconChevronsLeft"><IconChevronsLeft /></Tooltip>
-    <Tooltip text="IconChevronsRight"><IconChevronsRight /></Tooltip>
-    <Tooltip text="IconChevronsUp"><IconChevronsUp /></Tooltip>
-    <Tooltip text="IconChrome"><IconChrome /></Tooltip>
-    <Tooltip text="IconCircle"><IconCircle /></Tooltip>
-    <Tooltip text="IconClipboard"><IconClipboard /></Tooltip>
-    <Tooltip text="IconClock"><IconClock /></Tooltip>
-    <Tooltip text="IconCloud"><IconCloud /></Tooltip>
-    <Tooltip text="IconCloudDrizzle"><IconCloudDrizzle /></Tooltip>
-    <Tooltip text="IconCloudLightning"><IconCloudLightning /></Tooltip>
-    <Tooltip text="IconCloudOff"><IconCloudOff /></Tooltip>
-    <Tooltip text="IconCloudRain"><IconCloudRain /></Tooltip>
-    <Tooltip text="IconCloudSnow"><IconCloudSnow /></Tooltip>
-    <Tooltip text="IconCode"><IconCode /></Tooltip>
-    <Tooltip text="IconCodepen"><IconCodepen /></Tooltip>
-    <Tooltip text="IconCodesandbox"><IconCodesandbox /></Tooltip>
-    <Tooltip text="IconCoffee"><IconCoffee /></Tooltip>
-    <Tooltip text="IconColumns"><IconColumns /></Tooltip>
-    <Tooltip text="IconCommand"><IconCommand /></Tooltip>
-    <Tooltip text="IconCompass"><IconCompass /></Tooltip>
-    <Tooltip text="IconCopy"><IconCopy /></Tooltip>
-    <Tooltip text="IconCornerDownLeft"><IconCornerDownLeft /></Tooltip>
-    <Tooltip text="IconCornerDownRight"><IconCornerDownRight /></Tooltip>
-    <Tooltip text="IconCornerLeftDown"><IconCornerLeftDown /></Tooltip>
-    <Tooltip text="IconCornerLeftUp"><IconCornerLeftUp /></Tooltip>
-    <Tooltip text="IconCornerRightDown"><IconCornerRightDown /></Tooltip>
-    <Tooltip text="IconCornerRightUp"><IconCornerRightUp /></Tooltip>
-    <Tooltip text="IconCornerUpLeft"><IconCornerUpLeft /></Tooltip>
-    <Tooltip text="IconCornerUpRight"><IconCornerUpRight /></Tooltip>
-    <Tooltip text="IconCpu"><IconCpu /></Tooltip>
-    <Tooltip text="IconCreditCard"><IconCreditCard /></Tooltip>
-    <Tooltip text="IconCrop"><IconCrop /></Tooltip>
-    <Tooltip text="IconCrosshair"><IconCrosshair /></Tooltip>
-    <Tooltip text="IconDatabase"><IconDatabase /></Tooltip>
-    <Tooltip text="IconDelete"><IconDelete /></Tooltip>
-    <Tooltip text="IconDisc"><IconDisc /></Tooltip>
-    <Tooltip text="IconDivide"><IconDivide /></Tooltip>
-    <Tooltip text="IconDivideCircle"><IconDivideCircle /></Tooltip>
-    <Tooltip text="IconDivideSquare"><IconDivideSquare /></Tooltip>
-    <Tooltip text="IconDollarSign"><IconDollarSign /></Tooltip>
-    <Tooltip text="IconDot"><IconDot /></Tooltip>
-    <Tooltip text="IconDownload"><IconDownload /></Tooltip>
-    <Tooltip text="IconDownloadCloud"><IconDownloadCloud /></Tooltip>
-    <Tooltip text="IconDribbble"><IconDribbble /></Tooltip>
-    <Tooltip text="IconDroplet"><IconDroplet /></Tooltip>
-    <Tooltip text="IconEdit"><IconEdit /></Tooltip>
-    <Tooltip text="IconEdit2"><IconEdit2 /></Tooltip>
-    <Tooltip text="IconEdit3"><IconEdit3 /></Tooltip>
-    <Tooltip text="IconExternalLink"><IconExternalLink /></Tooltip>
-    <Tooltip text="IconEye"><IconEye /></Tooltip>
-    <Tooltip text="IconEyeOff"><IconEyeOff /></Tooltip>
-    <Tooltip text="IconFacebook"><IconFacebook /></Tooltip>
-    <Tooltip text="IconFastForward"><IconFastForward /></Tooltip>
-    <Tooltip text="IconFeather"><IconFeather /></Tooltip>
-    <Tooltip text="IconFigma"><IconFigma /></Tooltip>
-    <Tooltip text="IconFile"><IconFile /></Tooltip>
-    <Tooltip text="IconFileMinus"><IconFileMinus /></Tooltip>
-    <Tooltip text="IconFilePlus"><IconFilePlus /></Tooltip>
-    <Tooltip text="IconFileText"><IconFileText /></Tooltip>
-    <Tooltip text="IconFilm"><IconFilm /></Tooltip>
-    <Tooltip text="IconFilter"><IconFilter /></Tooltip>
-    <Tooltip text="IconFlag"><IconFlag /></Tooltip>
-    <Tooltip text="IconFolder"><IconFolder /></Tooltip>
-    <Tooltip text="IconFolderMinus"><IconFolderMinus /></Tooltip>
-    <Tooltip text="IconFolderPlus"><IconFolderPlus /></Tooltip>
-    <Tooltip text="IconFramer"><IconFramer /></Tooltip>
-    <Tooltip text="IconFrown"><IconFrown /></Tooltip>
-    <Tooltip text="IconGift"><IconGift /></Tooltip>
-    <Tooltip text="IconGitBranch"><IconGitBranch /></Tooltip>
-    <Tooltip text="IconGitCommit"><IconGitCommit /></Tooltip>
-    <Tooltip text="IconGitMerge"><IconGitMerge /></Tooltip>
-    <Tooltip text="IconGitPullRequest"><IconGitPullRequest /></Tooltip>
-    <Tooltip text="IconGithub"><IconGithub /></Tooltip>
-    <Tooltip text="IconGitlab"><IconGitlab /></Tooltip>
-    <Tooltip text="IconGlobe"><IconGlobe /></Tooltip>
-    <Tooltip text="IconGrid"><IconGrid /></Tooltip>
-    <Tooltip text="IconHardDrive"><IconHardDrive /></Tooltip>
-    <Tooltip text="IconHash"><IconHash /></Tooltip>
-    <Tooltip text="IconHeadphones"><IconHeadphones /></Tooltip>
-    <Tooltip text="IconHeart"><IconHeart /></Tooltip>
-    <Tooltip text="IconHelpCircle"><IconHelpCircle /></Tooltip>
-    <Tooltip text="IconHexagon"><IconHexagon /></Tooltip>
-    <Tooltip text="IconHome"><IconHome /></Tooltip>
-    <Tooltip text="IconImage"><IconImage /></Tooltip>
-    <Tooltip text="IconInbox"><IconInbox /></Tooltip>
-    <Tooltip text="IconInfo"><IconInfo /></Tooltip>
-    <Tooltip text="IconInstagram"><IconInstagram /></Tooltip>
-    <Tooltip text="IconItalic"><IconItalic /></Tooltip>
-    <Tooltip text="IconKey"><IconKey /></Tooltip>
-    <Tooltip text="IconLayers"><IconLayers /></Tooltip>
-    <Tooltip text="IconLayout"><IconLayout /></Tooltip>
-    <Tooltip text="IconLifeBuoy"><IconLifeBuoy /></Tooltip>
-    <Tooltip text="IconLink"><IconLink /></Tooltip>
-    <Tooltip text="IconLink2"><IconLink2 /></Tooltip>
-    <Tooltip text="IconLinkedin"><IconLinkedin /></Tooltip>
-    <Tooltip text="IconList"><IconList /></Tooltip>
-    <Tooltip text="IconLoader"><IconLoader /></Tooltip>
-    <Tooltip text="IconLock"><IconLock /></Tooltip>
-    <Tooltip text="IconLogIn"><IconLogIn /></Tooltip>
-    <Tooltip text="IconLogOut"><IconLogOut /></Tooltip>
-    <Tooltip text="IconMail"><IconMail /></Tooltip>
-    <Tooltip text="IconMap"><IconMap /></Tooltip>
-    <Tooltip text="IconMapPin"><IconMapPin /></Tooltip>
-    <Tooltip text="IconMaximize"><IconMaximize /></Tooltip>
-    <Tooltip text="IconMaximize2"><IconMaximize2 /></Tooltip>
-    <Tooltip text="IconMeh"><IconMeh /></Tooltip>
-    <Tooltip text="IconMenu"><IconMenu /></Tooltip>
-    <Tooltip text="IconMessageCircle"><IconMessageCircle /></Tooltip>
-    <Tooltip text="IconMessageSquare"><IconMessageSquare /></Tooltip>
-    <Tooltip text="IconMic"><IconMic /></Tooltip>
-    <Tooltip text="IconMicOff"><IconMicOff /></Tooltip>
-    <Tooltip text="IconMinimize"><IconMinimize /></Tooltip>
-    <Tooltip text="IconMinimize2"><IconMinimize2 /></Tooltip>
-    <Tooltip text="IconMinus"><IconMinus /></Tooltip>
-    <Tooltip text="IconMinusCircle"><IconMinusCircle /></Tooltip>
-    <Tooltip text="IconMinusSquare"><IconMinusSquare /></Tooltip>
-    <Tooltip text="IconMonitor"><IconMonitor /></Tooltip>
-    <Tooltip text="IconMoon"><IconMoon /></Tooltip>
-    <Tooltip text="IconMoreHorizontal"><IconMoreHorizontal /></Tooltip>
-    <Tooltip text="IconMoreVertical"><IconMoreVertical /></Tooltip>
-    <Tooltip text="IconMousePointer"><IconMousePointer /></Tooltip>
-    <Tooltip text="IconMove"><IconMove /></Tooltip>
-    <Tooltip text="IconMusic"><IconMusic /></Tooltip>
-    <Tooltip text="IconNavigation"><IconNavigation /></Tooltip>
-    <Tooltip text="IconNavigation2"><IconNavigation2 /></Tooltip>
-    <Tooltip text="IconOctagon"><IconOctagon /></Tooltip>
-    <Tooltip text="IconPackage"><IconPackage /></Tooltip>
-    <Tooltip text="IconPaperclip"><IconPaperclip /></Tooltip>
-    <Tooltip text="IconPause"><IconPause /></Tooltip>
-    <Tooltip text="IconPauseCircle"><IconPauseCircle /></Tooltip>
-    <Tooltip text="IconPenTool"><IconPenTool /></Tooltip>
-    <Tooltip text="IconPercent"><IconPercent /></Tooltip>
-    <Tooltip text="IconPhone"><IconPhone /></Tooltip>
-    <Tooltip text="IconPhoneCall"><IconPhoneCall /></Tooltip>
-    <Tooltip text="IconPhoneForwarded"><IconPhoneForwarded /></Tooltip>
-    <Tooltip text="IconPhoneIncoming"><IconPhoneIncoming /></Tooltip>
-    <Tooltip text="IconPhoneMissed"><IconPhoneMissed /></Tooltip>
-    <Tooltip text="IconPhoneOff"><IconPhoneOff /></Tooltip>
-    <Tooltip text="IconPhoneOutgoing"><IconPhoneOutgoing /></Tooltip>
-    <Tooltip text="IconPieChart"><IconPieChart /></Tooltip>
-    <Tooltip text="IconPlay"><IconPlay /></Tooltip>
-    <Tooltip text="IconPlayCircle"><IconPlayCircle /></Tooltip>
-    <Tooltip text="IconPlus"><IconPlus /></Tooltip>
-    <Tooltip text="IconPlusCircle"><IconPlusCircle /></Tooltip>
-    <Tooltip text="IconPlusSquare"><IconPlusSquare /></Tooltip>
-    <Tooltip text="IconPocket"><IconPocket /></Tooltip>
-    <Tooltip text="IconPower"><IconPower /></Tooltip>
-    <Tooltip text="IconPrinter"><IconPrinter /></Tooltip>
-    <Tooltip text="IconRadio"><IconRadio /></Tooltip>
-    <Tooltip text="IconRefreshCcw"><IconRefreshCcw /></Tooltip>
-    <Tooltip text="IconRefreshCw"><IconRefreshCw /></Tooltip>
-    <Tooltip text="IconRepeat"><IconRepeat /></Tooltip>
-    <Tooltip text="IconRewind"><IconRewind /></Tooltip>
-    <Tooltip text="IconRotateCcw"><IconRotateCcw /></Tooltip>
-    <Tooltip text="IconRotateCw"><IconRotateCw /></Tooltip>
-    <Tooltip text="IconRss"><IconRss /></Tooltip>
-    <Tooltip text="IconSave"><IconSave /></Tooltip>
-    <Tooltip text="IconScissors"><IconScissors /></Tooltip>
-    <Tooltip text="IconSearch"><IconSearch /></Tooltip>
-    <Tooltip text="IconSend"><IconSend /></Tooltip>
-    <Tooltip text="IconServer"><IconServer /></Tooltip>
-    <Tooltip text="IconSettings"><IconSettings /></Tooltip>
-    <Tooltip text="IconShare"><IconShare /></Tooltip>
-    <Tooltip text="IconShare2"><IconShare2 /></Tooltip>
-    <Tooltip text="IconShield"><IconShield /></Tooltip>
-    <Tooltip text="IconShieldOff"><IconShieldOff /></Tooltip>
-    <Tooltip text="IconShoppingBag"><IconShoppingBag /></Tooltip>
-    <Tooltip text="IconShoppingCart"><IconShoppingCart /></Tooltip>
-    <Tooltip text="IconShuffle"><IconShuffle /></Tooltip>
-    <Tooltip text="IconSidebar"><IconSidebar /></Tooltip>
-    <Tooltip text="IconSkipBack"><IconSkipBack /></Tooltip>
-    <Tooltip text="IconSkipForward"><IconSkipForward /></Tooltip>
-    <Tooltip text="IconSlack"><IconSlack /></Tooltip>
-    <Tooltip text="IconSlash"><IconSlash /></Tooltip>
-    <Tooltip text="IconSliders"><IconSliders /></Tooltip>
-    <Tooltip text="IconSmartphone"><IconSmartphone /></Tooltip>
-    <Tooltip text="IconSmile"><IconSmile /></Tooltip>
-    <Tooltip text="IconSpeaker"><IconSpeaker /></Tooltip>
-    <Tooltip text="IconSquare"><IconSquare /></Tooltip>
-    <Tooltip text="IconStar"><IconStar /></Tooltip>
-    <Tooltip text="IconStopCircle"><IconStopCircle /></Tooltip>
-    <Tooltip text="IconSun"><IconSun /></Tooltip>
-    <Tooltip text="IconSunrise"><IconSunrise /></Tooltip>
-    <Tooltip text="IconSunset"><IconSunset /></Tooltip>
-    <Tooltip text="IconTable"><IconTable /></Tooltip>
-    <Tooltip text="IconTablet"><IconTablet /></Tooltip>
-    <Tooltip text="IconTag"><IconTag /></Tooltip>
-    <Tooltip text="IconTarget"><IconTarget /></Tooltip>
-    <Tooltip text="IconTerminal"><IconTerminal /></Tooltip>
-    <Tooltip text="IconThermometer"><IconThermometer /></Tooltip>
-    <Tooltip text="IconThumbsDown"><IconThumbsDown /></Tooltip>
-    <Tooltip text="IconThumbsUp"><IconThumbsUp /></Tooltip>
-    <Tooltip text="IconToggleLeft"><IconToggleLeft /></Tooltip>
-    <Tooltip text="IconToggleRight"><IconToggleRight /></Tooltip>
-    <Tooltip text="IconTool"><IconTool /></Tooltip>
-    <Tooltip text="IconTrash"><IconTrash /></Tooltip>
-    <Tooltip text="IconTrash2"><IconTrash2 /></Tooltip>
-    <Tooltip text="IconTrello"><IconTrello /></Tooltip>
-    <Tooltip text="IconTrendingDown"><IconTrendingDown /></Tooltip>
-    <Tooltip text="IconTrendingUp"><IconTrendingUp /></Tooltip>
-    <Tooltip text="IconTriangle"><IconTriangle /></Tooltip>
-    <Tooltip text="IconTruck"><IconTruck /></Tooltip>
-    <Tooltip text="IconTv"><IconTv /></Tooltip>
-    <Tooltip text="IconTwitch"><IconTwitch /></Tooltip>
-    <Tooltip text="IconTwitter"><IconTwitter /></Tooltip>
-    <Tooltip text="IconType"><IconType /></Tooltip>
-    <Tooltip text="IconUmbrella"><IconUmbrella /></Tooltip>
-    <Tooltip text="IconUnderline"><IconUnderline /></Tooltip>
-    <Tooltip text="IconUnlock"><IconUnlock /></Tooltip>
-    <Tooltip text="IconUpload"><IconUpload /></Tooltip>
-    <Tooltip text="IconUploadCloud"><IconUploadCloud /></Tooltip>
-    <Tooltip text="IconUser"><IconUser /></Tooltip>
-    <Tooltip text="IconUserCheck"><IconUserCheck /></Tooltip>
-    <Tooltip text="IconUserMinus"><IconUserMinus /></Tooltip>
-    <Tooltip text="IconUserPlus"><IconUserPlus /></Tooltip>
-    <Tooltip text="IconUserX"><IconUserX /></Tooltip>
-    <Tooltip text="IconUsers"><IconUsers /></Tooltip>
-    <Tooltip text="IconVideo"><IconVideo /></Tooltip>
-    <Tooltip text="IconVideoOff"><IconVideoOff /></Tooltip>
-    <Tooltip text="IconVoicemail"><IconVoicemail /></Tooltip>
-    <Tooltip text="IconVolume"><IconVolume /></Tooltip>
-    <Tooltip text="IconVolume2"><IconVolume2 /></Tooltip>
-    <Tooltip text="IconVolume3"><IconVolume3 /></Tooltip>
-    <Tooltip text="IconVolumeX"><IconVolumeX /></Tooltip>
-    <Tooltip text="IconWatch"><IconWatch /></Tooltip>
-    <Tooltip text="IconWifi"><IconWifi /></Tooltip>
-    <Tooltip text="IconWifiOff"><IconWifiOff /></Tooltip>
-    <Tooltip text="IconWind"><IconWind /></Tooltip>
-    <Tooltip text="IconX"><IconX /></Tooltip>
-    <Tooltip text="IconXCircle"><IconXCircle /></Tooltip>
-    <Tooltip text="IconXOctagon"><IconXOctagon /></Tooltip>
-    <Tooltip text="IconXSquare"><IconXSquare /></Tooltip>
-    <Tooltip text="IconYoutube"><IconYoutube /></Tooltip>
-    <Tooltip text="IconZap"><IconZap /></Tooltip>
-    <Tooltip text="IconZapOff"><IconZapOff /></Tooltip>
-    <Tooltip text="IconZoomIn"><IconZoomIn /></Tooltip>
-    <Tooltip text="IconZoomOut"><IconZoomOut /></Tooltip>
+  <div style="display: flex; flex-wrap: wrap; gap: 1rem;">
+    <Tooltip text="IconAccessibility"><IconAccessibility size="lg" /></Tooltip>
+    <Tooltip text="IconActivity"><IconActivity size="lg" /></Tooltip>
+    <Tooltip text="IconAirplay"><IconAirplay size="lg" /></Tooltip>
+    <Tooltip text="IconAirVent"><IconAirVent size="lg" /></Tooltip>
+    <Tooltip text="IconAlarmCheck"><IconAlarmCheck size="lg" /></Tooltip>
+    <Tooltip text="IconAlarmClock"><IconAlarmClock size="lg" /></Tooltip>
+    <Tooltip text="IconAlarmClockOff"><IconAlarmClockOff size="lg" /></Tooltip>
+    <Tooltip text="IconAlarmMinus"><IconAlarmMinus size="lg" /></Tooltip>
+    <Tooltip text="IconAlarmPlus"><IconAlarmPlus size="lg" /></Tooltip>
+    <Tooltip text="IconAlbum"><IconAlbum size="lg" /></Tooltip>
+    <Tooltip text="IconAlertCircle"><IconAlertCircle size="lg" /></Tooltip>
+    <Tooltip text="IconAlertOctagon"><IconAlertOctagon size="lg" /></Tooltip>
+    <Tooltip text="IconAlertTriangle"><IconAlertTriangle size="lg" /></Tooltip>
+    <Tooltip text="IconAlignCenter"><IconAlignCenter size="lg" /></Tooltip>
+    <Tooltip text="IconAlignCenterHorizontal"><IconAlignCenterHorizontal size="lg" /></Tooltip>
+    <Tooltip text="IconAlignCenterVertical"><IconAlignCenterVertical size="lg" /></Tooltip>
+    <Tooltip text="IconAlignEndHorizontal"><IconAlignEndHorizontal size="lg" /></Tooltip>
+    <Tooltip text="IconAlignEndVertical"><IconAlignEndVertical size="lg" /></Tooltip>
+    <Tooltip text="IconAlignHorizontalDistributeCenter"><IconAlignHorizontalDistributeCenter size="lg" /></Tooltip>
+    <Tooltip text="IconAlignHorizontalDistributeEnd"><IconAlignHorizontalDistributeEnd size="lg" /></Tooltip>
+    <Tooltip text="IconAlignHorizontalDistributeStart"><IconAlignHorizontalDistributeStart size="lg" /></Tooltip>
+    <Tooltip text="IconAlignHorizontalJustifyCenter"><IconAlignHorizontalJustifyCenter size="lg" /></Tooltip>
+    <Tooltip text="IconAlignHorizontalJustifyEnd"><IconAlignHorizontalJustifyEnd size="lg" /></Tooltip>
+    <Tooltip text="IconAlignHorizontalJustifyStart"><IconAlignHorizontalJustifyStart size="lg" /></Tooltip>
+    <Tooltip text="IconAlignHorizontalSpaceAround"><IconAlignHorizontalSpaceAround size="lg" /></Tooltip>
+    <Tooltip text="IconAlignHorizontalSpaceBetween"><IconAlignHorizontalSpaceBetween size="lg" /></Tooltip>
+    <Tooltip text="IconAlignJustify"><IconAlignJustify size="lg" /></Tooltip>
+    <Tooltip text="IconAlignLeft"><IconAlignLeft size="lg" /></Tooltip>
+    <Tooltip text="IconAlignRight"><IconAlignRight size="lg" /></Tooltip>
+    <Tooltip text="IconAlignStartHorizontal"><IconAlignStartHorizontal size="lg" /></Tooltip>
+    <Tooltip text="IconAlignStartVertical"><IconAlignStartVertical size="lg" /></Tooltip>
+    <Tooltip text="IconAlignVerticalDistributeCenter"><IconAlignVerticalDistributeCenter size="lg" /></Tooltip>
+    <Tooltip text="IconAlignVerticalDistributeEnd"><IconAlignVerticalDistributeEnd size="lg" /></Tooltip>
+    <Tooltip text="IconAlignVerticalDistributeStart"><IconAlignVerticalDistributeStart size="lg" /></Tooltip>
+    <Tooltip text="IconAlignVerticalJustifyCenter"><IconAlignVerticalJustifyCenter size="lg" /></Tooltip>
+    <Tooltip text="IconAlignVerticalJustifyEnd"><IconAlignVerticalJustifyEnd size="lg" /></Tooltip>
+    <Tooltip text="IconAlignVerticalJustifyStart"><IconAlignVerticalJustifyStart size="lg" /></Tooltip>
+    <Tooltip text="IconAlignVerticalSpaceAround"><IconAlignVerticalSpaceAround size="lg" /></Tooltip>
+    <Tooltip text="IconAlignVerticalSpaceBetween"><IconAlignVerticalSpaceBetween size="lg" /></Tooltip>
+    <Tooltip text="IconAnchor"><IconAnchor size="lg" /></Tooltip>
+    <Tooltip text="IconAngry"><IconAngry size="lg" /></Tooltip>
+    <Tooltip text="IconAnnoyed"><IconAnnoyed size="lg" /></Tooltip>
+    <Tooltip text="IconAperture"><IconAperture size="lg" /></Tooltip>
+    <Tooltip text="IconApple"><IconApple size="lg" /></Tooltip>
+    <Tooltip text="IconArchive"><IconArchive size="lg" /></Tooltip>
+    <Tooltip text="IconArchiveRestore"><IconArchiveRestore size="lg" /></Tooltip>
+    <Tooltip text="IconArmchair"><IconArmchair size="lg" /></Tooltip>
+    <Tooltip text="IconArrowBigDown"><IconArrowBigDown size="lg" /></Tooltip>
+    <Tooltip text="IconArrowBigLeft"><IconArrowBigLeft size="lg" /></Tooltip>
+    <Tooltip text="IconArrowBigRight"><IconArrowBigRight size="lg" /></Tooltip>
+    <Tooltip text="IconArrowBigUp"><IconArrowBigUp size="lg" /></Tooltip>
+    <Tooltip text="IconArrowDown"><IconArrowDown size="lg" /></Tooltip>
+    <Tooltip text="IconArrowDownCircle"><IconArrowDownCircle size="lg" /></Tooltip>
+    <Tooltip text="IconArrowDownLeft"><IconArrowDownLeft size="lg" /></Tooltip>
+    <Tooltip text="IconArrowDownRight"><IconArrowDownRight size="lg" /></Tooltip>
+    <Tooltip text="IconArrowLeft"><IconArrowLeft size="lg" /></Tooltip>
+    <Tooltip text="IconArrowLeftCircle"><IconArrowLeftCircle size="lg" /></Tooltip>
+    <Tooltip text="IconArrowLeftRight"><IconArrowLeftRight size="lg" /></Tooltip>
+    <Tooltip text="IconArrowRight"><IconArrowRight size="lg" /></Tooltip>
+    <Tooltip text="IconArrowRightCircle"><IconArrowRightCircle size="lg" /></Tooltip>
+    <Tooltip text="IconArrowUp"><IconArrowUp size="lg" /></Tooltip>
+    <Tooltip text="IconArrowUpCircle"><IconArrowUpCircle size="lg" /></Tooltip>
+    <Tooltip text="IconArrowUpDown"><IconArrowUpDown size="lg" /></Tooltip>
+    <Tooltip text="IconArrowUpLeft"><IconArrowUpLeft size="lg" /></Tooltip>
+    <Tooltip text="IconArrowUpRight"><IconArrowUpRight size="lg" /></Tooltip>
+    <Tooltip text="IconAsterisk"><IconAsterisk size="lg" /></Tooltip>
+    <Tooltip text="IconAtSign"><IconAtSign size="lg" /></Tooltip>
+    <Tooltip text="IconAward"><IconAward size="lg" /></Tooltip>
+    <Tooltip text="IconAxe"><IconAxe size="lg" /></Tooltip>
+    <Tooltip text="IconAxis3D"><IconAxis3D size="lg" /></Tooltip>
+    <Tooltip text="IconBaby"><IconBaby size="lg" /></Tooltip>
+    <Tooltip text="IconBackpack"><IconBackpack size="lg" /></Tooltip>
+    <Tooltip text="IconBaggageClaim"><IconBaggageClaim size="lg" /></Tooltip>
+    <Tooltip text="IconBanana"><IconBanana size="lg" /></Tooltip>
+    <Tooltip text="IconBanknote"><IconBanknote size="lg" /></Tooltip>
+    <Tooltip text="IconBarChart"><IconBarChart size="lg" /></Tooltip>
+    <Tooltip text="IconBarChart2"><IconBarChart2 size="lg" /></Tooltip>
+    <Tooltip text="IconBarChart3"><IconBarChart3 size="lg" /></Tooltip>
+    <Tooltip text="IconBarChart4"><IconBarChart4 size="lg" /></Tooltip>
+    <Tooltip text="IconBarChartHorizontal"><IconBarChartHorizontal size="lg" /></Tooltip>
+    <Tooltip text="IconBaseline"><IconBaseline size="lg" /></Tooltip>
+    <Tooltip text="IconBath"><IconBath size="lg" /></Tooltip>
+    <Tooltip text="IconBattery"><IconBattery size="lg" /></Tooltip>
+    <Tooltip text="IconBatteryCharging"><IconBatteryCharging size="lg" /></Tooltip>
+    <Tooltip text="IconBatteryFull"><IconBatteryFull size="lg" /></Tooltip>
+    <Tooltip text="IconBatteryLow"><IconBatteryLow size="lg" /></Tooltip>
+    <Tooltip text="IconBatteryMedium"><IconBatteryMedium size="lg" /></Tooltip>
+    <Tooltip text="IconBeaker"><IconBeaker size="lg" /></Tooltip>
+    <Tooltip text="IconBean"><IconBean size="lg" /></Tooltip>
+    <Tooltip text="IconBeanOff"><IconBeanOff size="lg" /></Tooltip>
+    <Tooltip text="IconBed"><IconBed size="lg" /></Tooltip>
+    <Tooltip text="IconBedDouble"><IconBedDouble size="lg" /></Tooltip>
+    <Tooltip text="IconBedSingle"><IconBedSingle size="lg" /></Tooltip>
+    <Tooltip text="IconBeer"><IconBeer size="lg" /></Tooltip>
+    <Tooltip text="IconBell"><IconBell size="lg" /></Tooltip>
+    <Tooltip text="IconBellMinus"><IconBellMinus size="lg" /></Tooltip>
+    <Tooltip text="IconBellOff"><IconBellOff size="lg" /></Tooltip>
+    <Tooltip text="IconBellPlus"><IconBellPlus size="lg" /></Tooltip>
+    <Tooltip text="IconBellRing"><IconBellRing size="lg" /></Tooltip>
+    <Tooltip text="IconBike"><IconBike size="lg" /></Tooltip>
+    <Tooltip text="IconBinary"><IconBinary size="lg" /></Tooltip>
+    <Tooltip text="IconBitcoin"><IconBitcoin size="lg" /></Tooltip>
+    <Tooltip text="IconBluetooth"><IconBluetooth size="lg" /></Tooltip>
+    <Tooltip text="IconBluetoothConnected"><IconBluetoothConnected size="lg" /></Tooltip>
+    <Tooltip text="IconBluetoothOff"><IconBluetoothOff size="lg" /></Tooltip>
+    <Tooltip text="IconBluetoothSearching"><IconBluetoothSearching size="lg" /></Tooltip>
+    <Tooltip text="IconBold"><IconBold size="lg" /></Tooltip>
+    <Tooltip text="IconBomb"><IconBomb size="lg" /></Tooltip>
+    <Tooltip text="IconBone"><IconBone size="lg" /></Tooltip>
+    <Tooltip text="IconBook"><IconBook size="lg" /></Tooltip>
+    <Tooltip text="IconBookmark"><IconBookmark size="lg" /></Tooltip>
+    <Tooltip text="IconBookmarkMinus"><IconBookmarkMinus size="lg" /></Tooltip>
+    <Tooltip text="IconBookmarkPlus"><IconBookmarkPlus size="lg" /></Tooltip>
+    <Tooltip text="IconBookOpen"><IconBookOpen size="lg" /></Tooltip>
+    <Tooltip text="IconBookOpenCheck"><IconBookOpenCheck size="lg" /></Tooltip>
+    <Tooltip text="IconBot"><IconBot size="lg" /></Tooltip>
+    <Tooltip text="IconBox"><IconBox size="lg" /></Tooltip>
+    <Tooltip text="IconBoxes"><IconBoxes size="lg" /></Tooltip>
+    <Tooltip text="IconBoxSelect"><IconBoxSelect size="lg" /></Tooltip>
+    <Tooltip text="IconBriefcase"><IconBriefcase size="lg" /></Tooltip>
+    <Tooltip text="IconBrush"><IconBrush size="lg" /></Tooltip>
+    <Tooltip text="IconBug"><IconBug size="lg" /></Tooltip>
+    <Tooltip text="IconBuilding"><IconBuilding size="lg" /></Tooltip>
+    <Tooltip text="IconBuilding2"><IconBuilding2 size="lg" /></Tooltip>
+    <Tooltip text="IconBus"><IconBus size="lg" /></Tooltip>
+    <Tooltip text="IconCake"><IconCake size="lg" /></Tooltip>
+    <Tooltip text="IconCalculator"><IconCalculator size="lg" /></Tooltip>
+    <Tooltip text="IconCalendar"><IconCalendar size="lg" /></Tooltip>
+    <Tooltip text="IconCalendarCheck"><IconCalendarCheck size="lg" /></Tooltip>
+    <Tooltip text="IconCalendarCheck2"><IconCalendarCheck2 size="lg" /></Tooltip>
+    <Tooltip text="IconCalendarClock"><IconCalendarClock size="lg" /></Tooltip>
+    <Tooltip text="IconCalendarDays"><IconCalendarDays size="lg" /></Tooltip>
+    <Tooltip text="IconCalendarHeart"><IconCalendarHeart size="lg" /></Tooltip>
+    <Tooltip text="IconCalendarMinus"><IconCalendarMinus size="lg" /></Tooltip>
+    <Tooltip text="IconCalendarOff"><IconCalendarOff size="lg" /></Tooltip>
+    <Tooltip text="IconCalendarPlus"><IconCalendarPlus size="lg" /></Tooltip>
+    <Tooltip text="IconCalendarRange"><IconCalendarRange size="lg" /></Tooltip>
+    <Tooltip text="IconCalendarSearch"><IconCalendarSearch size="lg" /></Tooltip>
+    <Tooltip text="IconCalendarX"><IconCalendarX size="lg" /></Tooltip>
+    <Tooltip text="IconCalendarX2"><IconCalendarX2 size="lg" /></Tooltip>
+    <Tooltip text="IconCamera"><IconCamera size="lg" /></Tooltip>
+    <Tooltip text="IconCameraOff"><IconCameraOff size="lg" /></Tooltip>
+    <Tooltip text="IconCandy"><IconCandy size="lg" /></Tooltip>
+    <Tooltip text="IconCandyOff"><IconCandyOff size="lg" /></Tooltip>
+    <Tooltip text="IconCar"><IconCar size="lg" /></Tooltip>
+    <Tooltip text="IconCarrot"><IconCarrot size="lg" /></Tooltip>
+    <Tooltip text="IconCast"><IconCast size="lg" /></Tooltip>
+    <Tooltip text="IconCat"><IconCat size="lg" /></Tooltip>
+    <Tooltip text="IconCheck"><IconCheck size="lg" /></Tooltip>
+    <Tooltip text="IconCheckCheck"><IconCheckCheck size="lg" /></Tooltip>
+    <Tooltip text="IconCheckCircle"><IconCheckCircle size="lg" /></Tooltip>
+    <Tooltip text="IconCheckCircle2"><IconCheckCircle2 size="lg" /></Tooltip>
+    <Tooltip text="IconCheckSquare"><IconCheckSquare size="lg" /></Tooltip>
+    <Tooltip text="IconChefHat"><IconChefHat size="lg" /></Tooltip>
+    <Tooltip text="IconCherry"><IconCherry size="lg" /></Tooltip>
+    <Tooltip text="IconChevronDown"><IconChevronDown size="lg" /></Tooltip>
+    <Tooltip text="IconChevronFirst"><IconChevronFirst size="lg" /></Tooltip>
+    <Tooltip text="IconChevronLast"><IconChevronLast size="lg" /></Tooltip>
+    <Tooltip text="IconChevronLeft"><IconChevronLeft size="lg" /></Tooltip>
+    <Tooltip text="IconChevronRight"><IconChevronRight size="lg" /></Tooltip>
+    <Tooltip text="IconChevronsDown"><IconChevronsDown size="lg" /></Tooltip>
+    <Tooltip text="IconChevronsDownUp"><IconChevronsDownUp size="lg" /></Tooltip>
+    <Tooltip text="IconChevronsLeft"><IconChevronsLeft size="lg" /></Tooltip>
+    <Tooltip text="IconChevronsLeftRight"><IconChevronsLeftRight size="lg" /></Tooltip>
+    <Tooltip text="IconChevronsRight"><IconChevronsRight size="lg" /></Tooltip>
+    <Tooltip text="IconChevronsRightLeft"><IconChevronsRightLeft size="lg" /></Tooltip>
+    <Tooltip text="IconChevronsUp"><IconChevronsUp size="lg" /></Tooltip>
+    <Tooltip text="IconChevronsUpDown"><IconChevronsUpDown size="lg" /></Tooltip>
+    <Tooltip text="IconChevronUp"><IconChevronUp size="lg" /></Tooltip>
+    <Tooltip text="IconChrome"><IconChrome size="lg" /></Tooltip>
+    <Tooltip text="IconCigarette"><IconCigarette size="lg" /></Tooltip>
+    <Tooltip text="IconCigaretteOff"><IconCigaretteOff size="lg" /></Tooltip>
+    <Tooltip text="IconCircle"><IconCircle size="lg" /></Tooltip>
+    <Tooltip text="IconCircleDot"><IconCircleDot size="lg" /></Tooltip>
+    <Tooltip text="IconCircleEllipsis"><IconCircleEllipsis size="lg" /></Tooltip>
+    <Tooltip text="IconCircleSlashed"><IconCircleSlashed size="lg" /></Tooltip>
+    <Tooltip text="IconCitrus"><IconCitrus size="lg" /></Tooltip>
+    <Tooltip text="IconClapperboard"><IconClapperboard size="lg" /></Tooltip>
+    <Tooltip text="IconClipboard"><IconClipboard size="lg" /></Tooltip>
+    <Tooltip text="IconClipboardCheck"><IconClipboardCheck size="lg" /></Tooltip>
+    <Tooltip text="IconClipboardCopy"><IconClipboardCopy size="lg" /></Tooltip>
+    <Tooltip text="IconClipboardEdit"><IconClipboardEdit size="lg" /></Tooltip>
+    <Tooltip text="IconClipboardList"><IconClipboardList size="lg" /></Tooltip>
+    <Tooltip text="IconClipboardSignature"><IconClipboardSignature size="lg" /></Tooltip>
+    <Tooltip text="IconClipboardType"><IconClipboardType size="lg" /></Tooltip>
+    <Tooltip text="IconClipboardX"><IconClipboardX size="lg" /></Tooltip>
+    <Tooltip text="IconClock"><IconClock size="lg" /></Tooltip>
+    <Tooltip text="IconClock1"><IconClock1 size="lg" /></Tooltip>
+    <Tooltip text="IconClock2"><IconClock2 size="lg" /></Tooltip>
+    <Tooltip text="IconClock3"><IconClock3 size="lg" /></Tooltip>
+    <Tooltip text="IconClock4"><IconClock4 size="lg" /></Tooltip>
+    <Tooltip text="IconClock5"><IconClock5 size="lg" /></Tooltip>
+    <Tooltip text="IconClock6"><IconClock6 size="lg" /></Tooltip>
+    <Tooltip text="IconClock7"><IconClock7 size="lg" /></Tooltip>
+    <Tooltip text="IconClock8"><IconClock8 size="lg" /></Tooltip>
+    <Tooltip text="IconClock9"><IconClock9 size="lg" /></Tooltip>
+    <Tooltip text="IconClock10"><IconClock10 size="lg" /></Tooltip>
+    <Tooltip text="IconClock11"><IconClock11 size="lg" /></Tooltip>
+    <Tooltip text="IconClock12"><IconClock12 size="lg" /></Tooltip>
+    <Tooltip text="IconCloud"><IconCloud size="lg" /></Tooltip>
+    <Tooltip text="IconCloudCog"><IconCloudCog size="lg" /></Tooltip>
+    <Tooltip text="IconCloudDrizzle"><IconCloudDrizzle size="lg" /></Tooltip>
+    <Tooltip text="IconCloudFog"><IconCloudFog size="lg" /></Tooltip>
+    <Tooltip text="IconCloudHail"><IconCloudHail size="lg" /></Tooltip>
+    <Tooltip text="IconCloudLightning"><IconCloudLightning size="lg" /></Tooltip>
+    <Tooltip text="IconCloudMoon"><IconCloudMoon size="lg" /></Tooltip>
+    <Tooltip text="IconCloudMoonRain"><IconCloudMoonRain size="lg" /></Tooltip>
+    <Tooltip text="IconCloudOff"><IconCloudOff size="lg" /></Tooltip>
+    <Tooltip text="IconCloudRain"><IconCloudRain size="lg" /></Tooltip>
+    <Tooltip text="IconCloudRainWind"><IconCloudRainWind size="lg" /></Tooltip>
+    <Tooltip text="IconCloudSnow"><IconCloudSnow size="lg" /></Tooltip>
+    <Tooltip text="IconCloudSun"><IconCloudSun size="lg" /></Tooltip>
+    <Tooltip text="IconCloudSunRain"><IconCloudSunRain size="lg" /></Tooltip>
+    <Tooltip text="IconCloudy"><IconCloudy size="lg" /></Tooltip>
+    <Tooltip text="IconClover"><IconClover size="lg" /></Tooltip>
+    <Tooltip text="IconCode"><IconCode size="lg" /></Tooltip>
+    <Tooltip text="IconCode2"><IconCode2 size="lg" /></Tooltip>
+    <Tooltip text="IconCodepen"><IconCodepen size="lg" /></Tooltip>
+    <Tooltip text="IconCodesandbox"><IconCodesandbox size="lg" /></Tooltip>
+    <Tooltip text="IconCoffee"><IconCoffee size="lg" /></Tooltip>
+    <Tooltip text="IconCog"><IconCog size="lg" /></Tooltip>
+    <Tooltip text="IconCoins"><IconCoins size="lg" /></Tooltip>
+    <Tooltip text="IconColumns"><IconColumns size="lg" /></Tooltip>
+    <Tooltip text="IconCommand"><IconCommand size="lg" /></Tooltip>
+    <Tooltip text="IconCompass"><IconCompass size="lg" /></Tooltip>
+    <Tooltip text="IconComponent"><IconComponent size="lg" /></Tooltip>
+    <Tooltip text="IconConciergeBell"><IconConciergeBell size="lg" /></Tooltip>
+    <Tooltip text="IconContact"><IconContact size="lg" /></Tooltip>
+    <Tooltip text="IconContrast"><IconContrast size="lg" /></Tooltip>
+    <Tooltip text="IconCookie"><IconCookie size="lg" /></Tooltip>
+    <Tooltip text="IconCopy"><IconCopy size="lg" /></Tooltip>
+    <Tooltip text="IconCopyleft"><IconCopyleft size="lg" /></Tooltip>
+    <Tooltip text="IconCopyright"><IconCopyright size="lg" /></Tooltip>
+    <Tooltip text="IconCornerDownLeft"><IconCornerDownLeft size="lg" /></Tooltip>
+    <Tooltip text="IconCornerDownRight"><IconCornerDownRight size="lg" /></Tooltip>
+    <Tooltip text="IconCornerLeftDown"><IconCornerLeftDown size="lg" /></Tooltip>
+    <Tooltip text="IconCornerLeftUp"><IconCornerLeftUp size="lg" /></Tooltip>
+    <Tooltip text="IconCornerRightDown"><IconCornerRightDown size="lg" /></Tooltip>
+    <Tooltip text="IconCornerRightUp"><IconCornerRightUp size="lg" /></Tooltip>
+    <Tooltip text="IconCornerUpLeft"><IconCornerUpLeft size="lg" /></Tooltip>
+    <Tooltip text="IconCornerUpRight"><IconCornerUpRight size="lg" /></Tooltip>
+    <Tooltip text="IconCpu"><IconCpu size="lg" /></Tooltip>
+    <Tooltip text="IconCreditCard"><IconCreditCard size="lg" /></Tooltip>
+    <Tooltip text="IconCroissant"><IconCroissant size="lg" /></Tooltip>
+    <Tooltip text="IconCrop"><IconCrop size="lg" /></Tooltip>
+    <Tooltip text="IconCross"><IconCross size="lg" /></Tooltip>
+    <Tooltip text="IconCrosshair"><IconCrosshair size="lg" /></Tooltip>
+    <Tooltip text="IconCrown"><IconCrown size="lg" /></Tooltip>
+    <Tooltip text="IconCupSoda"><IconCupSoda size="lg" /></Tooltip>
+    <Tooltip text="IconCurlyBraces"><IconCurlyBraces size="lg" /></Tooltip>
+    <Tooltip text="IconCurrency"><IconCurrency size="lg" /></Tooltip>
+    <Tooltip text="IconDatabase"><IconDatabase size="lg" /></Tooltip>
+    <Tooltip text="IconDelete"><IconDelete size="lg" /></Tooltip>
+    <Tooltip text="IconDiamond"><IconDiamond size="lg" /></Tooltip>
+    <Tooltip text="IconDice1"><IconDice1 size="lg" /></Tooltip>
+    <Tooltip text="IconDice2"><IconDice2 size="lg" /></Tooltip>
+    <Tooltip text="IconDice3"><IconDice3 size="lg" /></Tooltip>
+    <Tooltip text="IconDice4"><IconDice4 size="lg" /></Tooltip>
+    <Tooltip text="IconDice5"><IconDice5 size="lg" /></Tooltip>
+    <Tooltip text="IconDice6"><IconDice6 size="lg" /></Tooltip>
+    <Tooltip text="IconDices"><IconDices size="lg" /></Tooltip>
+    <Tooltip text="IconDiff"><IconDiff size="lg" /></Tooltip>
+    <Tooltip text="IconDisc"><IconDisc size="lg" /></Tooltip>
+    <Tooltip text="IconDivide"><IconDivide size="lg" /></Tooltip>
+    <Tooltip text="IconDivideCircle"><IconDivideCircle size="lg" /></Tooltip>
+    <Tooltip text="IconDivideSquare"><IconDivideSquare size="lg" /></Tooltip>
+    <Tooltip text="IconDna"><IconDna size="lg" /></Tooltip>
+    <Tooltip text="IconDnaOff"><IconDnaOff size="lg" /></Tooltip>
+    <Tooltip text="IconDog"><IconDog size="lg" /></Tooltip>
+    <Tooltip text="IconDollarSign"><IconDollarSign size="lg" /></Tooltip>
+    <Tooltip text="IconDownload"><IconDownload size="lg" /></Tooltip>
+    <Tooltip text="IconDownloadCloud"><IconDownloadCloud size="lg" /></Tooltip>
+    <Tooltip text="IconDribbble"><IconDribbble size="lg" /></Tooltip>
+    <Tooltip text="IconDroplet"><IconDroplet size="lg" /></Tooltip>
+    <Tooltip text="IconDroplets"><IconDroplets size="lg" /></Tooltip>
+    <Tooltip text="IconDrumstick"><IconDrumstick size="lg" /></Tooltip>
+    <Tooltip text="IconDumbbell"><IconDumbbell size="lg" /></Tooltip>
+    <Tooltip text="IconEar"><IconEar size="lg" /></Tooltip>
+    <Tooltip text="IconEarOff"><IconEarOff size="lg" /></Tooltip>
+    <Tooltip text="IconEdit"><IconEdit size="lg" /></Tooltip>
+    <Tooltip text="IconEdit2"><IconEdit2 size="lg" /></Tooltip>
+    <Tooltip text="IconEdit3"><IconEdit3 size="lg" /></Tooltip>
+    <Tooltip text="IconEgg"><IconEgg size="lg" /></Tooltip>
+    <Tooltip text="IconEggFried"><IconEggFried size="lg" /></Tooltip>
+    <Tooltip text="IconEggOff"><IconEggOff size="lg" /></Tooltip>
+    <Tooltip text="IconEqual"><IconEqual size="lg" /></Tooltip>
+    <Tooltip text="IconEqualNot"><IconEqualNot size="lg" /></Tooltip>
+    <Tooltip text="IconEraser"><IconEraser size="lg" /></Tooltip>
+    <Tooltip text="IconEuro"><IconEuro size="lg" /></Tooltip>
+    <Tooltip text="IconExpand"><IconExpand size="lg" /></Tooltip>
+    <Tooltip text="IconExternalLink"><IconExternalLink size="lg" /></Tooltip>
+    <Tooltip text="IconEye"><IconEye size="lg" /></Tooltip>
+    <Tooltip text="IconEyeOff"><IconEyeOff size="lg" /></Tooltip>
+    <Tooltip text="IconFacebook"><IconFacebook size="lg" /></Tooltip>
+    <Tooltip text="IconFactory"><IconFactory size="lg" /></Tooltip>
+    <Tooltip text="IconFan"><IconFan size="lg" /></Tooltip>
+    <Tooltip text="IconFastForward"><IconFastForward size="lg" /></Tooltip>
+    <Tooltip text="IconFeather"><IconFeather size="lg" /></Tooltip>
+    <Tooltip text="IconFigma"><IconFigma size="lg" /></Tooltip>
+    <Tooltip text="IconFile"><IconFile size="lg" /></Tooltip>
+    <Tooltip text="IconFileArchive"><IconFileArchive size="lg" /></Tooltip>
+    <Tooltip text="IconFileAudio"><IconFileAudio size="lg" /></Tooltip>
+    <Tooltip text="IconFileAudio2"><IconFileAudio2 size="lg" /></Tooltip>
+    <Tooltip text="IconFileAxis3D"><IconFileAxis3D size="lg" /></Tooltip>
+    <Tooltip text="IconFileBadge"><IconFileBadge size="lg" /></Tooltip>
+    <Tooltip text="IconFileBadge2"><IconFileBadge2 size="lg" /></Tooltip>
+    <Tooltip text="IconFileBarChart"><IconFileBarChart size="lg" /></Tooltip>
+    <Tooltip text="IconFileBarChart2"><IconFileBarChart2 size="lg" /></Tooltip>
+    <Tooltip text="IconFileBox"><IconFileBox size="lg" /></Tooltip>
+    <Tooltip text="IconFileCheck"><IconFileCheck size="lg" /></Tooltip>
+    <Tooltip text="IconFileCheck2"><IconFileCheck2 size="lg" /></Tooltip>
+    <Tooltip text="IconFileClock"><IconFileClock size="lg" /></Tooltip>
+    <Tooltip text="IconFileCode"><IconFileCode size="lg" /></Tooltip>
+    <Tooltip text="IconFileCog"><IconFileCog size="lg" /></Tooltip>
+    <Tooltip text="IconFileCog2"><IconFileCog2 size="lg" /></Tooltip>
+    <Tooltip text="IconFileDiff"><IconFileDiff size="lg" /></Tooltip>
+    <Tooltip text="IconFileDigit"><IconFileDigit size="lg" /></Tooltip>
+    <Tooltip text="IconFileDown"><IconFileDown size="lg" /></Tooltip>
+    <Tooltip text="IconFileEdit"><IconFileEdit size="lg" /></Tooltip>
+    <Tooltip text="IconFileHeart"><IconFileHeart size="lg" /></Tooltip>
+    <Tooltip text="IconFileImage"><IconFileImage size="lg" /></Tooltip>
+    <Tooltip text="IconFileInput"><IconFileInput size="lg" /></Tooltip>
+    <Tooltip text="IconFileJson"><IconFileJson size="lg" /></Tooltip>
+    <Tooltip text="IconFileJson2"><IconFileJson2 size="lg" /></Tooltip>
+    <Tooltip text="IconFileKey"><IconFileKey size="lg" /></Tooltip>
+    <Tooltip text="IconFileKey2"><IconFileKey2 size="lg" /></Tooltip>
+    <Tooltip text="IconFileLineChart"><IconFileLineChart size="lg" /></Tooltip>
+    <Tooltip text="IconFileLock"><IconFileLock size="lg" /></Tooltip>
+    <Tooltip text="IconFileLock2"><IconFileLock2 size="lg" /></Tooltip>
+    <Tooltip text="IconFileMinus"><IconFileMinus size="lg" /></Tooltip>
+    <Tooltip text="IconFileMinus2"><IconFileMinus2 size="lg" /></Tooltip>
+    <Tooltip text="IconFileOutput"><IconFileOutput size="lg" /></Tooltip>
+    <Tooltip text="IconFilePieChart"><IconFilePieChart size="lg" /></Tooltip>
+    <Tooltip text="IconFilePlus"><IconFilePlus size="lg" /></Tooltip>
+    <Tooltip text="IconFilePlus2"><IconFilePlus2 size="lg" /></Tooltip>
+    <Tooltip text="IconFileQuestion"><IconFileQuestion size="lg" /></Tooltip>
+    <Tooltip text="IconFiles"><IconFiles size="lg" /></Tooltip>
+    <Tooltip text="IconFileScan"><IconFileScan size="lg" /></Tooltip>
+    <Tooltip text="IconFileSearch"><IconFileSearch size="lg" /></Tooltip>
+    <Tooltip text="IconFileSearch2"><IconFileSearch2 size="lg" /></Tooltip>
+    <Tooltip text="IconFileSignature"><IconFileSignature size="lg" /></Tooltip>
+    <Tooltip text="IconFileSpreadsheet"><IconFileSpreadsheet size="lg" /></Tooltip>
+    <Tooltip text="IconFileSymlink"><IconFileSymlink size="lg" /></Tooltip>
+    <Tooltip text="IconFileTerminal"><IconFileTerminal size="lg" /></Tooltip>
+    <Tooltip text="IconFileText"><IconFileText size="lg" /></Tooltip>
+    <Tooltip text="IconFileType"><IconFileType size="lg" /></Tooltip>
+    <Tooltip text="IconFileType2"><IconFileType2 size="lg" /></Tooltip>
+    <Tooltip text="IconFileUp"><IconFileUp size="lg" /></Tooltip>
+    <Tooltip text="IconFileVideo"><IconFileVideo size="lg" /></Tooltip>
+    <Tooltip text="IconFileVideo2"><IconFileVideo2 size="lg" /></Tooltip>
+    <Tooltip text="IconFileVolume"><IconFileVolume size="lg" /></Tooltip>
+    <Tooltip text="IconFileVolume2"><IconFileVolume2 size="lg" /></Tooltip>
+    <Tooltip text="IconFileWarning"><IconFileWarning size="lg" /></Tooltip>
+    <Tooltip text="IconFileX"><IconFileX size="lg" /></Tooltip>
+    <Tooltip text="IconFileX2"><IconFileX2 size="lg" /></Tooltip>
+    <Tooltip text="IconFilm"><IconFilm size="lg" /></Tooltip>
+    <Tooltip text="IconFilter"><IconFilter size="lg" /></Tooltip>
+    <Tooltip text="IconFingerprint"><IconFingerprint size="lg" /></Tooltip>
+    <Tooltip text="IconFlag"><IconFlag size="lg" /></Tooltip>
+    <Tooltip text="IconFlagOff"><IconFlagOff size="lg" /></Tooltip>
+    <Tooltip text="IconFlagTriangleLeft"><IconFlagTriangleLeft size="lg" /></Tooltip>
+    <Tooltip text="IconFlagTriangleRight"><IconFlagTriangleRight size="lg" /></Tooltip>
+    <Tooltip text="IconFlame"><IconFlame size="lg" /></Tooltip>
+    <Tooltip text="IconFlashlight"><IconFlashlight size="lg" /></Tooltip>
+    <Tooltip text="IconFlashlightOff"><IconFlashlightOff size="lg" /></Tooltip>
+    <Tooltip text="IconFlaskConical"><IconFlaskConical size="lg" /></Tooltip>
+    <Tooltip text="IconFlaskConicalOff"><IconFlaskConicalOff size="lg" /></Tooltip>
+    <Tooltip text="IconFlaskRound"><IconFlaskRound size="lg" /></Tooltip>
+    <Tooltip text="IconFlipHorizontal"><IconFlipHorizontal size="lg" /></Tooltip>
+    <Tooltip text="IconFlipHorizontal2"><IconFlipHorizontal2 size="lg" /></Tooltip>
+    <Tooltip text="IconFlipVertical"><IconFlipVertical size="lg" /></Tooltip>
+    <Tooltip text="IconFlipVertical2"><IconFlipVertical2 size="lg" /></Tooltip>
+    <Tooltip text="IconFlower"><IconFlower size="lg" /></Tooltip>
+    <Tooltip text="IconFlower2"><IconFlower2 size="lg" /></Tooltip>
+    <Tooltip text="IconFocus"><IconFocus size="lg" /></Tooltip>
+    <Tooltip text="IconFolder"><IconFolder size="lg" /></Tooltip>
+    <Tooltip text="IconFolderArchive"><IconFolderArchive size="lg" /></Tooltip>
+    <Tooltip text="IconFolderCheck"><IconFolderCheck size="lg" /></Tooltip>
+    <Tooltip text="IconFolderClock"><IconFolderClock size="lg" /></Tooltip>
+    <Tooltip text="IconFolderClosed"><IconFolderClosed size="lg" /></Tooltip>
+    <Tooltip text="IconFolderCog"><IconFolderCog size="lg" /></Tooltip>
+    <Tooltip text="IconFolderCog2"><IconFolderCog2 size="lg" /></Tooltip>
+    <Tooltip text="IconFolderDown"><IconFolderDown size="lg" /></Tooltip>
+    <Tooltip text="IconFolderEdit"><IconFolderEdit size="lg" /></Tooltip>
+    <Tooltip text="IconFolderHeart"><IconFolderHeart size="lg" /></Tooltip>
+    <Tooltip text="IconFolderInput"><IconFolderInput size="lg" /></Tooltip>
+    <Tooltip text="IconFolderKey"><IconFolderKey size="lg" /></Tooltip>
+    <Tooltip text="IconFolderLock"><IconFolderLock size="lg" /></Tooltip>
+    <Tooltip text="IconFolderMinus"><IconFolderMinus size="lg" /></Tooltip>
+    <Tooltip text="IconFolderOpen"><IconFolderOpen size="lg" /></Tooltip>
+    <Tooltip text="IconFolderOutput"><IconFolderOutput size="lg" /></Tooltip>
+    <Tooltip text="IconFolderPlus"><IconFolderPlus size="lg" /></Tooltip>
+    <Tooltip text="IconFolders"><IconFolders size="lg" /></Tooltip>
+    <Tooltip text="IconFolderSearch"><IconFolderSearch size="lg" /></Tooltip>
+    <Tooltip text="IconFolderSearch2"><IconFolderSearch2 size="lg" /></Tooltip>
+    <Tooltip text="IconFolderSymlink"><IconFolderSymlink size="lg" /></Tooltip>
+    <Tooltip text="IconFolderTree"><IconFolderTree size="lg" /></Tooltip>
+    <Tooltip text="IconFolderUp"><IconFolderUp size="lg" /></Tooltip>
+    <Tooltip text="IconFolderX"><IconFolderX size="lg" /></Tooltip>
+    <Tooltip text="IconFormInput"><IconFormInput size="lg" /></Tooltip>
+    <Tooltip text="IconForward"><IconForward size="lg" /></Tooltip>
+    <Tooltip text="IconFrame"><IconFrame size="lg" /></Tooltip>
+    <Tooltip text="IconFramer"><IconFramer size="lg" /></Tooltip>
+    <Tooltip text="IconFrown"><IconFrown size="lg" /></Tooltip>
+    <Tooltip text="IconFuel"><IconFuel size="lg" /></Tooltip>
+    <Tooltip text="IconFunctionSquare"><IconFunctionSquare size="lg" /></Tooltip>
+    <Tooltip text="IconGamepad"><IconGamepad size="lg" /></Tooltip>
+    <Tooltip text="IconGamepad2"><IconGamepad2 size="lg" /></Tooltip>
+    <Tooltip text="IconGauge"><IconGauge size="lg" /></Tooltip>
+    <Tooltip text="IconGavel"><IconGavel size="lg" /></Tooltip>
+    <Tooltip text="IconGem"><IconGem size="lg" /></Tooltip>
+    <Tooltip text="IconGhost"><IconGhost size="lg" /></Tooltip>
+    <Tooltip text="IconGift"><IconGift size="lg" /></Tooltip>
+    <Tooltip text="IconGitBranch"><IconGitBranch size="lg" /></Tooltip>
+    <Tooltip text="IconGitBranchPlus"><IconGitBranchPlus size="lg" /></Tooltip>
+    <Tooltip text="IconGitCommit"><IconGitCommit size="lg" /></Tooltip>
+    <Tooltip text="IconGitCompare"><IconGitCompare size="lg" /></Tooltip>
+    <Tooltip text="IconGitFork"><IconGitFork size="lg" /></Tooltip>
+    <Tooltip text="IconGithub"><IconGithub size="lg" /></Tooltip>
+    <Tooltip text="IconGitlab"><IconGitlab size="lg" /></Tooltip>
+    <Tooltip text="IconGitMerge"><IconGitMerge size="lg" /></Tooltip>
+    <Tooltip text="IconGitPullRequest"><IconGitPullRequest size="lg" /></Tooltip>
+    <Tooltip text="IconGitPullRequestClosed"><IconGitPullRequestClosed size="lg" /></Tooltip>
+    <Tooltip text="IconGitPullRequestDraft"><IconGitPullRequestDraft size="lg" /></Tooltip>
+    <Tooltip text="IconGlasses"><IconGlasses size="lg" /></Tooltip>
+    <Tooltip text="IconGlassWater"><IconGlassWater size="lg" /></Tooltip>
+    <Tooltip text="IconGlobe"><IconGlobe size="lg" /></Tooltip>
+    <Tooltip text="IconGlobe2"><IconGlobe2 size="lg" /></Tooltip>
+    <Tooltip text="IconGrab"><IconGrab size="lg" /></Tooltip>
+    <Tooltip text="IconGraduationCap"><IconGraduationCap size="lg" /></Tooltip>
+    <Tooltip text="IconGrape"><IconGrape size="lg" /></Tooltip>
+    <Tooltip text="IconGrid"><IconGrid size="lg" /></Tooltip>
+    <Tooltip text="IconGripHorizontal"><IconGripHorizontal size="lg" /></Tooltip>
+    <Tooltip text="IconGripVertical"><IconGripVertical size="lg" /></Tooltip>
+    <Tooltip text="IconHammer"><IconHammer size="lg" /></Tooltip>
+    <Tooltip text="IconHand"><IconHand size="lg" /></Tooltip>
+    <Tooltip text="IconHandMetal"><IconHandMetal size="lg" /></Tooltip>
+    <Tooltip text="IconHardDrive"><IconHardDrive size="lg" /></Tooltip>
+    <Tooltip text="IconHardHat"><IconHardHat size="lg" /></Tooltip>
+    <Tooltip text="IconHash"><IconHash size="lg" /></Tooltip>
+    <Tooltip text="IconHaze"><IconHaze size="lg" /></Tooltip>
+    <Tooltip text="IconHeading"><IconHeading size="lg" /></Tooltip>
+    <Tooltip text="IconHeading1"><IconHeading1 size="lg" /></Tooltip>
+    <Tooltip text="IconHeading2"><IconHeading2 size="lg" /></Tooltip>
+    <Tooltip text="IconHeading3"><IconHeading3 size="lg" /></Tooltip>
+    <Tooltip text="IconHeading4"><IconHeading4 size="lg" /></Tooltip>
+    <Tooltip text="IconHeading5"><IconHeading5 size="lg" /></Tooltip>
+    <Tooltip text="IconHeading6"><IconHeading6 size="lg" /></Tooltip>
+    <Tooltip text="IconHeadphones"><IconHeadphones size="lg" /></Tooltip>
+    <Tooltip text="IconHeart"><IconHeart size="lg" /></Tooltip>
+    <Tooltip text="IconHeartCrack"><IconHeartCrack size="lg" /></Tooltip>
+    <Tooltip text="IconHeartHandshake"><IconHeartHandshake size="lg" /></Tooltip>
+    <Tooltip text="IconHeartOff"><IconHeartOff size="lg" /></Tooltip>
+    <Tooltip text="IconHeartPulse"><IconHeartPulse size="lg" /></Tooltip>
+    <Tooltip text="IconHelpCircle"><IconHelpCircle size="lg" /></Tooltip>
+    <Tooltip text="IconHexagon"><IconHexagon size="lg" /></Tooltip>
+    <Tooltip text="IconHighlighter"><IconHighlighter size="lg" /></Tooltip>
+    <Tooltip text="IconHistory"><IconHistory size="lg" /></Tooltip>
+    <Tooltip text="IconHome"><IconHome size="lg" /></Tooltip>
+    <Tooltip text="IconHop"><IconHop size="lg" /></Tooltip>
+    <Tooltip text="IconHopOff"><IconHopOff size="lg" /></Tooltip>
+    <Tooltip text="IconHourglass"><IconHourglass size="lg" /></Tooltip>
+    <Tooltip text="IconIceCream"><IconIceCream size="lg" /></Tooltip>
+    <Tooltip text="IconImage"><IconImage size="lg" /></Tooltip>
+    <Tooltip text="IconImageMinus"><IconImageMinus size="lg" /></Tooltip>
+    <Tooltip text="IconImageOff"><IconImageOff size="lg" /></Tooltip>
+    <Tooltip text="IconImagePlus"><IconImagePlus size="lg" /></Tooltip>
+    <Tooltip text="IconImport"><IconImport size="lg" /></Tooltip>
+    <Tooltip text="IconInbox"><IconInbox size="lg" /></Tooltip>
+    <Tooltip text="IconIndent"><IconIndent size="lg" /></Tooltip>
+    <Tooltip text="IconIndianRupee"><IconIndianRupee size="lg" /></Tooltip>
+    <Tooltip text="IconInfinity"><IconInfinity size="lg" /></Tooltip>
+    <Tooltip text="IconInfo"><IconInfo size="lg" /></Tooltip>
+    <Tooltip text="IconInspect"><IconInspect size="lg" /></Tooltip>
+    <Tooltip text="IconInstagram"><IconInstagram size="lg" /></Tooltip>
+    <Tooltip text="IconItalic"><IconItalic size="lg" /></Tooltip>
+    <Tooltip text="IconJapaneseYen"><IconJapaneseYen size="lg" /></Tooltip>
+    <Tooltip text="IconJoystick"><IconJoystick size="lg" /></Tooltip>
+    <Tooltip text="IconKey"><IconKey size="lg" /></Tooltip>
+    <Tooltip text="IconKeyboard"><IconKeyboard size="lg" /></Tooltip>
+    <Tooltip text="IconLamp"><IconLamp size="lg" /></Tooltip>
+    <Tooltip text="IconLampCeiling"><IconLampCeiling size="lg" /></Tooltip>
+    <Tooltip text="IconLampDesk"><IconLampDesk size="lg" /></Tooltip>
+    <Tooltip text="IconLampFloor"><IconLampFloor size="lg" /></Tooltip>
+    <Tooltip text="IconLampWallDown"><IconLampWallDown size="lg" /></Tooltip>
+    <Tooltip text="IconLampWallUp"><IconLampWallUp size="lg" /></Tooltip>
+    <Tooltip text="IconLandmark"><IconLandmark size="lg" /></Tooltip>
+    <Tooltip text="IconLanguages"><IconLanguages size="lg" /></Tooltip>
+    <Tooltip text="IconLaptop"><IconLaptop size="lg" /></Tooltip>
+    <Tooltip text="IconLaptop2"><IconLaptop2 size="lg" /></Tooltip>
+    <Tooltip text="IconLasso"><IconLasso size="lg" /></Tooltip>
+    <Tooltip text="IconLassoSelect"><IconLassoSelect size="lg" /></Tooltip>
+    <Tooltip text="IconLaugh"><IconLaugh size="lg" /></Tooltip>
+    <Tooltip text="IconLayers"><IconLayers size="lg" /></Tooltip>
+    <Tooltip text="IconLayout"><IconLayout size="lg" /></Tooltip>
+    <Tooltip text="IconLayoutDashboard"><IconLayoutDashboard size="lg" /></Tooltip>
+    <Tooltip text="IconLayoutGrid"><IconLayoutGrid size="lg" /></Tooltip>
+    <Tooltip text="IconLayoutList"><IconLayoutList size="lg" /></Tooltip>
+    <Tooltip text="IconLayoutTemplate"><IconLayoutTemplate size="lg" /></Tooltip>
+    <Tooltip text="IconLeaf"><IconLeaf size="lg" /></Tooltip>
+    <Tooltip text="IconLibrary"><IconLibrary size="lg" /></Tooltip>
+    <Tooltip text="IconLifeBuoy"><IconLifeBuoy size="lg" /></Tooltip>
+    <Tooltip text="IconLightbulb"><IconLightbulb size="lg" /></Tooltip>
+    <Tooltip text="IconLightbulbOff"><IconLightbulbOff size="lg" /></Tooltip>
+    <Tooltip text="IconLineChart"><IconLineChart size="lg" /></Tooltip>
+    <Tooltip text="IconLink"><IconLink size="lg" /></Tooltip>
+    <Tooltip text="IconLink2"><IconLink2 size="lg" /></Tooltip>
+    <Tooltip text="IconLink2Off"><IconLink2Off size="lg" /></Tooltip>
+    <Tooltip text="IconLinkedin"><IconLinkedin size="lg" /></Tooltip>
+    <Tooltip text="IconList"><IconList size="lg" /></Tooltip>
+    <Tooltip text="IconListChecks"><IconListChecks size="lg" /></Tooltip>
+    <Tooltip text="IconListEnd"><IconListEnd size="lg" /></Tooltip>
+    <Tooltip text="IconListMinus"><IconListMinus size="lg" /></Tooltip>
+    <Tooltip text="IconListMusic"><IconListMusic size="lg" /></Tooltip>
+    <Tooltip text="IconListOrdered"><IconListOrdered size="lg" /></Tooltip>
+    <Tooltip text="IconListPlus"><IconListPlus size="lg" /></Tooltip>
+    <Tooltip text="IconListStart"><IconListStart size="lg" /></Tooltip>
+    <Tooltip text="IconListVideo"><IconListVideo size="lg" /></Tooltip>
+    <Tooltip text="IconListX"><IconListX size="lg" /></Tooltip>
+    <Tooltip text="IconLoader"><IconLoader size="lg" /></Tooltip>
+    <Tooltip text="IconLoader2"><IconLoader2 size="lg" /></Tooltip>
+    <Tooltip text="IconLocate"><IconLocate size="lg" /></Tooltip>
+    <Tooltip text="IconLocateFixed"><IconLocateFixed size="lg" /></Tooltip>
+    <Tooltip text="IconLocateOff"><IconLocateOff size="lg" /></Tooltip>
+    <Tooltip text="IconLock"><IconLock size="lg" /></Tooltip>
+    <Tooltip text="IconLogIn"><IconLogIn size="lg" /></Tooltip>
+    <Tooltip text="IconLogOut"><IconLogOut size="lg" /></Tooltip>
+    <Tooltip text="IconLuggage"><IconLuggage size="lg" /></Tooltip>
+    <Tooltip text="IconMagnet"><IconMagnet size="lg" /></Tooltip>
+    <Tooltip text="IconMail"><IconMail size="lg" /></Tooltip>
+    <Tooltip text="IconMailCheck"><IconMailCheck size="lg" /></Tooltip>
+    <Tooltip text="IconMailMinus"><IconMailMinus size="lg" /></Tooltip>
+    <Tooltip text="IconMailOpen"><IconMailOpen size="lg" /></Tooltip>
+    <Tooltip text="IconMailPlus"><IconMailPlus size="lg" /></Tooltip>
+    <Tooltip text="IconMailQuestion"><IconMailQuestion size="lg" /></Tooltip>
+    <Tooltip text="IconMails"><IconMails size="lg" /></Tooltip>
+    <Tooltip text="IconMailSearch"><IconMailSearch size="lg" /></Tooltip>
+    <Tooltip text="IconMailWarning"><IconMailWarning size="lg" /></Tooltip>
+    <Tooltip text="IconMailX"><IconMailX size="lg" /></Tooltip>
+    <Tooltip text="IconMap"><IconMap size="lg" /></Tooltip>
+    <Tooltip text="IconMapPin"><IconMapPin size="lg" /></Tooltip>
+    <Tooltip text="IconMapPinOff"><IconMapPinOff size="lg" /></Tooltip>
+    <Tooltip text="IconMartini"><IconMartini size="lg" /></Tooltip>
+    <Tooltip text="IconMaximize"><IconMaximize size="lg" /></Tooltip>
+    <Tooltip text="IconMaximize2"><IconMaximize2 size="lg" /></Tooltip>
+    <Tooltip text="IconMedal"><IconMedal size="lg" /></Tooltip>
+    <Tooltip text="IconMegaphone"><IconMegaphone size="lg" /></Tooltip>
+    <Tooltip text="IconMegaphoneOff"><IconMegaphoneOff size="lg" /></Tooltip>
+    <Tooltip text="IconMeh"><IconMeh size="lg" /></Tooltip>
+    <Tooltip text="IconMenu"><IconMenu size="lg" /></Tooltip>
+    <Tooltip text="IconMessageCircle"><IconMessageCircle size="lg" /></Tooltip>
+    <Tooltip text="IconMessageSquare"><IconMessageSquare size="lg" /></Tooltip>
+    <Tooltip text="IconMic"><IconMic size="lg" /></Tooltip>
+    <Tooltip text="IconMic2"><IconMic2 size="lg" /></Tooltip>
+    <Tooltip text="IconMicOff"><IconMicOff size="lg" /></Tooltip>
+    <Tooltip text="IconMicroscope"><IconMicroscope size="lg" /></Tooltip>
+    <Tooltip text="IconMicrowave"><IconMicrowave size="lg" /></Tooltip>
+    <Tooltip text="IconMilestone"><IconMilestone size="lg" /></Tooltip>
+    <Tooltip text="IconMilk"><IconMilk size="lg" /></Tooltip>
+    <Tooltip text="IconMilkOff"><IconMilkOff size="lg" /></Tooltip>
+    <Tooltip text="IconMinimize"><IconMinimize size="lg" /></Tooltip>
+    <Tooltip text="IconMinimize2"><IconMinimize2 size="lg" /></Tooltip>
+    <Tooltip text="IconMinus"><IconMinus size="lg" /></Tooltip>
+    <Tooltip text="IconMinusCircle"><IconMinusCircle size="lg" /></Tooltip>
+    <Tooltip text="IconMinusSquare"><IconMinusSquare size="lg" /></Tooltip>
+    <Tooltip text="IconMonitor"><IconMonitor size="lg" /></Tooltip>
+    <Tooltip text="IconMonitorOff"><IconMonitorOff size="lg" /></Tooltip>
+    <Tooltip text="IconMonitorSmartphone"><IconMonitorSmartphone size="lg" /></Tooltip>
+    <Tooltip text="IconMonitorSpeaker"><IconMonitorSpeaker size="lg" /></Tooltip>
+    <Tooltip text="IconMoon"><IconMoon size="lg" /></Tooltip>
+    <Tooltip text="IconMoreHorizontal"><IconMoreHorizontal size="lg" /></Tooltip>
+    <Tooltip text="IconMoreVertical"><IconMoreVertical size="lg" /></Tooltip>
+    <Tooltip text="IconMountain"><IconMountain size="lg" /></Tooltip>
+    <Tooltip text="IconMountainSnow"><IconMountainSnow size="lg" /></Tooltip>
+    <Tooltip text="IconMouse"><IconMouse size="lg" /></Tooltip>
+    <Tooltip text="IconMousePointer"><IconMousePointer size="lg" /></Tooltip>
+    <Tooltip text="IconMousePointer2"><IconMousePointer2 size="lg" /></Tooltip>
+    <Tooltip text="IconMousePointerClick"><IconMousePointerClick size="lg" /></Tooltip>
+    <Tooltip text="IconMove"><IconMove size="lg" /></Tooltip>
+    <Tooltip text="IconMove3D"><IconMove3D size="lg" /></Tooltip>
+    <Tooltip text="IconMoveDiagonal"><IconMoveDiagonal size="lg" /></Tooltip>
+    <Tooltip text="IconMoveDiagonal2"><IconMoveDiagonal2 size="lg" /></Tooltip>
+    <Tooltip text="IconMoveHorizontal"><IconMoveHorizontal size="lg" /></Tooltip>
+    <Tooltip text="IconMoveVertical"><IconMoveVertical size="lg" /></Tooltip>
+    <Tooltip text="IconMusic"><IconMusic size="lg" /></Tooltip>
+    <Tooltip text="IconMusic2"><IconMusic2 size="lg" /></Tooltip>
+    <Tooltip text="IconMusic3"><IconMusic3 size="lg" /></Tooltip>
+    <Tooltip text="IconMusic4"><IconMusic4 size="lg" /></Tooltip>
+    <Tooltip text="IconNavigation"><IconNavigation size="lg" /></Tooltip>
+    <Tooltip text="IconNavigation2"><IconNavigation2 size="lg" /></Tooltip>
+    <Tooltip text="IconNavigation2Off"><IconNavigation2Off size="lg" /></Tooltip>
+    <Tooltip text="IconNavigationOff"><IconNavigationOff size="lg" /></Tooltip>
+    <Tooltip text="IconNetwork"><IconNetwork size="lg" /></Tooltip>
+    <Tooltip text="IconNewspaper"><IconNewspaper size="lg" /></Tooltip>
+    <Tooltip text="IconNut"><IconNut size="lg" /></Tooltip>
+    <Tooltip text="IconNutOff"><IconNutOff size="lg" /></Tooltip>
+    <Tooltip text="IconOctagon"><IconOctagon size="lg" /></Tooltip>
+    <Tooltip text="IconOption"><IconOption size="lg" /></Tooltip>
+    <Tooltip text="IconOutdent"><IconOutdent size="lg" /></Tooltip>
+    <Tooltip text="IconPackage"><IconPackage size="lg" /></Tooltip>
+    <Tooltip text="IconPackage2"><IconPackage2 size="lg" /></Tooltip>
+    <Tooltip text="IconPackageCheck"><IconPackageCheck size="lg" /></Tooltip>
+    <Tooltip text="IconPackageMinus"><IconPackageMinus size="lg" /></Tooltip>
+    <Tooltip text="IconPackageOpen"><IconPackageOpen size="lg" /></Tooltip>
+    <Tooltip text="IconPackagePlus"><IconPackagePlus size="lg" /></Tooltip>
+    <Tooltip text="IconPackageSearch"><IconPackageSearch size="lg" /></Tooltip>
+    <Tooltip text="IconPackageX"><IconPackageX size="lg" /></Tooltip>
+    <Tooltip text="IconPaintbrush"><IconPaintbrush size="lg" /></Tooltip>
+    <Tooltip text="IconPaintbrush2"><IconPaintbrush2 size="lg" /></Tooltip>
+    <Tooltip text="IconPaintBucket"><IconPaintBucket size="lg" /></Tooltip>
+    <Tooltip text="IconPalette"><IconPalette size="lg" /></Tooltip>
+    <Tooltip text="IconPalmtree"><IconPalmtree size="lg" /></Tooltip>
+    <Tooltip text="IconPaperclip"><IconPaperclip size="lg" /></Tooltip>
+    <Tooltip text="IconPartyPopper"><IconPartyPopper size="lg" /></Tooltip>
+    <Tooltip text="IconPause"><IconPause size="lg" /></Tooltip>
+    <Tooltip text="IconPauseCircle"><IconPauseCircle size="lg" /></Tooltip>
+    <Tooltip text="IconPauseOctagon"><IconPauseOctagon size="lg" /></Tooltip>
+    <Tooltip text="IconPencil"><IconPencil size="lg" /></Tooltip>
+    <Tooltip text="IconPenTool"><IconPenTool size="lg" /></Tooltip>
+    <Tooltip text="IconPercent"><IconPercent size="lg" /></Tooltip>
+    <Tooltip text="IconPersonStanding"><IconPersonStanding size="lg" /></Tooltip>
+    <Tooltip text="IconPhone"><IconPhone size="lg" /></Tooltip>
+    <Tooltip text="IconPhoneCall"><IconPhoneCall size="lg" /></Tooltip>
+    <Tooltip text="IconPhoneForwarded"><IconPhoneForwarded size="lg" /></Tooltip>
+    <Tooltip text="IconPhoneIncoming"><IconPhoneIncoming size="lg" /></Tooltip>
+    <Tooltip text="IconPhoneMissed"><IconPhoneMissed size="lg" /></Tooltip>
+    <Tooltip text="IconPhoneOff"><IconPhoneOff size="lg" /></Tooltip>
+    <Tooltip text="IconPhoneOutgoing"><IconPhoneOutgoing size="lg" /></Tooltip>
+    <Tooltip text="IconPieChart"><IconPieChart size="lg" /></Tooltip>
+    <Tooltip text="IconPiggyBank"><IconPiggyBank size="lg" /></Tooltip>
+    <Tooltip text="IconPilcrow"><IconPilcrow size="lg" /></Tooltip>
+    <Tooltip text="IconPin"><IconPin size="lg" /></Tooltip>
+    <Tooltip text="IconPinOff"><IconPinOff size="lg" /></Tooltip>
+    <Tooltip text="IconPipette"><IconPipette size="lg" /></Tooltip>
+    <Tooltip text="IconPizza"><IconPizza size="lg" /></Tooltip>
+    <Tooltip text="IconPlane"><IconPlane size="lg" /></Tooltip>
+    <Tooltip text="IconPlay"><IconPlay size="lg" /></Tooltip>
+    <Tooltip text="IconPlayCircle"><IconPlayCircle size="lg" /></Tooltip>
+    <Tooltip text="IconPlug"><IconPlug size="lg" /></Tooltip>
+    <Tooltip text="IconPlug2"><IconPlug2 size="lg" /></Tooltip>
+    <Tooltip text="IconPlugZap"><IconPlugZap size="lg" /></Tooltip>
+    <Tooltip text="IconPlus"><IconPlus size="lg" /></Tooltip>
+    <Tooltip text="IconPlusCircle"><IconPlusCircle size="lg" /></Tooltip>
+    <Tooltip text="IconPlusSquare"><IconPlusSquare size="lg" /></Tooltip>
+    <Tooltip text="IconPocket"><IconPocket size="lg" /></Tooltip>
+    <Tooltip text="IconPodcast"><IconPodcast size="lg" /></Tooltip>
+    <Tooltip text="IconPointer"><IconPointer size="lg" /></Tooltip>
+    <Tooltip text="IconPoundSterling"><IconPoundSterling size="lg" /></Tooltip>
+    <Tooltip text="IconPower"><IconPower size="lg" /></Tooltip>
+    <Tooltip text="IconPowerOff"><IconPowerOff size="lg" /></Tooltip>
+    <Tooltip text="IconPrinter"><IconPrinter size="lg" /></Tooltip>
+    <Tooltip text="IconPuzzle"><IconPuzzle size="lg" /></Tooltip>
+    <Tooltip text="IconQrCode"><IconQrCode size="lg" /></Tooltip>
+    <Tooltip text="IconQuote"><IconQuote size="lg" /></Tooltip>
+    <Tooltip text="IconRadio"><IconRadio size="lg" /></Tooltip>
+    <Tooltip text="IconRadioReceiver"><IconRadioReceiver size="lg" /></Tooltip>
+    <Tooltip text="IconRectangleHorizontal"><IconRectangleHorizontal size="lg" /></Tooltip>
+    <Tooltip text="IconRectangleVertical"><IconRectangleVertical size="lg" /></Tooltip>
+    <Tooltip text="IconRecycle"><IconRecycle size="lg" /></Tooltip>
+    <Tooltip text="IconRedo"><IconRedo size="lg" /></Tooltip>
+    <Tooltip text="IconRedo2"><IconRedo2 size="lg" /></Tooltip>
+    <Tooltip text="IconRefreshCcw"><IconRefreshCcw size="lg" /></Tooltip>
+    <Tooltip text="IconRefreshCw"><IconRefreshCw size="lg" /></Tooltip>
+    <Tooltip text="IconRefrigerator"><IconRefrigerator size="lg" /></Tooltip>
+    <Tooltip text="IconRegex"><IconRegex size="lg" /></Tooltip>
+    <Tooltip text="IconRepeat"><IconRepeat size="lg" /></Tooltip>
+    <Tooltip text="IconRepeat1"><IconRepeat1 size="lg" /></Tooltip>
+    <Tooltip text="IconReply"><IconReply size="lg" /></Tooltip>
+    <Tooltip text="IconReplyAll"><IconReplyAll size="lg" /></Tooltip>
+    <Tooltip text="IconRewind"><IconRewind size="lg" /></Tooltip>
+    <Tooltip text="IconRocket"><IconRocket size="lg" /></Tooltip>
+    <Tooltip text="IconRockingChair"><IconRockingChair size="lg" /></Tooltip>
+    <Tooltip text="IconRotate3D"><IconRotate3D size="lg" /></Tooltip>
+    <Tooltip text="IconRotateCcw"><IconRotateCcw size="lg" /></Tooltip>
+    <Tooltip text="IconRotateCw"><IconRotateCw size="lg" /></Tooltip>
+    <Tooltip text="IconRss"><IconRss size="lg" /></Tooltip>
+    <Tooltip text="IconRuler"><IconRuler size="lg" /></Tooltip>
+    <Tooltip text="IconRussianRuble"><IconRussianRuble size="lg" /></Tooltip>
+    <Tooltip text="IconSailboat"><IconSailboat size="lg" /></Tooltip>
+    <Tooltip text="IconSave"><IconSave size="lg" /></Tooltip>
+    <Tooltip text="IconScale"><IconScale size="lg" /></Tooltip>
+    <Tooltip text="IconScale3D"><IconScale3D size="lg" /></Tooltip>
+    <Tooltip text="IconScaling"><IconScaling size="lg" /></Tooltip>
+    <Tooltip text="IconScan"><IconScan size="lg" /></Tooltip>
+    <Tooltip text="IconScanFace"><IconScanFace size="lg" /></Tooltip>
+    <Tooltip text="IconScanLine"><IconScanLine size="lg" /></Tooltip>
+    <Tooltip text="IconScissors"><IconScissors size="lg" /></Tooltip>
+    <Tooltip text="IconScreenShare"><IconScreenShare size="lg" /></Tooltip>
+    <Tooltip text="IconScreenShareOff"><IconScreenShareOff size="lg" /></Tooltip>
+    <Tooltip text="IconScroll"><IconScroll size="lg" /></Tooltip>
+    <Tooltip text="IconSearch"><IconSearch size="lg" /></Tooltip>
+    <Tooltip text="IconSend"><IconSend size="lg" /></Tooltip>
+    <Tooltip text="IconSeparatorHorizontal"><IconSeparatorHorizontal size="lg" /></Tooltip>
+    <Tooltip text="IconSeparatorVertical"><IconSeparatorVertical size="lg" /></Tooltip>
+    <Tooltip text="IconServer"><IconServer size="lg" /></Tooltip>
+    <Tooltip text="IconServerCog"><IconServerCog size="lg" /></Tooltip>
+    <Tooltip text="IconServerCrash"><IconServerCrash size="lg" /></Tooltip>
+    <Tooltip text="IconServerOff"><IconServerOff size="lg" /></Tooltip>
+    <Tooltip text="IconSettings"><IconSettings size="lg" /></Tooltip>
+    <Tooltip text="IconSettings2"><IconSettings2 size="lg" /></Tooltip>
+    <Tooltip text="IconShare"><IconShare size="lg" /></Tooltip>
+    <Tooltip text="IconShare2"><IconShare2 size="lg" /></Tooltip>
+    <Tooltip text="IconSheet"><IconSheet size="lg" /></Tooltip>
+    <Tooltip text="IconShield"><IconShield size="lg" /></Tooltip>
+    <Tooltip text="IconShieldAlert"><IconShieldAlert size="lg" /></Tooltip>
+    <Tooltip text="IconShieldCheck"><IconShieldCheck size="lg" /></Tooltip>
+    <Tooltip text="IconShieldClose"><IconShieldClose size="lg" /></Tooltip>
+    <Tooltip text="IconShieldOff"><IconShieldOff size="lg" /></Tooltip>
+    <Tooltip text="IconShirt"><IconShirt size="lg" /></Tooltip>
+    <Tooltip text="IconShoppingBag"><IconShoppingBag size="lg" /></Tooltip>
+    <Tooltip text="IconShoppingCart"><IconShoppingCart size="lg" /></Tooltip>
+    <Tooltip text="IconShovel"><IconShovel size="lg" /></Tooltip>
+    <Tooltip text="IconShowerHead"><IconShowerHead size="lg" /></Tooltip>
+    <Tooltip text="IconShrink"><IconShrink size="lg" /></Tooltip>
+    <Tooltip text="IconShrub"><IconShrub size="lg" /></Tooltip>
+    <Tooltip text="IconShuffle"><IconShuffle size="lg" /></Tooltip>
+    <Tooltip text="IconSidebar"><IconSidebar size="lg" /></Tooltip>
+    <Tooltip text="IconSidebarClose"><IconSidebarClose size="lg" /></Tooltip>
+    <Tooltip text="IconSidebarOpen"><IconSidebarOpen size="lg" /></Tooltip>
+    <Tooltip text="IconSigma"><IconSigma size="lg" /></Tooltip>
+    <Tooltip text="IconSignal"><IconSignal size="lg" /></Tooltip>
+    <Tooltip text="IconSignalHigh"><IconSignalHigh size="lg" /></Tooltip>
+    <Tooltip text="IconSignalLow"><IconSignalLow size="lg" /></Tooltip>
+    <Tooltip text="IconSignalMedium"><IconSignalMedium size="lg" /></Tooltip>
+    <Tooltip text="IconSignalZero"><IconSignalZero size="lg" /></Tooltip>
+    <Tooltip text="IconSiren"><IconSiren size="lg" /></Tooltip>
+    <Tooltip text="IconSkipBack"><IconSkipBack size="lg" /></Tooltip>
+    <Tooltip text="IconSkipForward"><IconSkipForward size="lg" /></Tooltip>
+    <Tooltip text="IconSkull"><IconSkull size="lg" /></Tooltip>
+    <Tooltip text="IconSlack"><IconSlack size="lg" /></Tooltip>
+    <Tooltip text="IconSlash"><IconSlash size="lg" /></Tooltip>
+    <Tooltip text="IconSlice"><IconSlice size="lg" /></Tooltip>
+    <Tooltip text="IconSliders"><IconSliders size="lg" /></Tooltip>
+    <Tooltip text="IconSlidersHorizontal"><IconSlidersHorizontal size="lg" /></Tooltip>
+    <Tooltip text="IconSmartphone"><IconSmartphone size="lg" /></Tooltip>
+    <Tooltip text="IconSmartphoneCharging"><IconSmartphoneCharging size="lg" /></Tooltip>
+    <Tooltip text="IconSmile"><IconSmile size="lg" /></Tooltip>
+    <Tooltip text="IconSmilePlus"><IconSmilePlus size="lg" /></Tooltip>
+    <Tooltip text="IconSnowflake"><IconSnowflake size="lg" /></Tooltip>
+    <Tooltip text="IconSofa"><IconSofa size="lg" /></Tooltip>
+    <Tooltip text="IconSortAsc"><IconSortAsc size="lg" /></Tooltip>
+    <Tooltip text="IconSortDesc"><IconSortDesc size="lg" /></Tooltip>
+    <Tooltip text="IconSpeaker"><IconSpeaker size="lg" /></Tooltip>
+    <Tooltip text="IconSpline"><IconSpline size="lg" /></Tooltip>
+    <Tooltip text="IconSprout"><IconSprout size="lg" /></Tooltip>
+    <Tooltip text="IconSquare"><IconSquare size="lg" /></Tooltip>
+    <Tooltip text="IconStar"><IconStar size="lg" /></Tooltip>
+    <Tooltip text="IconStarHalf"><IconStarHalf size="lg" /></Tooltip>
+    <Tooltip text="IconStarOff"><IconStarOff size="lg" /></Tooltip>
+    <Tooltip text="IconStethoscope"><IconStethoscope size="lg" /></Tooltip>
+    <Tooltip text="IconSticker"><IconSticker size="lg" /></Tooltip>
+    <Tooltip text="IconStickyNote"><IconStickyNote size="lg" /></Tooltip>
+    <Tooltip text="IconStopCircle"><IconStopCircle size="lg" /></Tooltip>
+    <Tooltip text="IconStretchHorizontal"><IconStretchHorizontal size="lg" /></Tooltip>
+    <Tooltip text="IconStretchVertical"><IconStretchVertical size="lg" /></Tooltip>
+    <Tooltip text="IconStrikethrough"><IconStrikethrough size="lg" /></Tooltip>
+    <Tooltip text="IconSubscript"><IconSubscript size="lg" /></Tooltip>
+    <Tooltip text="IconSubtitles"><IconSubtitles size="lg" /></Tooltip>
+    <Tooltip text="IconSun"><IconSun size="lg" /></Tooltip>
+    <Tooltip text="IconSunDim"><IconSunDim size="lg" /></Tooltip>
+    <Tooltip text="IconSunMedium"><IconSunMedium size="lg" /></Tooltip>
+    <Tooltip text="IconSunMoon"><IconSunMoon size="lg" /></Tooltip>
+    <Tooltip text="IconSunrise"><IconSunrise size="lg" /></Tooltip>
+    <Tooltip text="IconSunset"><IconSunset size="lg" /></Tooltip>
+    <Tooltip text="IconSunSnow"><IconSunSnow size="lg" /></Tooltip>
+    <Tooltip text="IconSuperscript"><IconSuperscript size="lg" /></Tooltip>
+    <Tooltip text="IconSwissFranc"><IconSwissFranc size="lg" /></Tooltip>
+    <Tooltip text="IconSwitchCamera"><IconSwitchCamera size="lg" /></Tooltip>
+    <Tooltip text="IconSword"><IconSword size="lg" /></Tooltip>
+    <Tooltip text="IconSwords"><IconSwords size="lg" /></Tooltip>
+    <Tooltip text="IconSyringe"><IconSyringe size="lg" /></Tooltip>
+    <Tooltip text="IconTable"><IconTable size="lg" /></Tooltip>
+    <Tooltip text="IconTable2"><IconTable2 size="lg" /></Tooltip>
+    <Tooltip text="IconTablet"><IconTablet size="lg" /></Tooltip>
+    <Tooltip text="IconTag"><IconTag size="lg" /></Tooltip>
+    <Tooltip text="IconTags"><IconTags size="lg" /></Tooltip>
+    <Tooltip text="IconTarget"><IconTarget size="lg" /></Tooltip>
+    <Tooltip text="IconTent"><IconTent size="lg" /></Tooltip>
+    <Tooltip text="IconTerminal"><IconTerminal size="lg" /></Tooltip>
+    <Tooltip text="IconTerminalSquare"><IconTerminalSquare size="lg" /></Tooltip>
+    <Tooltip text="IconTextCursor"><IconTextCursor size="lg" /></Tooltip>
+    <Tooltip text="IconTextCursorInput"><IconTextCursorInput size="lg" /></Tooltip>
+    <Tooltip text="IconThermometer"><IconThermometer size="lg" /></Tooltip>
+    <Tooltip text="IconThermometerSnowflake"><IconThermometerSnowflake size="lg" /></Tooltip>
+    <Tooltip text="IconThermometerSun"><IconThermometerSun size="lg" /></Tooltip>
+    <Tooltip text="IconThumbsDown"><IconThumbsDown size="lg" /></Tooltip>
+    <Tooltip text="IconThumbsUp"><IconThumbsUp size="lg" /></Tooltip>
+    <Tooltip text="IconTicket"><IconTicket size="lg" /></Tooltip>
+    <Tooltip text="IconTimer"><IconTimer size="lg" /></Tooltip>
+    <Tooltip text="IconTimerOff"><IconTimerOff size="lg" /></Tooltip>
+    <Tooltip text="IconTimerReset"><IconTimerReset size="lg" /></Tooltip>
+    <Tooltip text="IconToggleLeft"><IconToggleLeft size="lg" /></Tooltip>
+    <Tooltip text="IconToggleRight"><IconToggleRight size="lg" /></Tooltip>
+    <Tooltip text="IconTornado"><IconTornado size="lg" /></Tooltip>
+    <Tooltip text="IconToyBrick"><IconToyBrick size="lg" /></Tooltip>
+    <Tooltip text="IconTrain"><IconTrain size="lg" /></Tooltip>
+    <Tooltip text="IconTrash"><IconTrash size="lg" /></Tooltip>
+    <Tooltip text="IconTrash2"><IconTrash2 size="lg" /></Tooltip>
+    <Tooltip text="IconTreeDeciduous"><IconTreeDeciduous size="lg" /></Tooltip>
+    <Tooltip text="IconTreePine"><IconTreePine size="lg" /></Tooltip>
+    <Tooltip text="IconTrees"><IconTrees size="lg" /></Tooltip>
+    <Tooltip text="IconTrello"><IconTrello size="lg" /></Tooltip>
+    <Tooltip text="IconTrendingDown"><IconTrendingDown size="lg" /></Tooltip>
+    <Tooltip text="IconTrendingUp"><IconTrendingUp size="lg" /></Tooltip>
+    <Tooltip text="IconTriangle"><IconTriangle size="lg" /></Tooltip>
+    <Tooltip text="IconTrophy"><IconTrophy size="lg" /></Tooltip>
+    <Tooltip text="IconTruck"><IconTruck size="lg" /></Tooltip>
+    <Tooltip text="IconTv"><IconTv size="lg" /></Tooltip>
+    <Tooltip text="IconTv2"><IconTv2 size="lg" /></Tooltip>
+    <Tooltip text="IconTwitch"><IconTwitch size="lg" /></Tooltip>
+    <Tooltip text="IconTwitter"><IconTwitter size="lg" /></Tooltip>
+    <Tooltip text="IconType"><IconType size="lg" /></Tooltip>
+    <Tooltip text="IconUmbrella"><IconUmbrella size="lg" /></Tooltip>
+    <Tooltip text="IconUnderline"><IconUnderline size="lg" /></Tooltip>
+    <Tooltip text="IconUndo"><IconUndo size="lg" /></Tooltip>
+    <Tooltip text="IconUndo2"><IconUndo2 size="lg" /></Tooltip>
+    <Tooltip text="IconUnlink"><IconUnlink size="lg" /></Tooltip>
+    <Tooltip text="IconUnlink2"><IconUnlink2 size="lg" /></Tooltip>
+    <Tooltip text="IconUnlock"><IconUnlock size="lg" /></Tooltip>
+    <Tooltip text="IconUpload"><IconUpload size="lg" /></Tooltip>
+    <Tooltip text="IconUploadCloud"><IconUploadCloud size="lg" /></Tooltip>
+    <Tooltip text="IconUsb"><IconUsb size="lg" /></Tooltip>
+    <Tooltip text="IconUser"><IconUser size="lg" /></Tooltip>
+    <Tooltip text="IconUserCheck"><IconUserCheck size="lg" /></Tooltip>
+    <Tooltip text="IconUserCog"><IconUserCog size="lg" /></Tooltip>
+    <Tooltip text="IconUserMinus"><IconUserMinus size="lg" /></Tooltip>
+    <Tooltip text="IconUserPlus"><IconUserPlus size="lg" /></Tooltip>
+    <Tooltip text="IconUsers"><IconUsers size="lg" /></Tooltip>
+    <Tooltip text="IconUserX"><IconUserX size="lg" /></Tooltip>
+    <Tooltip text="IconUtensils"><IconUtensils size="lg" /></Tooltip>
+    <Tooltip text="IconUtensilsCrossed"><IconUtensilsCrossed size="lg" /></Tooltip>
+    <Tooltip text="IconVegan"><IconVegan size="lg" /></Tooltip>
+    <Tooltip text="IconVenetianMask"><IconVenetianMask size="lg" /></Tooltip>
+    <Tooltip text="IconVerified"><IconVerified size="lg" /></Tooltip>
+    <Tooltip text="IconVibrate"><IconVibrate size="lg" /></Tooltip>
+    <Tooltip text="IconVibrateOff"><IconVibrateOff size="lg" /></Tooltip>
+    <Tooltip text="IconVideo"><IconVideo size="lg" /></Tooltip>
+    <Tooltip text="IconVideoOff"><IconVideoOff size="lg" /></Tooltip>
+    <Tooltip text="IconView"><IconView size="lg" /></Tooltip>
+    <Tooltip text="IconVoicemail"><IconVoicemail size="lg" /></Tooltip>
+    <Tooltip text="IconVolume"><IconVolume size="lg" /></Tooltip>
+    <Tooltip text="IconVolume1"><IconVolume1 size="lg" /></Tooltip>
+    <Tooltip text="IconVolume2"><IconVolume2 size="lg" /></Tooltip>
+    <Tooltip text="IconVolumeX"><IconVolumeX size="lg" /></Tooltip>
+    <Tooltip text="IconWallet"><IconWallet size="lg" /></Tooltip>
+    <Tooltip text="IconWand"><IconWand size="lg" /></Tooltip>
+    <Tooltip text="IconWand2"><IconWand2 size="lg" /></Tooltip>
+    <Tooltip text="IconWatch"><IconWatch size="lg" /></Tooltip>
+    <Tooltip text="IconWaves"><IconWaves size="lg" /></Tooltip>
+    <Tooltip text="IconWebcam"><IconWebcam size="lg" /></Tooltip>
+    <Tooltip text="IconWebhook"><IconWebhook size="lg" /></Tooltip>
+    <Tooltip text="IconWheat"><IconWheat size="lg" /></Tooltip>
+    <Tooltip text="IconWheatOff"><IconWheatOff size="lg" /></Tooltip>
+    <Tooltip text="IconWifi"><IconWifi size="lg" /></Tooltip>
+    <Tooltip text="IconWifiOff"><IconWifiOff size="lg" /></Tooltip>
+    <Tooltip text="IconWind"><IconWind size="lg" /></Tooltip>
+    <Tooltip text="IconWine"><IconWine size="lg" /></Tooltip>
+    <Tooltip text="IconWineOff"><IconWineOff size="lg" /></Tooltip>
+    <Tooltip text="IconWrapText"><IconWrapText size="lg" /></Tooltip>
+    <Tooltip text="IconWrench"><IconWrench size="lg" /></Tooltip>
+    <Tooltip text="IconX"><IconX size="lg" /></Tooltip>
+    <Tooltip text="IconXCircle"><IconXCircle size="lg" /></Tooltip>
+    <Tooltip text="IconXOctagon"><IconXOctagon size="lg" /></Tooltip>
+    <Tooltip text="IconXSquare"><IconXSquare size="lg" /></Tooltip>
+    <Tooltip text="IconYoutube"><IconYoutube size="lg" /></Tooltip>
+    <Tooltip text="IconZap"><IconZap size="lg" /></Tooltip>
+    <Tooltip text="IconZapOff"><IconZapOff size="lg" /></Tooltip>
+    <Tooltip text="IconZoomIn"><IconZoomIn size="lg" /></Tooltip>
+    <Tooltip text="IconZoomOut"><IconZoomOut size="lg" /></Tooltip>
   </div>
 </div>

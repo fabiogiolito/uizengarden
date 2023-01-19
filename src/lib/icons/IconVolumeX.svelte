@@ -1,24 +1,9 @@
 <script>
-
-  export let size = null;
-
-  export let classBase = "icon";
-  export let classSize = size ? `${classBase}--${size}` : '';
-
-  let className = "";
-  export { className as class }; // Pass extra classes
-
+  import Icon from "$lib/icons/_IconWrapper.svelte";
 </script>
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
-  fill="none" stroke="currentColor"
-  stroke-width="2" stroke-linecap="round"
-  stroke-linejoin="round"
-  class="{classBase} {classSize} {className}"
->
-<polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5">
-</polygon>
-<line x1="23" y1="9" x2="17" y2="15">
-</line>
-<line x1="17" y1="9" x2="23" y2="15">
-</line>
-</svg>
+
+<Icon {...$$props}>
+  <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5" />
+  <line x1="22" y1="9" x2="16" y2="15" />
+  <line x1="16" y1="9" x2="22" y2="15" />
+</Icon>

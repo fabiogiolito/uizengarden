@@ -13,5 +13,5 @@
   fill="currentColor" stroke="none"
   class="{classBase} {classSize} {className}"
 >
-<circle cx="12" cy="12" r="8" />
+  <circle cx="12" cy="12" r="8" />
 </svg>

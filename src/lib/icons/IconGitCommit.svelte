@@ -1,24 +1,9 @@
 <script>
-
-  export let size = null;
-
-  export let classBase = "icon";
-  export let classSize = size ? `${classBase}--${size}` : '';
-
-  let className = "";
-  export { className as class }; // Pass extra classes
-
+  import Icon from "$lib/icons/_IconWrapper.svelte";
 </script>
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
-  fill="none" stroke="currentColor"
-  stroke-width="2" stroke-linecap="round"
-  stroke-linejoin="round"
-  class="{classBase} {classSize} {className}"
->
-<circle cx="12" cy="12" r="4">
-</circle>
-<line x1="1.05" y1="12" x2="7" y2="12">
-</line>
-<line x1="17.01" y1="12" x2="22.96" y2="12">
-</line>
-</svg>
+
+<Icon {...$$props}>
+  <circle cx="12" cy="12" r="3" />
+  <line x1="3" y1="12" x2="9" y2="12" />
+  <line x1="15" y1="12" x2="21" y2="12" />
+</Icon>

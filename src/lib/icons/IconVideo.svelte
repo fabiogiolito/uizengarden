@@ -1,22 +1,8 @@
 <script>
-
-  export let size = null;
-
-  export let classBase = "icon";
-  export let classSize = size ? `${classBase}--${size}` : '';
-
-  let className = "";
-  export { className as class }; // Pass extra classes
-
+  import Icon from "$lib/icons/_IconWrapper.svelte";
 </script>
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
-  fill="none" stroke="currentColor"
-  stroke-width="2" stroke-linecap="round"
-  stroke-linejoin="round"
-  class="{classBase} {classSize} {className}"
->
-<polygon points="23 7 16 12 23 17 23 7">
-</polygon>
-<rect x="1" y="5" width="15" height="14" rx="2" ry="2">
-</rect>
-</svg>
+
+<Icon {...$$props}>
+  <path d="m22 8-6 4 6 4V8Z" />
+  <rect x="2" y="6" width="14" height="12" rx="2" ry="2" />
+</Icon>
