@@ -23,19 +23,23 @@
   <div class="uizg-preview__element">
     <List style="width: 320px;">
       <Collapsible let:collapsed>
-        <ListItem slot="title" heading="Channels" iconRight={collapsed ? IconChevronRight : IconChevronDown} />
-        <Button label="General" icon={IconHash} />
-        <Button label="Random" icon={IconHash} />
+        <ListItem slot="title" heading="Channels" iconRight={collapsed ? false : IconChevronDown} />
+        <List>
+          <Button label="General" icon={IconHash} />
+          <Button label="Random" icon={IconHash} />
+        </List>
       </Collapsible>
       <ListItem divider />
       <Collapsible let:collapsed>
         <ListItem slot="title" heading="People" iconRight={collapsed ? IconChevronRight : IconChevronDown} />
-        <Button label="John">
-          <Avatar slot="icon" size="xs" initials="jd" />
-        </Button>
-        <Button label="Jane">
-          <Avatar slot="icon" size="xs" initials="jd" />
-        </Button>
+        <List>
+          <Button label="John">
+            <Avatar slot="icon" size="xs" initials="jd" />
+          </Button>
+          <Button label="Jane">
+            <Avatar slot="icon" size="xs" initials="jd" />
+          </Button>
+        </List>
       </Collapsible>
     </List>
   </div>
