@@ -39,7 +39,7 @@
 
 </script>
 
-<svelte:element this={element}
+<svelte:element this={element ? element : href ? "a" : "button"}
   class="
     {classBase}
     {truncate ? classTruncate : ''}
@@ -51,6 +51,7 @@
   {title}
   {role}
   {ariaLabel}
+  on:click
   on:mouseenter
 >
 
@@ -74,9 +75,7 @@
       {/if}
     </span>
   {:else if $$slots.default}
-    <span class={classContent}>
-      <slot />
-    </span>
+    <span class={classContent}><slot /></span>
   {/if}
   
   <!-- Icon right size -->

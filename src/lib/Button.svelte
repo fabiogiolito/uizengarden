@@ -104,49 +104,32 @@
 
 </script>
 
-<svelte:element this={element ? element : href ? "a" : "button"}
-  class="
-    {classBase}
-    {type     ? `${classBase}--${type}` : ''}
-    {size     ? `${classBase}--${size}` : ''}
-    {wrap     ? classWrap : ''}
-    {loading  ? classLoading  : ''}
-    {toggle ? toggled ? classToggled : classUntoggled : ''}
-    {disabled || loading ? classDisabled : ''}
-    {focused ? classFocused : ''}
-    {selected ? classSelected : ''}
-    {(icon || iconRight) && !label && !$$slots.default ? classIconBtn : ''}
-    {className}
-  "
-  {style}
+<Label
+  {element}
   {href}
   {title}
   {role}
   {ariaLabel}
+  {classBase}
+  {icon}
+  {iconRight}
   disabled={disabled || loading}
+  text={label}
+  class="
+    {type     ? `${classBase}--${type}` : ''}
+    {size     ? `${classBase}--${size}` : ''}
+    {wrap     ? classWrap : ''}
+    {loading  ? classLoading  : ''}
+    {toggle   ? toggled ? classToggled : classUntoggled : ''}
+    {disabled || loading ? classDisabled : ''}
+    {focused  ? classFocused : ''}
+    {selected ? classSelected : ''}
+    {(icon || iconRight) && !label && !$$slots.default ? classIconBtn : ''}
+    {className}
+  "
   on:click={handleClick}
   on:mouseenter
 >
-
-  <Label {icon} {iconRight} text={label} class={classLabel}>
-
-    <!-- Left icon -->
-    <slot name="icon" slot="icon" />
-    
-    <!-- Copy status -->
-    {#if copyStatus}
-      <span in:fade class="{classCopyStatus}">
-        {copyStatus}
-      </span>
-
-    <!-- Content -->
-    {:else if label || $$slots.default}
-      <slot {toggled} {toggleBtn}>{label}</slot>
-    {/if}
-
-    <!-- Right icon -->
-    <slot name="iconRight" slot="iconRight" />
-  </Label>
 
   <!-- Loading spinner -->
   {#if loading}
@@ -155,4 +138,20 @@
     </span>
   {/if}
 
-</svelte:element>
+  <!-- Left icon -->
+  <slot name="icon" slot="icon" />
+  
+  <!-- Copy status -->
+  {#if copyStatus}
+    <span in:fade class="{classCopyStatus}">
+      {copyStatus}
+    </span>
+
+  <!-- Content -->
+  {:else if label || $$slots.default}
+    <slot {toggled} {toggleBtn}>{label}</slot>
+  {/if}
+
+  <!-- Right icon -->
+  <slot name="iconRight" slot="iconRight" />
+</Label>

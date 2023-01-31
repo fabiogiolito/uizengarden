@@ -94,6 +94,7 @@
 
 <div class="uizg-preview">
   <div class="uizg-preview__element">
+    <Button>New post</Button>
     <Button icon={IconPlus}>New post</Button>
     <Button iconRight={IconChevronDown}>Published</Button>
     <Button icon={IconAlignLeft} iconRight={IconChevronDown}>Left</Button>
@@ -115,6 +116,10 @@
   <div class="uizg-preview__element">
     <Button async>Load more</Button>
     <Button async icon={IconRotateCw}>Reload</Button>
+    <Button async icon={IconRotateCw} />
+    <Button type="primary" async>Load more</Button>
+    <Button type="primary" async icon={IconRotateCw}>Reload</Button>
+    <Button type="primary" async icon={IconRotateCw} />
   </div>
 </div>
 <Highlight code={`
@@ -157,7 +162,10 @@
   </div>
   <div class="uizg-preview__element">
     <Button element="div" toggle let:toggled classToggled="">
-      <Checkbox checked={toggled} label="I've read the terms of service" />
+      <div slot="icon" class="btn__icon-container">
+        <Checkbox checked={toggled} />
+      </div>
+      I've read the terms of service
     </Button>
   </div>
 </div>
@@ -182,6 +190,9 @@
     {/if}
   </Button>
   <Button element="div" toggle let:toggled classToggled="">
-    <Checkbox checked={toggled} label="I've read the terms of service" />
+    <div slot="icon" class="btn__icon-container">
+      <Checkbox checked={toggled} />
+    </div>
+    I've read the terms of service
   </Button>
 `} />

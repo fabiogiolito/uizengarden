@@ -36,6 +36,7 @@
 
 .label--truncate .label__content,
 .btn:not(.btn--wrap) .label__content {
+  display: inline-block;
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;

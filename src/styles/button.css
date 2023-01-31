@@ -7,12 +7,7 @@
   position: relative; /* to position .btn__loading */
   vertical-align: middle;
   white-space: nowrap;
-  min-height: 2.675em;
   flex-shrink: 0;
-}
-
-.btn--loading .btn__label {
-  opacity: 0; /* hide content when loading */
 }
 
 /* ============================================= */
@@ -65,14 +60,36 @@
 /* --------------------------------------------- */
 /* Content */
 
+.btn__icon-container,
 .btn__content {
-  display: flex;
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.5em;
+  border-radius: inherit;
 }
 
-.btn__label {
-  padding: 0.5em 1em;
+.btn__icon-container {
+  padding: 0.75em;
+}
+
+.btn__content:first-child {
+  padding-left: 1em;
+}
+
+.btn__content:last-child {
+  padding-right: 1em;
+}
+
+.btn__content {
   flex: 1;
-  overflow: hidden;
+}
+
+.btn--icon-btn .btn__content:is(:first-child, :last-child) {
+  display: none;
+}
+
+.btn--icon-btn .btn__content {
+  margin: 0 -0.5em;
 }
 
 /* --------------------------------------------- */
@@ -173,6 +190,8 @@ a.btn--selected.btn--focused {
 /* Loading */
 
 .btn__loading {
+  background: rgb(var(--btn-background));
+  border-radius: inherit;
   position: absolute;
   top: 0;
   left: 0;

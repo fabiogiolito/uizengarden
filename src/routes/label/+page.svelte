@@ -48,9 +48,7 @@
   </div>
 </div>
 <Highlight code={`
-  <p><Label>This is some text</Label></p>
-  <p><Label text="This is using a text prop" /></p>
-  <p><Label text="This is using a text prop" subtext="and subtext" /></p>
+  <Label>Curabitur suscipit lectus lorem...</Label>
 `} />
 
 
@@ -78,7 +76,7 @@
   <div class="uizg-preview__element">
     <p>
       <Label element="label" text="Using icon slots">
-        <Checkbox slot="iconLeft" />
+        <Checkbox slot="icon" />
         <IconCoffee slot="iconRight" />
       </Label>
     </p>
@@ -86,7 +84,7 @@
 </div>
 <Highlight code={`
   <Label element="label" text="Using icon slots">
-    <Checkbox slot="iconLeft" />
+    <Checkbox slot="icon" />
     <IconCoffee slot="iconRight" />
   </Label>
 `} />
